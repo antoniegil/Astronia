@@ -11,7 +11,6 @@ English
 <a href="https://github.com/antoniegil/Astronia/blob/main/README-zh_Hans.md">简体中文</a>
 &nbsp;&nbsp;| &nbsp;&nbsp;
 <a href="https://github.com/antoniegil/Astronia/blob/main/README-zh_Hant.md">正體中文</a>
-&nbsp;&nbsp;| &nbsp;&nbsp;
 
 </div>
 
@@ -49,7 +48,7 @@ Libraries and tools:
 
 ## 📃 License
 
-[![GitHub](https://img.shields.io/github/license/JunkFood02/Seal?style=for-the-badge)](https://github.com/JunkFood02/Seal/blob/main/LICENSE)
+[![GitHub](https://img.shields.io/github/license/antoniegil/Astronia?style=for-the-badge)](https://github.com/antoniegil/Astronia/blob/main/LICENSE)
 
 >Copyright (C) 2026 Astronia
 >
