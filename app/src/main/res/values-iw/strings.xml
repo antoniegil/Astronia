@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources> 
+    <string name="copy">העתק</string>
+    <string name="paste">הדבק</string>
+    <string name="clear">נקה</string>
+    <string name="open">פתח</string>
+    <string name="close">סגור</string>
+    <string name="back">חזור</string>
+    <string name="cancel">ביטול</string>
+    <string name="undo">שחזר</string>
+    <string name="all">הכל</string>
+
+    <string name="clipboard_label">טקסט</string>
+
+    <string name="state">מצב</string>
+    <string name="play">נגן</string>
+    <string name="idle">לא פעיל</string>
+    <string name="playing">מנגן</string>
+    <string name="loading">טוען</string>
+    <string name="buffering">מאגר</string>
+    <string name="paused">מושהה</string>
+    <string name="ended">הסתיים</string>
+    <string name="unknown">לא ידוע</string>
+
+    <string name="fullscreen">מסך מלא</string>
+    <string name="exit_fullscreen">צא ממסך מלא</string>
+    <string name="player_settings">הגדרות נגן</string>
+
+    <string name="link_hint">קישור לשידור חי (m3u8/m3u)</string>
+    <string name="local_import">ייבוא מקומי</string>
+    <string name="last_played">הושמע לאחרונה</string>
+
+    <string name="loading_channels">טוען רשימת ערוצים…</string>
+    <string name="single_stream">זהו שידור חי בודד, אין רשימת ערוצים</string>
+    <string name="local_video">וידאו מקומי</string>
+    <string name="unknown_video">וידאו לא ידוע</string>
+    <string name="playlist">רשימת השמעה</string>
+    <string name="channel_count">רשימת ערוצים (%d)</string>
+    <string name="search_channels">חפש ערוצים</string>
+    
+    <string name="resolution">רזולוציה</string>
+    <string name="frames">פריימים (נזרקו / סה״כ)</string>
+    <string name="codec">קודק</string>
+    <string name="buffer_health">בריאות באפר</string>
+    <string name="cpu_usage">שימוש ב-CPU</string>
+
+    <string name="history">היסטוריה</string>
+    <string name="delete_history_item">מחק פריט היסטוריה</string>
+    <string name="no_play_history">אין היסטוריית השמעה</string>
+    <string name="search">חיפוש</string>
+    <string name="search_history">חפש בהיסטוריה</string>
+    <string name="select_all">בחר הכל</string>
+    <plurals name="multiselect_item_count">
+        <item quantity="one">נבחר פריט אחד</item>
+        <item quantity="two">נבחרו %1$d פריטים</item>
+        <item quantity="other">נבחרו %1$d פריטים</item>
+    </plurals>
+    
+    <string name="settings">הגדרות</string>
+    <string name="player">נגן</string>
+    <string name="player_desc">השמעה אוטומטית, השמעה ברקע, תמונה בתוך תמונה</string>
+    <string name="video">וידאו</string>
+    <string name="video_desc">יחס גובה-רוחב, מפענח</string>
+    <string name="appearance">מראה</string>
+    <string name="appearance_desc">ערכת נושא, צבע, שפה</string>
+    <string name="data_management">ניהול נתונים</string>
+    <string name="data_management_desc">גיבוי ושחזור היסטוריה</string>
+    <string name="network">רשת</string>
+    <string name="network_desc">פרוקסי, סטטיסטיקות נגן</string>
+    <string name="about">אודות</string>
+    <string name="about_desc">מידע על האפליקציה וגרסה</string>
+    
+    <string name="playback_behavior">התנהגות השמעה</string>
+    <string name="interface_control">בקרת ממשק</string>
+    <string name="auto_play">השמעה אוטומטית</string>
+    <string name="auto_play_desc">התחל השמעה אוטומטית בעת פתיחת וידאו</string>
+    <string name="auto_hide_controls">הסתר בקרות אוטומטית</string>
+    <string name="auto_hide_controls_desc">הסתר אוטומטית את סרגל הבקרה במהלך ההשמעה</string>
+    <string name="pip">תמונה בתוך תמונה</string>
+    <string name="pip_desc">אפשר מצב תמונה בתוך תמונה</string>
+    <string name="pip_unsupported">דורש Android 8.0 ומעלה</string>
+    <string name="background_play">השמעה ברקע</string>
+    <string name="background_play_desc">אפשר המשך השמעה ברקע</string>
+    <string name="background_play_battery_hint">דורש פטור מאופטימיזציית סוללה</string>
+    <string name="battery_configuration">תצורת סוללה</string>
+    <string name="battery_configuration_desc">הענק פטור מאופטימיזציית סוללה להשמעה יציבה ברקע</string>
+    <string name="mirror_flip">היפוך מראה</string>
+    <string name="mirror_flip_desc">היפוך אופקי של תמונת הוידאו</string>
+
+    <string name="display_settings">הגדרות תצוגה</string>
+    <string name="decoder_settings">הגדרות מפענח</string>
+    <string name="aspect_ratio">יחס גובה-רוחב</string>
+    <string name="aspect_ratio_fill">מילוי</string>
+    <string name="aspect_ratio_original">מקורי</string>
+    <string name="decoder">מפענח</string>
+    <string name="decoder_hardware">חומרה</string>
+    <string name="decoder_software">תוכנה</string>
+
+    <string name="dark_theme">ערכת נושא כהה</string>
+    <string name="additional_settings">הגדרות נוספות</string>
+    <string name="high_contrast">ערכת נושא כהה עם ניגודיות גבוהה</string>
+    <string name="dynamic_color">צבע דינמי</string>
+    <string name="dynamic_color_desc">השתמש בצבע הטפט כערכת נושא של האפליקציה</string>
+    <string name="language">שפה</string>
+    <string name="select_language">בחר שפה</string>
+    <string name="follow_system">עקוב אחר המערכת</string>
+    <string name="system_settings">הגדרות מערכת</string>
+
+    <string name="data_backup">גיבוי נתונים</string>
+    <string name="backup_data">ייצוא נתונים</string>
+    <string name="backup_data_desc">ייצוא היסטוריית השמעה</string>
+    <string name="backup_success">ייצוא הצליח, נשמר ב-%s</string>
+    <string name="backup_failed">הייצוא נכשל</string>
+    <string name="no_history_to_backup">אין היסטוריה לייצוא</string>
+    <string name="restore_data">ייבוא נתונים</string>
+    <string name="restore_data_desc">ייבוא היסטוריה מקובץ גיבוי</string>
+    <plurals name="restore_success">
+        <item quantity="one">שוחזר פריט היסטוריה אחד בהצלחה</item>
+        <item quantity="two">שוחזרו %d פריטי היסטוריה בהצלחה</item>
+        <item quantity="other">שוחזרו %d פריטי היסטוריה בהצלחה</item>
+    </plurals>
+    <string name="restore_failed">השחזור נכשל</string>
+
+    <string name="export_label">ייצוא</string>
+    <string name="import_label">ייבוא</string>
+    <string name="item_deleted">הפריט נמחק</string>
+
+    <string name="proxy">פרוקסי</string>
+    <string name="proxy_desc">גישה לרשת דרך שרת פרוקסי</string>
+    <string name="player_stats">סטטיסטיקות נגן</string>
+    <string name="player_stats_desc">הצג כפתור סטטיסטיקות בעמוד הנגן</string>
+
+    <string name="project_homepage">דף הבית של הפרויקט</string>
+    <string name="project_homepage_desc">הצג קוד מקור ומידע על הפרויקט</string>
+    <string name="version_release">שחרור גרסה</string>
+    <string name="version_release_desc">הצג גרסה אחרונה ויומן שינויים</string>
+    <string name="issue_feedback">בעיות GitHub</string>
+    <string name="issue_feedback_desc">דווח על באג או הצע שיפור</string>
+    <string name="sponsor">חסות</string>
+    <string name="sponsor_desc">תמוך באפליקציה זו דרך GitHub Sponsors</string>
+    <string name="auto_update">עדכון אוטומטי</string>
+    <string name="check_for_updates_desc">בדוק אוטומטית עדכונים מ-GitHub</string>
+    <string name="enable_auto_update">הפעל עדכון אוטומטי</string>
+    <string name="update_channel">ערוץ עדכון</string>
+    <string name="stable_channel">יציב</string>
+    <string name="pre_release_channel">גרסת טרום-שחרור</string>
+    <string name="check_for_updates">בדוק עדכונים</string>
+    <string name="update_channel_desc">בחר גרסה יציבה או גרסת טרום-שחרור עם התכונות החדשות ביותר</string>
+    <string name="update">עדכון</string>
+    <string name="app_update_failed">העדכון נכשל</string>
+    <string name="already_latest_version">כבר בגרסה האחרונה</string>
+    <string name="check_update_failed">בדיקת העדכון נכשלה</string>
+    
+    <string name="open_source_licenses_title">רישיונות קוד פתוח</string>
+    <string name="open_source_licenses_desc_about">הצג מידע על רישיונות קוד פתוח</string>
+    <string name="package_name">שם חבילה</string>
+    <string name="debug_build">בניית Debug</string>
+    <string name="release_build">בניית Release</string>
+    <string name="unknown_version">גרסה לא ידועה</string>
+    <string name="build_type">סוג בנייה</string>
+    <string name="version">גרסה</string>
+</resources>

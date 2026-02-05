@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources> 
+    <string name="copy">คัดลอก</string>
+    <string name="paste">วาง</string>
+    <string name="clear">ล้าง</string>
+    <string name="open">เปิด</string>
+    <string name="close">ปิด</string>
+    <string name="back">กลับ</string>
+    <string name="cancel">ยกเลิก</string>
+    <string name="undo">เลิกทำ</string>
+    <string name="all">ทั้งหมด</string>
+
+    <string name="clipboard_label">ข้อความ</string>
+
+    <string name="state">สถานะ</string>
+    <string name="play">เล่น</string>
+    <string name="idle">ว่าง</string>
+    <string name="playing">กำลังเล่น</string>
+    <string name="loading">กำลังโหลด</string>
+    <string name="buffering">กำลังบัฟเฟอร์</string>
+    <string name="paused">หยุดชั่วคราว</string>
+    <string name="ended">สิ้นสุด</string>
+    <string name="unknown">ไม่ทราบ</string>
+
+    <string name="fullscreen">เต็มหน้าจอ</string>
+    <string name="exit_fullscreen">ออกจากโหมดเต็มหน้าจอ</string>
+    <string name="player_settings">ตั้งค่าเครื่องเล่น</string>
+
+    <string name="link_hint">ลิงก์สตรีมสด (m3u8/m3u)</string>
+    <string name="local_import">นำเข้าจากเครื่อง</string>
+    <string name="last_played">เล่นล่าสุด</string>
+
+    <string name="loading_channels">กำลังโหลดรายการช่อง…</string>
+    <string name="single_stream">นี่คือสตรีมเดี่ยว ไม่มีรายการช่อง</string>
+    <string name="local_video">วิดีโอในเครื่อง</string>
+    <string name="unknown_video">วิดีโอที่ไม่รู้จัก</string>
+    <string name="playlist">เพลย์ลิสต์</string>
+    <string name="channel_count">รายการช่อง (%d)</string>
+    <string name="search_channels">ค้นหาช่อง</string>
+    
+    <string name="resolution">ความละเอียด</string>
+    <string name="frames">เฟรม (ตกหล่น / ทั้งหมด)</string>
+    <string name="codec">ตัวแปลงสัญญาณ</string>
+    <string name="buffer_health">ความสมบูรณ์ของบัฟเฟอร์</string>
+    <string name="cpu_usage">การใช้งาน CPU</string>
+
+    <string name="history">ประวัติ</string>
+    <string name="delete_history_item">ลบรายการประวัติ</string>
+    <string name="no_play_history">ไม่มีประวัติการเล่น</string>
+    <string name="search">ค้นหา</string>
+    <string name="search_history">ค้นหาประวัติ</string>
+    <string name="select_all">เลือกทั้งหมด</string>
+    <plurals name="multiselect_item_count">
+        <item quantity="other">เลือกแล้ว %1$d รายการ</item>
+    </plurals>
+    
+    <string name="settings">ตั้งค่า</string>
+    <string name="player">เครื่องเล่น</string>
+    <string name="player_desc">เล่นอัตโนมัติ, เล่นเบื้องหลัง, PiP</string>
+    <string name="video">วิดีโอ</string>
+    <string name="video_desc">อัตราส่วนภาพ, ตัวถอดรหัส</string>
+    <string name="appearance">รูปลักษณ์</string>
+    <string name="appearance_desc">ธีม, สี, ภาษา</string>
+    <string name="data_management">การจัดการข้อมูล</string>
+    <string name="data_management_desc">สำรองข้อมูลและคืนค่าประวัติ</string>
+    <string name="network">เครือข่าย</string>
+    <string name="network_desc">พร็อกซี, สถิติเครื่องเล่น</string>
+    <string name="about">เกี่ยวกับ</string>
+    <string name="about_desc">ข้อมูลแอปและเวอร์ชัน</string>
+    
+    <string name="playback_behavior">พฤติกรรมการเล่น</string>
+    <string name="interface_control">การควบคุมอินเทอร์เฟซ</string>
+    <string name="auto_play">เล่นอัตโนมัติ</string>
+    <string name="auto_play_desc">เริ่มเล่นโดยอัตโนมัติเมื่อเปิดวิดีโอ</string>
+    <string name="auto_hide_controls">ซ่อนตัวควบคุมอัตโนมัติ</string>
+    <string name="auto_hide_controls_desc">ซ่อนตัวควบคุมโดยอัตโนมัติระหว่างการเล่น</string>
+    <string name="pip">ภาพซ้อนภาพ (PiP)</string>
+    <string name="pip_desc">อนุญาตโหมดภาพซ้อนภาพ</string>
+    <string name="pip_unsupported">ต้องใช้ Android 8.0 ขึ้นไป</string>
+    <string name="background_play">เล่นเป็นเบื้องหลัง</string>
+    <string name="background_play_desc">อนุญาตให้เล่นต่อไปในเบื้องหลัง</string>
+    <string name="background_play_battery_hint">ต้องได้รับการยกเว้นจากการเพิ่มประสิทธิภาพแบตเตอรี่</string>
+    <string name="battery_configuration">การกำหนดค่าแบตเตอรี่</string>
+    <string name="battery_configuration_desc">อนุญาตการยกเว้นการเพิ่มประสิทธิภาพแบตเตอรี่เพื่อการเล่นเบื้องหลังที่เสถียร</string>
+    <string name="mirror_flip">พลิกกระจก</string>
+    <string name="mirror_flip_desc">พลิกวิดีโอในแนวนอน</string>
+
+    <string name="display_settings">การตั้งค่าการแสดงผล</string>
+    <string name="decoder_settings">การตั้งค่าตัวถอดรหัส</string>
+    <string name="aspect_ratio">อัตราส่วนภาพ</string>
+    <string name="aspect_ratio_fill">เต็มจอ</string>
+    <string name="aspect_ratio_original">ต้นฉบับ</string>
+    <string name="decoder">ตัวถอดรหัส</string>
+    <string name="decoder_hardware">ฮาร์ดแวร์</string>
+    <string name="decoder_software">ซอฟต์แวร์</string>
+
+    <string name="dark_theme">ธีมมืด</string>
+    <string name="additional_settings">การตั้งค่าเพิ่มเติม</string>
+    <string name="high_contrast">ธีมมืดความคมชัดสูง</string>
+    <string name="dynamic_color">สีแบบไดนามิก</string>
+    <string name="dynamic_color_desc">ใช้สีจากวอลเปเปอร์เป็นธีมแอป</string>
+    <string name="language">ภาษา</string>
+    <string name="select_language">เลือกภาษา</string>
+    <string name="follow_system">ตามระบบ</string>
+    <string name="system_settings">การตั้งค่าระบบ</string>
+
+    <string name="data_backup">สำรองข้อมูล</string>
+    <string name="backup_data">ส่งออกข้อมูล</string>
+    <string name="backup_data_desc">ส่งออกประวัติการเล่น</string>
+    <string name="backup_success">ส่งออกสำเร็จ บันทึกไว้ที่: %s</string>
+    <string name="backup_failed">ส่งออกล้มเหลว</string>
+    <string name="no_history_to_backup">ไม่มีประวัติให้ส่งออก</string>
+    <string name="restore_data">นำเข้าข้อมูล</string>
+    <string name="restore_data_desc">นำเข้าประวัติจากไฟล์สำรองข้อมูล</string>
+    <plurals name="restore_success">
+        <item quantity="other">คืนค่ารายการประวัติ %d รายการสำเร็จ</item>
+    </plurals>
+    <string name="restore_failed">การคืนค่าล้มเหลว</string>
+
+    <string name="export_label">ส่งออก</string>
+    <string name="import_label">นำเข้า</string>
+    <string name="item_deleted">ลบรายการแล้ว</string>
+
+    <string name="proxy">พร็อกซี</string>
+    <string name="proxy_desc">เข้าถึงเครือข่ายผ่านเซิร์ฟเวอร์พร็อกซี</string>
+    <string name="player_stats">สถิติเครื่องเล่น</string>
+    <string name="player_stats_desc">แสดงปุ่มสถิติบนหน้าเครื่องเล่น</string>
+
+    <string name="project_homepage">หน้าแรกของโปรเจกต์</string>
+    <string name="project_homepage_desc">ดูซอร์สโค้ดและข้อมูลโปรเจกต์</string>
+    <string name="version_release">รุ่นที่ปล่อย</string>
+    <string name="version_release_desc">ดูเวอร์ชันล่าสุดและบันทึกการเปลี่ยนแปลง</string>
+    <string name="issue_feedback">รายงานปัญหาบน GitHub</string>
+    <string name="issue_feedback_desc">รายงานข้อผิดพลาดหรือข้อเสนอแนะ</string>
+    <string name="sponsor">สนับสนุน</string>
+    <string name="sponsor_desc">สนับสนุนการพัฒนาผ่าน GitHub Sponsors</string>
+    <string name="auto_update">อัปเดตอัตโนมัติ</string>
+    <string name="check_for_updates_desc">ตรวจสอบการอัปเดตจาก GitHub โดยอัตโนมัติ</string>
+    <string name="enable_auto_update">เปิดใช้งานการอัปเดตอัตโนมัติ</string>
+    <string name="update_channel">ช่องทางการอัปเดต</string>
+    <string name="stable_channel">เสถียร (Stable)</string>
+    <string name="pre_release_channel">รุ่นทดสอบ (Pre-release)</string>
+    <string name="check_for_updates">ตรวจสอบการอัปเดต</string>
+    <string name="update_channel_desc">เลือกระหว่างรุ่นที่เสถียรหรือรุ่นทดสอบที่มีฟีเจอร์ล่าสุด</string>
+    <string name="update">อัปเดต</string>
+    <string name="app_update_failed">การอัปเดตล้มเหลว</string>
+    <string name="already_latest_version">เป็นเวอร์ชันล่าสุดแล้ว</string>
+    <string name="check_update_failed">ตรวจสอบการอัปเดตล้มเหลว</string>
+    
+    <string name="open_source_licenses_title">ใบอนุญาตโอเพนซอร์ส</string>
+    <string name="open_source_licenses_desc_about">ดูข้อมูลใบอนุญาตโอเพนซอร์ส</string>
+    <string name="package_name">ชื่อแพ็กเกจ</string>
+    <string name="debug_build">ดีบักบิลด์</string>
+    <string name="release_build">รีลีสบิลด์</string>
+    <string name="unknown_version">ไม่ทราบเวอร์ชัน</string>
+    <string name="build_type">ประเภทการบิลด์</string>
+    <string name="version">เวอร์ชัน</string>
+</resources>

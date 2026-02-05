@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources> 
+    <string name="copy">複製</string>
+    <string name="paste">貼上</string>
+    <string name="clear">清除</string>
+    <string name="open">開啟</string>
+    <string name="close">關閉</string>
+    <string name="back">返回</string>
+    <string name="cancel">取消</string>
+    <string name="undo">復原</string>
+    <string name="all">全部</string>
+
+    <string name="clipboard_label">文字</string>
+
+    <string name="state">狀態</string>
+    <string name="play">播放</string>
+    <string name="idle">閒置</string>
+    <string name="playing">播放緊</string>
+    <string name="loading">載入緊</string>
+    <string name="buffering">緩衝中</string>
+    <string name="paused">已暫停</string>
+    <string name="ended">已完結</string>
+    <string name="unknown">未知</string>
+
+    <string name="fullscreen">全螢幕</string>
+    <string name="exit_fullscreen">退出全螢幕</string>
+    <string name="player_settings">播放設定</string>
+
+    <string name="link_hint">直播源連結（m3u8/m3u）</string>
+    <string name="local_import">本地匯入</string>
+    <string name="last_played">上次播放</string>
+
+    <string name="loading_channels">載入緊頻道列表…</string>
+    <string name="single_stream">呢個係單一直播串流，冇頻道列表</string>
+    <string name="local_video">本地影片</string>
+    <string name="unknown_video">未知影片</string>
+    <string name="playlist">播放列表</string>
+    <string name="channel_count">頻道列表 (%d)</string>
+    <string name="search_channels">搵頻道</string>
+    
+    <string name="resolution">解像度</string>
+    <string name="frames">影格數（跌格 / 總數）</string>
+    <string name="codec">編碼格式</string>
+    <string name="buffer_health">緩衝健康度</string>
+    <string name="cpu_usage">CPU 使用率</string>
+
+    <string name="history">紀錄</string>
+    <string name="delete_history_item">刪除呢條紀錄</string>
+    <string name="no_play_history">暫時冇播放紀錄</string>
+    <string name="search">搜尋</string>
+    <string name="search_history">搵紀錄</string>
+    <string name="select_all">全選</string>
+    <plurals name="multiselect_item_count">
+        <item quantity="other">已選擇 %1$d 項</item>
+    </plurals>
+    
+    <string name="settings">設定</string>
+    <string name="player">播放</string>
+    <string name="player_desc">自動播放、背景播放、子母畫面</string>
+    <string name="video">影片</string>
+    <string name="video_desc">畫面比例、解碼器</string>
+    <string name="appearance">介面</string>
+    <string name="appearance_desc">主題、顏色、語言</string>
+    <string name="data_management">數據管理</string>
+    <string name="data_management_desc">備份同恢復播放紀錄</string>
+    <string name="network">網絡</string>
+    <string name="network_desc">代理、播放統計</string>
+    <string name="about">關於</string>
+    <string name="about_desc">應用程式資訊同版本</string>
+    
+    <string name="playback_behavior">播放行為</string>
+    <string name="interface_control">介面控制</string>
+    <string name="auto_play">自動播放</string>
+    <string name="auto_play_desc">開片嗰陣自動開始播放</string>
+    <string name="auto_hide_controls">自動隱藏控制欄</string>
+    <string name="auto_hide_controls_desc">播放時自動收埋控制欄</string>
+    <string name="pip">子母畫面</string>
+    <string name="pip_desc">允許子母畫面模式</string>
+    <string name="pip_unsupported">需要 Android 8.0 或更高版本</string>
+    <string name="background_play">背景播放</string>
+    <string name="background_play_desc">允許喺背景繼續播放</string>
+    <string name="background_play_battery_hint">需要電池最佳化豁免權限</string>
+    <string name="battery_configuration">電池配置</string>
+    <string name="battery_configuration_desc">授予電池最佳化豁免，等背景播放更穩定</string>
+    <string name="mirror_flip">鏡像翻轉</string>
+    <string name="mirror_flip_desc">水平翻轉影片畫面</string>
+
+    <string name="display_settings">顯示設定</string>
+    <string name="decoder_settings">解碼設定</string>
+    <string name="aspect_ratio">畫面比例</string>
+    <string name="aspect_ratio_fill">填滿</string>
+    <string name="aspect_ratio_original">原始</string>
+    <string name="decoder">解碼器</string>
+    <string name="decoder_hardware">硬解</string>
+    <string name="decoder_software">軟解</string>
+
+    <string name="dark_theme">深色主題</string>
+    <string name="additional_settings">附加設定</string>
+    <string name="high_contrast">高對比深色主題</string>
+    <string name="dynamic_color">動態配色</string>
+    <string name="dynamic_color_desc">根據牆紙顏色自動調整主題色</string>
+    <string name="language">語言</string>
+    <string name="select_language">選擇語言</string>
+    <string name="follow_system">跟隨系統</string>
+    <string name="system_settings">系統設定</string>
+
+    <string name="data_backup">數據備份</string>
+    <string name="backup_data">匯出資料</string>
+    <string name="backup_data_desc">匯出播放紀錄</string>
+    <string name="backup_success">匯出成功，儲存喺 %s</string>
+    <string name="backup_failed">匯出失敗</string>
+    <string name="no_history_to_backup">冇紀錄可以匯出</string>
+    <string name="restore_data">匯入資料</string>
+    <string name="restore_data_desc">從備份檔案匯入播放紀錄</string>
+    <plurals name="restore_success">
+        <item quantity="other">成功恢復 %d 條紀錄</item>
+    </plurals>
+    <string name="restore_failed">恢復失敗</string>
+
+    <string name="export_label">匯出</string>
+    <string name="import_label">匯入</string>
+    <string name="item_deleted">紀錄已刪除</string>
+
+    <string name="proxy">代理</string>
+    <string name="proxy_desc">經代理伺服器存取網路</string>
+    <string name="player_stats">播放統計</string>
+    <string name="player_stats_desc">喺播放頁顯示播放統計按鈕</string>
+
+    <string name="project_homepage">項目主頁</string>
+    <string name="project_homepage_desc">睇原始碼同項目資訊</string>
+    <string name="version_release">版本發佈</string>
+    <string name="version_release_desc">睇最新版本同更新日誌</string>
+    <string name="issue_feedback">GitHub Issues</string>
+    <string name="issue_feedback_desc">回報錯誤或提供建議</string>
+    <string name="sponsor">贊助</string>
+    <string name="sponsor_desc">喺 GitHub 上贊助嚟支援呢個 App</string>
+    <string name="auto_update">自動更新</string>
+    <string name="check_for_updates_desc">自動檢查 GitHub 嘅更新</string>
+    <string name="enable_auto_update">啟用自動更新</string>
+    <string name="update_channel">更新頻道</string>
+    <string name="stable_channel">穩定</string>
+    <string name="pre_release_channel">預覽</string>
+    <string name="check_for_updates">檢查更新</string>
+    <string name="update_channel_desc">選擇穩定版或有最新功能嘅預佈版本</string>
+    <string name="update">更新</string>
+    <string name="app_update_failed">更新失敗</string>
+    <string name="already_latest_version">已經係最新版本</string>
+    <string name="check_update_failed">檢查更新失敗</string>
+    
+    <string name="open_source_licenses_title">開源授權</string>
+    <string name="open_source_licenses_desc_about">睇開源授權資訊</string>
+    <string name="package_name">套件名稱 (Package Name)</string>
+    <string name="debug_build">Debug 測試版</string>
+    <string name="release_build">Release 正式版</string>
+    <string name="unknown_version">未知版本</string>
+    <string name="build_type">構建類型</string>
+    <string name="version">版本</string>
+</resources>

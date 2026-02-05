@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources> 
+    <string name="copy">Kopyahin</string>
+    <string name="paste">Idikit</string>
+    <string name="clear">Burahin</string>
+    <string name="open">Buksan</string>
+    <string name="close">Isara</string>
+    <string name="back">Bumalik</string>
+    <string name="cancel">Kanselahin</string>
+    <string name="undo">Ibalik</string>
+    <string name="all">Lahat</string>
+
+    <string name="clipboard_label">Teksto</string>
+
+    <string name="state">Estado</string>
+    <string name="play">I-play</string>
+    <string name="idle">Walang ginagawa</string>
+    <string name="playing">Nagpe-play</string>
+    <string name="loading">Naglo-load</string>
+    <string name="buffering">Nag-bu-buffer</string>
+    <string name="paused">Naka-pause</string>
+    <string name="ended">Natapos na</string>
+    <string name="unknown">Hindi alam</string>
+
+    <string name="fullscreen">Buong screen</string>
+    <string name="exit_fullscreen">Lumabas sa buong screen</string>
+    <string name="player_settings">Mga setting ng player</string>
+
+    <string name="link_hint">Link ng live stream (m3u8/m3u)</string>
+    <string name="local_import">Lokal na pag-import</string>
+    <string name="last_played">Huling na-play</string>
+
+    <string name="loading_channels">Naglo-load ng listahan ng channel…</string>
+    <string name="single_stream">Isa lamang itong live stream, walang listahan ng channel</string>
+    <string name="local_video">Lokal na video</string>
+    <string name="unknown_video">Hindi kilalang video</string>
+    <string name="playlist">Playlist</string>
+    <string name="channel_count">Listahan ng channel (%d)</string>
+    <string name="search_channels">Maghanap ng mga channel</string>
+    
+    <string name="resolution">Resolusyon</string>
+    <string name="frames">Mga frame (tinapon / kabuuan)</string>
+    <string name="codec">Codec</string>
+    <string name="buffer_health">Kalusugan ng buffer</string>
+    <string name="cpu_usage">Paggamit ng CPU</string>
+
+    <string name="history">Kasaysayan</string>
+    <string name="delete_history_item">Tanggalin ang item sa kasaysayan</string>
+    <string name="no_play_history">Walang kasaysayan ng pag-play</string>
+    <string name="search">Maghanap</string>
+    <string name="search_history">Maghanap sa kasaysayan</string>
+    <string name="select_all">Piliin lahat</string>
+    <plurals name="multiselect_item_count">
+        <item quantity="one">%1$d napili</item>
+        <item quantity="other">%1$d napili</item>
+    </plurals>
+    
+    <string name="settings">Mga setting</string>
+    <string name="player">Player</string>
+    <string name="player_desc">Awtomatikong pag-play, pag-play sa background, picture-in-picture</string>
+    <string name="video">Video</string>
+    <string name="video_desc">Aspect ratio, decoder</string>
+    <string name="appearance">Hitsura</string>
+    <string name="appearance_desc">Theme, kulay, wika</string>
+    <string name="data_management">Pamamahala ng data</string>
+    <string name="data_management_desc">Pag-backup at pagbabalik ng kasaysayan</string>
+    <string name="network">Network</string>
+    <string name="network_desc">Proxy, mga istatistika ng pag-play</string>
+    <string name="about">Tungkol</string>
+    <string name="about_desc">Impormasyon ng app at bersyon</string>
+    
+    <string name="playback_behavior">Pag-uugali ng playback</string>
+    <string name="interface_control">Kontrol ng interface</string>
+    <string name="auto_play">Awtomatikong pag-play</string>
+    <string name="auto_play_desc">Awtomatikong magsimula ng pag-play kapag binuksan ang video</string>
+    <string name="auto_hide_controls">Awtomatikong itago ang mga kontrol</string>
+    <string name="auto_hide_controls_desc">Awtomatikong itago ang control bar habang nagpe-play</string>
+    <string name="pip">Picture-in-picture</string>
+    <string name="pip_desc">Payagan ang picture-in-picture mode</string>
+    <string name="pip_unsupported">Kailangan ng Android 8.0 o mas mataas</string>
+    <string name="background_play">Pag-play sa background</string>
+    <string name="background_play_desc">Payagan ang patuloy na pag-play sa background</string>
+    <string name="background_play_battery_hint">Kailangan ng exemption sa battery optimization</string>
+    <string name="battery_configuration">Pagsasaayos ng baterya</string>
+    <string name="battery_configuration_desc">Magbigay ng exemption sa battery optimization para sa matatag na pag-play sa background</string>
+    <string name="mirror_flip">Mirror flip</string>
+    <string name="mirror_flip_desc">I-flip nang pahalang ang video</string>
+
+    <string name="display_settings">Mga setting ng display</string>
+    <string name="decoder_settings">Mga setting ng decoder</string>
+    <string name="aspect_ratio">Aspect ratio</string>
+    <string name="aspect_ratio_fill">Punuin</string>
+    <string name="aspect_ratio_original">Orihinal</string>
+    <string name="decoder">Decoder</string>
+    <string name="decoder_hardware">Hardware</string>
+    <string name="decoder_software">Software</string>
+
+    <string name="dark_theme">Madilim na theme</string>
+    <string name="additional_settings">Karagdagang mga setting</string>
+    <string name="high_contrast">Madilim na theme na may mataas na contrast</string>
+    <string name="dynamic_color">Dynamic na kulay</string>
+    <string name="dynamic_color_desc">Gamitin ang kulay ng wallpaper bilang theme ng app</string>
+    <string name="language">Wika</string>
+    <string name="select_language">Pumili ng wika</string>
+    <string name="follow_system">Sundin ang system</string>
+    <string name="system_settings">Mga setting ng system</string>
+
+    <string name="data_backup">Pag-backup ng data</string>
+    <string name="backup_data">I-export ang data</string>
+    <string name="backup_data_desc">I-export ang kasaysayan ng pag-play</string>
+    <string name="backup_success">Matagumpay na nag-export, naka-save sa %s</string>
+    <string name="backup_failed">Nabigo ang pag-export</string>
+    <string name="no_history_to_backup">Walang kasaysayan na ie-export</string>
+    <string name="restore_data">I-import ang data</string>
+    <string name="restore_data_desc">I-import ang kasaysayan mula sa backup file</string>
+    <plurals name="restore_success">
+        <item quantity="one">Matagumpay na naibalik ang %d item sa kasaysayan</item>
+        <item quantity="other">Matagumpay na naibalik ang %d mga item sa kasaysayan</item>
+    </plurals>
+    <string name="restore_failed">Nabigo ang pagbabalik</string>
+
+    <string name="export_label">I-export</string>
+    <string name="import_label">I-import</string>
+    <string name="item_deleted">Tinanggal ang item</string>
+
+    <string name="proxy">Proxy</string>
+    <string name="proxy_desc">I-access ang network sa pamamagitan ng proxy server</string>
+    <string name="player_stats">Mga istatistika ng player</string>
+    <string name="player_stats_desc">Ipakita ang button ng istatistika sa page ng player</string>
+
+    <string name="project_homepage">Homepage ng proyekto</string>
+    <string name="project_homepage_desc">Tingnan ang source code at impormasyon ng proyekto</string>
+    <string name="version_release">Paglabas ng bersyon</string>
+    <string name="version_release_desc">Tingnan ang pinakabagong bersyon at changelog</string>
+    <string name="issue_feedback">GitHub Issues</string>
+    <string name="issue_feedback_desc">Mag-ulat ng bug o magmungkahi ng pagpapabuti</string>
+    <string name="sponsor">Sponsor</string>
+    <string name="sponsor_desc">Suportahan ang app na ito sa pamamagitan ng GitHub Sponsors</string>
+    <string name="auto_update">Awtomatikong pag-update</string>
+    <string name="check_for_updates_desc">Awtomatikong suriin ang mga update mula sa GitHub</string>
+    <string name="enable_auto_update">Paganahin ang awtomatikong pag-update</string>
+    <string name="update_channel">Channel ng update</string>
+    <string name="stable_channel">Stable</string>
+    <string name="pre_release_channel">Pre-release</string>
+    <string name="check_for_updates">Suriin ang mga update</string>
+    <string name="update_channel_desc">Pumili ng stable na bersyon o pre-release na bersyon na may pinakabagong features</string>
+    <string name="update">I-update</string>
+    <string name="app_update_failed">Nabigo ang pag-update</string>
+    <string name="already_latest_version">Pinakabagong bersyon na</string>
+    <string name="check_update_failed">Nabigo ang pagsuri ng update</string>
+    
+    <string name="open_source_licenses_title">Mga lisensya ng open source</string>
+    <string name="open_source_licenses_desc_about">Tingnan ang impormasyon ng mga lisensya ng open source</string>
+    <string name="package_name">Pangalan ng package</string>
+    <string name="debug_build">Debug build</string>
+    <string name="release_build">Release build</string>
+    <string name="unknown_version">Hindi kilalang bersyon</string>
+    <string name="build_type">Uri ng build</string>
+    <string name="version">Bersyon</string>
+</resources>

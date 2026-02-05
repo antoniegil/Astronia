@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources> 
+    <string name="copy">نسخ</string>
+    <string name="paste">لصق</string>
+    <string name="clear">مسح</string>
+    <string name="open">فتح</string>
+    <string name="close">إغلاق</string>
+    <string name="back">رجوع</string>
+    <string name="cancel">إلغاء</string>
+    <string name="undo">تراجع</string>
+    <string name="all">الكل</string>
+
+    <string name="clipboard_label">النص</string>
+
+    <string name="state">الحالة</string>
+    <string name="play">تشغيل</string>
+    <string name="idle">خامل</string>
+    <string name="playing">جاري التشغيل</string>
+    <string name="loading">جاري التحميل</string>
+    <string name="buffering">جاري التخزين المؤقت</string>
+    <string name="paused">متوقف مؤقتاً</string>
+    <string name="ended">انتهى</string>
+    <string name="unknown">غير معروف</string>
+
+    <string name="fullscreen">ملء الشاشة</string>
+    <string name="exit_fullscreen">الخروج من ملء الشاشة</string>
+    <string name="player_settings">إعدادات المشغل</string>
+
+    <string name="link_hint">رابط البث المباشر (m3u8/m3u)</string>
+    <string name="local_import">استيراد محلي</string>
+    <string name="last_played">آخر ما تم تشغيله</string>
+
+    <string name="loading_channels">جاري تحميل قائمة القنوات…</string>
+    <string name="single_stream">هذا بث واحد، لا توجد قائمة قنوات</string>
+    <string name="local_video">فيديو محلي</string>
+    <string name="unknown_video">فيديو غير معروف</string>
+    <string name="playlist">قائمة التشغيل</string>
+    <string name="channel_count">قائمة القنوات (%d)</string>
+    <string name="search_channels">البحث عن القنوات</string>
+    
+    <string name="resolution">الدقة</string>
+    <string name="frames">الإطارات (المفقودة / الإجمالي)</string>
+    <string name="codec">الترميز</string>
+    <string name="buffer_health">حالة التخزين المؤقت</string>
+    <string name="cpu_usage">استهلاك المعالج (CPU)</string>
+
+    <string name="history">السجل</string>
+    <string name="delete_history_item">حذف عنصر من السجل</string>
+    <string name="no_play_history">لا يوجد سجل تشغيل</string>
+    <string name="search">بحث</string>
+    <string name="search_history">البحث في السجل</string>
+    <string name="select_all">تحديد الكل</string>
+    <plurals name="multiselect_item_count">
+        <item quantity="zero">لم يتم تحديد أي عنصر</item>
+        <item quantity="one">تم تحديد عنصر واحد</item>
+        <item quantity="two">تم تحديد عنصرين</item>
+        <item quantity="few">تم تحديد %1$d عناصر</item>
+        <item quantity="many">تم تحديد %1$d عنصراً</item>
+        <item quantity="other">تم تحديد %1$d عنصر</item>
+    </plurals>
+    
+    <string name="settings">الإعدادات</string>
+    <string name="player">المشغل</string>
+    <string name="player_desc">تشغيل تلقائي، تشغيل في الخلفية، PiP</string>
+    <string name="video">الفيديو</string>
+    <string name="video_desc">نسبة العرض، أداة فك التشفير</string>
+    <string name="appearance">المظهر</string>
+    <string name="appearance_desc">المظهر، اللون، اللغة</string>
+    <string name="data_management">إدارة البيانات</string>
+    <string name="data_management_desc">نسخ احتياطي واستعادة السجل</string>
+    <string name="network">الشبكة</string>
+    <string name="network_desc">الوكيل، إحصائيات المشغل</string>
+    <string name="about">حول</string>
+    <string name="about_desc">معلومات التطبيق والإصدار</string>
+    
+    <string name="playback_behavior">سلوك التشغيل</string>
+    <string name="interface_control">التحكم في الواجهة</string>
+    <string name="auto_play">تشغيل تلقائي</string>
+    <string name="auto_play_desc">بدء التشغيل تلقائياً عند فتح الفيديو</string>
+    <string name="auto_hide_controls">إخفاء أدوات التحكم تلقائياً</string>
+    <string name="auto_hide_controls_desc">إخفاء أدوات التحكم تلقائياً أثناء التشغيل</string>
+    <string name="pip">صورة داخل صورة (PiP)</string>
+    <string name="pip_desc">السماح بوضع صورة داخل صورة</string>
+    <string name="pip_unsupported">يتطلب إصدار أندرويد 8.0 أو أحدث</string>
+    <string name="background_play">التشغيل في الخلفية</string>
+    <string name="background_play_desc">السماح باستمرار التشغيل في الخلفية</string>
+    <string name="background_play_battery_hint">يتطلب استثناءً من تحسين البطارية</string>
+    <string name="battery_configuration">إعدادات البطارية</string>
+    <string name="battery_configuration_desc">منح استثناء من تحسين البطارية لضمان استقرار التشغيل في الخلفية</string>
+    <string name="mirror_flip">انعكاس مرآتي</string>
+    <string name="mirror_flip_desc">قلب الفيديو أفقياً</string>
+
+    <string name="display_settings">إعدادات العرض</string>
+    <string name="decoder_settings">إعدادات فك التشفير</string>
+    <string name="aspect_ratio">نسبة العرض إلى الارتفاع</string>
+    <string name="aspect_ratio_fill">ملء</string>
+    <string name="aspect_ratio_original">الأصلي</string>
+    <string name="decoder">أداة فك التشفير</string>
+    <string name="decoder_hardware">عتادي</string>
+    <string name="decoder_software">برمجي</string>
+
+    <string name="dark_theme">المظهر الداكن</string>
+    <string name="additional_settings">إعدادات إضافية</string>
+    <string name="high_contrast">مظهر داكن عالي التباين</string>
+    <string name="dynamic_color">الألوان الديناميكية</string>
+    <string name="dynamic_color_desc">استخدام ألوان خلفية الشاشة لمظهر التطبيق</string>
+    <string name="language">اللغة</string>
+    <string name="select_language">اختر اللغة</string>
+    <string name="follow_system">حسب لغة النظام</string>
+    <string name="system_settings">إعدادات النظام</string>
+
+    <string name="data_backup">نسخ احتياطي للبيانات</string>
+    <string name="backup_data">تصدير البيانات</string>
+    <string name="backup_data_desc">تصدير سجل التشغيل</string>
+    <string name="backup_success">تم التصدير بنجاح، حفظ في: %s</string>
+    <string name="backup_failed">فشل التصدير</string>
+    <string name="no_history_to_backup">لا يوجد سجل للتصدير</string>
+    <string name="restore_data">استيراد البيانات</string>
+    <string name="restore_data_desc">استيراد السجل من ملف نسخة احتياطية</string>
+    <plurals name="restore_success">
+        <item quantity="zero">لم يتم استعادة أي سجلات</item>
+        <item quantity="one">تم استعادة سجل واحد بنجاح</item>
+        <item quantity="two">تم استعادة سجلين بنجاح</item>
+        <item quantity="few">تم استعادة %d سجلات بنجاح</item>
+        <item quantity="many">تم استعادة %d سجلاً بنجاح</item>
+        <item quantity="other">تم استعادة %d سجل بنجاح</item>
+    </plurals>
+    <string name="restore_failed">فشلت الاستعادة</string>
+
+    <string name="export_label">تصدير</string>
+    <string name="import_label">استيراد</string>
+    <string name="item_deleted">تم حذف العنصر</string>
+
+    <string name="proxy">الوكيل</string>
+    <string name="proxy_desc">الوصول إلى الشبكة عبر خادم وكيل</string>
+    <string name="player_stats">إحصائيات المشغل</string>
+    <string name="player_stats_desc">عرض زر الإحصائيات على صفحة المشغل</string>
+
+    <string name="project_homepage">الصفحة الرئيسية للمشروع</string>
+    <string name="project_homepage_desc">عرض كود المصدر ومعلومات المشروع</string>
+    <string name="version_release">إصدارات التطبيق</string>
+    <string name="version_release_desc">عرض أحدث الإصدارات وسجل التغييرات</string>
+    <string name="issue_feedback">مشاكل GitHub</string>
+    <string name="issue_feedback_desc">الإبلاغ عن أخطاء أو تقديم اقتراحات</string>
+    <string name="sponsor">الدعم (Sponsor)</string>
+    <string name="sponsor_desc">دعم التطوير عبر GitHub Sponsors</string>
+    <string name="auto_update">تحديث تلقائي</string>
+    <string name="check_for_updates_desc">التحقق تلقائياً من التحديثات من GitHub</string>
+    <string name="enable_auto_update">تفعيل التحديث التلقائي</string>
+    <string name="update_channel">قناة التحديث</string>
+    <string name="stable_channel">المستقرة</string>
+    <string name="pre_release_channel">التجريبية (Pre-release)</string>
+    <string name="check_for_updates">التحقق من وجود تحديثات</string>
+    <string name="update_channel_desc">اختر بين الإصدارات المستقرة أو الإصدارات التجريبية التي تحتوي على أحدث الميزات</string>
+    <string name="update">تحديث</string>
+    <string name="app_update_failed">فشل التحديث</string>
+    <string name="already_latest_version">أنت تستخدم أحدث إصدار بالفعل</string>
+    <string name="check_update_failed">فشل التحقق من وجود تحديثات</string>
+    
+    <string name="open_source_licenses_title">تراخيص المصدر المفتوح</string>
+    <string name="open_source_licenses_desc_about">عرض معلومات تراخيص المصدر المفتوح</string>
+    <string name="package_name">اسم الحزمة</string>
+    <string name="debug_build">نسخة تصحيح الأخطاء (Debug)</string>
+    <string name="release_build">نسخة الإصدار النهائي (Release)</string>
+    <string name="unknown_version">إصدار غير معروف</string>
+    <string name="build_type">نوع الإصدار</string>
+    <string name="version">الإصدار</string>
+</resources>

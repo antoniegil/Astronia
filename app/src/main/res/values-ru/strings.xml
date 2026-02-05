@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources> 
+    <string name="copy">Копировать</string>
+    <string name="paste">Вставить</string>
+    <string name="clear">Очистить</string>
+    <string name="open">Открыть</string>
+    <string name="close">Закрыть</string>
+    <string name="back">Назад</string>
+    <string name="cancel">Отмена</string>
+    <string name="undo">Отменить</string>
+    <string name="all">Все</string>
+
+    <string name="clipboard_label">текст</string>
+
+    <string name="state">Состояние</string>
+    <string name="play">Воспроизвести</string>
+    <string name="idle">Ожидание</string>
+    <string name="playing">Воспроизводится</string>
+    <string name="loading">Загрузка</string>
+    <string name="buffering">Буферизация</string>
+    <string name="paused">Пауза</string>
+    <string name="ended">Завершено</string>
+    <string name="unknown">Неизвестно</string>
+
+    <string name="fullscreen">Полноэкранный режим</string>
+    <string name="exit_fullscreen">Выйти из полноэкранного режима</string>
+    <string name="player_settings">Настройки плеера</string>
+
+    <string name="link_hint">Ссылка на поток (m3u8/m3u)</string>
+    <string name="local_import">Локальный импорт</string>
+    <string name="last_played">Последнее просмотренное</string>
+
+    <string name="loading_channels">Загрузка списка каналов…</string>
+    <string name="single_stream">Это одиночный поток, список каналов отсутствует</string>
+    <string name="local_video">Локальное видео</string>
+    <string name="unknown_video">Неизвестное видео</string>
+    <string name="playlist">Плейлист</string>
+    <string name="channel_count">Список каналов (%d)</string>
+    <string name="search_channels">Поиск каналов</string>
+    
+    <string name="resolution">Разрешение</string>
+    <string name="frames">Кадры (Пропущено / Всего)</string>
+    <string name="codec">Кодек</string>
+    <string name="buffer_health">Состояние буфера</string>
+    <string name="cpu_usage">Загрузка ЦП</string>
+
+    <string name="history">История</string>
+    <string name="delete_history_item">Удалить из истории</string>
+    <string name="no_play_history">История пуста</string>
+    <string name="search">Поиск</string>
+    <string name="search_history">Поиск в истории</string>
+    <string name="select_all">Выбрать все</string>
+    <plurals name="multiselect_item_count">
+        <item quantity="one">Выбрано: %1$d</item>
+        <item quantity="few">Выбрано: %1$d</item>
+        <item quantity="many">Выбрано: %1$d</item>
+        <item quantity="other">Выбрано: %1$d</item>
+    </plurals>
+    
+    <string name="settings">Настройки</string>
+    <string name="player">Плеер</string>
+    <string name="player_desc">Автовоспроизведение, фоновое воспроизведение, PiP</string>
+    <string name="video">Видео</string>
+    <string name="video_desc">Соотношение сторон, декодер</string>
+    <string name="appearance">Внешний вид</string>
+    <string name="appearance_desc">Тема, цвет, язык</string>
+    <string name="data_management">Управление данными</string>
+    <string name="data_management_desc">Резервное копирование и восстановление</string>
+    <string name="network">Сеть</string>
+    <string name="network_desc">Прокси, статистика плеера</string>
+    <string name="about">О приложении</string>
+    <string name="about_desc">Информация о приложении и версия</string>
+    
+    
+    <string name="playback_behavior">Поведение при воспроизведении</string>
+    <string name="interface_control">Управление интерфейсом</string>
+    <string name="auto_play">Автопроизведение</string>
+    <string name="auto_play_desc">Автоматически начинать показ при открытии видео</string>
+    <string name="auto_hide_controls">Автоскрытие кнопок</string>
+    <string name="auto_hide_controls_desc">Автоматически скрывать элементы управления при просмотре</string>
+    <string name="pip">Картинка в картинке</string>
+    <string name="pip_desc">Разрешить режим «картинка в картинке»</string>
+    <string name="pip_unsupported">Требуется Android 8.0 или выше</string>
+    <string name="background_play">Фоновое воспроизведение</string>
+    <string name="background_play_desc">Продолжать воспроизведение в фоновом режиме</string>
+    <string name="background_play_battery_hint">Требуется разрешение на работу без оптимизации батареи</string>
+    <string name="battery_configuration">Настройка батареи</string>
+    <string name="battery_configuration_desc">Добавьте приложение в исключения экономии заряда для стабильной работы в фоне</string>
+    <string name="mirror_flip">Зеркальное отражение</string>
+    <string name="mirror_flip_desc">Отразить видео по горизонтали</string>
+
+    <string name="display_settings">Настройки экрана</string>
+    <string name="decoder_settings">Настройки декодера</string>
+    <string name="aspect_ratio">Соотношение сторон</string>
+    <string name="aspect_ratio_fill">Заполнение</string>
+    <string name="aspect_ratio_original">Оригинал</string>
+    <string name="decoder">Декодер</string>
+    <string name="decoder_hardware">Аппаратный</string>
+    <string name="decoder_software">Программный</string>
+
+    <string name="dark_theme">Темная тема</string>
+    <string name="additional_settings">Дополнительные настройки</string>
+    <string name="high_contrast">Высококонтрастная темная тема</string>
+    <string name="dynamic_color">Динамические цвета</string>
+    <string name="dynamic_color_desc">Использовать цвета обоев для темы приложения</string>
+    <string name="language">Язык</string>
+    <string name="select_language">Выберите язык</string>
+    <string name="follow_system">Как в системе</string>
+    <string name="system_settings">Системные настройки</string>
+
+    <string name="data_backup">Резервное копирование</string>
+    <string name="backup_data">Экспорт данных</string>
+    <string name="backup_data_desc">Экспортировать историю воспроизведения</string>
+    <string name="backup_success">Экспорт выполнен, сохранено в: %s</string>
+    <string name="backup_failed">Ошибка экспорта</string>
+    <string name="no_history_to_backup">Нет данных для экспорта</string>
+    <string name="restore_data">Импорт данных</string>
+    <string name="restore_data_desc">Восстановить историю из файла бэкапа</string>
+    <plurals name="restore_success">
+        <item quantity="one">Успешно восстановлена %d запись</item>
+        <item quantity="few">Успешно восстановлено %d записи</item>
+        <item quantity="many">Успешно восстановлено %d записей</item>
+        <item quantity="other">Успешно восстановлено %d записей</item>
+    </plurals>
+    <string name="restore_failed">Ошибка восстановления</string>
+
+    <string name="export_label">Экспорт</string>
+    <string name="import_label">Импорт</string>
+    <string name="item_deleted">Элемент удален</string>
+
+    <string name="proxy">Прокси</string>
+    <string name="proxy_desc">Доступ к сети через прокси-сервер</string>
+    <string name="player_stats">Статистика плеера</string>
+    <string name="player_stats_desc">Отображать кнопку статистики на странице плеера</string>
+
+    <string name="project_homepage">Домашняя страница проекта</string>
+    <string name="project_homepage_desc">Исходный код и информация о проекте</string>
+    <string name="version_release">Релизы</string>
+    <string name="version_release_desc">Список версий и журнал изменений</string>
+    <string name="issue_feedback">GitHub Issues</string>
+    <string name="issue_feedback_desc">Сообщить об ошибке или предложить идею</string>
+    <string name="sponsor">Спонсировать</string>
+    <string name="sponsor_desc">Поддержать разработку через GitHub Sponsors</string>
+    <string name="auto_update">Автообновление</string>
+    <string name="check_for_updates_desc">Автоматически проверять обновления на GitHub</string>
+    <string name="enable_auto_update">Включить автообновление</string>
+    <string name="update_channel">Канал обновлений</string>
+    <string name="stable_channel">Стабильный</string>
+    <string name="pre_release_channel">Предрелизный</string>
+    <string name="check_for_updates">Проверить обновления</string>
+    <string name="update_channel_desc">Выбор между стабильными выпусками или бета-версиями с новыми функциями</string>
+    <string name="update">Обновить</string>
+    <string name="app_update_failed">Ошибка обновления</string>
+    <string name="already_latest_version">Уже установлена последняя версия</string>
+    <string name="check_update_failed">Не удалось проверить обновления</string>
+    
+    <string name="open_source_licenses_title">Лицензии открытого ПО</string>
+    <string name="open_source_licenses_desc_about">Информация о лицензиях сторонних библиотек</string>
+    <string name="package_name">Имя пакета</string>
+    <string name="debug_build">Отладочная сборка</string>
+    <string name="release_build">Релизная сборка</string>
+    <string name="unknown_version">Неизвестная версия</string>
+    <string name="build_type">Тип сборки</string>
+    <string name="version">Версия</string>
+</resources>

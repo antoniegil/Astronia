@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources> 
+    <string name="copy">Salin</string>
+    <string name="paste">Tempel</string>
+    <string name="clear">Bersihkan</string>
+    <string name="open">Buka</string>
+    <string name="close">Tutup</string>
+    <string name="back">Kembali</string>
+    <string name="cancel">Batal</string>
+    <string name="undo">Urungkan</string>
+    <string name="all">Semua</string>
+
+    <string name="clipboard_label">Teks</string>
+
+    <string name="state">Status</string>
+    <string name="play">Putar</string>
+    <string name="idle">Diam</string>
+    <string name="playing">Memutar</string>
+    <string name="loading">Memuat</string>
+    <string name="buffering">Menyangga</string>
+    <string name="paused">Ditangguhkan</string>
+    <string name="ended">Selesai</string>
+    <string name="unknown">Tidak Diketahui</string>
+
+    <string name="fullscreen">Layar Penuh</string>
+    <string name="exit_fullscreen">Keluar dari Layar Penuh</string>
+    <string name="player_settings">Pengaturan Pemutar</string>
+
+    <string name="link_hint">URL aliran langsung (m3u8/m3u)</string>
+    <string name="local_import">Impor Lokal</string>
+    <string name="last_played">Terakhir Diputar</string>
+
+    <string name="loading_channels">Memuat daftar saluran…</string>
+    <string name="single_stream">Ini adalah aliran tunggal, tidak ada daftar saluran</string>
+    <string name="local_video">Video Lokal</string>
+    <string name="unknown_video">Video Tidak Dikenal</string>
+    <string name="playlist">Daftar Putar</string>
+    <string name="channel_count">Daftar Saluran (%d)</string>
+    <string name="search_channels">Cari saluran</string>
+    
+    <string name="resolution">Resolusi</string>
+    <string name="frames">Frame (Terlewat / Total)</string>
+    <string name="codec">Kodek</string>
+    <string name="buffer_health">Kesehatan Penyangga</string>
+    <string name="cpu_usage">Penggunaan CPU</string>
+
+    <string name="history">Riwayat</string>
+    <string name="delete_history_item">Hapus Item Riwayat</string>
+    <string name="no_play_history">Tidak ada riwayat putar</string>
+    <string name="search">Cari</string>
+    <string name="search_history">Cari riwayat</string>
+    <string name="select_all">Pilih semua</string>
+    <plurals name="multiselect_item_count">
+        <item quantity="other">%1$d dipilih</item>
+    </plurals>
+    
+    <string name="settings">Pengaturan</string>
+    <string name="player">Pemutar</string>
+    <string name="player_desc">Putar otomatis, putar latar belakang, PiP</string>
+    <string name="video">Video</string>
+    <string name="video_desc">Rasio aspek, dekoder</string>
+    <string name="appearance">Tampilan</string>
+    <string name="appearance_desc">Tema, warna, bahasa</string>
+    <string name="data_management">Manajemen Data</string>
+    <string name="data_management_desc">Cadangkan dan pulihkan riwayat</string>
+    <string name="network">Jaringan</string>
+    <string name="network_desc">Proksi, statistik pemutar</string>
+    <string name="about">Tentang</string>
+    <string name="about_desc">Info aplikasi dan versi</string>
+    
+    <string name="playback_behavior">Perilaku Pemutaran</string>
+    <string name="interface_control">Kontrol Antarmuka</string>
+    <string name="auto_play">Putar Otomatis</string>
+    <string name="auto_play_desc">Mulai memutar secara otomatis saat membuka video</string>
+    <string name="auto_hide_controls">Sembunyikan Kontrol Otomatis</string>
+    <string name="auto_hide_controls_desc">Sembunyikan kontrol secara otomatis selama pemutaran</string>
+    <string name="pip">Gambar dalam Gambar</string>
+    <string name="pip_desc">Izinkan mode gambar-dalam-gambar</string>
+    <string name="pip_unsupported">Memerlukan Android 8.0 atau lebih tinggi</string>
+    <string name="background_play">Putar di Latar Belakang</string>
+    <string name="background_play_desc">Izinkan pemutaran berlanjut di latar belakang</string>
+    <string name="background_play_battery_hint">Memerlukan pengecualian pengoptimalan baterai</string>
+    <string name="battery_configuration">Konfigurasi Baterai</string>
+    <string name="battery_configuration_desc">Berikan pengecualian pengoptimalan baterai untuk pemutaran latar belakang yang stabil</string>
+    <string name="mirror_flip">Balik Cermin</string>
+    <string name="mirror_flip_desc">Balikkan video secara horizontal</string>
+
+    <string name="display_settings">Pengaturan Tampilan</string>
+    <string name="decoder_settings">Pengaturan Dekoder</string>
+    <string name="aspect_ratio">Rasio Aspek</string>
+    <string name="aspect_ratio_fill">Penuhi</string>
+    <string name="aspect_ratio_original">Asli</string>
+    <string name="decoder">Dekoder</string>
+    <string name="decoder_hardware">Perangkat Keras</string>
+    <string name="decoder_software">Perangkat Lunak</string>
+
+    <string name="dark_theme">Tema Gelap</string>
+    <string name="additional_settings">Pengaturan Tambahan</string>
+    <string name="high_contrast">Tema Gelap Kontras Tinggi</string>
+    <string name="dynamic_color">Warna Dinamis</string>
+    <string name="dynamic_color_desc">Gunakan warna wallpaper sebagai tema aplikasi</string>
+    <string name="language">Bahasa</string>
+    <string name="select_language">Pilih Bahasa</string>
+    <string name="follow_system">Ikuti Sistem</string>
+    <string name="system_settings">Pengaturan Sistem</string>
+
+    <string name="data_backup">Cadangkan Data</string>
+    <string name="backup_data">Ekspor Data</string>
+    <string name="backup_data_desc">Ekspor riwayat putar</string>
+    <string name="backup_success">Ekspor berhasil, disimpan di: %s</string>
+    <string name="backup_failed">Ekspor gagal</string>
+    <string name="no_history_to_backup">Tidak ada riwayat untuk diekspor</string>
+    <string name="restore_data">Impor Data</string>
+    <string name="restore_data_desc">Impor riwayat dari file cadangan</string>
+    <plurals name="restore_success">
+        <item quantity="other">Berhasil memulihkan %d item riwayat</item>
+    </plurals>
+    <string name="restore_failed">Pemulihan gagal</string>
+
+    <string name="export_label">Ekspor</string>
+    <string name="import_label">Impor</string>
+    <string name="item_deleted">Item dihapus</string>
+
+    <string name="proxy">Proksi</string>
+    <string name="proxy_desc">Akses jaringan melalui server proksi</string>
+    <string name="player_stats">Statistik Pemutar</string>
+    <string name="player_stats_desc">Tampilkan tombol statistik di halaman pemutar</string>
+
+    <string name="project_homepage">Halaman Proyek</string>
+    <string name="project_homepage_desc">Lihat kode sumber dan info proyek</string>
+    <string name="version_release">Rilis Versi</string>
+    <string name="version_release_desc">Lihat versi terbaru dan log perubahan</string>
+    <string name="issue_feedback">Masalah GitHub</string>
+    <string name="issue_feedback_desc">Laporkan bug atau saran</string>
+    <string name="sponsor">Sponsor</string>
+    <string name="sponsor_desc">Dukung pengembangan melalui GitHub Sponsors</string>
+    <string name="auto_update">Pembaruan Otomatis</string>
+    <string name="check_for_updates_desc">Periksa pembaruan secara otomatis dari GitHub</string>
+    <string name="enable_auto_update">Aktifkan Pembaruan Otomatis</string>
+    <string name="update_channel">Saluran Pembaruan</string>
+    <string name="stable_channel">Stabil</string>
+    <string name="pre_release_channel">Pra-rilis</string>
+    <string name="check_for_updates">Periksa Pembaruan</string>
+    <string name="update_channel_desc">Pilih antara rilis stabil atau versi pra-rilis dengan fitur terbaru</string>
+    <string name="update">Perbarui</string>
+    <string name="app_update_failed">Pembaruan gagal</string>
+    <string name="already_latest_version">Sudah versi terbaru</string>
+    <string name="check_update_failed">Gagal memeriksa pembaruan</string>
+    
+    <string name="open_source_licenses_title">Lisensi Sumber Terbuka</string>
+    <string name="open_source_licenses_desc_about">Lihat info lisensi sumber terbuka</string>
+    <string name="package_name">Nama Paket</string>
+    <string name="debug_build">Build Debug</string>
+    <string name="release_build">Build Rilis</string>
+    <string name="unknown_version">Versi Tidak Diketahui</string>
+    <string name="build_type">Tipe Build</string>
+    <string name="version">Versi</string>
+</resources>

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources> 
+    <string name="copy">Копіювати</string>
+    <string name="paste">Вставити</string>
+    <string name="clear">Очистити</string>
+    <string name="open">Відкрити</string>
+    <string name="close">Закрити</string>
+    <string name="back">Назад</string>
+    <string name="cancel">Скасувати</string>
+    <string name="undo">Скасувати</string>
+    <string name="all">Усі</string>
+
+    <string name="clipboard_label">текст</string>
+
+    <string name="state">Стан</string>
+    <string name="play">Відтворити</string>
+    <string name="idle">Очікування</string>
+    <string name="playing">Відтворення</string>
+    <string name="loading">Завантаження</string>
+    <string name="buffering">Буферизація</string>
+    <string name="paused">Пауза</string>
+    <string name="ended">Завершено</string>
+    <string name="unknown">Невідомо</string>
+
+    <string name="fullscreen">На весь екран</string>
+    <string name="exit_fullscreen">Вийти з повноекранного режиму</string>
+    <string name="player_settings">Налаштування плеєра</string>
+
+    <string name="link_hint">URL потоку (m3u8/m3u)</string>
+    <string name="local_import">Локальний імпорт</string>
+    <string name="last_played">Останнє відтворення</string>
+
+    <string name="loading_channels">Завантаження списку каналів</string>
+    <string name="single_stream">Це одиночний потік, список каналів відсутній</string>
+    <string name="local_video">Локальне відео</string>
+    <string name="unknown_video">Невідоме відео</string>
+    <string name="playlist">Плейлист</string>
+    <string name="channel_count">Список каналів (%d)</string>
+    <string name="search_channels">Пошук каналів</string>
+    
+    <string name="resolution">Роздільна здатність</string>
+    <string name="frames">Кадри (Втрачено / Всього)</string>
+    <string name="codec">Кодек</string>
+    <string name="buffer_health">Стан буфера</string>
+    <string name="cpu_usage">Завантаження ЦП</string>
+
+    <string name="history">Історія</string>
+    <string name="delete_history_item">Видалити елемент історії</string>
+    <string name="no_play_history">Історія відсутня</string>
+    <string name="search">Пошук</string>
+    <string name="search_history">Пошук в історії</string>
+    <string name="select_all">Вибрати все</string>
+    <plurals name="multiselect_item_count">
+        <item quantity="one">Вибрано: %1$d</item>
+        <item quantity="few">Вибрано: %1$d</item>
+        <item quantity="many">Вибрано: %1$d</item>
+        <item quantity="other">Вибрано: %1$d</item>
+    </plurals>
+    
+    <string name="settings">Налаштування</string>
+    <string name="player">Плеєр</string>
+    <string name="player_desc">Автовідтворення, фонове відтворення, PiP</string>
+    <string name="video">Відео</string>
+    <string name="video_desc">Співвідношення сторін, декодер</string>
+    <string name="appearance">Зовнішній вигляд</string>
+    <string name="appearance_desc">Тема, колір, мова</string>
+    <string name="data_management">Керування даними</string>
+    <string name="data_management_desc">Резервне копіювання та відновлення історії</string>
+    <string name="network">Мережа</string>
+    <string name="network_desc">Проксі, статистика плеєра</string>
+    <string name="about">Про додаток</string>
+    <string name="about_desc">Інформація про додаток та версія</string>
+    
+    <string name="playback_behavior">Поведінка відтворення</string>
+    <string name="interface_control">Керування інтерфейсом</string>
+    <string name="auto_play">Автоматичне відтворення</string>
+    <string name="auto_play_desc">Автоматично починати відтворення під час відкриття відео</string>
+    <string name="auto_hide_controls">Автоприховування елементів керування</string>
+    <string name="auto_hide_controls_desc">Автоматично приховувати елементи керування під час перегляду</string>
+    <string name="pip">Картинка в картинці (PiP)</string>
+    <string name="pip_desc">Дозволити режим «Картинка в картинці»</string>
+    <string name="pip_unsupported">Потрібен Android 8.0 або вище</string>
+    <string name="background_play">Фонове відтворення</string>
+    <string name="background_play_desc">Дозволити продовження відтворення у фоновому режимі</string>
+    <string name="background_play_battery_hint">Потрібен виняток з оптимізації батареї</string>
+    <string name="battery_configuration">Налаштування батареї</string>
+    <string name="battery_configuration_desc">Надати виняток з оптимізації батареї для стабільного фонового відтворення</string>
+    <string name="mirror_flip">Дзеркальне відображення</string>
+    <string name="mirror_flip_desc">Відобразити відео горизонтально</string>
+
+    <string name="display_settings">Налаштування дисплея</string>
+    <string name="decoder_settings">Налаштування декодера</string>
+    <string name="aspect_ratio">Співвідношення сторін</string>
+    <string name="aspect_ratio_fill">Заповнити</string>
+    <string name="aspect_ratio_original">Оригінал</string>
+    <string name="decoder">Декодер</string>
+    <string name="decoder_hardware">Апаратний</string>
+    <string name="decoder_software">Програмний</string>
+
+    <string name="dark_theme">Темна тема</string>
+    <string name="additional_settings">Додаткові налаштування</string>
+    <string name="high_contrast">Контрастна темна тема</string>
+    <string name="dynamic_color">Динамічні кольори</string>
+    <string name="dynamic_color_desc">Використовувати кольори шпалер у темі додатка</string>
+    <string name="language">Мова</string>
+    <string name="select_language">Оберіть мову</string>
+    <string name="follow_system">Як у системі</string>
+    <string name="system_settings">Системні налаштування</string>
+
+    <string name="data_backup">Резервне копіювання</string>
+    <string name="backup_data">Експорт даних</string>
+    <string name="backup_data_desc">Експортувати історію відтворень</string>
+    <string name="backup_success">Експорт виконано, збережено в: %s</string>
+    <string name="backup_failed">Помилка експорту</string>
+    <string name="no_history_to_backup">Немає історії для експорту</string>
+    <string name="restore_data">Імпорт даних</string>
+    <string name="restore_data_desc">Імпортувати історію з файлу резервної копії</string>
+    <plurals name="restore_success">
+        <item quantity="one">Успішно відновлено %d елемент історії</item>
+        <item quantity="few">Успішно відновлено %d елементи історії</item>
+        <item quantity="many">Успішно відновлено %d елементів історії</item>
+        <item quantity="other">Успішно відновлено %d елемента історії</item>
+    </plurals>
+    <string name="restore_failed">Помилка відновлення</string>
+
+    <string name="export_label">Експорт</string>
+    <string name="import_label">Імпорт</string>
+    <string name="item_deleted">Елемент видалено</string>
+
+    <string name="proxy">Проксі</string>
+    <string name="proxy_desc">Доступ до мережі через проксі-сервер</string>
+    <string name="player_stats">Статистика плеєра</string>
+    <string name="player_stats_desc">Відображати кнопку статистики на сторінці відтворення</string>
+
+    <string name="project_homepage">Сторінка проекту</string>
+    <string name="project_homepage_desc">Переглянути вихідний код та інформацію про проект</string>
+    <string name="version_release">Реліз версії</string>
+    <string name="version_release_desc">Переглянути останню версію та список змін</string>
+    <string name="issue_feedback">Проблеми (GitHub Issues)</string>
+    <string name="issue_feedback_desc">Повідомити про помилку або запропонувати ідею</string>
+    <string name="sponsor">Спонсорувати</string>
+    <string name="sponsor_desc">Підтримати розробку через GitHub Sponsors</string>
+    <string name="auto_update">Автооновлення</string>
+    <string name="check_for_updates_desc">Автоматично перевіряти наявність оновлень на GitHub</string>
+    <string name="enable_auto_update">Увімкнути автооновлення</string>
+    <string name="update_channel">Канал оновлень</string>
+    <string name="stable_channel">Стабільний (Stable)</string>
+    <string name="pre_release_channel">Попередній (Pre-release)</string>
+    <string name="check_for_updates">Перевірити оновлення</string>
+    <string name="update_channel_desc">Виберіть між стабільними релізами або попередніми версіями з найновішими функціями</string>
+    <string name="update">Оновити</string>
+    <string name="app_update_failed">Помилка оновлення</string>
+    <string name="already_latest_version">Вже встановлено останню версію</string>
+    <string name="check_update_failed">Не вдалося перевірити оновлення</string>
+    
+    <string name="open_source_licenses_title">Ліцензії Open Source</string>
+    <string name="open_source_licenses_desc_about">Переглянути інформацію про ліцензії відкритого ПЗ</string>
+    <string name="package_name">Ім\'я пакета</string>
+    <string name="debug_build">Збірка Debug</string>
+    <string name="release_build">Збірка Release</string>
+    <string name="unknown_version">Невідома версія</string>
+    <string name="build_type">Тип збірки</string>
+    <string name="version">Версія</string>
+</resources>

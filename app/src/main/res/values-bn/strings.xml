@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources> 
+    <string name="copy">কপি করুন</string>
+    <string name="paste">পেস্ট করুন</string>
+    <string name="clear">সাফ করুন</string>
+    <string name="open">খুলুন</string>
+    <string name="close">বন্ধ করুন</string>
+    <string name="back">ফিরে যান</string>
+    <string name="cancel">বাতিল</string>
+    <string name="undo">পূর্বাবস্থায় ফিরুন</string>
+    <string name="all">সব</string>
+
+    <string name="clipboard_label">টেক্সট</string>
+
+    <string name="state">অবস্থা</string>
+    <string name="play">চালান</string>
+    <string name="idle">অলস (Idle)</string>
+    <string name="playing">চলছে</string>
+    <string name="loading">লোড হচ্ছে</string>
+    <string name="buffering">বাফারিং হচ্ছে</string>
+    <string name="paused">স্থগিত</string>
+    <string name="ended">শেষ হয়েছে</string>
+    <string name="unknown">অজানা</string>
+
+    <string name="fullscreen">ফুলস্ক্রিন</string>
+    <string name="exit_fullscreen">ফুলস্ক্রিন থেকে বের হন</string>
+    <string name="player_settings">প্লেয়ার সেটিংস</string>
+
+    <string name="link_hint">লাইভ স্ট্রিম লিংক (m3u8/m3u)</string>
+    <string name="local_import">লোকাল ইম্পোর্ট</string>
+    <string name="last_played">সর্বশেষ চালানো হয়েছে</string>
+
+    <string name="loading_channels">চ্যানেল তালিকা লোড হচ্ছে…</string>
+    <string name="single_stream">এটি একটি একক স্ট্রিম, কোনো চ্যানেল তালিকা নেই</string>
+    <string name="local_video">লোকাল ভিডিও</string>
+    <string name="unknown_video">অজানা ভিডিও</string>
+    <string name="playlist">প্লেলিস্ট</string>
+    <string name="channel_count">চ্যানেল তালিকা (%d)</string>
+    <string name="search_channels">চ্যানেল অনুসন্ধান করুন</string>
+    
+    <string name="resolution">রেজোলিউশন</string>
+    <string name="frames">ফ্রেম (ড্রপড / মোট)</string>
+    <string name="codec">কোডেক</string>
+    <string name="buffer_health">বাফার হেলথ</string>
+    <string name="cpu_usage">CPU ব্যবহার</string>
+
+    <string name="history">ইতিহাস (History)</string>
+    <string name="delete_history_item">আইটেমটি ডিলিট করুন</string>
+    <string name="no_play_history">কোনো প্লে ইতিহাস নেই</string>
+    <string name="search">অনুসন্ধান</string>
+    <string name="search_history">ইতিহাস অনুসন্ধান করুন</string>
+    <string name="select_all">সব নির্বাচন করুন</string>
+    <plurals name="multiselect_item_count">
+        <item quantity="one">%1$d নির্বাচিত</item>
+        <item quantity="other">%1$d নির্বাচিত</item>
+    </plurals>
+    
+    <string name="settings">সেটিংস</string>
+    <string name="player">প্লেয়ার</string>
+    <string name="player_desc">অটো প্লে, ব্যাকগ্রাউন্ড প্লে, PiP</string>
+    <string name="video">ভিডিও</string>
+    <string name="video_desc">অ্যাসপেক্ট রেশিও, ডিকোডার</string>
+    <string name="appearance">চেহারা</string>
+    <string name="appearance_desc">থিম, রঙ, ভাষা</string>
+    <string name="data_management">ডেটা ম্যানেজমেন্ট</string>
+    <string name="data_management_desc">ইতিহাস ব্যাকআপ এবং রিস্টোর করুন</string>
+    <string name="network">নেটওয়ার্ক</string>
+    <string name="network_desc">প্রক্সি, প্লেয়ার পরিসংখ্যান</string>
+    <string name="about">সম্পর্কে</string>
+    <string name="about_desc">অ্যাপ তথ্য এবং ভার্সন</string>
+    
+    <string name="playback_behavior">প্লেব্যাক আচরণ</string>
+    <string name="interface_control">ইন্টারফেস নিয়ন্ত্রণ</string>
+    <string name="auto_play">অটো প্লে</string>
+    <string name="auto_play_desc">ভিডিও খোলার সাথে সাথে স্বয়ংক্রিয়ভাবে চালানো শুরু করুন</string>
+    <string name="auto_hide_controls">কন্ট্রোল স্বয়ংক্রিয়ভাবে লুকান</string>
+    <string name="auto_hide_controls_desc">প্লেব্যাক চলাকালীন স্বয়ংক্রিয়ভাবে কন্ট্রোলগুলো লুকান</string>
+    <string name="pip">পিকচার ইন পিকচার (PiP)</string>
+    <string name="pip_desc">পিকচার-ইন-পিকচার মোড অনুমতি দিন</string>
+    <string name="pip_unsupported">অ্যান্ড্রয়েড ৮.০ বা তার বেশি প্রয়োজন</string>
+    <string name="background_play">ব্যাকগ্রাউন্ড প্লে</string>
+    <string name="background_play_desc">ব্যাকগ্রাউন্ডে প্লেব্যাক চালিয়ে যাওয়ার অনুমতি দিন</string>
+    <string name="background_play_battery_hint">ব্যাটারি অপ্টিমাইজেশন ছাড় প্রয়োজন</string>
+    <string name="battery_configuration">ব্যাটারি কনফিগারেশন</string>
+    <string name="battery_configuration_desc">স্থিতিশীল ব্যাকগ্রাউন্ড প্লেব্যাকের জন্য ব্যাটারি অপ্টিমাইজেশন ছাড় দিন</string>
+    <string name="mirror_flip">মিরর ফ্লিপ</string>
+    <string name="mirror_flip_desc">ভিডিওটি আড়াআড়িভাবে উল্টান</string>
+
+    <string name="display_settings">ডিসপ্লে সেটিংস</string>
+    <string name="decoder_settings">ডিকোডার সেটিংস</string>
+    <string name="aspect_ratio">অ্যাসপেক্ট রেশিও</string>
+    <string name="aspect_ratio_fill">পুরো স্ক্রিন (Fill)</string>
+    <string name="aspect_ratio_original">আসল (Original)</string>
+    <string name="decoder">ডিকোডার</string>
+    <string name="decoder_hardware">হার্ডওয়্যার</string>
+    <string name="decoder_software">সফটওয়্যার</string>
+
+    <string name="dark_theme">ডার্ক থিম</string>
+    <string name="additional_settings">অতিরিক্ত সেটিংস</string>
+    <string name="high_contrast">হাই কনট্রাস্ট ডার্ক থিম</string>
+    <string name="dynamic_color">ডায়নামিক কালার</string>
+    <string name="dynamic_color_desc">ওয়ালপেপারের রঙ অ্যাপ থিম হিসেবে ব্যবহার করুন</string>
+    <string name="language">ভাষা</string>
+    <string name="select_language">ভাষা নির্বাচন করুন</string>
+    <string name="follow_system">সিস্টেম অনুযায়ী</string>
+    <string name="system_settings">সিস্টেম সেটিংস</string>
+
+    <string name="data_backup">ডেটা ব্যাকআপ</string>
+    <string name="backup_data">ডেটা এক্সপোর্ট</string>
+    <string name="backup_data_desc">প্লে ইতিহাস এক্সপোর্ট করুন</string>
+    <string name="backup_success">এক্সপোর্ট সফল হয়েছে, এখানে সংরক্ষিত: %s</string>
+    <string name="backup_failed">এক্সপোর্ট ব্যর্থ হয়েছে</string>
+    <string name="no_history_to_backup">এক্সপোর্ট করার মতো কোনো ইতিহাস নেই</string>
+    <string name="restore_data">ডেটা ইম্পোর্ট</string>
+    <string name="restore_data_desc">ব্যাকআপ ফাইল থেকে ইতিহাস ইম্পোর্ট করুন</string>
+    <plurals name="restore_success">
+        <item quantity="one">সফলভাবে %dটি আইটেম রিস্টোর করা হয়েছে</item>
+        <item quantity="other">সফলভাবে %dটি আইটেম রিস্টোর করা হয়েছে</item>
+    </plurals>
+    <string name="restore_failed">রিস্টোর ব্যর্থ হয়েছে</string>
+
+    <string name="export_label">এক্সপোর্ট</string>
+    <string name="import_label">ইম্পোর্ট</string>
+    <string name="item_deleted">আইটেম ডিলিট করা হয়েছে</string>
+
+    <string name="proxy">প্রক্সি</string>
+    <string name="proxy_desc">প্রক্সি সার্ভারের মাধ্যমে নেটওয়ার্ক ব্যবহার করুন</string>
+    <string name="player_stats">প্লেয়ার পরিসংখ্যান</string>
+    <string name="player_stats_desc">প্লেয়ার পেজে পরিসংখ্যান বোতাম দেখান</string>
+
+    <string name="project_homepage">প্রজেক্ট হোমপেজ</string>
+    <string name="project_homepage_desc">সোর্স কোড এবং প্রজেক্টের তথ্য দেখুন</string>
+    <string name="version_release">ভার্সন রিলিজ</string>
+    <string name="version_release_desc">লেটেস্ট ভার্সন এবং চেঞ্জলগ দেখুন</string>
+    <string name="issue_feedback">Github ইস্যু</string>
+    <string name="issue_feedback_desc">বাগ রিপোর্ট বা পরামর্শ দিন</string>
+    <string name="sponsor">স্পন্সর</string>
+    <string name="sponsor_desc">GitHub Sponsors-এর মাধ্যমে সাহায্য করুন</string>
+    <string name="auto_update">অটো আপডেট</string>
+    <string name="check_for_updates_desc">স্বয়ংক্রিয়ভাবে GitHub থেকে আপডেট চেক করুন</string>
+    <string name="enable_auto_update">অটো আপডেট সক্ষম করুন</string>
+    <string name="update_channel">আপডেট চ্যানেল</string>
+    <string name="stable_channel">স্টেবল (Stable)</string>
+    <string name="pre_release_channel">প্রি-রিলিজ (Pre-release)</string>
+    <string name="check_for_updates">আপডেটের জন্য চেক করুন</string>
+    <string name="update_channel_desc">স্থিতিশীল রিলিজ বা নতুন ফিচারের প্রি-রিলিজ ভার্সনের মধ্যে বেছে নিন</string>
+    <string name="update">আপডেট</string>
+    <string name="app_update_failed">আপডেট ব্যর্থ হয়েছে</string>
+    <string name="already_latest_version">ইতিমধ্যেই লেটেস্ট ভার্সন ব্যবহার করছেন</string>
+    <string name="check_update_failed">আপডেট চেক করতে ব্যর্থ হয়েছে</string>
+    
+    <string name="open_source_licenses_title">ওপেন সোর্স লাইসেন্স</string>
+    <string name="open_source_licenses_desc_about">ওপেন সোর্স লাইসেন্সের তথ্য দেখুন</string>
+    <string name="package_name">প্যাকেজ নাম</string>
+    <string name="debug_build">ডিবাগ বিল্ড</string>
+    <string name="release_build">রিলিজ বিল্ড</string>
+    <string name="unknown_version">অজানা ভার্সন</string>
+    <string name="build_type">বিল্ড টাইপ</string>
+    <string name="version">ভার্সন</string>
+</resources>

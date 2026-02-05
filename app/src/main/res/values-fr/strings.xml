@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources> 
+    <string name="copy">Copier</string>
+    <string name="paste">Coller</string>
+    <string name="clear">Effacer</string>
+    <string name="open">Ouvrir</string>
+    <string name="close">Fermer</string>
+    <string name="back">Retour</string>
+    <string name="cancel">Annuler</string>
+    <string name="undo">Annuler</string>
+    <string name="all">Tout</string>
+
+    <string name="clipboard_label">texte</string>
+
+    <string name="state">État</string>
+    <string name="play">Lire</string>
+    <string name="idle">Inactif</string>
+    <string name="playing">Lecture en cours</string>
+    <string name="loading">Chargement</string>
+    <string name="buffering">Mise en mémoire tampon</string>
+    <string name="paused">En pause</string>
+    <string name="ended">Terminé</string>
+    <string name="unknown">Inconnu</string>
+
+    <string name="fullscreen">Plein écran</string>
+    <string name="exit_fullscreen">Quitter le plein écran</string>
+    <string name="player_settings">Paramètres du lecteur</string>
+
+    <string name="link_hint">Lien du flux en direct (m3u8/m3u)</string>
+    <string name="local_import">Importation locale</string>
+    <string name="last_played">Dernière lecture</string>
+
+    <string name="loading_channels">Chargement de la liste des chaînes…</string>
+    <string name="single_stream">Ceci est un flux unique, aucune liste de chaînes</string>
+    <string name="local_video">Vidéo locale</string>
+    <string name="unknown_video">Vidéo inconnue</string>
+    <string name="playlist">Playlist</string>
+    <string name="channel_count">Liste des chaînes (%d)</string>
+    <string name="search_channels">Rechercher des chaînes</string>
+    
+    <string name="resolution">Résolution</string>
+    <string name="frames">Images (Perdues / Total)</string>
+    <string name="codec">Codec</string>
+    <string name="buffer_health">Santé du tampon</string>
+    <string name="cpu_usage">Utilisation CPU</string>
+
+    <string name="history">Historique</string>
+    <string name="delete_history_item">Supprimer l\'élément</string>
+    <string name="no_play_history">Aucun historique de lecture</string>
+    <string name="search">Rechercher</string>
+    <string name="search_history">Rechercher dans l\'historique</string>
+    <string name="select_all">Tout sélectionner</string>
+    <plurals name="multiselect_item_count">
+        <item quantity="one">%1$d sélectionné</item>
+        <item quantity="other">%1$d sélectionnés</item>
+    </plurals>
+    
+    <string name="settings">Paramètres</string>
+    <string name="player">Lecteur</string>
+    <string name="player_desc">Lecture automatique, lecture en arrière-plan, PiP</string>
+    <string name="video">Vidéo</string>
+    <string name="video_desc">Ratio d\'aspect, décodeur</string>
+    <string name="appearance">Apparence</string>
+    <string name="appearance_desc">Thème, couleur, langue</string>
+    <string name="data_management">Gestion des données</string>
+    <string name="data_management_desc">Sauvegarder et restaurer l\'historique</string>
+    <string name="network">Réseau</string>
+    <string name="network_desc">Proxy, statistiques du lecteur</string>
+    <string name="about">À propos</string>
+    <string name="about_desc">Infos sur l\'appli et version</string>
+    
+    <string name="playback_behavior">Comportement de lecture</string>
+    <string name="interface_control">Contrôle de l\'interface</string>
+    <string name="auto_play">Lecture automatique</string>
+    <string name="auto_play_desc">Lancer la lecture automatiquement à l\'ouverture</string>
+    <string name="auto_hide_controls">Masquage auto. des contrôles</string>
+    <string name="auto_hide_controls_desc">Masquer les contrôles automatiquement pendant la lecture</string>
+    <string name="pip">Image dans l\'image (PiP)</string>
+    <string name="pip_desc">Autoriser le mode image dans l\'image</string>
+    <string name="pip_unsupported">Nécessite Android 8.0 ou supérieur</string>
+    <string name="background_play">Lecture en arrière-plan</string>
+    <string name="background_play_desc">Continuer la lecture en arrière-plan</string>
+    <string name="background_play_battery_hint">Nécessite une exemption d\'optimisation de la batterie</string>
+    <string name="battery_configuration">Configuration batterie</string>
+    <string name="battery_configuration_desc">Accorder l\'exemption de batterie pour une lecture stable en arrière-plan</string>
+    <string name="mirror_flip">Miroir</string>
+    <string name="mirror_flip_desc">Inverser la vidéo horizontalement</string>
+
+    <string name="display_settings">Paramètres d\'affichage</string>
+    <string name="decoder_settings">Paramètres du décodeur</string>
+    <string name="aspect_ratio">Ratio d\'aspect</string>
+    <string name="aspect_ratio_fill">Remplir</string>
+    <string name="aspect_ratio_original">Original</string>
+    <string name="decoder">Décodeur</string>
+    <string name="decoder_hardware">Matériel (Hardware)</string>
+    <string name="decoder_software">Logiciel (Software)</string>
+
+    <string name="dark_theme">Thème sombre</string>
+    <string name="additional_settings">Paramètres supplémentaires</string>
+    <string name="high_contrast">Thème sombre à contraste élevé</string>
+    <string name="dynamic_color">Couleur dynamique</string>
+    <string name="dynamic_color_desc">Utiliser les couleurs du fond d\'écran</string>
+    <string name="language">Langue</string>
+    <string name="select_language">Choisir la langue</string>
+    <string name="follow_system">Suivre le système</string>
+    <string name="system_settings">Paramètres système</string>
+
+    <string name="data_backup">Sauvegarde des données</string>
+    <string name="backup_data">Exporter les données</string>
+    <string name="backup_data_desc">Exporter l\'historique de lecture</string>
+    <string name="backup_success">Export réussi, enregistré sous : %s</string>
+    <string name="backup_failed">Échec de l\'exportation</string>
+    <string name="no_history_to_backup">Aucun historique à exporter</string>
+    <string name="restore_data">Importer les données</string>
+    <string name="restore_data_desc">Importer l\'historique depuis un fichier</string>
+    <plurals name="restore_success">
+        <item quantity="one">%d élément d\'historique restauré avec succès</item>
+        <item quantity="other">%d éléments d\'historique restaurés avec succès</item>
+    </plurals>
+    <string name="restore_failed">Échec de la restauration</string>
+
+    <string name="export_label">Exporter</string>
+    <string name="import_label">Importer</string>
+    <string name="item_deleted">Élément supprimé</string>
+
+    <string name="proxy">Proxy</string>
+    <string name="proxy_desc">Accéder au réseau via un serveur proxy</string>
+    <string name="player_stats">Stats du lecteur</string>
+    <string name="player_stats_desc">Afficher le bouton de statistiques sur la page du lecteur</string>
+
+    <string name="project_homepage">Page du projet</string>
+    <string name="project_homepage_desc">Voir le code source et les infos</string>
+    <string name="version_release">Dernière version</string>
+    <string name="version_release_desc">Voir la dernière version et les changements</string>
+    <string name="issue_feedback">Signalements Github</string>
+    <string name="issue_feedback_desc">Signaler des bugs ou suggestions</string>
+    <string name="sponsor">Sponsoriser</string>
+    <string name="sponsor_desc">Soutenir le développement via GitHub Sponsors</string>
+    <string name="auto_update">Mise à jour auto</string>
+    <string name="check_for_updates_desc">Vérifier automatiquement les mises à jour sur GitHub</string>
+    <string name="enable_auto_update">Activer la mise à jour auto</string>
+    <string name="update_channel">Canal de mise à jour</string>
+    <string name="stable_channel">Stable</string>
+    <string name="pre_release_channel">Pré-version</string>
+    <string name="check_for_updates">Vérifier les mises à jour</string>
+    <string name="update_channel_desc">Choisir entre les versions stables ou les pré-versions avec les dernières fonctionnalités</string>
+    <string name="update">Mettre à jour</string>
+    <string name="app_update_failed">Échec de la mise à jour</string>
+    <string name="already_latest_version">Déjà à la dernière version</string>
+    <string name="check_update_failed">Échec de la vérification des mises à jour</string>
+    
+    <string name="open_source_licenses_title">Licences Open Source</string>
+    <string name="open_source_licenses_desc_about">Voir les informations de licence open source</string>
+    <string name="package_name">Nom du paquet</string>
+    <string name="debug_build">Build Debug</string>
+    <string name="release_build">Build Release</string>
+    <string name="unknown_version">Version inconnue</string>
+    <string name="build_type">Type de build</string>
+    <string name="version">Version</string>
+</resources>

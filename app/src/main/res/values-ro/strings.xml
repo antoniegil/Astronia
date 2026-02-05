@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources> 
+    <string name="copy">Copiază</string>
+    <string name="paste">Lipește</string>
+    <string name="clear">Șterge</string>
+    <string name="open">Deschide</string>
+    <string name="close">Închide</string>
+    <string name="back">Înapoi</string>
+    <string name="cancel">Anulează</string>
+    <string name="undo">Anulează</string>
+    <string name="all">Toate</string>
+
+    <string name="clipboard_label">Text</string>
+
+    <string name="state">Stare</string>
+    <string name="play">Redare</string>
+    <string name="idle">Inactiv</string>
+    <string name="playing">Se redă</string>
+    <string name="loading">Se încarcă</string>
+    <string name="buffering">Se bufferează</string>
+    <string name="paused">Întrerupt</string>
+    <string name="ended">Terminat</string>
+    <string name="unknown">Necunoscut</string>
+
+    <string name="fullscreen">Ecran complet</string>
+    <string name="exit_fullscreen">Ieși din ecran complet</string>
+    <string name="player_settings">Setări player</string>
+
+    <string name="link_hint">Link sursă live (m3u8/m3u)</string>
+    <string name="local_import">Import local</string>
+    <string name="last_played">Ultima redare</string>
+
+    <string name="loading_channels">Se încarcă lista de canale…</string>
+    <string name="single_stream">Acesta este un flux live unic, fără listă de canale</string>
+    <string name="local_video">Video local</string>
+    <string name="unknown_video">Video necunoscut</string>
+    <string name="playlist">Listă de redare</string>
+    <string name="channel_count">Listă canale (%d)</string>
+    <string name="search_channels">Caută canale</string>
+    
+    <string name="resolution">Rezoluție</string>
+    <string name="frames">Cadre (Pierdute / Total)</string>
+    <string name="codec">Codec</string>
+    <string name="buffer_health">Stare buffer</string>
+    <string name="cpu_usage">Utilizare CPU</string>
+
+    <string name="history">Istoric</string>
+    <string name="delete_history_item">Șterge istoric</string>
+    <string name="no_play_history">Fără istoric de redare</string>
+    <string name="search">Caută</string>
+    <string name="search_history">Caută în istoric</string>
+    <string name="select_all">Selectează tot</string>
+    <plurals name="multiselect_item_count">
+        <item quantity="one">%1$d selectat</item>
+        <item quantity="few">%1$d selectate</item>
+        <item quantity="other">%1$d selectate</item>
+    </plurals>
+    
+    <string name="settings">Setări</string>
+    <string name="player">Player</string>
+    <string name="player_desc">Redare automată, redare în fundal, picture-in-picture</string>
+    <string name="video">Video</string>
+    <string name="video_desc">Raport aspect, decodor</string>
+    <string name="appearance">Aspect</string>
+    <string name="appearance_desc">Temă, culoare, limbă</string>
+    <string name="data_management">Gestionare date</string>
+    <string name="data_management_desc">Backup și restaurare istoric</string>
+    <string name="network">Rețea</string>
+    <string name="network_desc">Proxy, statistici player</string>
+    <string name="about">Despre</string>
+    <string name="about_desc">Informații aplicație și versiune</string>
+    
+    <string name="playback_behavior">Comportament redare</string>
+    <string name="interface_control">Control interfață</string>
+    <string name="auto_play">Redare automată</string>
+    <string name="auto_play_desc">Începe redarea automat la deschiderea video-ului</string>
+    <string name="auto_hide_controls">Ascunde bara de control automat</string>
+    <string name="auto_hide_controls_desc">Ascunde bara de control automat în timpul redării</string>
+    <string name="pip">Picture-in-picture</string>
+    <string name="pip_desc">Permite modul picture-in-picture</string>
+    <string name="pip_unsupported">Necesită Android 8.0 sau mai nou</string>
+    <string name="background_play">Redare în fundal</string>
+    <string name="background_play_desc">Permite continuarea redării în fundal</string>
+    <string name="background_play_battery_hint">Necesită excepție de la optimizarea bateriei</string>
+    <string name="battery_configuration">Configurare baterie</string>
+    <string name="battery_configuration_desc">Acordă excepție de la optimizarea bateriei pentru redare stabilă în fundal</string>
+    <string name="mirror_flip">Oglindire</string>
+    <string name="mirror_flip_desc">Întoarce video-ul orizontal</string>
+
+    <string name="display_settings">Setări afișare</string>
+    <string name="decoder_settings">Setări decodor</string>
+    <string name="aspect_ratio">Raport aspect</string>
+    <string name="aspect_ratio_fill">Umplere</string>
+    <string name="aspect_ratio_original">Original</string>
+    <string name="decoder">Decodor</string>
+    <string name="decoder_hardware">Hardware</string>
+    <string name="decoder_software">Software</string>
+
+    <string name="dark_theme">Temă întunecată</string>
+    <string name="additional_settings">Setări suplimentare</string>
+    <string name="high_contrast">Temă întunecată cu contrast ridicat</string>
+    <string name="dynamic_color">Culoare dinamică</string>
+    <string name="dynamic_color_desc">Folosește culoarea fondului ca temă a aplicației</string>
+    <string name="language">Limbă</string>
+    <string name="select_language">Selectează limba</string>
+    <string name="follow_system">Urmează sistemul</string>
+    <string name="system_settings">Setări sistem</string>
+
+    <string name="data_backup">Backup date</string>
+    <string name="backup_data">Exportă date</string>
+    <string name="backup_data_desc">Exportă istoric redare</string>
+    <string name="backup_success">Export reușit, salvat în %s</string>
+    <string name="backup_failed">Export eșuat</string>
+    <string name="no_history_to_backup">Fără istoric de exportat</string>
+    <string name="restore_data">Importă date</string>
+    <string name="restore_data_desc">Importă istoric din fișier backup</string>
+    <plurals name="restore_success">
+        <item quantity="one">%d istoric restaurat cu succes</item>
+        <item quantity="few">%d istorice restaurate cu succes</item>
+        <item quantity="other">%d istorice restaurate cu succes</item>
+    </plurals>
+    <string name="restore_failed">Restaurare eșuată</string>
+
+    <string name="export_label">Exportă</string>
+    <string name="import_label">Importă</string>
+    <string name="item_deleted">Șters</string>
+
+    <string name="proxy">Proxy</string>
+    <string name="proxy_desc">Acces la rețea prin server proxy</string>
+    <string name="player_stats">Statistici player</string>
+    <string name="player_stats_desc">Afișează buton statistici player pe pagina de redare</string>
+
+    <string name="project_homepage">Pagina proiectului</string>
+    <string name="project_homepage_desc">Vezi codul sursă și informații despre proiect</string>
+    <string name="version_release">Lansare versiune</string>
+    <string name="version_release_desc">Vezi ultima versiune și jurnalul actualizărilor</string>
+    <string name="issue_feedback">Probleme Github</string>
+    <string name="issue_feedback_desc">Raportează bug sau fă o sugestie</string>
+    <string name="sponsor">Sponsor</string>
+    <string name="sponsor_desc">Susține această aplicație prin GitHub Sponsors</string>
+    <string name="auto_update">Actualizare automată</string>
+    <string name="check_for_updates_desc">Verifică automat actualizări de la GitHub</string>
+    <string name="enable_auto_update">Activează actualizare automată</string>
+    <string name="update_channel">Canal actualizare</string>
+    <string name="stable_channel">Stabil</string>
+    <string name="pre_release_channel">Previzualizare</string>
+    <string name="check_for_updates">Verifică actualizări</string>
+    <string name="update_channel_desc">Alege între versiuni stabile sau versiuni pre-lansare cu cele mai noi funcții</string>
+    <string name="update">Actualizează</string>
+    <string name="app_update_failed">Actualizare eșuată</string>
+    <string name="already_latest_version">Deja ultima versiune</string>
+    <string name="check_update_failed">Verificare actualizări eșuată</string>
+    
+    <string name="open_source_licenses_title">Licențe Open Source</string>
+    <string name="open_source_licenses_desc_about">Vezi informații licențe open source</string>
+    <string name="package_name">Nume pachet</string>
+    <string name="debug_build">Build Debug</string>
+    <string name="release_build">Build Release</string>
+    <string name="unknown_version">Versiune necunoscută</string>
+    <string name="build_type">Tip build</string>
+    <string name="version">Versiune</string>
+</resources>

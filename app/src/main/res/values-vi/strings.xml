@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources> 
+    <string name="copy">Sao chép</string>
+    <string name="paste">Dán</string>
+    <string name="clear">Xóa</string>
+    <string name="open">Mở</string>
+    <string name="close">Đóng</string>
+    <string name="back">Quay lại</string>
+    <string name="cancel">Hủy</string>
+    <string name="undo">Hoàn tác</string>
+    <string name="all">Tất cả</string>
+
+    <string name="clipboard_label">văn bản</string>
+
+    <string name="state">Trạng thái</string>
+    <string name="play">Phát</string>
+    <string name="idle">Chờ</string>
+    <string name="playing">Đang phát</string>
+    <string name="loading">Đang tải</string>
+    <string name="buffering">Đang tải đệm</string>
+    <string name="paused">Đã tạm dừng</string>
+    <string name="ended">Kết thúc</string>
+    <string name="unknown">Không xác định</string>
+
+    <string name="fullscreen">Toàn màn hình</string>
+    <string name="exit_fullscreen">Thoát toàn màn hình</string>
+    <string name="player_settings">Cài đặt trình phát</string>
+
+    <string name="link_hint">Liên kết luồng trực tiếp (m3u8/m3u)</string>
+    <string name="local_import">Nhập từ máy</string>
+    <string name="last_played">Phát gần nhất</string>
+
+    <string name="loading_channels">Đang tải danh sách kênh…</string>
+    <string name="single_stream">Đây là một luồng đơn, không có danh sách kênh</string>
+    <string name="local_video">Video cục bộ</string>
+    <string name="unknown_video">Video không xác định</string>
+    <string name="playlist">Danh sách phát</string>
+    <string name="channel_count">Danh sách kênh (%d)</string>
+    <string name="search_channels">Tìm kiếm kênh</string>
+    
+    <string name="resolution">Độ phân giải</string>
+    <string name="frames">Khung hình (Bỏ lỡ / Tổng)</string>
+    <string name="codec">Bộ mã hóa</string>
+    <string name="buffer_health">Sức khỏe bộ đệm</string>
+    <string name="cpu_usage">Sử dụng CPU</string>
+
+    <string name="history">Lịch sử</string>
+    <string name="delete_history_item">Xóa mục lịch sử</string>
+    <string name="no_play_history">Không có lịch sử phát</string>
+    <string name="search">Tìm kiếm</string>
+    <string name="search_history">Tìm kiếm lịch sử</string>
+    <string name="select_all">Chọn tất cả</string>
+    <plurals name="multiselect_item_count">
+        <item quantity="other">Đã chọn %1$d</item>
+    </plurals>
+    
+    <string name="settings">Cài đặt</string>
+    <string name="player">Trình phát</string>
+    <string name="player_desc">Tự động phát, phát nền, PiP</string>
+    <string name="video">Video</string>
+    <string name="video_desc">Tỷ lệ khung hình, bộ giải mã</string>
+    <string name="appearance">Giao diện</string>
+    <string name="appearance_desc">Chủ đề, màu sắc, ngôn ngữ</string>
+    <string name="data_management">Quản lý dữ liệu</string>
+    <string name="data_management_desc">Sao lưu và khôi phục lịch sử</string>
+    <string name="network">Mạng</string>
+    <string name="network_desc">Proxy, thống kê trình phát</string>
+    <string name="about">Giới thiệu</string>
+    <string name="about_desc">Thông tin ứng dụng và phiên bản</string>
+    
+    <string name="playback_behavior">Hành vi phát</string>
+    <string name="interface_control">Điều khiển giao diện</string>
+    <string name="auto_play">Tự động phát</string>
+    <string name="auto_play_desc">Tự động bắt đầu phát khi mở video</string>
+    <string name="auto_hide_controls">Tự động ẩn điều khiển</string>
+    <string name="auto_hide_controls_desc">Tự động ẩn các nút điều khiển trong khi phát</string>
+    <string name="pip">Ảnh trong ảnh (PiP)</string>
+    <string name="pip_desc">Cho phép chế độ ảnh trong ảnh</string>
+    <string name="pip_unsupported">Yêu cầu Android 8.0 trở lên</string>
+    <string name="background_play">Phát trong nền</string>
+    <string name="background_play_desc">Cho phép tiếp tục phát khi ứng dụng ở chế độ nền</string>
+    <string name="background_play_battery_hint">Yêu cầu quyền miễn trừ tối ưu hóa pin</string>
+    <string name="battery_configuration">Cấu hình pin</string>
+    <string name="battery_configuration_desc">Cấp quyền miễn trừ tối ưu hóa pin để phát trong nền ổn định</string>
+    <string name="mirror_flip">Lật gương</string>
+    <string name="mirror_flip_desc">Lật video theo chiều ngang</string>
+
+    <string name="display_settings">Cài đặt hiển thị</string>
+    <string name="decoder_settings">Cài đặt bộ giải mã</string>
+    <string name="aspect_ratio">Tỷ lệ khung hình</string>
+    <string name="aspect_ratio_fill">Lấp đầy</string>
+    <string name="aspect_ratio_original">Gốc</string>
+    <string name="decoder">Bộ giải mã</string>
+    <string name="decoder_hardware">Phần cứng</string>
+    <string name="decoder_software">Phần mềm</string>
+
+    <string name="dark_theme">Giao diện tối</string>
+    <string name="additional_settings">Cài đặt bổ sung</string>
+    <string name="high_contrast">Giao diện tối độ tương phản cao</string>
+    <string name="dynamic_color">Màu động</string>
+    <string name="dynamic_color_desc">Sử dụng màu hình nền làm chủ đề ứng dụng</string>
+    <string name="language">Ngôn ngữ</string>
+    <string name="select_language">Chọn ngôn ngữ</string>
+    <string name="follow_system">Theo hệ thống</string>
+    <string name="system_settings">Cài đặt hệ thống</string>
+
+    <string name="data_backup">Sao lưu dữ liệu</string>
+    <string name="backup_data">Xuất dữ liệu</string>
+    <string name="backup_data_desc">Xuất lịch sử phát</string>
+    <string name="backup_success">Xuất thành công, đã lưu tại: %s</string>
+    <string name="backup_failed">Xuất thất bại</string>
+    <string name="no_history_to_backup">Không có lịch sử để xuất</string>
+    <string name="restore_data">Nhập dữ liệu</string>
+    <string name="restore_data_desc">Nhập lịch sử từ tệp sao lưu</string>
+    <plurals name="restore_success">
+        <item quantity="other">Đã khôi phục thành công %d mục lịch sử</item>
+    </plurals>
+    <string name="restore_failed">Khôi phục thất bại</string>
+
+    <string name="export_label">Xuất</string>
+    <string name="import_label">Nhập</string>
+    <string name="item_deleted">Đã xóa mục</string>
+
+    <string name="proxy">Proxy</string>
+    <string name="proxy_desc">Truy cập mạng thông qua máy chủ proxy</string>
+    <string name="player_stats">Thống kê trình phát</string>
+    <string name="player_stats_desc">Hiển thị nút thống kê trên trang trình phát</string>
+
+    <string name="project_homepage">Trang chủ dự án</string>
+    <string name="project_homepage_desc">Xem mã nguồn và thông tin dự án</string>
+    <string name="version_release">Bản phát hành</string>
+    <string name="version_release_desc">Xem phiên bản mới nhất và nhật ký thay đổi</string>
+    <string name="issue_feedback">Phản hồi lỗi (GitHub)</string>
+    <string name="issue_feedback_desc">Báo cáo lỗi hoặc đề xuất tính năng</string>
+    <string name="sponsor">Tài trợ</string>
+    <string name="sponsor_desc">Hỗ trợ phát triển qua GitHub Sponsors</string>
+    <string name="auto_update">Tự động cập nhật</string>
+    <string name="check_for_updates_desc">Tự động kiểm tra cập nhật từ GitHub</string>
+    <string name="enable_auto_update">Bật tự động cập nhật</string>
+    <string name="update_channel">Kênh cập nhật</string>
+    <string name="stable_channel">Ổn định</string>
+    <string name="pre_release_channel">Thử nghiệm (Pre-release)</string>
+    <string name="check_for_updates">Kiểm tra cập nhật</string>
+    <string name="update_channel_desc">Chọn giữa các bản phát hành ổn định hoặc các phiên bản thử nghiệm có tính năng mới nhất</string>
+    <string name="update">Cập nhật</string>
+    <string name="app_update_failed">Cập nhật thất bại</string>
+    <string name="already_latest_version">Đã là phiên bản mới nhất</string>
+    <string name="check_update_failed">Kiểm tra cập nhật thất bại</string>
+    
+    <string name="open_source_licenses_title">Giấy phép nguồn mở</string>
+    <string name="open_source_licenses_desc_about">Xem thông tin giấy phép nguồn mở</string>
+    <string name="package_name">Tên gói</string>
+    <string name="debug_build">Bản build Debug</string>
+    <string name="release_build">Bản build Release</string>
+    <string name="unknown_version">Phiên bản không xác định</string>
+    <string name="build_type">Loại bản build</string>
+    <string name="version">Phiên bản</string>
+</resources>

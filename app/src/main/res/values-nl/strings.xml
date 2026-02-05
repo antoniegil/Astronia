@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources> 
+    <string name="copy">Kopiëren</string>
+    <string name="paste">Plakken</string>
+    <string name="clear">Wissen</string>
+    <string name="open">Openen</string>
+    <string name="close">Sluiten</string>
+    <string name="back">Terug</string>
+    <string name="cancel">Annuleren</string>
+    <string name="undo">Ongedaan maken</string>
+    <string name="all">Alles</string>
+
+    <string name="clipboard_label">Tekst</string>
+
+    <string name="state">Status</string>
+    <string name="play">Afspelen</string>
+    <string name="idle">Inactief</string>
+    <string name="playing">Speelt af</string>
+    <string name="loading">Laden</string>
+    <string name="buffering">Bufferen</string>
+    <string name="paused">Gepauzeerd</string>
+    <string name="ended">Beëindigd</string>
+    <string name="unknown">Onbekend</string>
+
+    <string name="fullscreen">Volledig scherm</string>
+    <string name="exit_fullscreen">Volledig scherm afsluiten</string>
+    <string name="player_settings">Spelerinstellingen</string>
+
+    <string name="link_hint">Live bronlink (m3u8/m3u)</string>
+    <string name="local_import">Lokaal importeren</string>
+    <string name="last_played">Laatst afgespeeld</string>
+
+    <string name="loading_channels">Kanalenlijst laden…</string>
+    <string name="single_stream">Dit is een enkele livestream, geen kanalenlijst</string>
+    <string name="local_video">Lokale video</string>
+    <string name="unknown_video">Onbekende video</string>
+    <string name="playlist">Afspeellijst</string>
+    <string name="channel_count">Kanalenlijst (%d)</string>
+    <string name="search_channels">Kanalen zoeken</string>
+    
+    <string name="resolution">Resolutie</string>
+    <string name="frames">Frames (Verloren / Totaal)</string>
+    <string name="codec">Codec</string>
+    <string name="buffer_health">Buffergezondheid</string>
+    <string name="cpu_usage">CPU-gebruik</string>
+
+    <string name="history">Geschiedenis</string>
+    <string name="delete_history_item">Geschiedenis verwijderen</string>
+    <string name="no_play_history">Geen afspeelgeschiedenis</string>
+    <string name="search">Zoeken</string>
+    <string name="search_history">Geschiedenis doorzoeken</string>
+    <string name="select_all">Alles selecteren</string>
+    <plurals name="multiselect_item_count">
+        <item quantity="one">%1$d geselecteerd</item>
+        <item quantity="other">%1$d geselecteerd</item>
+    </plurals>
+    
+    <string name="settings">Instellingen</string>
+    <string name="player">Speler</string>
+    <string name="player_desc">Automatisch afspelen, achtergrond afspelen, beeld-in-beeld</string>
+    <string name="video">Video</string>
+    <string name="video_desc">Beeldverhouding, decoder</string>
+    <string name="appearance">Uiterlijk</string>
+    <string name="appearance_desc">Thema, kleur, taal</string>
+    <string name="data_management">Gegevensbeheer</string>
+    <string name="data_management_desc">Geschiedenis back-uppen en herstellen</string>
+    <string name="network">Netwerk</string>
+    <string name="network_desc">Proxy, spelerstatistieken</string>
+    <string name="about">Over</string>
+    <string name="about_desc">App-info en versie</string>
+    
+    <string name="playback_behavior">Afspeelgedrag</string>
+    <string name="interface_control">Interfacebediening</string>
+    <string name="auto_play">Automatisch afspelen</string>
+    <string name="auto_play_desc">Afspelen automatisch starten bij openen video</string>
+    <string name="auto_hide_controls">Bedieningsbalk automatisch verbergen</string>
+    <string name="auto_hide_controls_desc">Bedieningsbalk automatisch verbergen tijdens afspelen</string>
+    <string name="pip">Beeld-in-beeld</string>
+    <string name="pip_desc">Beeld-in-beeld-modus toestaan</string>
+    <string name="pip_unsupported">Vereist Android 8.0 of hoger</string>
+    <string name="background_play">Afspelen op achtergrond</string>
+    <string name="background_play_desc">Afspelen toestaan op de achtergrond</string>
+    <string name="background_play_battery_hint">Vereist uitzondering op batterij-optimalisatie</string>
+    <string name="battery_configuration">Batterijconfiguratie</string>
+    <string name="battery_configuration_desc">Uitzondering op batterij-optimalisatie verlenen voor stabiel afspelen op achtergrond</string>
+    <string name="mirror_flip">Spiegelen</string>
+    <string name="mirror_flip_desc">Video horizontaal spiegelen</string>
+
+    <string name="display_settings">Weergave-instellingen</string>
+    <string name="decoder_settings">Decoder-instellingen</string>
+    <string name="aspect_ratio">Beeldverhouding</string>
+    <string name="aspect_ratio_fill">Vullen</string>
+    <string name="aspect_ratio_original">Origineel</string>
+    <string name="decoder">Decoder</string>
+    <string name="decoder_hardware">Hardware</string>
+    <string name="decoder_software">Software</string>
+
+    <string name="dark_theme">Donker thema</string>
+    <string name="additional_settings">Aanvullende instellingen</string>
+    <string name="high_contrast">Donker thema met hoog contrast</string>
+    <string name="dynamic_color">Dynamische kleuren</string>
+    <string name="dynamic_color_desc">Kleuren van achtergrond gebruiken als app-thema</string>
+    <string name="language">Taal</string>
+    <string name="select_language">Selecteer taal</string>
+    <string name="follow_system">Systeem volgen</string>
+    <string name="system_settings">Systeeminstellingen</string>
+
+    <string name="data_backup">Gegevensback-up</string>
+    <string name="backup_data">Gegevens exporteren</string>
+    <string name="backup_data_desc">Afspeelgeschiedenis exporteren</string>
+    <string name="backup_success">Exporteren geslaagd, opgeslagen in %s</string>
+    <string name="backup_failed">Exporteren mislukt</string>
+    <string name="no_history_to_backup">Geen geschiedenis om te exporteren</string>
+    <string name="restore_data">Gegevens importeren</string>
+    <string name="restore_data_desc">Geschiedenis importeren uit back-upbestand</string>
+    <plurals name="restore_success">
+        <item quantity="one">%d geschiedenis-item succesvol hersteld</item>
+        <item quantity="other">%d geschiedenis-items succesvol hersteld</item>
+    </plurals>
+    <string name="restore_failed">Herstellen mislukt</string>
+
+    <string name="export_label">Exporteren</string>
+    <string name="import_label">Importeren</string>
+    <string name="item_deleted">Verwijderd</string>
+
+    <string name="proxy">Proxy</string>
+    <string name="proxy_desc">Netwerktoegang via proxyserver</string>
+    <string name="player_stats">Spelerstatistieken</string>
+    <string name="player_stats_desc">Spelerstatistiekknop weergeven op afspeelpagina</string>
+
+    <string name="project_homepage">Project-homepage</string>
+    <string name="project_homepage_desc">Broncode en projectinfo bekijken</string>
+    <string name="version_release">Versie-release</string>
+    <string name="version_release_desc">Nieuwste versie en updatelog bekijken</string>
+    <string name="issue_feedback">Github Issues</string>
+    <string name="issue_feedback_desc">Fouten melden of suggesties doen</string>
+    <string name="sponsor">Sponsoren</string>
+    <string name="sponsor_desc">Ondersteun deze app via GitHub Sponsors</string>
+    <string name="auto_update">Automatisch updaten</string>
+    <string name="check_for_updates_desc">Automatisch controleren op updates via GitHub</string>
+    <string name="enable_auto_update">Auto-update inschakelen</string>
+    <string name="update_channel">Updatekanaal</string>
+    <string name="stable_channel">Stabiel</string>
+    <string name="pre_release_channel">Preview</string>
+    <string name="check_for_updates">Controleren op updates</string>
+    <string name="update_channel_desc">Kies tussen stabiele releases of pre-release versies met de nieuwste functies</string>
+    <string name="update">Updaten</string>
+    <string name="app_update_failed">Update mislukt</string>
+    <string name="already_latest_version">Al de nieuwste versie</string>
+    <string name="check_update_failed">Controleren op updates mislukt</string>
+    
+    <string name="open_source_licenses_title">Open Source Licenties</string>
+    <string name="open_source_licenses_desc_about">Informatie over open source licenties bekijken</string>
+    <string name="package_name">Pakketnaam</string>
+    <string name="debug_build">Debug Build</string>
+    <string name="release_build">Release Build</string>
+    <string name="unknown_version">Onbekende versie</string>
+    <string name="build_type">Build-type</string>
+    <string name="version">Versie</string>
+</resources>

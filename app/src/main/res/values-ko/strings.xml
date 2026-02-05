@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources> 
+    <string name="copy">복사</string>
+    <string name="paste">붙여넣기</string>
+    <string name="clear">지우기</string>
+    <string name="open">열기</string>
+    <string name="close">닫기</string>
+    <string name="back">뒤로</string>
+    <string name="cancel">취소</string>
+    <string name="undo">되돌리기</string>
+    <string name="all">전체</string>
+
+    <string name="clipboard_label">텍스트</string>
+
+    <string name="state">상태</string>
+    <string name="play">재생</string>
+    <string name="idle">대기 중</string>
+    <string name="playing">재생 중</string>
+    <string name="loading">로딩 중</string>
+    <string name="buffering">버퍼링 중</string>
+    <string name="paused">일시 정지</string>
+    <string name="ended">종료됨</string>
+    <string name="unknown">알 수 없음</string>
+
+    <string name="fullscreen">전체 화면</string>
+    <string name="exit_fullscreen">전체 화면 종료</string>
+    <string name="player_settings">재생 설정</string>
+
+    <string name="link_hint">라이브 소스 링크（m3u8/m3u）</string>
+    <string name="local_import">로컬 가져오기</string>
+    <string name="last_played">마지막 재생</string>
+
+    <string name="loading_channels">채널 목록 로딩 중…</string>
+    <string name="single_stream">단일 라이브 스트림이며 채널 목록이 없습니다</string>
+    <string name="local_video">로컬 동영상</string>
+    <string name="unknown_video">알 수 없는 동영상</string>
+    <string name="playlist">재생 목록</string>
+    <string name="channel_count">채널 목록（%d）</string>
+    <string name="search_channels">채널 검색</string>
+    
+    <string name="resolution">해상도</string>
+    <string name="frames">프레임（드롭 / 전체）</string>
+    <string name="codec">코덱</string>
+    <string name="buffer_health">버퍼 상태</string>
+    <string name="cpu_usage">CPU 사용률</string>
+
+    <string name="history">기록</string>
+    <string name="delete_history_item">기록 삭제</string>
+    <string name="no_play_history">재생 기록이 없습니다</string>
+    <string name="search">검색</string>
+    <string name="search_history">기록 검색</string>
+    <string name="select_all">전체 선택</string>
+    <plurals name="multiselect_item_count">
+        <item quantity="other">%1$d개 선택됨</item>
+    </plurals>
+    
+    <string name="settings">설정</string>
+    <string name="player">재생</string>
+    <string name="player_desc">자동 재생, 백그라운드 재생, 화면 속 화면</string>
+    <string name="video">동영상</string>
+    <string name="video_desc">화면 비율, 디코더</string>
+    <string name="appearance">외관</string>
+    <string name="appearance_desc">테마, 색상, 언어</string>
+    <string name="data_management">데이터 관리</string>
+    <string name="data_management_desc">기록 백업 및 복원</string>
+    <string name="network">네트워크</string>
+    <string name="network_desc">프록시, 재생 통계</string>
+    <string name="about">정보</string>
+    <string name="about_desc">앱 정보 및 버전</string>
+    
+    <string name="playback_behavior">재생 동작</string>
+    <string name="interface_control">인터페이스 제어</string>
+    <string name="auto_play">자동 재생</string>
+    <string name="auto_play_desc">동영상을 열 때 자동으로 재생 시작</string>
+    <string name="auto_hide_controls">컨트롤 바 자동 숨기기</string>
+    <string name="auto_hide_controls_desc">재생 중 컨트롤 바를 자동으로 숨김</string>
+    <string name="pip">화면 속 화면</string>
+    <string name="pip_desc">화면 속 화면 모드 허용</string>
+    <string name="pip_unsupported">Android 8.0 이상이 필요합니다</string>
+    <string name="background_play">백그라운드 재생</string>
+    <string name="background_play_desc">백그라운드에서 계속 재생 허용</string>
+    <string name="background_play_battery_hint">배터리 최적화 제외가 필요합니다</string>
+    <string name="battery_configuration">배터리 구성</string>
+    <string name="battery_configuration_desc">안정적인 백그라운드 재생을 위해 배터리 최적화 제외 허용</string>
+    <string name="mirror_flip">미러 반전</string>
+    <string name="mirror_flip_desc">동영상을 수평으로 반전</string>
+
+    <string name="display_settings">표시 설정</string>
+    <string name="decoder_settings">디코더 설정</string>
+    <string name="aspect_ratio">화면 비율</string>
+    <string name="aspect_ratio_fill">채우기</string>
+    <string name="aspect_ratio_original">원본</string>
+    <string name="decoder">디코더</string>
+    <string name="decoder_hardware">하드웨어</string>
+    <string name="decoder_software">소프트웨어</string>
+
+    <string name="dark_theme">다크 테마</string>
+    <string name="additional_settings">추가 설정</string>
+    <string name="high_contrast">고대비 다크 테마</string>
+    <string name="dynamic_color">다이나믹 컬러</string>
+    <string name="dynamic_color_desc">배경화면 색상을 앱 테마로 사용</string>
+    <string name="language">언어</string>
+    <string name="select_language">언어 선택</string>
+    <string name="follow_system">시스템 따르기</string>
+    <string name="system_settings">시스템 설정</string>
+
+    <string name="data_backup">데이터 백업</string>
+    <string name="backup_data">데이터 내보내기</string>
+    <string name="backup_data_desc">재생 기록 내보내기</string>
+    <string name="backup_success">내보내기 성공, 저장 위치: %s</string>
+    <string name="backup_failed">내보내기 실패</string>
+    <string name="no_history_to_backup">내보낼 기록이 없습니다</string>
+    <string name="restore_data">데이터 가져오기</string>
+    <string name="restore_data_desc">백업 파일에서 기록 가져오기</string>
+    <plurals name="restore_success">
+        <item quantity="other">%d개의 기록을 복원했습니다</item>
+    </plurals>
+    <string name="restore_failed">복원 실패</string>
+
+    <string name="export_label">내보내기</string>
+    <string name="import_label">가져오기</string>
+    <string name="item_deleted">삭제됨</string>
+
+    <string name="proxy">프록시</string>
+    <string name="proxy_desc">프록시 서버를 통해 네트워크 액세스</string>
+    <string name="player_stats">재생 통계</string>
+    <string name="player_stats_desc">재생 페이지에 재생 통계 버튼 표시</string>
+    
+    <string name="project_homepage">프로젝트 홈페이지</string>
+    <string name="project_homepage_desc">소스 코드 및 프로젝트 정보 보기</string>
+    <string name="version_release">버전 릴리스</string>
+    <string name="version_release_desc">최신 버전 및 업데이트 로그 보기</string>
+    <string name="issue_feedback">Github 이슈</string>
+    <string name="issue_feedback_desc">버그 보고 또는 제안하기</string>
+    <string name="sponsor">후원</string>
+    <string name="sponsor_desc">GitHub 후원을 통해 이 앱 지원</string>
+    <string name="auto_update">자동 업데이트</string>
+    <string name="check_for_updates_desc">GitHub에서 제공하는 업데이트 자동 확인</string>
+    <string name="enable_auto_update">자동 업데이트 활성화</string>
+    <string name="update_channel">업데이트 채널</string>
+    <string name="stable_channel">안정</string>
+    <string name="pre_release_channel">프리뷰</string>
+    <string name="check_for_updates">업데이트 확인</string>
+    <string name="update_channel_desc">안정 버전 또는 최신 기능이 포함된 프리릴리스 버전 선택</string>
+    <string name="update">업데이트</string>
+    <string name="app_update_failed">업데이트 실패</string>
+    <string name="already_latest_version">이미 최신 버전입니다</string>
+    <string name="check_update_failed">업데이트 확인 실패</string>
+    
+    <string name="open_source_licenses_title">오픈 소스 라이선스</string>
+    <string name="open_source_licenses_desc_about">오픈 소스 라이선스 정보 보기</string>
+    <string name="package_name">패키지 이름</string>
+    <string name="debug_build">디버그 빌드</string>
+    <string name="release_build">릴리스 빌드</string>
+    <string name="unknown_version">알 수 없는 버전</string>
+    <string name="build_type">빌드 유형</string>
+    <string name="version">버전</string>
+</resources>

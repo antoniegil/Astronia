@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources> 
+    <string name="copy">Kopírovat</string>
+    <string name="paste">Vložit</string>
+    <string name="clear">Vymazat</string>
+    <string name="open">Otevřít</string>
+    <string name="close">Zavřít</string>
+    <string name="back">Zpět</string>
+    <string name="cancel">Zrušit</string>
+    <string name="undo">Obnovit</string>
+    <string name="all">Vše</string>
+
+    <string name="clipboard_label">Text</string>
+
+    <string name="state">Stav</string>
+    <string name="play">Přehrát</string>
+    <string name="idle">Nečinný</string>
+    <string name="playing">Přehrává se</string>
+    <string name="loading">Načítání</string>
+    <string name="buffering">Ukládání do vyrovnávací paměti</string>
+    <string name="paused">Pozastaveno</string>
+    <string name="ended">Ukončeno</string>
+    <string name="unknown">Neznámý</string>
+
+    <string name="fullscreen">Celá obrazovka</string>
+    <string name="exit_fullscreen">Ukončit celou obrazovku</string>
+    <string name="player_settings">Nastavení přehrávače</string>
+
+    <string name="link_hint">Odkaz na živý stream (m3u8/m3u)</string>
+    <string name="local_import">Místní import</string>
+    <string name="last_played">Naposledy přehráno</string>
+
+    <string name="loading_channels">Načítání seznamu kanálů…</string>
+    <string name="single_stream">Toto je jeden živý stream, žádný seznam kanálů</string>
+    <string name="local_video">Místní video</string>
+    <string name="unknown_video">Neznámé video</string>
+    <string name="playlist">Seznam skladeb</string>
+    <string name="channel_count">Seznam kanálů (%d)</string>
+    <string name="search_channels">Hledat kanály</string>
+    
+    <string name="resolution">Rozlišení</string>
+    <string name="frames">Snímky (zahozené / celkem)</string>
+    <string name="codec">Kodek</string>
+    <string name="buffer_health">Stav vyrovnávací paměti</string>
+    <string name="cpu_usage">Využití CPU</string>
+
+    <string name="history">Historie</string>
+    <string name="delete_history_item">Smazat záznam historie</string>
+    <string name="no_play_history">Žádná historie přehrávání</string>
+    <string name="search">Hledat</string>
+    <string name="search_history">Hledat v historii</string>
+    <string name="select_all">Vybrat vše</string>
+    <plurals name="multiselect_item_count">
+        <item quantity="one">Vybráno: %1$d</item>
+        <item quantity="few">Vybráno: %1$d</item>
+        <item quantity="many">Vybráno: %1$d</item>
+        <item quantity="other">Vybráno: %1$d</item>
+    </plurals>
+    
+    <string name="settings">Nastavení</string>
+    <string name="player">Přehrávač</string>
+    <string name="player_desc">Automatické přehrávání, přehrávání na pozadí, obraz v obraze</string>
+    <string name="video">Video</string>
+    <string name="video_desc">Poměr stran, dekodér</string>
+    <string name="appearance">Vzhled</string>
+    <string name="appearance_desc">Motiv, barva, jazyk</string>
+    <string name="data_management">Správa dat</string>
+    <string name="data_management_desc">Zálohování a obnovení historie</string>
+    <string name="network">Síť</string>
+    <string name="network_desc">Proxy, statistiky přehrávání</string>
+    <string name="about">O aplikaci</string>
+    <string name="about_desc">Informace o aplikaci a verzi</string>
+    
+    <string name="playback_behavior">Chování přehrávání</string>
+    <string name="interface_control">Ovládání rozhraní</string>
+    <string name="auto_play">Automatické přehrávání</string>
+    <string name="auto_play_desc">Automaticky spustit přehrávání při otevření videa</string>
+    <string name="auto_hide_controls">Automaticky skrýt ovládací prvky</string>
+    <string name="auto_hide_controls_desc">Automaticky skrýt ovládací panel během přehrávání</string>
+    <string name="pip">Obraz v obraze</string>
+    <string name="pip_desc">Povolit režim obraz v obraze</string>
+    <string name="pip_unsupported">Vyžaduje Android 8.0 nebo vyšší</string>
+    <string name="background_play">Přehrávání na pozadí</string>
+    <string name="background_play_desc">Povolit pokračování přehrávání na pozadí</string>
+    <string name="background_play_battery_hint">Vyžaduje výjimku z optimalizace baterie</string>
+    <string name="battery_configuration">Konfigurace baterie</string>
+    <string name="battery_configuration_desc">Udělit výjimku z optimalizace baterie pro stabilní přehrávání na pozadí</string>
+    <string name="mirror_flip">Zrcadlové převrácení</string>
+    <string name="mirror_flip_desc">Horizontálně převrátit obraz videa</string>
+
+    <string name="display_settings">Nastavení zobrazení</string>
+    <string name="decoder_settings">Nastavení dekodéru</string>
+    <string name="aspect_ratio">Poměr stran</string>
+    <string name="aspect_ratio_fill">Vyplnit</string>
+    <string name="aspect_ratio_original">Původní</string>
+    <string name="decoder">Dekodér</string>
+    <string name="decoder_hardware">Hardwarový</string>
+    <string name="decoder_software">Softwarový</string>
+
+    <string name="dark_theme">Tmavý motiv</string>
+    <string name="additional_settings">Další nastavení</string>
+    <string name="high_contrast">Tmavý motiv s vysokým kontrastem</string>
+    <string name="dynamic_color">Dynamická barva</string>
+    <string name="dynamic_color_desc">Použít barvu tapety jako motiv aplikace</string>
+    <string name="language">Jazyk</string>
+    <string name="select_language">Vybrat jazyk</string>
+    <string name="follow_system">Následovat systém</string>
+    <string name="system_settings">Nastavení systému</string>
+
+    <string name="data_backup">Zálohování dat</string>
+    <string name="backup_data">Export dat</string>
+    <string name="backup_data_desc">Export historie přehrávání</string>
+    <string name="backup_success">Export úspěšný, uloženo v %s</string>
+    <string name="backup_failed">Export se nezdařil</string>
+    <string name="no_history_to_backup">Žádná historie k exportu</string>
+    <string name="restore_data">Import dat</string>
+    <string name="restore_data_desc">Import historie ze záložního souboru</string>
+    <plurals name="restore_success">
+        <item quantity="one">Úspěšně obnovena %d položka historie</item>
+        <item quantity="few">Úspěšně obnoveny %d položky historie</item>
+        <item quantity="other">Úspěšně obnoveno %d položek historie</item>
+    </plurals>
+    <string name="restore_failed">Obnovení se nezdařilo</string>
+
+    <string name="export_label">Export</string>
+    <string name="import_label">Import</string>
+    <string name="item_deleted">Záznam smazán</string>
+
+    <string name="proxy">Proxy</string>
+    <string name="proxy_desc">Přístup k síti přes proxy server</string>
+    <string name="player_stats">Statistiky přehrávání</string>
+    <string name="player_stats_desc">Zobrazit tlačítko statistik na stránce přehrávače</string>
+
+    <string name="project_homepage">Domovská stránka projektu</string>
+    <string name="project_homepage_desc">Zobrazit zdrojový kód a informace o projektu</string>
+    <string name="version_release">Vydání verze</string>
+    <string name="version_release_desc">Zobrazit nejnovější verzi a protokol změn</string>
+    <string name="issue_feedback">GitHub Issues</string>
+    <string name="issue_feedback_desc">Nahlásit chybu nebo navrhnout vylepšení</string>
+    <string name="sponsor">Sponzor</string>
+    <string name="sponsor_desc">Podpořte tuto aplikaci prostřednictvím GitHub Sponsors</string>
+    <string name="auto_update">Automatická aktualizace</string>
+    <string name="check_for_updates_desc">Automaticky kontrolovat aktualizace z GitHubu</string>
+    <string name="enable_auto_update">Povolit automatickou aktualizaci</string>
+    <string name="update_channel">Kanál aktualizací</string>
+    <string name="stable_channel">Stabilní</string>
+    <string name="pre_release_channel">Předběžná verze</string>
+    <string name="check_for_updates">Zkontrolovat aktualizace</string>
+    <string name="update_channel_desc">Vyberte stabilní verzi nebo předběžnou verzi s nejnovějšími funkcemi</string>
+    <string name="update">Aktualizovat</string>
+    <string name="app_update_failed">Aktualizace se nezdařila</string>
+    <string name="already_latest_version">Již máte nejnovější verzi</string>
+    <string name="check_update_failed">Kontrola aktualizace se nezdařila</string>
+    
+    <string name="open_source_licenses_title">Open source licence</string>
+    <string name="open_source_licenses_desc_about">Zobrazit informace o open source licencích</string>
+    <string name="package_name">Název balíčku</string>
+    <string name="debug_build">Debug build</string>
+    <string name="release_build">Release build</string>
+    <string name="unknown_version">Neznámá verze</string>
+    <string name="build_type">Typ buildu</string>
+    <string name="version">Verze</string>
+</resources>

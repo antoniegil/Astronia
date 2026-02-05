@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources> 
+    <string name="copy">コピー</string>
+    <string name="paste">貼り付け</string>
+    <string name="clear">クリア</string>
+    <string name="open">開く</string>
+    <string name="close">閉じる</string>
+    <string name="back">戻る</string>
+    <string name="cancel">キャンセル</string>
+    <string name="undo">元に戻す</string>
+    <string name="all">すべて</string>
+
+    <string name="clipboard_label">テキスト</string>
+
+    <string name="state">状態</string>
+    <string name="play">再生</string>
+    <string name="idle">待機中</string>
+    <string name="playing">再生中</string>
+    <string name="loading">読み込み中</string>
+    <string name="buffering">バッファリング中</string>
+    <string name="paused">一時停止</string>
+    <string name="ended">終了</string>
+    <string name="unknown">不明</string>
+
+    <string name="fullscreen">全画面</string>
+    <string name="exit_fullscreen">全画面を終了</string>
+    <string name="player_settings">再生設定</string>
+
+    <string name="link_hint">ライブソースリンク（m3u8/m3u）</string>
+    <string name="local_import">ローカルからインポート</string>
+    <string name="last_played">前回再生</string>
+
+    <string name="loading_channels">チャンネルリストを読み込み中…</string>
+    <string name="single_stream">これは単一のライブストリームで、チャンネルリストはありません</string>
+    <string name="local_video">ローカル動画</string>
+    <string name="unknown_video">不明な動画</string>
+    <string name="playlist">プレイリスト</string>
+    <string name="channel_count">チャンネルリスト（%d）</string>
+    <string name="search_channels">チャンネルを検索</string>
+    
+    <string name="resolution">解像度</string>
+    <string name="frames">フレーム（ドロップ / 合計）</string>
+    <string name="codec">コーデック</string>
+    <string name="buffer_health">バッファ状態</string>
+    <string name="cpu_usage">CPU使用率</string>
+
+    <string name="history">履歴</string>
+    <string name="delete_history_item">履歴を削除</string>
+    <string name="no_play_history">再生履歴がありません</string>
+    <string name="search">検索</string>
+    <string name="search_history">履歴を検索</string>
+    <string name="select_all">すべて選択</string>
+    <plurals name="multiselect_item_count">
+        <item quantity="other">%1$d件選択中</item>
+    </plurals>
+    
+    <string name="settings">設定</string>
+    <string name="player">再生</string>
+    <string name="player_desc">自動再生、バックグラウンド再生、ピクチャーインピクチャー</string>
+    <string name="video">動画</string>
+    <string name="video_desc">アスペクト比、デコーダー</string>
+    <string name="appearance">外観</string>
+    <string name="appearance_desc">テーマ、カラー、言語</string>
+    <string name="data_management">データ管理</string>
+    <string name="data_management_desc">履歴のバックアップと復元</string>
+    <string name="network">ネットワーク</string>
+    <string name="network_desc">プロキシ、再生統計</string>
+    <string name="about">アプリについて</string>
+    <string name="about_desc">アプリ情報とバージョン</string>
+    
+    <string name="playback_behavior">再生動作</string>
+    <string name="interface_control">インターフェース制御</string>
+    <string name="auto_play">自動再生</string>
+    <string name="auto_play_desc">動画を開いたときに自動的に再生を開始</string>
+    <string name="auto_hide_controls">コントロールバーを自動的に非表示</string>
+    <string name="auto_hide_controls_desc">再生中にコントロールバーを自動的に非表示にする</string>
+    <string name="pip">ピクチャーインピクチャー</string>
+    <string name="pip_desc">ピクチャーインピクチャーモードを許可</string>
+    <string name="pip_unsupported">Android 8.0以降が必要です</string>
+    <string name="background_play">バックグラウンド再生</string>
+    <string name="background_play_desc">バックグラウンドでの再生を許可</string>
+    <string name="background_play_battery_hint">バッテリー最適化の除外が必要です</string>
+    <string name="battery_configuration">バッテリー設定</string>
+    <string name="battery_configuration_desc">安定したバックグラウンド再生のためにバッテリー最適化の除外を許可</string>
+    <string name="mirror_flip">ミラー反転</string>
+    <string name="mirror_flip_desc">動画を水平方向に反転</string>
+
+    <string name="display_settings">表示設定</string>
+    <string name="decoder_settings">デコーダー設定</string>
+    <string name="aspect_ratio">アスペクト比</string>
+    <string name="aspect_ratio_fill">フィル</string>
+    <string name="aspect_ratio_original">オリジナル</string>
+    <string name="decoder">デコーダー</string>
+    <string name="decoder_hardware">ハードウェア</string>
+    <string name="decoder_software">ソフトウェア</string>
+
+    <string name="dark_theme">ダークテーマ</string>
+    <string name="additional_settings">追加設定</string>
+    <string name="high_contrast">高コントラストダークテーマ</string>
+    <string name="dynamic_color">ダイナミックカラー</string>
+    <string name="dynamic_color_desc">壁紙の色をアプリテーマとして使用</string>
+    <string name="language">言語</string>
+    <string name="select_language">言語を選択</string>
+    <string name="follow_system">システムに従う</string>
+    <string name="system_settings">システム設定</string>
+
+    <string name="data_backup">データバックアップ</string>
+    <string name="backup_data">データをエクスポート</string>
+    <string name="backup_data_desc">再生履歴をエクスポート</string>
+    <string name="backup_success">エクスポート成功、保存先：%s</string>
+    <string name="backup_failed">エクスポート失敗</string>
+    <string name="no_history_to_backup">エクスポートする履歴がありません</string>
+    <string name="restore_data">データをインポート</string>
+    <string name="restore_data_desc">バックアップファイルから履歴をインポート</string>
+    <plurals name="restore_success">
+        <item quantity="other">%d件の履歴を復元しました</item>
+    </plurals>
+    <string name="restore_failed">復元失敗</string>
+
+    <string name="export_label">エクスポート</string>
+    <string name="import_label">インポート</string>
+    <string name="item_deleted">削除されました</string>
+
+    <string name="proxy">プロキシ</string>
+    <string name="proxy_desc">プロキシサーバー経由でネットワークにアクセス</string>
+    <string name="player_stats">再生統計</string>
+    <string name="player_stats_desc">再生ページに再生統計ボタンを表示</string>
+
+    <string name="project_homepage">プロジェクトホームページ</string>
+    <string name="project_homepage_desc">ソースコードとプロジェクト情報を表示</string>
+    <string name="version_release">バージョンリリース</string>
+    <string name="version_release_desc">最新バージョンと更新ログを表示</string>
+    <string name="issue_feedback">GitHub Issue</string>
+    <string name="issue_feedback_desc">バグを報告または提案する</string>
+    <string name="sponsor">スポンサー</string>
+    <string name="sponsor_desc">GitHubスポンサーを通じてこのアプリをサポート</string>
+    <string name="auto_update">自動更新</string>
+    <string name="check_for_updates_desc">GitHubから提供される更新を自動的にチェック</string>
+    <string name="enable_auto_update">自動更新を有効にする</string>
+    <string name="update_channel">更新チャンネル</string>
+    <string name="stable_channel">安定版</string>
+    <string name="pre_release_channel">プレビュー</string>
+    <string name="check_for_updates">更新をチェック</string>
+    <string name="update_channel_desc">安定版または最新機能を含むプレリリース版を選択</string>
+    <string name="update">更新</string>
+    <string name="app_update_failed">更新失敗</string>
+    <string name="already_latest_version">すでに最新バージョンです</string>
+    <string name="check_update_failed">更新チェック失敗</string>
+    
+    <string name="open_source_licenses_title">オープンソースライセンス</string>
+    <string name="open_source_licenses_desc_about">オープンソースライセンス情報を表示</string>
+    <string name="package_name">パッケージ名</string>
+    <string name="debug_build">デバッグビルド</string>
+    <string name="release_build">リリースビルド</string>
+    <string name="unknown_version">不明なバージョン</string>
+    <string name="build_type">ビルドタイプ</string>
+    <string name="version">バージョン</string>
+</resources>

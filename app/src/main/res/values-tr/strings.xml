@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources> 
+    <string name="copy">Kopyala</string>
+    <string name="paste">Yapıştır</string>
+    <string name="clear">Temizle</string>
+    <string name="open">Aç</string>
+    <string name="close">Kapat</string>
+    <string name="back">Geri</string>
+    <string name="cancel">İptal</string>
+    <string name="undo">Geri Al</string>
+    <string name="all">Tümü</string>
+
+    <string name="clipboard_label">metin</string>
+
+    <string name="state">Durum</string>
+    <string name="play">Oynat</string>
+    <string name="idle">Boşta</string>
+    <string name="playing">Oynatılıyor</string>
+    <string name="loading">Yükleniyor</string>
+    <string name="buffering">Arabelleğe alınıyor</string>
+    <string name="paused">Duraklatıldı</string>
+    <string name="ended">Bitti</string>
+    <string name="unknown">Bilinmiyor</string>
+
+    <string name="fullscreen">Tam Ekran</string>
+    <string name="exit_fullscreen">Tam Ekrandan Çık</string>
+    <string name="player_settings">Oynatıcı Ayarları</string>
+
+    <string name="link_hint">Yayın URL\'si (m3u8/m3u)</string>
+    <string name="local_import">Yerel İçe Aktar</string>
+    <string name="last_played">Son Oynatılan</string>
+
+    <string name="loading_channels">Kanal listesi yükleniyor…</string>
+    <string name="single_stream">Bu tekli bir akıştır, kanal listesi yok</string>
+    <string name="local_video">Yerel Video</string>
+    <string name="unknown_video">Bilinmeyen Video</string>
+    <string name="playlist">Oynatma Listesi</string>
+    <string name="channel_count">Kanal Listesi (%d)</string>
+    <string name="search_channels">Kanal ara</string>
+    
+    <string name="resolution">Çözünürlük</string>
+    <string name="frames">Kareler (Düşen / Toplam)</string>
+    <string name="codec">Kod Çözücü (Codec)</string>
+    <string name="buffer_health">Arabellek Sağlığı</string>
+    <string name="cpu_usage">İşlemci (CPU) Kullanımı</string>
+
+    <string name="history">Geçmiş</string>
+    <string name="delete_history_item">Geçmiş Öğesini Sil</string>
+    <string name="no_play_history">Oynatma geçmişi yok</string>
+    <string name="search">Ara</string>
+    <string name="search_history">Geçmişte ara</string>
+    <string name="select_all">Tümünü seç</string>
+    <plurals name="multiselect_item_count">
+        <item quantity="one">%1$d seçildi</item>
+        <item quantity="other">%1$d seçildi</item>
+    </plurals>
+    
+    <string name="settings">Ayarlar</string>
+    <string name="player">Oynatıcı</string>
+    <string name="player_desc">Otomatik oynatma, arka planda oynatma, PiP</string>
+    <string name="video">Video</string>
+    <string name="video_desc">En-boy oranı, kod çözücü</string>
+    <string name="appearance">Görünüm</string>
+    <string name="appearance_desc">Tema, renk, dil</string>
+    <string name="data_management">Veri Yönetimi</string>
+    <string name="data_management_desc">Geçmişi yedekle ve geri yükle</string>
+    <string name="network">Ağ</string>
+    <string name="network_desc">Vekil sunucu, oynatıcı istatistikleri</string>
+    <string name="about">Hakkında</string>
+    <string name="about_desc">Uygulama bilgisi ve sürüm</string>
+    
+    <string name="playback_behavior">Oynatma Davranışı</string>
+    <string name="interface_control">Arayüz Kontrolü</string>
+    <string name="auto_play">Otomatik Oynat</string>
+    <string name="auto_play_desc">Videoyu açarken otomatik olarak oynatmaya başla</string>
+    <string name="auto_hide_controls">Kontrolleri Otomatik Gizle</string>
+    <string name="auto_hide_controls_desc">Oynatma sırasında kontrolleri otomatik olarak gizle</string>
+    <string name="pip">Resim içinde Resim (PiP)</string>
+    <string name="pip_desc">Resim içinde resim moduna izin ver</string>
+    <string name="pip_unsupported">Android 8.0 veya daha yükseğini gerektirir</string>
+    <string name="background_play">Arka Planda Oynatma</string>
+    <string name="background_play_desc">Oynatmanın arka planda devam etmesine izin ver</string>
+    <string name="background_play_battery_hint">Pil optimizasyonu muafiyeti gerektirir</string>
+    <string name="battery_configuration">Pil Yapılandırması</string>
+    <string name="battery_configuration_desc">Kararlı arka plan oynatımı için pil optimizasyonu muafiyeti verin</string>
+    <string name="mirror_flip">Aynala</string>
+    <string name="mirror_flip_desc">Videoyu yatay olarak çevir</string>
+
+    <string name="display_settings">Ekran Ayarları</string>
+    <string name="decoder_settings">Kod Çözücü Ayarları</string>
+    <string name="aspect_ratio">En Boy Oranı</string>
+    <string name="aspect_ratio_fill">Doldur</string>
+    <string name="aspect_ratio_original">Orijinal</string>
+    <string name="decoder">Kod Çözücü</string>
+    <string name="decoder_hardware">Donanım</string>
+    <string name="decoder_software">Yazılım</string>
+
+    <string name="dark_theme">Karanlık Tema</string>
+    <string name="additional_settings">Ek Ayarlar</string>
+    <string name="high_contrast">Yüksek Kontrastlı Karanlık Tema</string>
+    <string name="dynamic_color">Dinamik Renk</string>
+    <string name="dynamic_color_desc">Duvar kağıdı renklerini uygulama teması olarak kullan</string>
+    <string name="language">Dil</string>
+    <string name="select_language">Dil Seçin</string>
+    <string name="follow_system">Sistemi İzle</string>
+    <string name="system_settings">Sistem Ayarları</string>
+
+    <string name="data_backup">Veri Yedeği</string>
+    <string name="backup_data">Verileri Dışa Aktar</string>
+    <string name="backup_data_desc">Oynatma geçmişini dışa aktar</string>
+    <string name="backup_success">Dışa aktarma başarılı, şuraya kaydedildi: %s</string>
+    <string name="backup_failed">Dışa aktarma başarısız</string>
+    <string name="no_history_to_backup">Dışa aktarılacak geçmiş yok</string>
+    <string name="restore_data">Verileri İçe Aktar</string>
+    <string name="restore_data_desc">Yedekleme dosyasından geçmişi içe aktar</string>
+    <plurals name="restore_success">
+        <item quantity="one">%d geçmiş öğesi başarıyla geri yüklendi</item>
+        <item quantity="other">%d geçmiş öğesi başarıyla geri yüklendi</item>
+    </plurals>
+    <string name="restore_failed">Geri yükleme başarısız oldu</string>
+
+    <string name="export_label">Dışa Aktar</string>
+    <string name="import_label">İçe Aktar</string>
+    <string name="item_deleted">Öğe silindi</string>
+
+    <string name="proxy">Vekil Sunucu</string>
+    <string name="proxy_desc">Ağa proxy sunucusu üzerinden erişin</string>
+    <string name="player_stats">Oynatıcı İstatistikleri</string>
+    <string name="player_stats_desc">Oynatma sayfasında istatistik düğmesini göster</string>
+
+    <string name="project_homepage">Proje Ana Sayfası</string>
+    <string name="project_homepage_desc">Kaynak kodunu ve proje bilgisini görüntüle</string>
+    <string name="version_release">Sürüm Yayınları</string>
+    <string name="version_release_desc">En son sürümü ve değişiklik günlüğünü görüntüle</string>
+    <string name="issue_feedback">Github Sorunları</string>
+    <string name="issue_feedback_desc">Hataları veya önerileri bildirin</string>
+    <string name="sponsor">Sponsor Ol</string>
+    <string name="sponsor_desc">GitHub Sponsorları aracılığıyla geliştirmeyi destekleyin</string>
+    <string name="auto_update">Otomatik Güncelleme</string>
+    <string name="check_for_updates_desc">GitHub\'dan güncellemeleri otomatik olarak kontrol et</string>
+    <string name="enable_auto_update">Otomatik Güncellemeyi Etkinleştir</string>
+    <string name="update_channel">Güncelleme Kanalı</string>
+    <string name="stable_channel">Kararlı (Stable)</string>
+    <string name="pre_release_channel">Ön sürüm (Pre-release)</string>
+    <string name="check_for_updates">Güncellemeleri Denetle</string>
+    <string name="update_channel_desc">Kararlı sürümler veya en son özelliklere sahip ön sürümler arasından seçim yapın</string>
+    <string name="update">Güncelle</string>
+    <string name="app_update_failed">Güncelleme başarısız oldu</string>
+    <string name="already_latest_version">Zaten en son sürümde</string>
+    <string name="check_update_failed">Güncellemeler kontrol edilemedi</string>
+    
+    <string name="open_source_licenses_title">Açık Kaynak Lisansları</string>
+    <string name="open_source_licenses_desc_about">Açık kaynak lisans bilgilerini görüntüle</string>
+    <string name="package_name">Paket Adı</string>
+    <string name="debug_build">Hata Ayıklama Yapısı (Debug)</string>
+    <string name="release_build">Yayın Yapısı (Release)</string>
+    <string name="unknown_version">Bilinmeyen Sürüm</string>
+    <string name="build_type">Yapı Türü</string>
+    <string name="version">Sürüm</string>
+</resources>

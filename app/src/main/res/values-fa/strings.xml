@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources> 
+    <string name="copy">کپی</string>
+    <string name="paste">چسباندن</string>
+    <string name="clear">پاک کردن</string>
+    <string name="open">باز کردن</string>
+    <string name="close">بستن</string>
+    <string name="back">بازگشت</string>
+    <string name="cancel">لغو</string>
+    <string name="undo">بازیابی</string>
+    <string name="all">همه</string>
+
+    <string name="clipboard_label">متن</string>
+
+    <string name="state">وضعیت</string>
+    <string name="play">پخش</string>
+    <string name="idle">بیکار</string>
+    <string name="playing">در حال پخش</string>
+    <string name="loading">در حال بارگذاری</string>
+    <string name="buffering">در حال بافرینگ</string>
+    <string name="paused">متوقف شده</string>
+    <string name="ended">پایان یافته</string>
+    <string name="unknown">نامشخص</string>
+
+    <string name="fullscreen">تمام صفحه</string>
+    <string name="exit_fullscreen">خروج از تمام صفحه</string>
+    <string name="player_settings">تنظیمات پخش</string>
+
+    <string name="link_hint">لینک پخش زنده (m3u8/m3u)</string>
+    <string name="local_import">وارد کردن محلی</string>
+    <string name="last_played">آخرین پخش</string>
+
+    <string name="loading_channels">در حال بارگذاری لیست کانال‌ها…</string>
+    <string name="single_stream">این یک استریم زنده منفرد است، بدون لیست کانال</string>
+    <string name="local_video">ویدیوی محلی</string>
+    <string name="unknown_video">ویدیوی نامشخص</string>
+    <string name="playlist">لیست پخش</string>
+    <string name="channel_count">لیست کانال‌ها (%d)</string>
+    <string name="search_channels">جستجوی کانال‌ها</string>
+    
+    <string name="resolution">وضوح تصویر</string>
+    <string name="frames">فریم‌ها (حذف شده / کل)</string>
+    <string name="codec">کدک</string>
+    <string name="buffer_health">سلامت بافر</string>
+    <string name="cpu_usage">استفاده از CPU</string>
+
+    <string name="history">تاریخچه</string>
+    <string name="delete_history_item">حذف مورد تاریخچه</string>
+    <string name="no_play_history">تاریخچه پخشی وجود ندارد</string>
+    <string name="search">جستجو</string>
+    <string name="search_history">جستجوی تاریخچه</string>
+    <string name="select_all">انتخاب همه</string>
+    <plurals name="multiselect_item_count">
+        <item quantity="one">%1$d انتخاب شده</item>
+        <item quantity="other">%1$d انتخاب شده</item>
+    </plurals>
+    
+    <string name="settings">تنظیمات</string>
+    <string name="player">پخش</string>
+    <string name="player_desc">پخش خودکار، پخش در پس‌زمینه، تصویر در تصویر</string>
+    <string name="video">ویدیو</string>
+    <string name="video_desc">نسبت تصویر، رمزگشا</string>
+    <string name="appearance">ظاهر</string>
+    <string name="appearance_desc">تم، رنگ، زبان</string>
+    <string name="data_management">مدیریت داده</string>
+    <string name="data_management_desc">پشتیبان‌گیری و بازیابی تاریخچه</string>
+    <string name="network">شبکه</string>
+    <string name="network_desc">پروکسی، آمار پخش</string>
+    <string name="about">درباره</string>
+    <string name="about_desc">اطلاعات برنامه و نسخه</string>
+    
+    <string name="playback_behavior">رفتار پخش</string>
+    <string name="interface_control">کنترل رابط کاربری</string>
+    <string name="auto_play">پخش خودکار</string>
+    <string name="auto_play_desc">شروع خودکار پخش هنگام باز کردن ویدیو</string>
+    <string name="auto_hide_controls">مخفی کردن خودکار کنترل‌ها</string>
+    <string name="auto_hide_controls_desc">مخفی کردن خودکار نوار کنترل در حین پخش</string>
+    <string name="pip">تصویر در تصویر</string>
+    <string name="pip_desc">اجازه حالت تصویر در تصویر</string>
+    <string name="pip_unsupported">نیاز به اندروید 8.0 یا بالاتر</string>
+    <string name="background_play">پخش در پس‌زمینه</string>
+    <string name="background_play_desc">اجازه ادامه پخش در پس‌زمینه</string>
+    <string name="background_play_battery_hint">نیاز به معافیت بهینه‌سازی باتری</string>
+    <string name="battery_configuration">پیکربندی باتری</string>
+    <string name="battery_configuration_desc">اعطای معافیت بهینه‌سازی باتری برای پخش پایدار در پس‌زمینه</string>
+    <string name="mirror_flip">چرخش آینه‌ای</string>
+    <string name="mirror_flip_desc">چرخش افقی تصویر ویدیو</string>
+
+    <string name="display_settings">تنظیمات نمایش</string>
+    <string name="decoder_settings">تنظیمات رمزگشا</string>
+    <string name="aspect_ratio">نسبت تصویر</string>
+    <string name="aspect_ratio_fill">پر کردن</string>
+    <string name="aspect_ratio_original">اصلی</string>
+    <string name="decoder">رمزگشا</string>
+    <string name="decoder_hardware">سخت‌افزاری</string>
+    <string name="decoder_software">نرم‌افزاری</string>
+
+    <string name="dark_theme">تم تیره</string>
+    <string name="additional_settings">تنظیمات اضافی</string>
+    <string name="high_contrast">تم تیره با کنتراست بالا</string>
+    <string name="dynamic_color">رنگ پویا</string>
+    <string name="dynamic_color_desc">استفاده از رنگ کاغذ دیواری به عنوان تم برنامه</string>
+    <string name="language">زبان</string>
+    <string name="select_language">انتخاب زبان</string>
+    <string name="follow_system">پیروی از سیستم</string>
+    <string name="system_settings">تنظیمات سیستم</string>
+
+    <string name="data_backup">پشتیبان‌گیری داده</string>
+    <string name="backup_data">صادرات داده</string>
+    <string name="backup_data_desc">صادرات تاریخچه پخش</string>
+    <string name="backup_success">صادرات موفق، ذخیره شده در %s</string>
+    <string name="backup_failed">صادرات ناموفق</string>
+    <string name="no_history_to_backup">تاریخچه‌ای برای صادرات وجود ندارد</string>
+    <string name="restore_data">وارد کردن داده</string>
+    <string name="restore_data_desc">وارد کردن تاریخچه از فایل پشتیبان</string>
+    <plurals name="restore_success">
+        <item quantity="other">%d مورد تاریخچه با موفقیت بازیابی شد</item>
+    </plurals>
+    <string name="restore_failed">بازیابی ناموفق</string>
+
+    <string name="export_label">صادرات</string>
+    <string name="import_label">وارد کردن</string>
+    <string name="item_deleted">مورد حذف شد</string>
+
+    <string name="proxy">پروکسی</string>
+    <string name="proxy_desc">دسترسی به شبکه از طریق سرور پروکسی</string>
+    <string name="player_stats">آمار پخش</string>
+    <string name="player_stats_desc">نمایش دکمه آمار در صفحه پخش</string>
+
+    <string name="project_homepage">صفحه اصلی پروژه</string>
+    <string name="project_homepage_desc">مشاهده کد منبع و اطلاعات پروژه</string>
+    <string name="version_release">انتشار نسخه</string>
+    <string name="version_release_desc">مشاهده آخرین نسخه و گزارش تغییرات</string>
+    <string name="issue_feedback">مسائل GitHub</string>
+    <string name="issue_feedback_desc">گزارش خطا یا پیشنهاد بهبود</string>
+    <string name="sponsor">حمایت مالی</string>
+    <string name="sponsor_desc">از این برنامه از طریق GitHub Sponsors حمایت کنید</string>
+    <string name="auto_update">به‌روزرسانی خودکار</string>
+    <string name="check_for_updates_desc">بررسی خودکار به‌روزرسانی‌های ارائه شده از GitHub</string>
+    <string name="enable_auto_update">فعال کردن به‌روزرسانی خودکار</string>
+    <string name="update_channel">کانال به‌روزرسانی</string>
+    <string name="stable_channel">پایدار</string>
+    <string name="pre_release_channel">پیش‌انتشار</string>
+    <string name="check_for_updates">بررسی به‌روزرسانی</string>
+    <string name="update_channel_desc">انتخاب نسخه پایدار یا نسخه پیش‌انتشار با جدیدترین ویژگی‌ها</string>
+    <string name="update">به‌روزرسانی</string>
+    <string name="app_update_failed">به‌روزرسانی ناموفق</string>
+    <string name="already_latest_version">در حال حاضر آخرین نسخه است</string>
+    <string name="check_update_failed">بررسی به‌روزرسانی ناموفق</string>
+    
+    <string name="open_source_licenses_title">مجوزهای متن‌باز</string>
+    <string name="open_source_licenses_desc_about">مشاهده اطلاعات مجوزهای متن‌باز</string>
+    <string name="package_name">نام بسته</string>
+    <string name="debug_build">ساخت دیباگ</string>
+    <string name="release_build">ساخت انتشار</string>
+    <string name="unknown_version">نسخه نامشخص</string>
+    <string name="build_type">نوع ساخت</string>
+    <string name="version">نسخه</string>
+</resources>

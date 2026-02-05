@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name" translatable="false">Astronia</string>
+    
+    <string name="copy">Copy</string>
+    <string name="paste">Paste</string>
+    <string name="clear">Clear</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="back">Back</string>
+    <string name="cancel">Cancel</string>
+    <string name="undo">Undo</string>
+    <string name="all">All</string>
+
+    <string name="clipboard_label">text</string>
+
+    <string name="state">State</string>
+    <string name="play">Play</string>
+    <string name="idle">Idle</string>
+    <string name="playing">Playing</string>
+    <string name="loading">Loading</string>
+    <string name="buffering">Buffering</string>
+    <string name="paused">Paused</string>
+    <string name="ended">Ended</string>
+    <string name="unknown">Unknown</string>
+
+    <string name="fullscreen">Fullscreen</string>
+    <string name="exit_fullscreen">Exit Fullscreen</string>
+    <string name="player_settings">Player Settings</string>
+
+    <string name="link_hint">Live stream link (m3u8/m3u)</string>
+    <string name="local_import">Local Import</string>
+    <string name="last_played">Last Played</string>
+
+    <string name="loading_channels">Loading channel list</string>
+    <string name="single_stream">This is a single stream, no channel list</string>
+    <string name="local_video">Local Video</string>
+    <string name="unknown_video">Unknown Video</string>
+    <string name="playlist">Playlist</string>
+    <string name="channel_count">Channel List (%d)</string>
+    <string name="search_channels">Search channels</string>
+    
+    <string name="resolution">Resolution</string>
+    <string name="frames">Frames (Dropped / Total)</string>
+    <string name="codec">Codec</string>
+    <string name="buffer_health">Buffer Health</string>
+    <string name="cpu_usage">CPU Usage</string>
+
+    <string name="history">History</string>
+    <string name="delete_history_item">Delete History Item</string>
+    <string name="no_play_history">No play history</string>
+    <string name="search">Search</string>
+    <string name="search_history">Search history</string>
+    <string name="select_all">Select all</string>
+    <plurals name="multiselect_item_count">
+        <item quantity="one">%1$d selected</item>
+        <item quantity="other">%1$d selected</item>
+    </plurals>
+    
+    <string name="settings">Settings</string>
+    <string name="player">Player</string>
+    <string name="player_desc">Auto play, background play, PiP</string>
+    <string name="video">Video</string>
+    <string name="video_desc">Aspect ratio, decoder</string>
+    <string name="appearance">Appearance</string>
+    <string name="appearance_desc">Theme, color, language</string>
+    <string name="data_management">Data Management</string>
+    <string name="data_management_desc">Backup and restore history</string>
+    <string name="network">Network</string>
+    <string name="network_desc">Proxy, player stats</string>
+    <string name="about">About</string>
+    <string name="about_desc">App info and version</string>
+    
+    <string name="playback_behavior">Playback Behavior</string>
+    <string name="interface_control">Interface Control</string>
+    <string name="auto_play">Auto Play</string>
+    <string name="auto_play_desc">Automatically start playing when opening video</string>
+    <string name="auto_hide_controls">Auto Hide Controls</string>
+    <string name="auto_hide_controls_desc">Automatically hide controls during playback</string>
+    <string name="pip">Picture in Picture</string>
+    <string name="pip_desc">Allow picture-in-picture mode</string>
+    <string name="pip_unsupported">Requires Android 8.0 or higher</string>
+    <string name="background_play">Background Play</string>
+    <string name="background_play_desc">Allow playback to continue in background</string>
+    <string name="background_play_battery_hint">Requires battery optimization exemption</string>
+    <string name="battery_configuration">Battery Configuration</string>
+    <string name="battery_configuration_desc">Grant battery optimization exemption for stable background playback</string>
+    <string name="mirror_flip">Mirror Flip</string>
+    <string name="mirror_flip_desc">Flip video horizontally</string>
+
+    <string name="display_settings">Display Settings</string>
+    <string name="decoder_settings">Decoder Settings</string>
+    <string name="aspect_ratio">Aspect Ratio</string>
+    <string name="aspect_ratio_fill">Fill</string>
+    <string name="aspect_ratio_original">Original</string>
+    <string name="decoder">Decoder</string>
+    <string name="decoder_hardware">Hardware</string>
+    <string name="decoder_software">Software</string>
+
+    <string name="dark_theme">Dark Theme</string>
+    <string name="additional_settings">Additional Settings</string>
+    <string name="high_contrast">High Contrast Dark Theme</string>
+    <string name="dynamic_color">Dynamic Color</string>
+    <string name="dynamic_color_desc">Use wallpaper colors as app theme</string>
+    <string name="language">Language</string>
+    <string name="select_language">Select Language</string>
+    <string name="follow_system">Follow System</string>
+    <string name="system_settings">System Settings</string>
+
+    <string name="data_backup">Data Backup</string>
+    <string name="backup_data">Export Data</string>
+    <string name="backup_data_desc">Export play history</string>
+    <string name="backup_success">Export successful, saved at: %s</string>
+    <string name="backup_failed">Export failed</string>
+    <string name="no_history_to_backup">No history to export</string>
+    <string name="restore_data">Import Data</string>
+    <string name="restore_data_desc">Import history from backup file</string>
+    <plurals name="restore_success">
+        <item quantity="one">Successfully restored %d history item</item>
+        <item quantity="other">Successfully restored %d history items</item>
+    </plurals>
+    <string name="restore_failed">Restore failed</string>
+
+    <string name="export_label">Export</string>
+    <string name="import_label">Import</string>
+    <string name="item_deleted">Item deleted</string>
+
+    <string name="proxy">Proxy</string>
+    <string name="proxy_desc">Access network through proxy server</string>
+    <string name="player_stats">Player Stats</string>
+    <string name="player_stats_desc">Display stats button on player page</string>
+
+    <string name="project_homepage">Project Homepage</string>
+    <string name="project_homepage_desc">View source code and project info</string>
+    <string name="version_release">Version Release</string>
+    <string name="version_release_desc">View latest version and changelog</string>
+    <string name="issue_feedback">Github Issues</string>
+    <string name="issue_feedback_desc">Report bugs or suggestions</string>
+    <string name="sponsor">Sponsor</string>
+    <string name="sponsor_desc">Support the development via GitHub Sponsors</string>
+    <string name="auto_update">Auto Update</string>
+    <string name="check_for_updates_desc">Automatically check for updates from GitHub</string>
+    <string name="enable_auto_update">Enable Auto Update</string>
+    <string name="update_channel">Update Channel</string>
+    <string name="stable_channel">Stable</string>
+    <string name="pre_release_channel">Pre-release</string>
+    <string name="check_for_updates">Check for Updates</string>
+    <string name="update_channel_desc">Choose between stable releases or pre-release versions with latest features</string>
+    <string name="update">Update</string>
+    <string name="app_update_failed">Update failed</string>
+    <string name="already_latest_version">Already the latest version</string>
+    <string name="check_update_failed">Failed to check for updates</string>
+    
+    <string name="open_source_licenses_title">Open Source Licenses</string>
+    <string name="open_source_licenses_desc_about">View open source license info</string>
+    <string name="package_name">Package Name</string>
+    <string name="debug_build">Debug Build</string>
+    <string name="release_build">Release Build</string>
+    <string name="unknown_version">Unknown Version</string>
+    <string name="build_type">Build Type</string>
+    <string name="version">Version</string>
+</resources>
