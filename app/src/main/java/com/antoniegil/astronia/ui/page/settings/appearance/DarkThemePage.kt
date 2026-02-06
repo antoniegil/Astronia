@@ -21,14 +21,13 @@ import com.antoniegil.astronia.util.SettingsManager
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DarkThemePage(
-    onNavigateBack: () -> Unit,
-    onThemeChanged: (Int) -> Unit = {},
-    onHighContrastChanged: (Boolean) -> Unit = {}
+    onNavigateBack: () -> Unit
 ) {
     val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
     val context = LocalContext.current
-    val currentTheme = remember { mutableIntStateOf(SettingsManager.getThemeMode(context)) }
-    var highContrastEnabled by remember { mutableStateOf(SettingsManager.getHighContrast(context)) }
+    
+    val themeMode = com.antoniegil.astronia.ui.theme.LocalThemeMode.current
+    val highContrast = com.antoniegil.astronia.ui.theme.LocalHighContrast.current
 
     Scaffold(
         modifier = Modifier
@@ -50,10 +49,9 @@ fun DarkThemePage(
                 item {
                     PreferenceSingleChoiceItem(
                         text = stringResource(R.string.follow_system),
-                        selected = currentTheme.intValue == 0,
+                        selected = themeMode == 0,
                         onClick = {
-                            currentTheme.intValue = 0
-                            onThemeChanged(0)
+                            SettingsManager.setThemeMode(context, 0)
                         }
                     )
                 }
@@ -62,10 +60,9 @@ fun DarkThemePage(
             item {
                 PreferenceSingleChoiceItem(
                     text = stringResource(R.string.open),
-                    selected = currentTheme.intValue == 2,
+                    selected = themeMode == 2,
                     onClick = {
-                        currentTheme.intValue = 2
-                        onThemeChanged(2)
+                        SettingsManager.setThemeMode(context, 2)
                     }
                 )
             }
@@ -73,10 +70,9 @@ fun DarkThemePage(
             item {
                 PreferenceSingleChoiceItem(
                     text = stringResource(R.string.close),
-                    selected = currentTheme.intValue == 1,
+                    selected = themeMode == 1,
                     onClick = {
-                        currentTheme.intValue = 1
-                        onThemeChanged(1)
+                        SettingsManager.setThemeMode(context, 1)
                     }
                 )
             }
@@ -89,10 +85,9 @@ fun DarkThemePage(
                 PreferenceSwitchVariant(
                     title = stringResource(R.string.high_contrast),
                     icon = Icons.Outlined.Contrast,
-                    isChecked = highContrastEnabled,
+                    isChecked = highContrast,
                     onClick = {
-                        highContrastEnabled = !highContrastEnabled
-                        onHighContrastChanged(highContrastEnabled)
+                        SettingsManager.setHighContrast(context, !highContrast)
                     }
                 )
             }

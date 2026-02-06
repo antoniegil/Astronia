@@ -60,12 +60,6 @@ class MainActivity : AppCompatActivity() {
                 SettingsManager.initializeThemeSettings(context)
             }
             
-            val themeSettings by SettingsManager.themeSettingsFlow.collectAsState()
-            val paletteStyleIndex = SettingsManager.getPaletteStyle(context)
-            val backgroundPlay = SettingsManager.getBackgroundPlay(context)
-            val proxyEnabled = SettingsManager.getProxyEnabled(context)
-            val proxyHost = SettingsManager.getProxyHost(context)
-            val proxyPort = SettingsManager.getProxyPort(context)
             val pendingNav = remember { SettingsManager.getPendingNavigation(context) }
             
             LaunchedEffect(Unit) {
@@ -74,31 +68,12 @@ class MainActivity : AppCompatActivity() {
                 }
             }
             
-            SettingsProvider(
-                themeMode = themeSettings.themeMode,
-                dynamicColor = themeSettings.dynamicColor,
-                seedColor = themeSettings.seedColor,
-                paletteStyleIndex = paletteStyleIndex,
-                isHighContrastModeEnabled = themeSettings.highContrast,
-                backgroundPlay = backgroundPlay,
-                proxyEnabled = proxyEnabled,
-                proxyHost = proxyHost,
-                proxyPort = proxyPort
-            ) {
+            SettingsProvider {
                 MainScreen(
                     initialNavigation = pendingNav,
-                    onThemeChanged = { newTheme ->
-                        SettingsManager.setThemeMode(context, newTheme)
-                    },
-                    onDynamicColorChanged = { enabled ->
-                        SettingsManager.setDynamicColor(context, enabled)
-                    },
                     onSeedColorChanged = { color ->
                         SettingsManager.setSeedColor(context, color)
                         recreate()
-                    },
-                    onHighContrastChanged = { enabled ->
-                        SettingsManager.setHighContrast(context, enabled)
                     }
                 )
             }
@@ -121,10 +96,7 @@ class MainActivity : AppCompatActivity() {
 @Composable
 fun MainScreen(
     initialNavigation: String = "",
-    onThemeChanged: (Int) -> Unit = {},
-    onDynamicColorChanged: (Boolean) -> Unit = {},
     onSeedColorChanged: (Int) -> Unit = {},
-    onHighContrastChanged: (Boolean) -> Unit = {},
     viewModel: MainViewModel = viewModel()
 ) {
     val playbackState by viewModel.playbackState.collectAsState()
@@ -236,19 +208,13 @@ fun MainScreen(
                 animatedComposable(Route.APPEARANCE) {
                     AppearancePage(
                         onNavigateBack = onNavigateBack,
-                        onThemeChanged = onThemeChanged,
-                        onDynamicColorChanged = onDynamicColorChanged,
                         onSeedColorChanged = onSeedColorChanged,
                         onNavigateToDarkTheme = { navController.navigate(Route.DARK_THEME) { launchSingleTop = true } },
                         onNavigateToLanguage = { navController.navigate(Route.LANGUAGE) { launchSingleTop = true } }
                     )
                 }
                 animatedComposable(Route.DARK_THEME) {
-                    DarkThemePage(
-                        onNavigateBack = onNavigateBack,
-                        onThemeChanged = onThemeChanged,
-                        onHighContrastChanged = onHighContrastChanged
-                    )
+                    DarkThemePage(onNavigateBack = onNavigateBack)
                 }
                 animatedComposable(Route.LANGUAGE) {
                     LanguagePage(onNavigateBack = onNavigateBack)

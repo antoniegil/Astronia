@@ -65,8 +65,6 @@ private const val STYLE_MONOCHROME = 4
 @Composable
 fun AppearancePage(
     onNavigateBack: () -> Unit,
-    onThemeChanged: (Int) -> Unit = {},
-    onDynamicColorChanged: (Boolean) -> Unit = {},
     onSeedColorChanged: (Int) -> Unit = {},
     onNavigateToDarkTheme: () -> Unit = {},
     onNavigateToLanguage: () -> Unit = {}
@@ -115,7 +113,7 @@ fun AppearancePage(
                 initialPage = if (paletteStyleIndex == STYLE_MONOCHROME) {
                     pageCount - 1
                 } else {
-                    ColorList.indexOf(Color(seedColor)).run {
+                    ColorList.indexOfFirst { it.toArgb() == seedColor }.run {
                         if (this == -1) 0 else this
                     }
                 }
@@ -158,7 +156,7 @@ fun AppearancePage(
                     icon = Icons.Outlined.Colorize,
                     isChecked = dynamicColorSwitch,
                     onCheckedChange = { enabled ->
-                        onDynamicColorChanged(enabled)
+                        SettingsManager.setDynamicColor(context, enabled)
                     }
                 )
             }
@@ -170,7 +168,7 @@ fun AppearancePage(
                 isChecked = isDarkTheme,
                 onChecked = { checked: Boolean ->
                     val newTheme = if (checked) 2 else 1
-                    onThemeChanged(newTheme)
+                    SettingsManager.setThemeMode(context, newTheme)
                 },
                 onClick = onNavigateToDarkTheme
             )

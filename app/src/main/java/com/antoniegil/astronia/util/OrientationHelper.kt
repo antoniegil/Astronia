@@ -73,7 +73,12 @@ class OrientationHelper(
     
     private fun initGravity(activity: Activity) {
         if (isLand == LAND_TYPE_NULL) {
-            val defaultRotation = activity.windowManager.defaultDisplay.rotation
+            val defaultRotation = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                activity.display?.rotation ?: Surface.ROTATION_0
+            } else {
+                @Suppress("DEPRECATION")
+                activity.windowManager.defaultDisplay.rotation
+            }
             when (defaultRotation) {
                 Surface.ROTATION_0 -> {
                     isLand = LAND_TYPE_NULL

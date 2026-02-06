@@ -22,8 +22,8 @@ android {
         applicationId = "com.antoniegil.astronia"
         minSdk = 24
         targetSdk = 36
-        versionCode = 10000
-        versionName = "1.0.0"
+        versionCode = 101
+        versionName = "1.0.1"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables { useSupportLibrary = true }
@@ -115,11 +115,13 @@ android {
         onVariants { variant ->
             variant.outputs.forEach { output ->
                 val abiName = output.filters.find { it.filterType == com.android.build.api.variant.FilterConfiguration.FilterType.ABI }?.identifier ?: "universal"
-                output.versionCode.set((output.versionCode.orNull ?: 0) + when(abiName) {
-                    "arm64-v8a" -> 3
-                    "armeabi-v7a" -> 2
-                    "x86_64" -> 1
-                    "x86" -> 0
+                val baseVersionCode = output.versionCode.orNull ?: 0
+                output.versionCode.set(baseVersionCode * 100 + when(abiName) {
+                    "arm64-v8a" -> 4
+                    "armeabi-v7a" -> 3
+                    "x86_64" -> 2
+                    "x86" -> 1
+                    "universal" -> 0
                     else -> 0
                 })
             }

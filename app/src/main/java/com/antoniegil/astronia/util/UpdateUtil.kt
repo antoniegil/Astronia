@@ -27,7 +27,7 @@ import java.util.regex.Pattern
 object UpdateUtil {
 
     private const val OWNER = "antoniegil"
-    private const val REPO = "com.antoniegil.astronia"
+    private const val REPO = "Astronia"
     private const val TAG = "UpdateUtil"
 
     private val client = OkHttpClient()

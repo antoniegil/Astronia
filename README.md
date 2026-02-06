@@ -24,7 +24,7 @@ Astronia is a lightweight and modern M3U8 video player for Android, built with M
 - 🔄 Auto-update functionality
 - 🎨 Modern and intuitive interface
 - 🔒 Privacy-focused (no data collection)
-- 🌐 Multi-language support
+- 🌐 Multi-language support (30+)
 
 ## ⬇️ Download
 

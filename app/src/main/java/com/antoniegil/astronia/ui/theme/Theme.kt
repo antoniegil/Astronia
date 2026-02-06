@@ -6,13 +6,15 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.compositionLocalOf
-import androidx.compose.runtime.staticCompositionLocalOf
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import com.antoniegil.astronia.ui.theme.monet.LocalTonalPalettes
 import com.antoniegil.astronia.ui.theme.monet.dynamicColorScheme
+import com.antoniegil.astronia.util.SettingsManager
 import com.kyant.monet.PaletteStyle
 import com.kyant.monet.TonalPalettes.Companion.toTonalPalettes
 
@@ -21,11 +23,12 @@ val LocalProxyEnabled = compositionLocalOf { false }
 val LocalProxyHost = compositionLocalOf { "" }
 val LocalProxyPort = compositionLocalOf { 8080 }
 
-val LocalThemeMode = staticCompositionLocalOf { 0 }
+val LocalThemeMode = compositionLocalOf { 0 }
 val LocalSeedColor = compositionLocalOf { 0xd40054 }
 val LocalPaletteStyleIndex = compositionLocalOf { 0 }
 val LocalDynamicColorSwitch = compositionLocalOf { false }
-val LocalFixedColorRoles = staticCompositionLocalOf {
+val LocalHighContrast = compositionLocalOf { false }
+val LocalFixedColorRoles = compositionLocalOf {
     FixedColorRoles.fromColorSchemes(
         lightColors = androidx.compose.material3.lightColorScheme(),
         darkColors = androidx.compose.material3.darkColorScheme(),
@@ -42,45 +45,43 @@ val paletteStyles = listOf(
 
 @Composable
 fun SettingsProvider(
-    themeMode: Int = 0,
-    dynamicColor: Boolean = true,
-    seedColor: Int = 0xd40054,
-    paletteStyleIndex: Int = 0,
-    isHighContrastModeEnabled: Boolean = false,
-    backgroundPlay: Boolean = false,
-    proxyEnabled: Boolean = false,
-    proxyHost: String = "",
-    proxyPort: Int = 8080,
     content: @Composable () -> Unit
 ) {
     val context = LocalContext.current
+    val themeSettings by SettingsManager.themeSettingsFlow.collectAsState()
+    val backgroundPlay = SettingsManager.getBackgroundPlay(context)
+    val proxyEnabled = SettingsManager.getProxyEnabled(context)
+    val proxyHost = SettingsManager.getProxyHost(context)
+    val proxyPort = SettingsManager.getProxyPort(context)
+    
     val systemInDarkTheme = isSystemInDarkTheme()
     
-    val isDarkTheme = when (themeMode) {
+    val isDarkTheme = when (themeSettings.themeMode) {
         1 -> false
         2 -> true
         else -> systemInDarkTheme
     }
     
-    val tonalPalettes = if (dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+    val tonalPalettes = if (themeSettings.dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
         if (isDarkTheme) {
             androidx.compose.material3.dynamicDarkColorScheme(context)
         } else {
             androidx.compose.material3.dynamicLightColorScheme(context)
         }.toTonalPalettes()
     } else {
-        Color(seedColor).toTonalPalettes(
-            paletteStyles.getOrElse(paletteStyleIndex) { PaletteStyle.TonalSpot }
+        Color(themeSettings.seedColor).toTonalPalettes(
+            paletteStyles.getOrElse(themeSettings.paletteStyleIndex) { PaletteStyle.TonalSpot }
         )
     }
     
     val fixedColorRoles = FixedColorRoles.fromTonalPalettes(tonalPalettes)
     
     CompositionLocalProvider(
-        LocalThemeMode provides themeMode,
-        LocalSeedColor provides seedColor,
-        LocalPaletteStyleIndex provides paletteStyleIndex,
-        LocalDynamicColorSwitch provides dynamicColor,
+        LocalThemeMode provides themeSettings.themeMode,
+        LocalSeedColor provides themeSettings.seedColor,
+        LocalPaletteStyleIndex provides themeSettings.paletteStyleIndex,
+        LocalDynamicColorSwitch provides themeSettings.dynamicColor,
+        LocalHighContrast provides themeSettings.highContrast,
         LocalTonalPalettes provides tonalPalettes,
         LocalFixedColorRoles provides fixedColorRoles,
         LocalBackgroundPlay provides backgroundPlay,
@@ -90,7 +91,7 @@ fun SettingsProvider(
     ) {
         AstroniaTheme(
             isDarkTheme = isDarkTheme,
-            isHighContrastModeEnabled = isHighContrastModeEnabled,
+            isHighContrastModeEnabled = themeSettings.highContrast,
             content = content
         )
     }
