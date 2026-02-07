@@ -387,7 +387,7 @@ fun PlayerSettingsBottomSheet(
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(vertical = 4.dp),
+                        .height(56.dp),
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
@@ -419,6 +419,7 @@ fun PlayerSettingsBottomSheet(
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
+                    .height(56.dp)
                     .then(
                         if (isBatteryOptimized) {
                             Modifier.clickable(
@@ -430,8 +431,7 @@ fun PlayerSettingsBottomSheet(
                         } else {
                             Modifier
                         }
-                    )
-                    .padding(vertical = 4.dp),
+                    ),
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
@@ -473,7 +473,7 @@ fun PlayerSettingsBottomSheet(
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(vertical = 4.dp),
+                    .height(56.dp),
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
