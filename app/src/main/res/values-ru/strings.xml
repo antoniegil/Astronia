@@ -109,11 +109,12 @@
     <string name="system_settings">Системные настройки</string>
 
     <string name="data_backup">Резервное копирование</string>
-    <string name="backup_data">Экспорт данных</string>
-    <string name="backup_data_desc">Экспортировать историю воспроизведения</string>
-    <string name="backup_success">Экспорт выполнен, сохранено в: %s</string>
-    <string name="backup_failed">Ошибка экспорта</string>
-    <string name="no_history_to_backup">Нет данных для экспорта</string>
+    <string name="export_data">Экспорт данных</string>
+    <string name="export_data_desc">Экспортировать историю воспроизведения</string>
+    <string name="export_success">Экспорт выполнен</string>
+    <string name="export_success_at">Экспорт выполнен, сохранено в: %s</string>
+    <string name="export_failed">Ошибка экспорта</string>
+    <string name="no_history_to_export">Нет данных для экспорта</string>
     <string name="restore_data">Импорт данных</string>
     <string name="restore_data_desc">Восстановить историю из файла бэкапа</string>
     <plurals name="restore_success">

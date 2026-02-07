@@ -106,11 +106,12 @@
     <string name="system_settings">Systeeminstellingen</string>
 
     <string name="data_backup">Gegevensback-up</string>
-    <string name="backup_data">Gegevens exporteren</string>
-    <string name="backup_data_desc">Afspeelgeschiedenis exporteren</string>
-    <string name="backup_success">Exporteren geslaagd, opgeslagen in %s</string>
-    <string name="backup_failed">Exporteren mislukt</string>
-    <string name="no_history_to_backup">Geen geschiedenis om te exporteren</string>
+    <string name="export_data">Gegevens exporteren</string>
+    <string name="export_data_desc">Afspeelgeschiedenis exporteren</string>
+    <string name="export_success">Exporteren geslaagd</string>
+    <string name="export_success_at">Exporteren geslaagd, opgeslagen in %s</string>
+    <string name="export_failed">Exporteren mislukt</string>
+    <string name="no_history_to_export">Geen geschiedenis om te exporteren</string>
     <string name="restore_data">Gegevens importeren</string>
     <string name="restore_data_desc">Geschiedenis importeren uit back-upbestand</string>
     <plurals name="restore_success">

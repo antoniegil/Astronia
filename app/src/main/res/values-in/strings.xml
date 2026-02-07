@@ -105,11 +105,12 @@
     <string name="system_settings">Pengaturan Sistem</string>
 
     <string name="data_backup">Cadangkan Data</string>
-    <string name="backup_data">Ekspor Data</string>
-    <string name="backup_data_desc">Ekspor riwayat putar</string>
-    <string name="backup_success">Ekspor berhasil, disimpan di: %s</string>
-    <string name="backup_failed">Ekspor gagal</string>
-    <string name="no_history_to_backup">Tidak ada riwayat untuk diekspor</string>
+    <string name="export_data">Ekspor Data</string>
+    <string name="export_data_desc">Ekspor riwayat putar</string>
+    <string name="export_success">Ekspor berhasil</string>
+    <string name="export_success_at">Ekspor berhasil, disimpan di: %s</string>
+    <string name="export_failed">Ekspor gagal</string>
+    <string name="no_history_to_export">Tidak ada riwayat untuk diekspor</string>
     <string name="restore_data">Impor Data</string>
     <string name="restore_data_desc">Impor riwayat dari file cadangan</string>
     <plurals name="restore_success">

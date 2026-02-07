@@ -108,11 +108,12 @@
     <string name="system_settings">System Settings</string>
 
     <string name="data_backup">Data Backup</string>
-    <string name="backup_data">Export Data</string>
-    <string name="backup_data_desc">Export play history</string>
-    <string name="backup_success">Export successful, saved at: %s</string>
-    <string name="backup_failed">Export failed</string>
-    <string name="no_history_to_backup">No history to export</string>
+    <string name="export_data">Export Data</string>
+    <string name="export_data_desc">Export play history</string>
+    <string name="export_success">Export successful</string>
+    <string name="export_success_at">Export successful, saved at: %s</string>
+    <string name="export_failed">Export failed</string>
+    <string name="no_history_to_export">No history to export</string>
     <string name="restore_data">Import Data</string>
     <string name="restore_data_desc">Import history from backup file</string>
     <plurals name="restore_success">

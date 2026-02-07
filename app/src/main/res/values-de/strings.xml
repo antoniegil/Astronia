@@ -106,11 +106,12 @@
     <string name="system_settings">Systemeinstellungen</string>
 
     <string name="data_backup">Datensicherung</string>
-    <string name="backup_data">Daten exportieren</string>
-    <string name="backup_data_desc">Wiedergabeverlauf exportieren</string>
-    <string name="backup_success">Export erfolgreich, gespeichert unter: %s</string>
-    <string name="backup_failed">Export fehlgeschlagen</string>
-    <string name="no_history_to_backup">Kein Verlauf zum Exportieren vorhanden</string>
+    <string name="export_data">Daten exportieren</string>
+    <string name="export_data_desc">Wiedergabeverlauf exportieren</string>
+    <string name="export_success">Export erfolgreich</string>
+    <string name="export_success_at">Export erfolgreich, gespeichert unter: %s</string>
+    <string name="export_failed">Export fehlgeschlagen</string>
+    <string name="no_history_to_export">Kein Verlauf zum Exportieren vorhanden</string>
     <string name="restore_data">Daten importieren</string>
     <string name="restore_data_desc">Verlauf aus einer Sicherungsdatei importieren</string>
     <plurals name="restore_success">

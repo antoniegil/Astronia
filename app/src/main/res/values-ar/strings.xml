@@ -110,11 +110,12 @@
     <string name="system_settings">إعدادات النظام</string>
 
     <string name="data_backup">نسخ احتياطي للبيانات</string>
-    <string name="backup_data">تصدير البيانات</string>
-    <string name="backup_data_desc">تصدير سجل التشغيل</string>
-    <string name="backup_success">تم التصدير بنجاح، حفظ في: %s</string>
-    <string name="backup_failed">فشل التصدير</string>
-    <string name="no_history_to_backup">لا يوجد سجل للتصدير</string>
+    <string name="export_data">تصدير البيانات</string>
+    <string name="export_data_desc">تصدير سجل التشغيل</string>
+    <string name="export_success">تم التصدير بنجاح</string>
+    <string name="export_success_at">تم التصدير بنجاح، حفظ في: %s</string>
+    <string name="export_failed">فشل التصدير</string>
+    <string name="no_history_to_export">لا يوجد سجل للتصدير</string>
     <string name="restore_data">استيراد البيانات</string>
     <string name="restore_data_desc">استيراد السجل من ملف نسخة احتياطية</string>
     <plurals name="restore_success">

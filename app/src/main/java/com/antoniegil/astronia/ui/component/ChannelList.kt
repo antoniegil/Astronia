@@ -98,6 +98,7 @@ fun ChannelListSection(
                         Icon(Icons.Outlined.Search, stringResource(R.string.search))
                     }
                     if (showPlayerStatsButton) {
+                        Spacer(modifier = Modifier.width(4.dp))
                         IconButton(
                             onClick = { showStatsDialog = true },
                             modifier = Modifier.size(40.dp)

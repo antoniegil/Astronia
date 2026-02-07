@@ -173,7 +173,7 @@ fun PlayerControlsOverlay(
                     estimatedProgress = estimatedProgress
                 )
                 
-                Spacer(modifier = Modifier.width(12.dp))
+                Spacer(modifier = Modifier.width(8.dp))
                 
                 if (enablePip && Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                     IconButton(

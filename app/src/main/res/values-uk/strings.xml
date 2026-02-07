@@ -108,11 +108,12 @@
     <string name="system_settings">Системні налаштування</string>
 
     <string name="data_backup">Резервне копіювання</string>
-    <string name="backup_data">Експорт даних</string>
-    <string name="backup_data_desc">Експортувати історію відтворень</string>
-    <string name="backup_success">Експорт виконано, збережено в: %s</string>
-    <string name="backup_failed">Помилка експорту</string>
-    <string name="no_history_to_backup">Немає історії для експорту</string>
+    <string name="export_data">Експорт даних</string>
+    <string name="export_data_desc">Експортувати історію відтворень</string>
+    <string name="export_success">Експорт виконано</string>
+    <string name="export_success_at">Експорт виконано, збережено в: %s</string>
+    <string name="export_failed">Помилка експорту</string>
+    <string name="no_history_to_export">Немає історії для експорту</string>
     <string name="restore_data">Імпорт даних</string>
     <string name="restore_data_desc">Імпортувати історію з файлу резервної копії</string>
     <plurals name="restore_success">

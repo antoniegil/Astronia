@@ -106,11 +106,12 @@
     <string name="system_settings">Systeminställningar</string>
 
     <string name="data_backup">Säkerhetskopiering</string>
-    <string name="backup_data">Exportera data</string>
-    <string name="backup_data_desc">Exportera uppspelningshistorik</string>
-    <string name="backup_success">Export lyckades, sparad på: %s</string>
-    <string name="backup_failed">Exporten misslyckades</string>
-    <string name="no_history_to_backup">Ingen historik att exportera</string>
+    <string name="export_data">Exportera data</string>
+    <string name="export_data_desc">Exportera uppspelningshistorik</string>
+    <string name="export_success">Export lyckades</string>
+    <string name="export_success_at">Export lyckades, sparad på: %s</string>
+    <string name="export_failed">Exporten misslyckades</string>
+    <string name="no_history_to_export">Ingen historik att exportera</string>
     <string name="restore_data">Importera data</string>
     <string name="restore_data_desc">Importera historik från säkerhetskopia</string>
     <plurals name="restore_success">

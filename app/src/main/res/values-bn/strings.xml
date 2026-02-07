@@ -106,11 +106,12 @@
     <string name="system_settings">সিস্টেম সেটিংস</string>
 
     <string name="data_backup">ডেটা ব্যাকআপ</string>
-    <string name="backup_data">ডেটা এক্সপোর্ট</string>
-    <string name="backup_data_desc">প্লে ইতিহাস এক্সপোর্ট করুন</string>
-    <string name="backup_success">এক্সপোর্ট সফল হয়েছে, এখানে সংরক্ষিত: %s</string>
-    <string name="backup_failed">এক্সপোর্ট ব্যর্থ হয়েছে</string>
-    <string name="no_history_to_backup">এক্সপোর্ট করার মতো কোনো ইতিহাস নেই</string>
+    <string name="export_data">ডেটা এক্সপোর্ট</string>
+    <string name="export_data_desc">প্লে ইতিহাস এক্সপোর্ট করুন</string>
+    <string name="export_success">এক্সপোর্ট সফল হয়েছে</string>
+    <string name="export_success_at">এক্সপোর্ট সফল হয়েছে, এখানে সংরক্ষিত: %s</string>
+    <string name="export_failed">এক্সপোর্ট ব্যর্থ হয়েছে</string>
+    <string name="no_history_to_export">এক্সপোর্ট করার মতো কোনো ইতিহাস নেই</string>
     <string name="restore_data">ডেটা ইম্পোর্ট</string>
     <string name="restore_data_desc">ব্যাকআপ ফাইল থেকে ইতিহাস ইম্পোর্ট করুন</string>
     <plurals name="restore_success">

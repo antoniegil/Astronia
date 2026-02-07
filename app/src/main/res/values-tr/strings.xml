@@ -106,11 +106,12 @@
     <string name="system_settings">Sistem Ayarları</string>
 
     <string name="data_backup">Veri Yedeği</string>
-    <string name="backup_data">Verileri Dışa Aktar</string>
-    <string name="backup_data_desc">Oynatma geçmişini dışa aktar</string>
-    <string name="backup_success">Dışa aktarma başarılı, şuraya kaydedildi: %s</string>
-    <string name="backup_failed">Dışa aktarma başarısız</string>
-    <string name="no_history_to_backup">Dışa aktarılacak geçmiş yok</string>
+    <string name="export_data">Verileri Dışa Aktar</string>
+    <string name="export_data_desc">Oynatma geçmişini dışa aktar</string>
+    <string name="export_success">Dışa aktarma başarılı</string>
+    <string name="export_success_at">Dışa aktarma başarılı, şuraya kaydedildi: %s</string>
+    <string name="export_failed">Dışa aktarma başarısız</string>
+    <string name="no_history_to_export">Dışa aktarılacak geçmiş yok</string>
     <string name="restore_data">Verileri İçe Aktar</string>
     <string name="restore_data_desc">Yedekleme dosyasından geçmişi içe aktar</string>
     <plurals name="restore_success">

@@ -107,11 +107,12 @@
     <string name="system_settings">Setări sistem</string>
 
     <string name="data_backup">Backup date</string>
-    <string name="backup_data">Exportă date</string>
-    <string name="backup_data_desc">Exportă istoric redare</string>
-    <string name="backup_success">Export reușit, salvat în %s</string>
-    <string name="backup_failed">Export eșuat</string>
-    <string name="no_history_to_backup">Fără istoric de exportat</string>
+    <string name="export_data">Exportă date</string>
+    <string name="export_data_desc">Exportă istoric redare</string>
+    <string name="export_success">Export reușit</string>
+    <string name="export_success_at">Export reușit, salvat în %s</string>
+    <string name="export_failed">Export eșuat</string>
+    <string name="no_history_to_export">Fără istoric de exportat</string>
     <string name="restore_data">Importă date</string>
     <string name="restore_data_desc">Importă istoric din fișier backup</string>
     <plurals name="restore_success">

@@ -107,11 +107,12 @@
     <string name="system_settings">הגדרות מערכת</string>
 
     <string name="data_backup">גיבוי נתונים</string>
-    <string name="backup_data">ייצוא נתונים</string>
-    <string name="backup_data_desc">ייצוא היסטוריית השמעה</string>
-    <string name="backup_success">ייצוא הצליח, נשמר ב-%s</string>
-    <string name="backup_failed">הייצוא נכשל</string>
-    <string name="no_history_to_backup">אין היסטוריה לייצוא</string>
+    <string name="export_data">ייצוא נתונים</string>
+    <string name="export_data_desc">ייצוא היסטוריית השמעה</string>
+    <string name="export_success">ייצוא הצליח</string>
+    <string name="export_success_at">ייצוא הצליח, נשמר ב-%s</string>
+    <string name="export_failed">הייצוא נכשל</string>
+    <string name="no_history_to_export">אין היסטוריה לייצוא</string>
     <string name="restore_data">ייבוא נתונים</string>
     <string name="restore_data_desc">ייבוא היסטוריה מקובץ גיבוי</string>
     <plurals name="restore_success">

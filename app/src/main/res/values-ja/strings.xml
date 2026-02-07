@@ -105,11 +105,12 @@
     <string name="system_settings">システム設定</string>
 
     <string name="data_backup">データバックアップ</string>
-    <string name="backup_data">データをエクスポート</string>
-    <string name="backup_data_desc">再生履歴をエクスポート</string>
-    <string name="backup_success">エクスポート成功、保存先：%s</string>
-    <string name="backup_failed">エクスポート失敗</string>
-    <string name="no_history_to_backup">エクスポートする履歴がありません</string>
+    <string name="export_data">データをエクスポート</string>
+    <string name="export_data_desc">再生履歴をエクスポート</string>
+    <string name="export_success">エクスポート成功</string>
+    <string name="export_success_at">エクスポート成功、保存先：%s</string>
+    <string name="export_failed">エクスポート失敗</string>
+    <string name="no_history_to_export">エクスポートする履歴がありません</string>
     <string name="restore_data">データをインポート</string>
     <string name="restore_data_desc">バックアップファイルから履歴をインポート</string>
     <plurals name="restore_success">

@@ -108,11 +108,12 @@
     <string name="system_settings">Ustawienia systemowe</string>
 
     <string name="data_backup">Kopia zapasowa danych</string>
-    <string name="backup_data">Eksportuj dane</string>
-    <string name="backup_data_desc">Eksportuj historię odtwarzania</string>
-    <string name="backup_success">Eksport zakończony sukcesem, zapisano w %s</string>
-    <string name="backup_failed">Eksport nie powiódł się</string>
-    <string name="no_history_to_backup">Brak historii do eksportu</string>
+    <string name="export_data">Eksportuj dane</string>
+    <string name="export_data_desc">Eksportuj historię odtwarzania</string>
+    <string name="export_success">Eksport zakończony sukcesem</string>
+    <string name="export_success_at">Eksport zakończony sukcesem, zapisano w %s</string>
+    <string name="export_failed">Eksport nie powiódł się</string>
+    <string name="no_history_to_export">Brak historii do eksportu</string>
     <string name="restore_data">Importuj dane</string>
     <string name="restore_data_desc">Importuj historię z pliku kopii zapasowej</string>
     <plurals name="restore_success">

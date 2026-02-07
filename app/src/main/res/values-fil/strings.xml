@@ -106,11 +106,12 @@
     <string name="system_settings">Mga setting ng system</string>
 
     <string name="data_backup">Pag-backup ng data</string>
-    <string name="backup_data">I-export ang data</string>
-    <string name="backup_data_desc">I-export ang kasaysayan ng pag-play</string>
-    <string name="backup_success">Matagumpay na nag-export, naka-save sa %s</string>
-    <string name="backup_failed">Nabigo ang pag-export</string>
-    <string name="no_history_to_backup">Walang kasaysayan na ie-export</string>
+    <string name="export_data">I-export ang data</string>
+    <string name="export_data_desc">I-export ang kasaysayan ng pag-play</string>
+    <string name="export_success">Matagumpay na nag-export</string>
+    <string name="export_success_at">Matagumpay na nag-export, naka-save sa %s</string>
+    <string name="export_failed">Nabigo ang pag-export</string>
+    <string name="no_history_to_export">Walang kasaysayan na ie-export</string>
     <string name="restore_data">I-import ang data</string>
     <string name="restore_data_desc">I-import ang kasaysayan mula sa backup file</string>
     <plurals name="restore_success">

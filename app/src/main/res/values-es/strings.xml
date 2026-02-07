@@ -106,11 +106,12 @@
     <string name="system_settings">Configuración del sistema</string>
 
     <string name="data_backup">Copia de seguridad</string>
-    <string name="backup_data">Exportar datos</string>
-    <string name="backup_data_desc">Exportar historial de reproducción</string>
-    <string name="backup_success">Exportación exitosa, guardado en: %s</string>
-    <string name="backup_failed">Error al exportar</string>
-    <string name="no_history_to_backup">Sin historial para exportar</string>
+    <string name="export_data">Exportar datos</string>
+    <string name="export_data_desc">Exportar historial de reproducción</string>
+    <string name="export_success">Exportación exitosa</string>
+    <string name="export_success_at">Exportación exitosa, guardado en: %s</string>
+    <string name="export_failed">Error al exportar</string>
+    <string name="no_history_to_export">Sin historial para exportar</string>
     <string name="restore_data">Importar datos</string>
     <string name="restore_data_desc">Importar historial desde archivo de respaldo</string>
     <plurals name="restore_success">

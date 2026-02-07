@@ -105,11 +105,12 @@
     <string name="system_settings">การตั้งค่าระบบ</string>
 
     <string name="data_backup">สำรองข้อมูล</string>
-    <string name="backup_data">ส่งออกข้อมูล</string>
-    <string name="backup_data_desc">ส่งออกประวัติการเล่น</string>
-    <string name="backup_success">ส่งออกสำเร็จ บันทึกไว้ที่: %s</string>
-    <string name="backup_failed">ส่งออกล้มเหลว</string>
-    <string name="no_history_to_backup">ไม่มีประวัติให้ส่งออก</string>
+    <string name="export_data">ส่งออกข้อมูล</string>
+    <string name="export_data_desc">ส่งออกประวัติการเล่น</string>
+    <string name="export_success">ส่งออกสำเร็จ</string>
+    <string name="export_success_at">ส่งออกสำเร็จ บันทึกไว้ที่: %s</string>
+    <string name="export_failed">ส่งออกล้มเหลว</string>
+    <string name="no_history_to_export">ไม่มีประวัติให้ส่งออก</string>
     <string name="restore_data">นำเข้าข้อมูล</string>
     <string name="restore_data_desc">นำเข้าประวัติจากไฟล์สำรองข้อมูล</string>
     <plurals name="restore_success">

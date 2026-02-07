@@ -108,11 +108,12 @@
     <string name="system_settings">Nastavení systému</string>
 
     <string name="data_backup">Zálohování dat</string>
-    <string name="backup_data">Export dat</string>
-    <string name="backup_data_desc">Export historie přehrávání</string>
-    <string name="backup_success">Export úspěšný, uloženo v %s</string>
-    <string name="backup_failed">Export se nezdařil</string>
-    <string name="no_history_to_backup">Žádná historie k exportu</string>
+    <string name="export_data">Export dat</string>
+    <string name="export_data_desc">Export historie přehrávání</string>
+    <string name="export_success">Export úspěšný</string>
+    <string name="export_success_at">Export úspěšný, uloženo v %s</string>
+    <string name="export_failed">Export se nezdařil</string>
+    <string name="no_history_to_export">Žádná historie k exportu</string>
     <string name="restore_data">Import dat</string>
     <string name="restore_data_desc">Import historie ze záložního souboru</string>
     <plurals name="restore_success">

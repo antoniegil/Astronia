@@ -61,8 +61,8 @@ fun DataManagementPage(onNavigateBack: () -> Unit) {
             
             item {
                 PreferenceItem(
-                    title = stringResource(R.string.backup_data),
-                    description = stringResource(R.string.backup_data_desc),
+                    title = stringResource(R.string.export_data),
+                    description = stringResource(R.string.export_data_desc),
                     icon = Icons.AutoMirrored.Outlined.DriveFileMove,
                     onClick = {
                         if (!isBackingUp) {
@@ -77,7 +77,7 @@ fun DataManagementPage(onNavigateBack: () -> Unit) {
                                         isBackingUp = false
                                         Toast.makeText(
                                             context,
-                                            resources.getString(R.string.no_history_to_backup),
+                                            resources.getString(R.string.no_history_to_export),
                                             Toast.LENGTH_SHORT
                                         ).show()
                                     }

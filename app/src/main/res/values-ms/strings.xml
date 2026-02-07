@@ -105,11 +105,12 @@
     <string name="system_settings">Tetapan Sistem</string>
 
     <string name="data_backup">Sandaran Data</string>
-    <string name="backup_data">Eksport Data</string>
-    <string name="backup_data_desc">Eksport sejarah tontonan</string>
-    <string name="backup_success">Eksport berjaya, disimpan di %s</string>
-    <string name="backup_failed">Eksport gagal</string>
-    <string name="no_history_to_backup">Tiada sejarah untuk dieksport</string>
+    <string name="export_data">Eksport Data</string>
+    <string name="export_data_desc">Eksport sejarah tontonan</string>
+    <string name="export_success">Eksport berjaya</string>
+    <string name="export_success_at">Eksport berjaya, disimpan di %s</string>
+    <string name="export_failed">Eksport gagal</string>
+    <string name="no_history_to_export">Tiada sejarah untuk dieksport</string>
     <string name="restore_data">Import Data</string>
     <string name="restore_data_desc">Import sejarah daripada fail sandaran</string>
     <plurals name="restore_success">

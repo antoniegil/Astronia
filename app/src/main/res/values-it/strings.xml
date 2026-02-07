@@ -106,11 +106,12 @@
     <string name="system_settings">Impostazioni di sistema</string>
 
     <string name="data_backup">Backup dati</string>
-    <string name="backup_data">Esporta dati</string>
-    <string name="backup_data_desc">Esporta cronologia di riproduzione</string>
-    <string name="backup_success">Esportazione riuscita, salvato in: %s</string>
-    <string name="backup_failed">Esportazione fallita</string>
-    <string name="no_history_to_backup">Nessuna cronologia da esportare</string>
+    <string name="export_data">Esporta dati</string>
+    <string name="export_data_desc">Esporta cronologia di riproduzione</string>
+    <string name="export_success">Esportazione riuscita</string>
+    <string name="export_success_at">Esportazione riuscita, salvato in: %s</string>
+    <string name="export_failed">Esportazione fallita</string>
+    <string name="no_history_to_export">Nessuna cronologia da esportare</string>
     <string name="restore_data">Importa dati</string>
     <string name="restore_data_desc">Importa cronologia da file di backup</string>
     <plurals name="restore_success">

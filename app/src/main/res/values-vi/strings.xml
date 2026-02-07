@@ -105,11 +105,12 @@
     <string name="system_settings">Cài đặt hệ thống</string>
 
     <string name="data_backup">Sao lưu dữ liệu</string>
-    <string name="backup_data">Xuất dữ liệu</string>
-    <string name="backup_data_desc">Xuất lịch sử phát</string>
-    <string name="backup_success">Xuất thành công, đã lưu tại: %s</string>
-    <string name="backup_failed">Xuất thất bại</string>
-    <string name="no_history_to_backup">Không có lịch sử để xuất</string>
+    <string name="export_data">Xuất dữ liệu</string>
+    <string name="export_data_desc">Xuất lịch sử phát</string>
+    <string name="export_success">Xuất thành công</string>
+    <string name="export_success_at">Xuất thành công, đã lưu tại: %s</string>
+    <string name="export_failed">Xuất thất bại</string>
+    <string name="no_history_to_export">Không có lịch sử để xuất</string>
     <string name="restore_data">Nhập dữ liệu</string>
     <string name="restore_data_desc">Nhập lịch sử từ tệp sao lưu</string>
     <plurals name="restore_success">

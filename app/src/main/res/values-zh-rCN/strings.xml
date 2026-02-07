@@ -105,11 +105,12 @@
     <string name="system_settings">系统设置</string>
 
     <string name="data_backup">数据备份</string>
-    <string name="backup_data">导出资料</string>
-    <string name="backup_data_desc">导出播放历史记录</string>
-    <string name="backup_success">导出成功，保存在 %s</string>
-    <string name="backup_failed">导出失败</string>
-    <string name="no_history_to_backup">没有历史记录可导出</string>
+    <string name="export_data">导出资料</string>
+    <string name="export_data_desc">导出播放历史记录</string>
+    <string name="export_success">导出成功</string>
+    <string name="export_success_at">导出成功，保存在 %s</string>
+    <string name="export_failed">导出失败</string>
+    <string name="no_history_to_export">没有历史记录可导出</string>
     <string name="restore_data">导入资料</string>
     <string name="restore_data_desc">从备份文件导入历史记录</string>
     <plurals name="restore_success">

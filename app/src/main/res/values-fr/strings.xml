@@ -106,11 +106,12 @@
     <string name="system_settings">Paramètres système</string>
 
     <string name="data_backup">Sauvegarde des données</string>
-    <string name="backup_data">Exporter les données</string>
-    <string name="backup_data_desc">Exporter l\'historique de lecture</string>
-    <string name="backup_success">Export réussi, enregistré sous : %s</string>
-    <string name="backup_failed">Échec de l\'exportation</string>
-    <string name="no_history_to_backup">Aucun historique à exporter</string>
+    <string name="export_data">Exporter les données</string>
+    <string name="export_data_desc">Exporter l\'historique de lecture</string>
+    <string name="export_success">Export réussi</string>
+    <string name="export_success_at">Export réussi, enregistré sous : %s</string>
+    <string name="export_failed">Échec de l\'exportation</string>
+    <string name="no_history_to_export">Aucun historique à exporter</string>
     <string name="restore_data">Importer les données</string>
     <string name="restore_data_desc">Importer l\'historique depuis un fichier</string>
     <plurals name="restore_success">

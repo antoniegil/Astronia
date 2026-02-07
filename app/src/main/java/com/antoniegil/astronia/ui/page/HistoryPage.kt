@@ -185,7 +185,7 @@ fun HistoryPage(
                                                     } else {
                                                         Toast.makeText(
                                                             context,
-                                                            resources.getString(R.string.no_history_to_backup),
+                                                            resources.getString(R.string.no_history_to_export),
                                                             Toast.LENGTH_SHORT
                                                         ).show()
                                                     }

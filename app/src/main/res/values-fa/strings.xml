@@ -106,11 +106,12 @@
     <string name="system_settings">تنظیمات سیستم</string>
 
     <string name="data_backup">پشتیبان‌گیری داده</string>
-    <string name="backup_data">صادرات داده</string>
-    <string name="backup_data_desc">صادرات تاریخچه پخش</string>
-    <string name="backup_success">صادرات موفق، ذخیره شده در %s</string>
-    <string name="backup_failed">صادرات ناموفق</string>
-    <string name="no_history_to_backup">تاریخچه‌ای برای صادرات وجود ندارد</string>
+    <string name="export_data">صادرات داده</string>
+    <string name="export_data_desc">صادرات تاریخچه پخش</string>
+    <string name="export_success">صادرات موفق</string>
+    <string name="export_success_at">صادرات موفق، ذخیره شده در %s</string>
+    <string name="export_failed">صادرات ناموفق</string>
+    <string name="no_history_to_export">تاریخچه‌ای برای صادرات وجود ندارد</string>
     <string name="restore_data">وارد کردن داده</string>
     <string name="restore_data_desc">وارد کردن تاریخچه از فایل پشتیبان</string>
     <plurals name="restore_success">

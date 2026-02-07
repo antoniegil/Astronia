@@ -130,12 +130,11 @@ fun rememberBackupExportLauncher(
         uri?.let {
             scope.launch(Dispatchers.IO) {
                 val success = DataManager.writeBackupToUri(context, it, backupContent)
-                val path = it.path ?: it.toString()
                 withContext(Dispatchers.Main) {
                     Toast.makeText(
                         context,
-                        if (success) context.getString(R.string.backup_success, path) else context.getString(R.string.backup_failed),
-                        Toast.LENGTH_LONG
+                        context.getString(if (success) R.string.export_success else R.string.export_failed),
+                        Toast.LENGTH_SHORT
                     ).show()
                     onComplete()
                 }
