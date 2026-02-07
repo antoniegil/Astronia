@@ -1,0 +1,8 @@
+<b>Features</b>
+- 🎬 M3U8 video streaming playback
+- 📱 Material Design 3 UI
+- 🌙 Dark mode support
+- 🔄 Auto-update functionality
+- 🎨 Modern and intuitive interface
+- 🔒 Privacy-focused (no data collection)
+- 🌐 Multi-language support (30+)
