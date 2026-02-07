@@ -31,8 +31,6 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.state.ToggleableState
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import androidx.activity.compose.rememberLauncherForActivityResult
-import androidx.activity.result.contract.ActivityResultContracts
 import android.widget.Toast
 import com.antoniegil.astronia.R
 import com.antoniegil.astronia.ui.common.HapticFeedback.slightHapticFeedback
@@ -42,6 +40,8 @@ import com.antoniegil.astronia.util.HistoryItem
 import com.antoniegil.astronia.util.HistoryManager
 import com.antoniegil.astronia.util.DataManager
 import com.antoniegil.astronia.util.formatDateTime
+import com.antoniegil.astronia.util.rememberBackupExportLauncher
+import com.antoniegil.astronia.util.rememberHistoryRestoreLauncher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -97,31 +97,13 @@ fun HistoryPage(
         }
     }
 
-    val restoreLauncher = rememberLauncherForActivityResult(
-        contract = ActivityResultContracts.GetContent()
-    ) { uri ->
-        uri?.let {
-            scope.launch {
-                val (success, count) = withContext(Dispatchers.IO) {
-                    DataManager.restoreHistory(context, it)
-                }
-                withContext(Dispatchers.Main) {
-                    if (success) {
-                        HistoryManager.getHistory(context)
-                        Toast.makeText(
-                            context,
-                            resources.getQuantityString(R.plurals.restore_success, count, count),
-                            Toast.LENGTH_LONG
-                        ).show()
-                    } else {
-                        Toast.makeText(
-                            context,
-                            resources.getString(R.string.restore_failed),
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
-                }
-            }
+    var backupContent by remember { mutableStateOf("") }
+
+    val launchExport = rememberBackupExportLauncher(backupContent)
+    
+    val (restoreLauncher, restoreMimeType) = rememberHistoryRestoreLauncher { success, count ->
+        if (success) {
+            HistoryManager.getHistory(context)
         }
     }
 
@@ -194,30 +176,16 @@ fun HistoryPage(
                                         text = { Text(stringResource(R.string.export_label)) },
                                         onClick = {
                                             showMenu = false
-                                            scope.launch {
-                                                val (success, path) = withContext(Dispatchers.IO) {
-                                                    DataManager.backupHistory(context)
-                                                }
+                                            scope.launch(Dispatchers.IO) {
+                                                val content = DataManager.prepareBackupContent(context)
                                                 withContext(Dispatchers.Main) {
-                                                    if (success && path != null) {
-                                                        Toast.makeText(
-                                                            context,
-                                                            resources.getString(
-                                                                R.string.backup_success,
-                                                                path
-                                                            ),
-                                                            Toast.LENGTH_LONG
-                                                        ).show()
-                                                    } else if (path == null && !success) {
-                                                        Toast.makeText(
-                                                            context,
-                                                            resources.getString(R.string.no_history_to_backup),
-                                                            Toast.LENGTH_SHORT
-                                                        ).show()
+                                                    if (content != null) {
+                                                        backupContent = content
+                                                        launchExport()
                                                     } else {
                                                         Toast.makeText(
                                                             context,
-                                                            resources.getString(R.string.backup_failed),
+                                                            resources.getString(R.string.no_history_to_backup),
                                                             Toast.LENGTH_SHORT
                                                         ).show()
                                                     }
@@ -233,7 +201,7 @@ fun HistoryPage(
                                     text = { Text(stringResource(R.string.import_label)) },
                                     onClick = {
                                         showMenu = false
-                                        restoreLauncher.launch("application/json")
+                                        restoreLauncher.launch(restoreMimeType)
                                     }
                                 )
                             }
@@ -258,10 +226,10 @@ fun HistoryPage(
                         state = checkBoxState,
                         onClick = {
                             view.slightHapticFeedback()
-                            when (checkBoxState) {
-                                ToggleableState.On -> selectedItems = emptySet()
+                            selectedItems = when (checkBoxState) {
+                                ToggleableState.On -> emptySet()
                                 else -> {
-                                    selectedItems = filteredHistoryList.map { it.url }.toSet()
+                                    filteredHistoryList.map { it.url }.toSet()
                                 }
                             }
                         }

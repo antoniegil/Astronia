@@ -179,12 +179,14 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
                     url.startsWith("content") || url.startsWith("file") -> getApplication<Application>().getString(com.antoniegil.astronia.R.string.local_video)
                     else -> getApplication<Application>().getString(com.antoniegil.astronia.R.string.unknown_video)
                 }
-                
-                val playlistName = if (isM3U8Playlist) {
+
+                if (isM3U8Playlist) {
                     initialVideoTitle?.takeIf { it.isNotEmpty() } ?: url.substringAfterLast("/").substringBeforeLast(".").ifEmpty { 
                         url.substringAfterLast("/").ifEmpty { getApplication<Application>().getString(com.antoniegil.astronia.R.string.playlist) }
                     }
-                } else ""
+                } else {
+                    ""
+                }
                 
                 _uiState.value = _uiState.value.copy(
                     channels = channels,
@@ -321,19 +323,7 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
         }
         localPlayer = null
     }
-    
-    fun resetPlayer() {
-        _uiState.value = _uiState.value.copy(
-            isPlaying = false,
-            isBuffering = false,
-            currentPosition = 0L,
-            bufferedPosition = 0L,
-            duration = 0L
-        )
-        _progressState.value = PlayerProgressState()
-        watchTimeTracker.reset()
-    }
-    
+
     override fun onCleared() {
         super.onCleared()
         stopWatchTimeTracking()
@@ -393,11 +383,7 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
             }
         }
     }
-    
-    fun updateSurface(surface: Surface?) {
-        lastSurface = surface
-    }
-    
+
     fun initOrientationHelper(activity: android.app.Activity) {
         if (orientationHelper == null) {
             orientationHelper = OrientationHelper(activity) { isLandscape ->

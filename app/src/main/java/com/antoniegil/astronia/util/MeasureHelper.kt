@@ -3,7 +3,6 @@ package com.antoniegil.astronia.util
 import android.view.View
 
 class MeasureHelper(
-    private val view: View,
     private val paramsListener: MeasureFormVideoParamsListener
 ) {
     private var videoWidth = 0
@@ -68,7 +67,7 @@ class MeasureHelper(
             
             if (widthSpecMode == View.MeasureSpec.AT_MOST && heightSpecMode == View.MeasureSpec.AT_MOST) {
                 val specAspectRatio = widthSpecSize.toFloat() / heightSpecSize.toFloat()
-                var displayAspectRatio = when (currentAspectRatio) {
+                val displayAspectRatio = when (currentAspectRatio) {
                     0 -> {
                         var ratio = 16.0f / 9.0f
                         if (videoRotationDegree == 90 || videoRotationDegree == 270) {

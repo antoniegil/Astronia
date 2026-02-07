@@ -171,8 +171,8 @@ class OrientationHelper(
     
     fun resolveByClick() {
         isClick = true
-        
-        val activity = activityRef.get() ?: return
+
+        activityRef.get() ?: return
         
         if (isLand == LAND_TYPE_NULL) {
             screenType = ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE
@@ -206,25 +206,9 @@ class OrientationHelper(
         isEnable = true
         orientationEventListener.enable()
     }
-    
-    fun disable() {
-        isEnable = false
-        orientationEventListener.disable()
-    }
-    
+
     fun release() {
         orientationEventListener.disable()
     }
-    
-    fun setRotateWithSystem(rotate: Boolean) {
-        rotateWithSystem = rotate
-    }
-    
-    fun setPause(pause: Boolean) {
-        isPause = pause
-    }
-    
-    fun getIsLandscape(): Boolean {
-        return isLand > LAND_TYPE_NULL
-    }
+
 }

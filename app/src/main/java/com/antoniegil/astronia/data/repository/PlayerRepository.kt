@@ -15,17 +15,13 @@ class PlayerRepository(private val context: Context) {
     suspend fun parseM3U8FromContent(content: String): Result<List<M3U8Channel>> {
         return M3U8Parser.parseM3U8(content)
     }
-    
-    fun getAutoPlay(): Boolean = SettingsManager.getAutoPlay(context)
-    
+
     fun getAutoHideControls(): Boolean = SettingsManager.getAutoHideControls(context)
     
     fun getEnablePip(): Boolean = SettingsManager.getEnablePip(context)
     
     fun getBackgroundPlay(): Boolean = SettingsManager.getBackgroundPlay(context)
-    
-    fun getDecoderType(): Int = SettingsManager.getDecoderType(context)
-    
+
     fun getAspectRatio(): Int = SettingsManager.getAspectRatio(context)
     
     fun getMirrorFlip(): Boolean = SettingsManager.getMirrorFlip(context)

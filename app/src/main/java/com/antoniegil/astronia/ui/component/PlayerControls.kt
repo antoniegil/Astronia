@@ -169,13 +169,8 @@ fun PlayerControlsOverlay(
 
                 ProgressBar(
                     modifier = Modifier.weight(1f),
-                    currentPosition = currentPosition,
-                    bufferedPosition = bufferedPosition,
-                    duration = duration,
                     isBuffering = isBuffering,
-                    estimatedProgress = estimatedProgress,
-                    media3Player = media3Player,
-                    onSeek = onSeek
+                    estimatedProgress = estimatedProgress
                 )
                 
                 Spacer(modifier = Modifier.width(12.dp))
@@ -218,13 +213,8 @@ fun PlayerControlsOverlay(
 @Composable
 private fun ProgressBar(
     modifier: Modifier = Modifier,
-    currentPosition: Long,
-    bufferedPosition: Long,
-    duration: Long,
     isBuffering: Boolean,
-    estimatedProgress: Float,
-    media3Player: Media3Player?,
-    onSeek: (Long) -> Unit
+    estimatedProgress: Float
 ) {
     Column(modifier = modifier) {
         when {
@@ -421,7 +411,6 @@ fun PlayerSettingsBottomSheet(
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .heightIn(min = 56.dp)
                     .then(
                         if (isBatteryOptimized) {
                             Modifier.clickable(

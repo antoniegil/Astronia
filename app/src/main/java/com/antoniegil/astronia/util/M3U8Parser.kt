@@ -1,8 +1,17 @@
 package com.antoniegil.astronia.util
 
+import android.os.Build
+import android.util.Log
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import java.net.URL
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import java.security.SecureRandom
+import java.security.cert.X509Certificate
+import java.util.concurrent.TimeUnit
+import javax.net.ssl.SSLContext
+import javax.net.ssl.TrustManager
+import javax.net.ssl.X509TrustManager
 
 data class M3U8Channel(
     val id: String,
@@ -13,6 +22,32 @@ data class M3U8Channel(
 
 object M3U8Parser {
     
+    private val client: OkHttpClient by lazy {
+        if (Build.VERSION.SDK_INT == Build.VERSION_CODES.N) {
+            val trustAllCerts = arrayOf<TrustManager>(object : X509TrustManager {
+                override fun checkClientTrusted(chain: Array<X509Certificate>, authType: String) {}
+                override fun checkServerTrusted(chain: Array<X509Certificate>, authType: String) {}
+                override fun getAcceptedIssuers(): Array<X509Certificate> = arrayOf()
+            })
+            
+            val sslContext = SSLContext.getInstance("TLS").apply {
+                init(null, trustAllCerts, SecureRandom())
+            }
+            
+            OkHttpClient.Builder()
+                .sslSocketFactory(sslContext.socketFactory, trustAllCerts[0] as X509TrustManager)
+                .hostnameVerifier { _, _ -> true }
+                .connectTimeout(PlayerConstants.M3U8_CONNECTION_TIMEOUT_MS.toLong(), TimeUnit.MILLISECONDS)
+                .readTimeout(PlayerConstants.M3U8_READ_TIMEOUT_MS.toLong(), TimeUnit.MILLISECONDS)
+                .build()
+        } else {
+            OkHttpClient.Builder()
+                .connectTimeout(PlayerConstants.M3U8_CONNECTION_TIMEOUT_MS.toLong(), TimeUnit.MILLISECONDS)
+                .readTimeout(PlayerConstants.M3U8_READ_TIMEOUT_MS.toLong(), TimeUnit.MILLISECONDS)
+                .build()
+        }
+    }
+    
     suspend fun parseM3U8(content: String): Result<List<M3U8Channel>> = withContext(Dispatchers.IO) {
         try {
             val channels = mutableListOf<M3U8Channel>()
@@ -20,7 +55,6 @@ object M3U8Parser {
             
             var currentName = ""
             var currentGroup = ""
-            var currentId = ""
             
             for (line in lines) {
                 val trimmedLine = line.trim()
@@ -30,11 +64,10 @@ object M3U8Parser {
                 if (trimmedLine.startsWith("#EXTINF:")) {
                     currentName = extractChannelName(trimmedLine)
                     currentGroup = extractGroup(trimmedLine)
-                    currentId = extractTvgId(trimmedLine)
                 } else if (!trimmedLine.startsWith("#")) {
                     if (trimmedLine.startsWith("http") || trimmedLine.startsWith("rtmp") || 
                         trimmedLine.startsWith("rtsp") || trimmedLine.startsWith("udp")) {
-                        val name = if (currentName.isNotEmpty()) currentName else "Channel ${channels.size + 1}"
+                        val name = currentName.ifEmpty { "Channel ${channels.size + 1}" }
                         val finalId = "${trimmedLine.hashCode()}_${channels.size}"
                         
                         channels.add(
@@ -52,7 +85,6 @@ object M3U8Parser {
                     }
                     currentName = ""
                     currentGroup = ""
-                    currentId = ""
                 }
             }
             
@@ -64,14 +96,26 @@ object M3U8Parser {
     
     suspend fun parseM3U8FromUrl(url: String): Result<List<M3U8Channel>> = withContext(Dispatchers.IO) {
         try {
-            val connection = URL(url).openConnection()
-            connection.connectTimeout = PlayerConstants.M3U8_CONNECTION_TIMEOUT_MS
-            connection.readTimeout = PlayerConstants.M3U8_READ_TIMEOUT_MS
+            Log.d("M3U8Parser", "Fetching M3U8 from: $url")
+            Log.d("M3U8Parser", "OkHttp version: ${OkHttpClient::class.java.`package`?.implementationVersion}")
             
-            val contentLength = connection.contentLength
-            if (contentLength > PlayerConstants.M3U8_MAX_SIZE_BYTES) {
+            val request = Request.Builder().url(url).build()
+            val response = client.newCall(request).execute()
+            
+            Log.d("M3U8Parser", "Response code: ${response.code}")
+            
+            if (!response.isSuccessful) {
                 return@withContext Result.Error(
-                    Exception("Content too large"), 
+                    Exception("HTTP ${response.code}"),
+                    "Failed to fetch M3U8"
+                )
+            }
+            
+            val contentLength = response.body.contentLength()
+            if (contentLength > PlayerConstants.M3U8_MAX_SIZE_BYTES) {
+                response.close()
+                return@withContext Result.Error(
+                    Exception("Content too large"),
                     "M3U8 file exceeds size limit"
                 )
             }
@@ -79,10 +123,9 @@ object M3U8Parser {
             val channels = mutableListOf<M3U8Channel>()
             var currentName = ""
             var currentGroup = ""
-            var currentId = ""
             var totalBytesRead = 0
             
-            connection.getInputStream().bufferedReader().use { reader ->
+            response.body.byteStream().bufferedReader().use { reader ->
                 reader.lineSequence().forEach { line ->
                     totalBytesRead += line.length + 1
                     
@@ -97,11 +140,10 @@ object M3U8Parser {
                     if (trimmedLine.startsWith("#EXTINF:")) {
                         currentName = extractChannelName(trimmedLine)
                         currentGroup = extractGroup(trimmedLine)
-                        currentId = extractTvgId(trimmedLine)
                     } else if (!trimmedLine.startsWith("#")) {
                         if (trimmedLine.startsWith("http") || trimmedLine.startsWith("rtmp") || 
                             trimmedLine.startsWith("rtsp") || trimmedLine.startsWith("udp")) {
-                            val name = if (currentName.isNotEmpty()) currentName else "Channel ${channels.size + 1}"
+                            val name = currentName.ifEmpty { "Channel ${channels.size + 1}" }
                             val finalId = "${trimmedLine.hashCode()}_${channels.size}"
                             
                             channels.add(
@@ -119,7 +161,6 @@ object M3U8Parser {
                         }
                         currentName = ""
                         currentGroup = ""
-                        currentId = ""
                     }
                 }
             }
@@ -151,11 +192,6 @@ object M3U8Parser {
         return ""
     }
     
-    private fun extractTvgId(line: String): String {
-        val tvgIdMatch = Regex("""tvg-id="([^"]+)"""").find(line)
-        return tvgIdMatch?.groupValues?.get(1) ?: ""
-    }
-
     private fun extractGroup(line: String): String {
         val groupMatch = Regex("""group-title="([^"]+)"""").find(line)
         return groupMatch?.groupValues?.get(1) ?: ""

@@ -75,12 +75,14 @@ fun AboutPage(
         }
     }
     
-    val info = remember(versionName, versionCode) {
+    val buildType = remember { if (BuildConfig.DEBUG) debugBuildString else releaseBuildString }
+    
+    val info = remember(versionName, versionCode, buildType) {
         buildString {
             appendLine("Astronia")
             appendLine("$versionString: $versionName ($versionCode)")
             appendLine("$packageNameString: ${context.packageName}")
-            appendLine("$buildTypeString: ${if (BuildConfig.DEBUG) debugBuildString else releaseBuildString}")
+            appendLine("$buildTypeString: $buildType")
         }
     }
 

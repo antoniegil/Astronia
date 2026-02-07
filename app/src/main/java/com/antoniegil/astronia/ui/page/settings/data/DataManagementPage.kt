@@ -1,8 +1,6 @@
 package com.antoniegil.astronia.ui.page.settings.data
 
 import android.widget.Toast
-import androidx.activity.compose.rememberLauncherForActivityResult
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
@@ -19,6 +17,8 @@ import com.antoniegil.astronia.ui.component.BackButton
 import com.antoniegil.astronia.ui.component.PreferenceItem
 import com.antoniegil.astronia.ui.component.PreferenceSubtitle
 import com.antoniegil.astronia.util.DataManager
+import com.antoniegil.astronia.util.rememberBackupExportLauncher
+import com.antoniegil.astronia.util.rememberHistoryRestoreLauncher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -33,33 +33,13 @@ fun DataManagementPage(onNavigateBack: () -> Unit) {
     val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
     
     var isBackingUp by remember { mutableStateOf(false) }
+    var backupContent by remember { mutableStateOf("") }
     
-    val restoreLauncher = rememberLauncherForActivityResult(
-        contract = ActivityResultContracts.GetContent()
-    ) { uri ->
-        uri?.let {
-            scope.launch {
-                val (success, count) = withContext(Dispatchers.IO) {
-                    DataManager.restoreHistory(context, it)
-                }
-                withContext(Dispatchers.Main) {
-                    if (success) {
-                        Toast.makeText(
-                            context,
-                            resources.getQuantityString(R.plurals.restore_success, count, count),
-                            Toast.LENGTH_LONG
-                        ).show()
-                    } else {
-                        Toast.makeText(
-                            context,
-                            resources.getString(R.string.restore_failed),
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
-                }
-            }
-        }
+    val launchExport = rememberBackupExportLauncher(backupContent) {
+        isBackingUp = false
     }
+    
+    val (restoreLauncher, restoreMimeType) = rememberHistoryRestoreLauncher()
 
     Scaffold(
         modifier = Modifier.fillMaxSize().nestedScroll(scrollBehavior.nestedScrollConnection),
@@ -87,28 +67,17 @@ fun DataManagementPage(onNavigateBack: () -> Unit) {
                     onClick = {
                         if (!isBackingUp) {
                             isBackingUp = true
-                            scope.launch {
-                                val (success, path) = withContext(Dispatchers.IO) {
-                                    DataManager.backupHistory(context)
-                                }
+                            scope.launch(Dispatchers.IO) {
+                                val content = DataManager.prepareBackupContent(context)
                                 withContext(Dispatchers.Main) {
-                                    isBackingUp = false
-                                    if (success && path != null) {
-                                        Toast.makeText(
-                                            context,
-                                            resources.getString(R.string.backup_success, path),
-                                            Toast.LENGTH_LONG
-                                        ).show()
-                                    } else if (path == null && !success) {
+                                    if (content != null) {
+                                        backupContent = content
+                                        launchExport()
+                                    } else {
+                                        isBackingUp = false
                                         Toast.makeText(
                                             context,
                                             resources.getString(R.string.no_history_to_backup),
-                                            Toast.LENGTH_SHORT
-                                        ).show()
-                                    } else {
-                                        Toast.makeText(
-                                            context,
-                                            resources.getString(R.string.backup_failed),
                                             Toast.LENGTH_SHORT
                                         ).show()
                                     }
@@ -125,7 +94,7 @@ fun DataManagementPage(onNavigateBack: () -> Unit) {
                     description = stringResource(R.string.restore_data_desc),
                     icon = Icons.Outlined.Restore,
                     onClick = {
-                        restoreLauncher.launch("application/json")
+                        restoreLauncher.launch(restoreMimeType)
                     }
                 )
             }

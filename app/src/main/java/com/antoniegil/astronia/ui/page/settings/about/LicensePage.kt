@@ -31,10 +31,8 @@ data class Credit(
 )
 
 private const val GPL_V3 = "GNU General Public License v3.0"
-private const val GPL_V2 = "GNU General Public License v2.0"
 private const val LGPL_V2_1 = "GNU Lesser General Public License, version 2.1"
 private const val APACHE_V2 = "Apache License, Version 2.0"
-private const val UNLICENSE = "The Unlicense"
 private const val BSD = "BSD 3-Clause License"
 
 fun Color.applyOpacity(enabled: Boolean): Color {

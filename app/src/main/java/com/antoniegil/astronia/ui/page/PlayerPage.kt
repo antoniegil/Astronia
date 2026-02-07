@@ -103,35 +103,7 @@ private fun PlayerPageContent(
     val configuration = LocalConfiguration.current
     var isInPictureInPictureMode by remember { mutableStateOf(false) }
     
-    var currentCycleDuration by remember { mutableFloatStateOf(20f) }
     var pendingAutoPlay by remember { mutableStateOf(false) }
-    
-    var isInitialLoad by remember { mutableStateOf(true) }
-    
-    val channelListContent = remember(uiState.channels, uiState.currentChannelUrl, uiState.isLoadingChannels, uiState.videoTitle) {
-        movableContentOf {
-            if (uiState.videoTitle.isNotEmpty()) {
-                Text(
-                    text = uiState.videoTitle,
-                    style = MaterialTheme.typography.titleLarge,
-                    modifier = Modifier.padding(16.dp)
-                )
-            }
-
-            ChannelListSection(
-                channels = uiState.channels,
-                currentChannelUrl = uiState.currentChannelUrl,
-                isLoadingChannels = uiState.isLoadingChannels,
-                listState = listState,
-                media3Player = media3Player,
-                onChannelClick = { channel ->
-                    currentCycleDuration = 20f
-                    viewModel.switchChannel(channel)
-                },
-                modifier = Modifier.fillMaxHeight()
-            )
-        }
-    }
     
     LaunchedEffect(Unit) {
         viewModel.refreshPreferences()
@@ -142,8 +114,6 @@ private fun PlayerPageContent(
             stop()
             exoPlayer?.clearMediaItems()
         }
-        currentCycleDuration = 20f
-        isInitialLoad = true
         viewModel.loadChannels(url, initialChannelUrl, initialChannelId, initialVideoTitle)
     }
     
@@ -159,7 +129,7 @@ private fun PlayerPageContent(
                     pendingAutoPlay = true
                     media3Player.start()
                 }
-            } else if (currentMediaUrl == uiState.currentChannelUrl && autoPlayEnabled && !media3Player.isPlaying) {
+            } else if (autoPlayEnabled && !media3Player.isPlaying) {
                 media3Player.start()
             }
         }
@@ -199,9 +169,7 @@ private fun PlayerPageContent(
     LaunchedEffect(uiState.showControls, uiState.autoHideControls, uiState.isPlaying, uiState.isBuffering) {
         if (uiState.autoHideControls && uiState.showControls && uiState.isPlaying && !uiState.isBuffering) {
             delay(PlayerConstants.AUTO_HIDE_CONTROLS_DELAY_MS)
-            if (uiState.autoHideControls && uiState.showControls && uiState.isPlaying && !uiState.isBuffering) {
-                viewModel.hideControls()
-            }
+            viewModel.hideControls()
         }
     }
 
@@ -457,7 +425,25 @@ private fun PlayerPageContent(
                     }
 
                 if (!isFullscreen && !isInPictureInPictureMode) {
-                    channelListContent()
+                    if (uiState.videoTitle.isNotEmpty()) {
+                        Text(
+                            text = uiState.videoTitle,
+                            style = MaterialTheme.typography.titleLarge,
+                            modifier = Modifier.padding(16.dp)
+                        )
+                    }
+
+                    ChannelListSection(
+                        channels = uiState.channels,
+                        currentChannelUrl = uiState.currentChannelUrl,
+                        isLoadingChannels = uiState.isLoadingChannels,
+                        listState = listState,
+                        media3Player = media3Player,
+                        onChannelClick = { channel ->
+                            viewModel.switchChannel(channel)
+                        },
+                        modifier = Modifier.fillMaxHeight()
+                    )
                 }
             }
         }

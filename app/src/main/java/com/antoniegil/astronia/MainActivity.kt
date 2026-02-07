@@ -81,14 +81,12 @@ class MainActivity : AppCompatActivity() {
     }
     
     override fun attachBaseContext(newBase: Context?) {
-        val wrappedContext = newBase?.let {
-            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) {
-                val locale = SettingsManager.getLocaleFromPreference(it)
-                LanguageContextWrapper.wrap(it, locale)
-            } else {
-                it
-            }
-        } ?: newBase
+        val wrappedContext = if (newBase != null && Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) {
+            val locale = SettingsManager.getLocaleFromPreference(newBase)
+            LanguageContextWrapper.wrap(newBase, locale)
+        } else {
+            newBase
+        }
         super.attachBaseContext(wrappedContext)
     }
 }

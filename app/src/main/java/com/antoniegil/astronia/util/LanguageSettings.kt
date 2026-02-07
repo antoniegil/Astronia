@@ -77,20 +77,6 @@ fun normalizeLocaleTag(locale: Locale): String {
     }
 }
 
-fun Context.applyLanguage(locale: Locale?): Context {
-    val config = Configuration(resources.configuration)
-    
-    if (locale != null) {
-        Locale.setDefault(locale)
-        config.setLocale(locale)
-        val localeList = LocaleList(locale)
-        LocaleList.setDefault(localeList)
-        config.setLocales(localeList)
-    }
-    
-    return createConfigurationContext(config)
-}
-
 class LanguageContextWrapper(base: Context) : ContextWrapper(base) {
     companion object {
         fun wrap(context: Context, locale: Locale?): ContextWrapper {

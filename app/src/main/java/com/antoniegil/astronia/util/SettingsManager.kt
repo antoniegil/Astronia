@@ -121,7 +121,7 @@ internal class PreferenceManagerImpl(context: Context) {
     private val _themeSettingsFlow = MutableStateFlow(loadThemeSettings())
     val themeSettingsFlow: StateFlow<ThemeSettings> = _themeSettingsFlow.asStateFlow()
     
-    private val _historyFlow = MutableStateFlow<List<HistoryItem>>(loadHistory())
+    private val _historyFlow = MutableStateFlow(loadHistory())
     val historyFlow: StateFlow<List<HistoryItem>> = _historyFlow.asStateFlow()
     
     private fun getBoolean(key: String, default: Boolean = false): Boolean {

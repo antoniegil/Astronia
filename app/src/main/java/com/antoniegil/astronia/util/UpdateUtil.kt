@@ -31,17 +31,13 @@ object UpdateUtil {
     private const val TAG = "UpdateUtil"
 
     private val client = OkHttpClient()
-    private val requestForLatestRelease =
-        Request.Builder().url("https://api.github.com/repos/${OWNER}/${REPO}/releases/latest")
-            .build()
-
     private val requestForReleases =
         Request.Builder().url("https://api.github.com/repos/${OWNER}/${REPO}/releases")
             .build()
 
     private val jsonFormat = Json { ignoreUnknownKeys = true }
 
-    private suspend fun getLatestRelease(): LatestRelease =
+    private fun getLatestRelease(): LatestRelease =
         client.newCall(requestForReleases).execute().run {
             val releaseList =
                 jsonFormat.decodeFromString<List<LatestRelease>>(this.body.string())
@@ -56,7 +52,7 @@ object UpdateUtil {
             latestRelease
         }
 
-    suspend fun checkForUpdate(context: Context): LatestRelease? {
+    fun checkForUpdate(context: Context): LatestRelease? {
         val currentVersion = context.getCurrentVersion()
         val latestRelease = getLatestRelease()
         val latestVersion = latestRelease.name.toVersion()
@@ -101,7 +97,7 @@ object UpdateUtil {
         }
     }
 
-    suspend fun deleteOutdatedApk(context: Context) = context.runCatching {
+    fun deleteOutdatedApk(context: Context) = context.runCatching {
         val apkFile = getLatestApk()
         if (apkFile.exists()) {
             val apkVersion = context.packageManager.getPackageArchiveInfo(
@@ -124,7 +120,7 @@ object UpdateUtil {
         Log.d(TAG, apkVersion.toString())
 
         if (apkVersion >= latestRelease.name.toVersion()) {
-            return@withContext flow<DownloadStatus> { 
+            return@withContext flow { 
                 emit(DownloadStatus.Finished(context.getLatestApk())) 
             }
         }

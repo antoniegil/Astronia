@@ -25,14 +25,12 @@ class Media3Player(private val context: Context) {
     private var currentHardwareAcceleration: Boolean = true
     private var shouldPlayWhenReady: Boolean = false
     private var errorRetryCount: Int = 0
-    private var lastErrorTime: Long = 0L
-    
+
     var onPreparedListener: (() -> Unit)? = null
     var onInfoListener: ((what: Int, extra: Int) -> Boolean)? = null
     var onBufferingListener: ((Boolean) -> Unit)? = null
     var onPlaybackStateChanged: ((isPlaying: Boolean, position: Long, bufferedPosition: Long, duration: Long) -> Unit)? = null
-    var onErrorListener: ((errorType: String, errorMessage: String, stackTrace: String) -> Unit)? = null
-    
+
     init {
         createPlayer(true)
     }

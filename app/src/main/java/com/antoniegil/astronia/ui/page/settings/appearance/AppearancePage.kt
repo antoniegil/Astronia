@@ -55,10 +55,6 @@ private val paletteStyles = listOf(
     PaletteStyle.Vibrant
 )
 
-private const val STYLE_TONAL_SPOT = 0
-private const val STYLE_SPRITZ = 1
-private const val STYLE_FRUIT_SALAD = 2
-private const val STYLE_VIBRANT = 3
 private const val STYLE_MONOCHROME = 4
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -213,9 +209,9 @@ fun RowScope.ColorButton(
         tonalPalettes = tonalPalettes,
         isSelected = { isSelect }
     ) {
-        com.antoniegil.astronia.util.SettingsManager.setDynamicColor(context, false)
-        com.antoniegil.astronia.util.SettingsManager.setPaletteStyle(context, index)
-        com.antoniegil.astronia.util.SettingsManager.setSeedColor(context, color.toArgb())
+        SettingsManager.setDynamicColor(context, false)
+        SettingsManager.setPaletteStyle(context, index)
+        SettingsManager.setSeedColor(context, color.toArgb())
     }
 }
 
@@ -236,9 +232,9 @@ fun RowScope.ColorButtonMonochrome(
         tonalPalettes = tonalPalettes,
         isSelected = { isSelect }
     ) {
-        com.antoniegil.astronia.util.SettingsManager.setDynamicColor(context, false)
-        com.antoniegil.astronia.util.SettingsManager.setPaletteStyle(context, STYLE_MONOCHROME)
-        com.antoniegil.astronia.util.SettingsManager.setSeedColor(context, color.toArgb())
+        SettingsManager.setDynamicColor(context, false)
+        SettingsManager.setPaletteStyle(context, STYLE_MONOCHROME)
+        SettingsManager.setSeedColor(context, color.toArgb())
     }
 }
 

@@ -24,7 +24,7 @@ private class PlayerTextureView @JvmOverloads constructor(
     private val onSurfaceReady: () -> Unit = {}
 ) : TextureView(context), MeasureHelper.MeasureFormVideoParamsListener {
     
-    private val measureHelper = MeasureHelper(this, this)
+    private val measureHelper = MeasureHelper(this)
     private var currentAspectRatio = initialAspectRatio
     private var currentMirrorFlip = initialMirrorFlip
     

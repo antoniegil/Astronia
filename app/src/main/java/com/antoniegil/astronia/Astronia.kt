@@ -38,7 +38,7 @@ class Astronia : Application() {
     @Suppress("DEPRECATION")
     override fun onTrimMemory(level: Int) {
         super.onTrimMemory(level)
-        if (level >= ComponentCallbacks2.TRIM_MEMORY_MODERATE) {
+        if (level >= TRIM_MEMORY_MODERATE) {
             releaseGlobalPlayer()
         }
     }

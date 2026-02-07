@@ -16,7 +16,3 @@ inline fun <T> Result<T>.onError(action: (Exception, String?) -> Unit): Result<T
     return this
 }
 
-inline fun <T> Result<T>.onLoading(action: () -> Unit): Result<T> {
-    if (this is Result.Loading) action()
-    return this
-}

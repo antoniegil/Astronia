@@ -212,7 +212,7 @@ fun PreferenceSwitchWithContainer(
     isChecked: Boolean,
     onClick: () -> Unit
 ) {
-    val view = LocalView.current
+    LocalView.current
     val thumbContent: (@Composable () -> Unit)? = remember(isChecked) {
         if (isChecked) {
             {
