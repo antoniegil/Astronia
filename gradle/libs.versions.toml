@@ -24,6 +24,7 @@ koin = "4.1.1"
 ktfmt = "0.25.0"
 media3 = "1.9.1"
 leakcanary = "2.14"
+markdown = "0.5.8"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "androidxCore" }
@@ -77,6 +78,8 @@ okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhtt
 mmkv = { group = "com.tencent", name = "mmkv", version.ref = "mmkv" }
 
 leakcanary = { group = "com.squareup.leakcanary", name = "leakcanary-android", version.ref = "leakcanary" }
+
+compose-markdown = { group = "com.github.jeziellago", name = "compose-markdown", version.ref = "markdown" }
 
 # Media3 for m3u8 playback
 androidx-media3-exoplayer = { group = "androidx.media3", name = "media3-exoplayer", version.ref = "media3" }

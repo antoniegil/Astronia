@@ -33,7 +33,8 @@ data class Credit(
 private const val GPL_V3 = "GNU General Public License v3.0"
 private const val LGPL_V2_1 = "GNU Lesser General Public License, version 2.1"
 private const val APACHE_V2 = "Apache License, Version 2.0"
-private const val BSD = "BSD 3-Clause License"
+private const val BSD_3 = "BSD 3-Clause License"
+private const val MIT = "MIT License"
 
 fun Color.applyOpacity(enabled: Boolean): Color {
     return if (enabled) this else this.copy(alpha = 0.62f)
@@ -55,11 +56,11 @@ fun LicensePage(onNavigateBack: () -> Unit) {
         Credit("Material Icons", APACHE_V2, "https://fonts.google.com/icons"),
         Credit("Monet", APACHE_V2, "https://github.com/Kyant0/Monet"),
         Credit("Material color utilities", APACHE_V2, "https://github.com/material-foundation/material-color-utilities"),
-        Credit("MMKV", BSD, "https://github.com/Tencent/MMKV"),
+        Credit("MMKV", BSD_3, "https://github.com/Tencent/MMKV"),
         Credit("Coil", APACHE_V2, "https://github.com/coil-kt/coil"),
         Credit("OkHttp", APACHE_V2, "https://github.com/square/okhttp"),
         Credit("Koin", APACHE_V2, "https://github.com/InsertKoinIO/koin"),
-        Credit("Android Jetpack Compose", APACHE_V2, "https://github.com/androidx/androidx"),
+        Credit("Jetpack Compose", APACHE_V2, "https://github.com/androidx/androidx"),
         Credit("AndroidX Core KTX", APACHE_V2, "https://github.com/androidx/androidx"),
         Credit("AndroidX Activity Compose", APACHE_V2, "https://github.com/androidx/androidx"),
         Credit("AndroidX AppCompat", APACHE_V2, "https://github.com/androidx/androidx"),
@@ -70,6 +71,9 @@ fun LicensePage(onNavigateBack: () -> Unit) {
         Credit("Kotlinx Coroutines", APACHE_V2, "https://github.com/Kotlin/kotlinx.coroutines"),
         Credit("Kotlinx Serialization", APACHE_V2, "https://github.com/Kotlin/kotlinx.serialization"),
         Credit("Kotlinx DateTime", APACHE_V2, "https://github.com/Kotlin/kotlinx-datetime"),
+        Credit("Accompanist", APACHE_V2, "https://github.com/google/accompanist"),
+        Credit("Compose Markdown", MIT, "https://github.com/jeziellago/compose-markdown"),
+        Credit("LeakCanary", APACHE_V2, "https://github.com/square/leakcanary"),
     )
 
     val uriHandler = LocalUriHandler.current

@@ -74,12 +74,24 @@ object UpdateUtil {
     private fun Context.getLatestApk() =
         File(getExternalFilesDir("apk"), "latest.apk")
 
-    fun installLatestApk(context: Context) = context.run {
+    fun installLatestApk(context: Context): Boolean = context.run {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            if (!packageManager.canRequestPackageInstalls()) {
+                val intent = Intent(android.provider.Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES).apply {
+                    data = android.net.Uri.parse("package:$packageName")
+                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                }
+                startActivity(intent)
+                return false
+            }
+        }
+        
         kotlin.runCatching {
+            val apkFile = getLatestApk()
             val contentUri = FileProvider.getUriForFile(
                 this, 
                 "${packageName}.provider", 
-                getLatestApk()
+                apkFile
             )
             val intent = Intent(Intent.ACTION_VIEW).apply {
                 addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
@@ -87,6 +99,7 @@ object UpdateUtil {
                 setDataAndType(contentUri, "application/vnd.android.package-archive")
             }
             startActivity(intent)
+            return true
         }.onFailure { throwable: Throwable ->
             throwable.printStackTrace()
             android.widget.Toast.makeText(
@@ -95,6 +108,7 @@ object UpdateUtil {
                 android.widget.Toast.LENGTH_SHORT
             ).show()
         }
+        return false
     }
 
     fun deleteOutdatedApk(context: Context) = context.runCatching {
@@ -113,15 +127,16 @@ object UpdateUtil {
         context: Context,
         latestRelease: LatestRelease
     ): Flow<DownloadStatus> = withContext(Dispatchers.IO) {
-        val apkVersion = context.packageManager.getPackageArchiveInfo(
-            context.getLatestApk().absolutePath, 0
-        )?.versionName.toVersion()
+        val apkFile = context.getLatestApk()
+        if (apkFile.exists()) {
+            val apkVersion = context.packageManager.getPackageArchiveInfo(
+                apkFile.absolutePath, 0
+            )?.versionName.toVersion()
 
-        Log.d(TAG, apkVersion.toString())
-
-        if (apkVersion >= latestRelease.name.toVersion()) {
-            return@withContext flow { 
-                emit(DownloadStatus.Finished(context.getLatestApk())) 
+            if (apkVersion >= latestRelease.name.toVersion()) {
+                return@withContext flow { 
+                    emit(DownloadStatus.Finished(apkFile)) 
+                }
             }
         }
 
@@ -129,7 +144,7 @@ object UpdateUtil {
         val preferredArch = abiList.firstOrNull() ?: return@withContext emptyFlow()
 
         val targetUrl = latestRelease.assets?.find {
-            return@find it.name?.contains(preferredArch) ?: false
+            it.name?.contains(preferredArch) ?: false
         }?.browserDownloadUrl ?: return@withContext emptyFlow()
         
         val request = Request.Builder().url(targetUrl).build()
@@ -149,6 +164,8 @@ object UpdateUtil {
         var deleteFile = true
 
         try {
+            saveFile.parentFile?.mkdirs()
+            
             byteStream().use { inputStream ->
                 saveFile.outputStream().use { outputStream ->
                     val totalBytes = contentLength()
