@@ -150,7 +150,7 @@ fun PlayerControlsOverlay(
                         )
                     )
                 )
-                .padding(horizontal = 16.dp, vertical = 12.dp)
+                .padding(horizontal = 8.dp, vertical = 8.dp)
         ) {
             Row(
                 verticalAlignment = Alignment.CenterVertically,
@@ -159,7 +159,9 @@ fun PlayerControlsOverlay(
                 IconButton(onClick = onPlayPauseClick) {
                     Icon(
                         imageVector = if (isPlaying) Icons.Default.Pause else Icons.Default.PlayArrow,
-                        contentDescription = if (isPlaying) stringResource(R.string.paused) else stringResource(R.string.play),
+                        contentDescription = if (isPlaying) stringResource(R.string.paused) else stringResource(
+                            R.string.play
+                        ),
                         tint = Color.White,
                         modifier = Modifier.size(28.dp)
                     )
@@ -172,9 +174,9 @@ fun PlayerControlsOverlay(
                     isBuffering = isBuffering,
                     estimatedProgress = estimatedProgress
                 )
-                
+
                 Spacer(modifier = Modifier.width(8.dp))
-                
+
                 if (enablePip && Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                     IconButton(
                         onClick = {
@@ -186,7 +188,8 @@ fun PlayerControlsOverlay(
                                     act.enterPictureInPictureMode(builder.build())
                                 }
                             }
-                        }
+                        },
+                        modifier = Modifier.offset(x = 2.dp)
                     ) {
                         Icon(
                             imageVector = Icons.Default.PictureInPicture,
@@ -196,11 +199,16 @@ fun PlayerControlsOverlay(
                         )
                     }
                 }
-                
-                IconButton(onClick = onFullscreenClick) {
+
+                IconButton(
+                    onClick = onFullscreenClick,
+                    modifier = Modifier.offset(x = if (enablePip && Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) (-2).dp else 0.dp)
+                ) {
                     Icon(
                         imageVector = if (isFullscreen) Icons.Default.FullscreenExit else Icons.Default.Fullscreen,
-                        contentDescription = if (isFullscreen) stringResource(R.string.exit_fullscreen) else stringResource(R.string.fullscreen),
+                        contentDescription = if (isFullscreen) stringResource(R.string.exit_fullscreen) else stringResource(
+                            R.string.fullscreen
+                        ),
                         tint = Color.White,
                         modifier = Modifier.size(28.dp)
                     )
