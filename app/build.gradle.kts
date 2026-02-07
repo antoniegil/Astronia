@@ -173,6 +173,9 @@ dependencies {
     // DateTime
     implementation(libs.kotlinx.datetime)
     
+    // Markdown
+    implementation(libs.compose.markdown)
+    
     implementation(libs.bundles.media3)
 
     
