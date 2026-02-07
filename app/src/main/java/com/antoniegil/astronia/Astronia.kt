@@ -1,7 +1,6 @@
 package com.antoniegil.astronia
 
 import android.app.Application
-import android.content.ComponentCallbacks2
 import com.antoniegil.astronia.player.Media3Player
 import com.tencent.mmkv.MMKV
 import java.lang.ref.WeakReference

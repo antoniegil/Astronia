@@ -8,6 +8,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.core.net.toUri
 import com.antoniegil.astronia.R
 import kotlinx.coroutines.Dispatchers
@@ -123,6 +124,8 @@ fun rememberBackupExportLauncher(
 ): () -> Unit {
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
+    val successMsg = stringResource(R.string.export_success)
+    val failedMsg = stringResource(R.string.export_failed)
     
     val launcher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.CreateDocument("application/json")
@@ -133,7 +136,7 @@ fun rememberBackupExportLauncher(
                 withContext(Dispatchers.Main) {
                     Toast.makeText(
                         context,
-                        context.getString(if (success) R.string.export_success else R.string.export_failed),
+                        if (success) successMsg else failedMsg,
                         Toast.LENGTH_SHORT
                     ).show()
                     onComplete()
@@ -151,6 +154,7 @@ fun rememberHistoryRestoreLauncher(
 ): Pair<androidx.activity.result.ActivityResultLauncher<String>, String> {
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
+    val failedMsg = stringResource(R.string.restore_failed)
     
     val mimeType = if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.Q) {
         "*/*"
@@ -167,19 +171,17 @@ fun rememberHistoryRestoreLauncher(
                     DataManager.restoreHistory(context, it)
                 }
                 withContext(Dispatchers.Main) {
-                    if (success) {
-                        Toast.makeText(
-                            context,
-                            context.resources.getQuantityString(R.plurals.restore_success, count, count),
-                            Toast.LENGTH_LONG
-                        ).show()
+                    @Suppress("LocalContextResourcesRead")
+                    val message = if (success) {
+                        context.resources.getQuantityString(R.plurals.restore_success, count, count)
                     } else {
-                        Toast.makeText(
-                            context,
-                            context.getString(R.string.restore_failed),
-                            Toast.LENGTH_SHORT
-                        ).show()
+                        failedMsg
                     }
+                    Toast.makeText(
+                        context,
+                        message,
+                        if (success) Toast.LENGTH_LONG else Toast.LENGTH_SHORT
+                    ).show()
                     onComplete(success, count)
                 }
             }

@@ -24,8 +24,11 @@ object M3U8Parser {
     
     private val client: OkHttpClient by lazy {
         if (Build.VERSION.SDK_INT == Build.VERSION_CODES.N) {
+            @Suppress("CustomX509TrustManager")
             val trustAllCerts = arrayOf<TrustManager>(object : X509TrustManager {
+                @Suppress("TrustAllX509TrustManager")
                 override fun checkClientTrusted(chain: Array<X509Certificate>, authType: String) {}
+                @Suppress("TrustAllX509TrustManager")
                 override fun checkServerTrusted(chain: Array<X509Certificate>, authType: String) {}
                 override fun getAcceptedIssuers(): Array<X509Certificate> = arrayOf()
             })
