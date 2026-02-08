@@ -124,7 +124,7 @@ fun UpdatePage(onNavigateBack: () -> Unit) {
                                 isLoading = true
                                 withContext(Dispatchers.IO) {
                                     runCatching {
-                                        UpdateUtil.checkForUpdate(context)?.let {
+                                        UpdateUtil.checkForUpdate(context, updateChannel == PRE_RELEASE)?.let {
                                             latestRelease = it
                                             showUpdateDialog = true
                                         } ?: run {

@@ -16,22 +16,31 @@ object UpdateUtil {
     private const val REPO = "Astronia"
 
     private val client = OkHttpClient()
-    private val requestForReleases =
-        Request.Builder().url("https://api.github.com/repos/${OWNER}/${REPO}/releases/latest")
-            .build()
-
     private val jsonFormat = Json { ignoreUnknownKeys = true }
 
-    private fun getLatestRelease(): LatestRelease =
-        client.newCall(requestForReleases).execute().run {
-            val latestRelease = jsonFormat.decodeFromString<LatestRelease>(this.body.string())
-            body.close()
-            latestRelease
+    private fun getLatestRelease(includePreRelease: Boolean): LatestRelease? {
+        val url = if (includePreRelease) {
+            "https://api.github.com/repos/${OWNER}/${REPO}/releases"
+        } else {
+            "https://api.github.com/repos/${OWNER}/${REPO}/releases/latest"
         }
+        
+        val request = Request.Builder().url(url).build()
+        return client.newCall(request).execute().run {
+            val result = if (includePreRelease) {
+                val releases = jsonFormat.decodeFromString<List<LatestRelease>>(body.string())
+                releases.firstOrNull { it.preRelease }
+            } else {
+                jsonFormat.decodeFromString<LatestRelease>(body.string())
+            }
+            body.close()
+            result
+        }
+    }
 
-    fun checkForUpdate(context: Context): LatestRelease? {
+    fun checkForUpdate(context: Context, includePreRelease: Boolean = false): LatestRelease? {
         val currentVersion = context.getCurrentVersion()
-        val latestRelease = getLatestRelease()
+        val latestRelease = getLatestRelease(includePreRelease) ?: return null
         val latestVersion = latestRelease.name.toVersion()
         return if (currentVersion < latestVersion) latestRelease
         else null
