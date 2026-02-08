@@ -18,7 +18,7 @@ Astronia 是一款轻量级的现代化 Android M3U8 视频播放器，采用 Ma
 
 ## 屏幕截图
 
-<div>
+<div align="center">
 <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/1.png" width="30%" />
 <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/2.png" width="30%" />
 <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/3.png" width="30%" />

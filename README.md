@@ -18,7 +18,7 @@ Astronia is a lightweight and modern M3U8 video player for Android, built with M
 
 ## Screenshoot
 
-<div>
+<div align="center">
 <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/1.png" width="30%" />
 <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/2.png" width="30%" />
 <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/3.png" width="30%" />
