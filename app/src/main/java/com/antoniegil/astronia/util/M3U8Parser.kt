@@ -17,7 +17,10 @@ data class M3U8Channel(
     val id: String,
     val name: String,
     val url: String,
-    val group: String = ""
+    val group: String = "",
+    val country: String = "",
+    val language: String = "",
+    val logoUrl: String = ""
 )
 
 object M3U8Parser {
@@ -58,6 +61,9 @@ object M3U8Parser {
             
             var currentName = ""
             var currentGroup = ""
+            var currentCountry = ""
+            var currentLanguage = ""
+            var currentLogoUrl = ""
             
             for (line in lines) {
                 val trimmedLine = line.trim()
@@ -67,6 +73,9 @@ object M3U8Parser {
                 if (trimmedLine.startsWith("#EXTINF:")) {
                     currentName = extractChannelName(trimmedLine)
                     currentGroup = extractGroup(trimmedLine)
+                    currentCountry = extractCountry(trimmedLine)
+                    currentLanguage = extractLanguage(trimmedLine)
+                    currentLogoUrl = extractLogoUrl(trimmedLine)
                 } else if (!trimmedLine.startsWith("#")) {
                     if (trimmedLine.startsWith("http") || trimmedLine.startsWith("rtmp") || 
                         trimmedLine.startsWith("rtsp") || trimmedLine.startsWith("udp")) {
@@ -78,7 +87,10 @@ object M3U8Parser {
                                 id = finalId,
                                 name = name,
                                 url = trimmedLine,
-                                group = currentGroup
+                                group = currentGroup,
+                                country = currentCountry,
+                                language = currentLanguage,
+                                logoUrl = currentLogoUrl
                             )
                         )
                         
@@ -88,6 +100,9 @@ object M3U8Parser {
                     }
                     currentName = ""
                     currentGroup = ""
+                    currentCountry = ""
+                    currentLanguage = ""
+                    currentLogoUrl = ""
                 }
             }
             
@@ -126,6 +141,9 @@ object M3U8Parser {
             val channels = mutableListOf<M3U8Channel>()
             var currentName = ""
             var currentGroup = ""
+            var currentCountry = ""
+            var currentLanguage = ""
+            var currentLogoUrl = ""
             var totalBytesRead = 0
             
             response.body.byteStream().bufferedReader().use { reader ->
@@ -143,6 +161,9 @@ object M3U8Parser {
                     if (trimmedLine.startsWith("#EXTINF:")) {
                         currentName = extractChannelName(trimmedLine)
                         currentGroup = extractGroup(trimmedLine)
+                        currentCountry = extractCountry(trimmedLine)
+                        currentLanguage = extractLanguage(trimmedLine)
+                        currentLogoUrl = extractLogoUrl(trimmedLine)
                     } else if (!trimmedLine.startsWith("#")) {
                         if (trimmedLine.startsWith("http") || trimmedLine.startsWith("rtmp") || 
                             trimmedLine.startsWith("rtsp") || trimmedLine.startsWith("udp")) {
@@ -154,7 +175,10 @@ object M3U8Parser {
                                     id = finalId,
                                     name = name,
                                     url = trimmedLine,
-                                    group = currentGroup
+                                    group = currentGroup,
+                                    country = currentCountry,
+                                    language = currentLanguage,
+                                    logoUrl = currentLogoUrl
                                 )
                             )
                             
@@ -164,6 +188,9 @@ object M3U8Parser {
                         }
                         currentName = ""
                         currentGroup = ""
+                        currentCountry = ""
+                        currentLanguage = ""
+                        currentLogoUrl = ""
                     }
                 }
             }
@@ -198,5 +225,20 @@ object M3U8Parser {
     private fun extractGroup(line: String): String {
         val groupMatch = Regex("""group-title="([^"]+)"""").find(line)
         return groupMatch?.groupValues?.get(1) ?: ""
+    }
+    
+    private fun extractCountry(line: String): String {
+        val countryMatch = Regex("""tvg-country="([^"]+)"""").find(line)
+        return countryMatch?.groupValues?.get(1) ?: ""
+    }
+    
+    private fun extractLanguage(line: String): String {
+        val languageMatch = Regex("""tvg-language="([^"]+)"""").find(line)
+        return languageMatch?.groupValues?.get(1) ?: ""
+    }
+    
+    private fun extractLogoUrl(line: String): String {
+        val logoMatch = Regex("""tvg-logo="([^"]+)"""").find(line)
+        return logoMatch?.groupValues?.get(1) ?: ""
     }
 }

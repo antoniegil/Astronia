@@ -22,8 +22,8 @@ android {
         applicationId = "com.antoniegil.astronia"
         minSdk = 24
         targetSdk = 36
-        versionCode = 1031
-        versionName = "1.0.3-alpha.1"
+        versionCode = 1032
+        versionName = "1.0.3"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables { useSupportLibrary = true }

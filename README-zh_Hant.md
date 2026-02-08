@@ -16,7 +16,7 @@
 
 Astronia 是一款輕量級的現代化 Android M3U8 視訊播放器，採用 Material Design 3 設計。它提供簡潔直觀的介面，支援多種格式的串流媒體視訊播放。UI 設計靈感來自 [Seal](https://github.com/JunkFood02/Seal)。
 
-## 熒幕截圖
+## 📱 熒幕截圖
 
 <div align="center">
 <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/1.png" width="30%" />
@@ -56,6 +56,10 @@ UI 設計和實作深受 [Seal](https://github.com/JunkFood02/Seal) 啟發，許
 使用的函式庫和工具：
 - [Material color utilities](https://github.com/material-foundation/material-color-utilities)
 - [Monet](https://github.com/Kyant0/Monet)
+
+## ⚠️ 免責聲明
+
+本軟體不提供任何直播內容，不內建任何訂閱源。使用者需自行承擔使用非法或未經授權內容源的法律後果，開發者不對此承擔任何法律責任。
 
 ## 📃 授權條款
 

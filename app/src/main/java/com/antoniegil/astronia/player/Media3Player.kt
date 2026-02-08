@@ -24,12 +24,15 @@ class Media3Player(private val context: Context) {
     internal var surface: Surface? = null
     private var currentHardwareAcceleration: Boolean = true
     private var shouldPlayWhenReady: Boolean = false
-    private var errorRetryCount: Int = 0
+    private var parserErrorRetryCount: Int = 0
+    private var currentMediaUrl: String? = null
+    private val maxParserRetries = 2
 
     var onPreparedListener: (() -> Unit)? = null
     var onInfoListener: ((what: Int, extra: Int) -> Boolean)? = null
     var onBufferingListener: ((Boolean) -> Unit)? = null
     var onPlaybackStateChanged: ((isPlaying: Boolean, position: Long, bufferedPosition: Long, duration: Long) -> Unit)? = null
+    var onErrorListener: ((error: String, isRetriable: Boolean) -> Unit)? = null
 
     init {
         createPlayer(true)
@@ -52,7 +55,7 @@ class Media3Player(private val context: Context) {
         }
         
         val loadControl = DefaultLoadControl.Builder()
-            .setBufferDurationsMs(2000, 10000, 1000, 1000)
+            .setBufferDurationsMs(3000, 15000, 2000, 2000)
             .setPrioritizeTimeOverSizeThresholds(true)
             .build()
         
@@ -76,7 +79,7 @@ class Media3Player(private val context: Context) {
                     override fun onPlaybackStateChanged(playbackState: Int) {
                         when (playbackState) {
                             Player.STATE_READY -> {
-                                errorRetryCount = 0
+                                parserErrorRetryCount = 0
                                 onPreparedListener?.invoke()
                                 onInfoListener?.invoke(MEDIA_INFO_VIDEO_RENDERING_START, 0)
                                 onBufferingListener?.invoke(false)
@@ -123,22 +126,60 @@ class Media3Player(private val context: Context) {
                         ErrorHandler.logError("Media3Player", "Playback error occurred", error)
                         
                         val wasPlaying = shouldPlayWhenReady
-                        if (error.cause is androidx.media3.exoplayer.source.BehindLiveWindowException) {
-                            exoPlayer?.let { player ->
-                                player.seekToDefaultPosition()
-                                player.prepare()
-                                if (wasPlaying) {
-                                    player.play()
-                                }
-                            }
-                        } else {
-                            exoPlayer?.let { player ->
-                                if (wasPlaying && player.playbackState == Player.STATE_IDLE) {
+                        val isParserError = error.errorCode == PlaybackException.ERROR_CODE_PARSING_CONTAINER_MALFORMED ||
+                                error.errorCode == PlaybackException.ERROR_CODE_PARSING_CONTAINER_UNSUPPORTED ||
+                                error.errorCode == PlaybackException.ERROR_CODE_PARSING_MANIFEST_MALFORMED ||
+                                error.errorCode == PlaybackException.ERROR_CODE_PARSING_MANIFEST_UNSUPPORTED
+                        
+                        val isNetworkError = error.errorCode == PlaybackException.ERROR_CODE_IO_NETWORK_CONNECTION_FAILED ||
+                                error.errorCode == PlaybackException.ERROR_CODE_IO_NETWORK_CONNECTION_TIMEOUT ||
+                                error.errorCode == PlaybackException.ERROR_CODE_IO_BAD_HTTP_STATUS
+                        
+                        val isBehindLiveWindow = error.cause is androidx.media3.exoplayer.source.BehindLiveWindowException
+                        
+                        when {
+                            isBehindLiveWindow -> {
+                                exoPlayer?.let { player ->
+                                    player.seekToDefaultPosition()
                                     player.prepare()
-                                    player.play()
+                                    if (wasPlaying) {
+                                        player.play()
+                                    }
                                 }
                             }
-                            onBufferingListener?.invoke(false)
+                            isParserError && parserErrorRetryCount < maxParserRetries -> {
+                                parserErrorRetryCount++
+                                ErrorHandler.logError("Media3Player", "Parser error, retrying ($parserErrorRetryCount/$maxParserRetries)", null)
+                                currentMediaUrl?.let { url ->
+                                    android.os.Handler(android.os.Looper.getMainLooper()).postDelayed({
+                                        exoPlayer?.let { player ->
+                                            player.stop()
+                                            player.clearMediaItems()
+                                            player.setMediaItem(MediaItem.fromUri(url))
+                                            player.prepare()
+                                            if (wasPlaying) {
+                                                player.play()
+                                            }
+                                        }
+                                    }, 500)
+                                }
+                            }
+                            isNetworkError && parserErrorRetryCount < maxParserRetries -> {
+                                parserErrorRetryCount++
+                                ErrorHandler.logError("Media3Player", "Network error, retrying ($parserErrorRetryCount/$maxParserRetries)", null)
+                                android.os.Handler(android.os.Looper.getMainLooper()).postDelayed({
+                                    exoPlayer?.let { player ->
+                                        player.prepare()
+                                        if (wasPlaying) {
+                                            player.play()
+                                        }
+                                    }
+                                }, 1000)
+                            }
+                            else -> {
+                                ErrorHandler.logError("Media3Player", "Unrecoverable playback error: ${error.errorCodeName}", error)
+                                onBufferingListener?.invoke(false)
+                            }
                         }
                     }
                     
@@ -170,6 +211,8 @@ class Media3Player(private val context: Context) {
     }
     
     fun setDataSource(url: String) {
+        currentMediaUrl = url
+        parserErrorRetryCount = 0
         val mediaItem = MediaItem.fromUri(url)
         exoPlayer?.apply {
             stop()
