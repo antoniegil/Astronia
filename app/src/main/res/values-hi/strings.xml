@@ -137,16 +137,15 @@
     <string name="issue_feedback_desc">बग रिपोर्ट करें या सुझाव दें</string>
     <string name="sponsor">प्रायोजक (Sponsor)</string>
     <string name="sponsor_desc">GitHub Sponsors के माध्यम से विकास का समर्थन करें</string>
-    <string name="auto_update">ऑटो अपडेट</string>
+    <string name="auto_check_update">स्वचालित अपडेट जांच</string>
     <string name="check_for_updates_desc">GitHub से अपडेट के लिए स्वचालित रूप से जांच करें</string>
-    <string name="enable_auto_update">ऑटो अपडेट सक्षम करें</string>
+    <string name="enable_auto_check_update">स्वचालित अपडेट जांच सक्षम करें</string>
     <string name="update_channel">अपडेट चैनल</string>
     <string name="stable_channel">स्टेबल</string>
     <string name="pre_release_channel">प्री-रिलीज़</string>
     <string name="check_for_updates">अपडेट की जांच करें</string>
     <string name="update_channel_desc">स्टेबल रिलीज़ या नवीनतम फीचर्स वाले प्री-रिलीज़ वर्ज़न के बीच चुनें</string>
     <string name="update">अपडेट</string>
-    <string name="app_update_failed">अपडेट विफल रहा</string>
     <string name="already_latest_version">पहले से ही नवीनतम वर्ज़न पर है</string>
     <string name="check_update_failed">अपडेट की जांच करने में विफल</string>
     

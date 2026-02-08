@@ -142,7 +142,7 @@ fun AboutPage(
             item {
                 var autoUpdate by remember { mutableStateOf(SettingsManager.getAutoUpdate(context)) }
                 PreferenceSwitchWithDivider(
-                    title = stringResource(R.string.auto_update),
+                    title = stringResource(R.string.auto_check_update),
                     description = stringResource(R.string.check_for_updates_desc),
                     icon = if (autoUpdate) Icons.Outlined.Update else Icons.Outlined.UpdateDisabled,
                     isChecked = autoUpdate,

@@ -137,16 +137,15 @@
     <string name="issue_feedback_desc">Hataları veya önerileri bildirin</string>
     <string name="sponsor">Sponsor Ol</string>
     <string name="sponsor_desc">GitHub Sponsorları aracılığıyla geliştirmeyi destekleyin</string>
-    <string name="auto_update">Otomatik Güncelleme</string>
+    <string name="auto_check_update">Otomatik Güncelleme Kontrolü</string>
     <string name="check_for_updates_desc">GitHub\'dan güncellemeleri otomatik olarak kontrol et</string>
-    <string name="enable_auto_update">Otomatik Güncellemeyi Etkinleştir</string>
+    <string name="enable_auto_check_update">Otomatik Güncelleme Kontrolünü Etkinleştir</string>
     <string name="update_channel">Güncelleme Kanalı</string>
     <string name="stable_channel">Kararlı (Stable)</string>
     <string name="pre_release_channel">Ön sürüm (Pre-release)</string>
     <string name="check_for_updates">Güncellemeleri Denetle</string>
     <string name="update_channel_desc">Kararlı sürümler veya en son özelliklere sahip ön sürümler arasından seçim yapın</string>
     <string name="update">Güncelle</string>
-    <string name="app_update_failed">Güncelleme başarısız oldu</string>
     <string name="already_latest_version">Zaten en son sürümde</string>
     <string name="check_update_failed">Güncellemeler kontrol edilemedi</string>
     

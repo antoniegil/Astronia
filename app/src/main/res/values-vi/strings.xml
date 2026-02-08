@@ -135,16 +135,15 @@
     <string name="issue_feedback_desc">Báo cáo lỗi hoặc đề xuất tính năng</string>
     <string name="sponsor">Tài trợ</string>
     <string name="sponsor_desc">Hỗ trợ phát triển qua GitHub Sponsors</string>
-    <string name="auto_update">Tự động cập nhật</string>
+    <string name="auto_check_update">Tự động kiểm tra cập nhật</string>
     <string name="check_for_updates_desc">Tự động kiểm tra cập nhật từ GitHub</string>
-    <string name="enable_auto_update">Bật tự động cập nhật</string>
+    <string name="enable_auto_check_update">Bật tự động kiểm tra cập nhật</string>
     <string name="update_channel">Kênh cập nhật</string>
     <string name="stable_channel">Ổn định</string>
     <string name="pre_release_channel">Thử nghiệm (Pre-release)</string>
     <string name="check_for_updates">Kiểm tra cập nhật</string>
     <string name="update_channel_desc">Chọn giữa các bản phát hành ổn định hoặc các phiên bản thử nghiệm có tính năng mới nhất</string>
     <string name="update">Cập nhật</string>
-    <string name="app_update_failed">Cập nhật thất bại</string>
     <string name="already_latest_version">Đã là phiên bản mới nhất</string>
     <string name="check_update_failed">Kiểm tra cập nhật thất bại</string>
     

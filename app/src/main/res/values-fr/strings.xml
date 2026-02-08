@@ -137,16 +137,15 @@
     <string name="issue_feedback_desc">Signaler des bugs ou suggestions</string>
     <string name="sponsor">Sponsoriser</string>
     <string name="sponsor_desc">Soutenir le développement via GitHub Sponsors</string>
-    <string name="auto_update">Mise à jour auto</string>
+    <string name="auto_check_update">Vérification automatique des mises à jour</string>
     <string name="check_for_updates_desc">Vérifier automatiquement les mises à jour sur GitHub</string>
-    <string name="enable_auto_update">Activer la mise à jour auto</string>
+    <string name="enable_auto_check_update">Activer la vérification automatique des mises à jour</string>
     <string name="update_channel">Canal de mise à jour</string>
     <string name="stable_channel">Stable</string>
     <string name="pre_release_channel">Pré-version</string>
     <string name="check_for_updates">Vérifier les mises à jour</string>
     <string name="update_channel_desc">Choisir entre les versions stables ou les pré-versions avec les dernières fonctionnalités</string>
     <string name="update">Mettre à jour</string>
-    <string name="app_update_failed">Échec de la mise à jour</string>
     <string name="already_latest_version">Déjà à la dernière version</string>
     <string name="check_update_failed">Échec de la vérification des mises à jour</string>
     

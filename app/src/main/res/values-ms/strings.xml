@@ -135,16 +135,15 @@
     <string name="issue_feedback_desc">Laporkan pepijat atau buat cadangan</string>
     <string name="sponsor">Penaja</string>
     <string name="sponsor_desc">Sokong aplikasi ini melalui GitHub Sponsors</string>
-    <string name="auto_update">Kemas Kini Automatik</string>
+    <string name="auto_check_update">Semak Kemas Kini Automatik</string>
     <string name="check_for_updates_desc">Semak kemas kini secara automatik dari GitHub</string>
-    <string name="enable_auto_update">Dayakan Kemas Kini Automatik</string>
+    <string name="enable_auto_check_update">Dayakan Semak Kemas Kini Automatik</string>
     <string name="update_channel">Saluran Kemas Kini</string>
     <string name="stable_channel">Stabil</string>
     <string name="pre_release_channel">Pratonton</string>
     <string name="check_for_updates">Semak Kemas Kini</string>
     <string name="update_channel_desc">Pilih versi stabil atau versi pra-keluaran dengan ciri terkini</string>
     <string name="update">Kemas Kini</string>
-    <string name="app_update_failed">Kemas kini gagal</string>
     <string name="already_latest_version">Sudah versi terkini</string>
     <string name="check_update_failed">Gagal menyemak kemas kini</string>
     

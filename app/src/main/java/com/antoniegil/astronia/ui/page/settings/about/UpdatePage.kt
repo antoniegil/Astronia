@@ -62,7 +62,7 @@ fun UpdatePage(onNavigateBack: () -> Unit) {
             .nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
             LargeTopAppBar(
-                title = { Text(text = stringResource(R.string.auto_update)) },
+                title = { Text(text = stringResource(R.string.auto_check_update)) },
                 navigationIcon = { BackButton(onNavigateBack) },
                 scrollBehavior = scrollBehavior
             )
@@ -71,7 +71,7 @@ fun UpdatePage(onNavigateBack: () -> Unit) {
         LazyColumn(modifier = Modifier.padding(paddings)) {
             item {
                 PreferenceSwitchWithContainer(
-                    title = stringResource(R.string.enable_auto_update),
+                    title = stringResource(R.string.enable_auto_check_update),
                     icon = if (autoUpdate) Icons.Outlined.Update else Icons.Outlined.UpdateDisabled,
                     isChecked = autoUpdate
                 ) {

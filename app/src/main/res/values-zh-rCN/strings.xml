@@ -135,16 +135,15 @@
     <string name="issue_feedback_desc">报告错误或提出建议</string>
     <string name="sponsor">赞助</string>
     <string name="sponsor_desc">通过 GitHub 赞助以支持此应用程序</string>
-    <string name="auto_update">自动更新</string>
+    <string name="auto_check_update">自动检查更新</string>
     <string name="check_for_updates_desc">自动检查来自 GitHub 提供的更新</string>
-    <string name="enable_auto_update">启用自动更新</string>
+    <string name="enable_auto_check_update">启用自动检查更新</string>
     <string name="update_channel">更新频道</string>
     <string name="stable_channel">稳定</string>
     <string name="pre_release_channel">预览</string>
     <string name="check_for_updates">检查更新</string>
     <string name="update_channel_desc">选择稳定版本或具有最新功能的预发布版本</string>
     <string name="update">更新</string>
-    <string name="app_update_failed">更新失败</string>
     <string name="already_latest_version">已是最新版本</string>
     <string name="check_update_failed">检查更新失败</string>
     

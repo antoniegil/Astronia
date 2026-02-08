@@ -135,16 +135,15 @@
     <string name="issue_feedback_desc">버그 보고 또는 제안하기</string>
     <string name="sponsor">후원</string>
     <string name="sponsor_desc">GitHub 후원을 통해 이 앱 지원</string>
-    <string name="auto_update">자동 업데이트</string>
+    <string name="auto_check_update">자동 업데이트 확인</string>
     <string name="check_for_updates_desc">GitHub에서 제공하는 업데이트 자동 확인</string>
-    <string name="enable_auto_update">자동 업데이트 활성화</string>
+    <string name="enable_auto_check_update">자동 업데이트 확인 활성화</string>
     <string name="update_channel">업데이트 채널</string>
     <string name="stable_channel">안정</string>
     <string name="pre_release_channel">프리뷰</string>
     <string name="check_for_updates">업데이트 확인</string>
     <string name="update_channel_desc">안정 버전 또는 최신 기능이 포함된 프리릴리스 버전 선택</string>
     <string name="update">업데이트</string>
-    <string name="app_update_failed">업데이트 실패</string>
     <string name="already_latest_version">이미 최신 버전입니다</string>
     <string name="check_update_failed">업데이트 확인 실패</string>
     

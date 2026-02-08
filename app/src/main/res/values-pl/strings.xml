@@ -141,16 +141,15 @@
     <string name="issue_feedback_desc">Zgłoś błąd lub zaproponuj sugestię</string>
     <string name="sponsor">Sponsor</string>
     <string name="sponsor_desc">Wesprzyj tę aplikację przez GitHub Sponsors</string>
-    <string name="auto_update">Automatyczna aktualizacja</string>
+    <string name="auto_check_update">Automatyczne sprawdzanie aktualizacji</string>
     <string name="check_for_updates_desc">Automatycznie sprawdzaj aktualizacje z GitHub</string>
-    <string name="enable_auto_update">Włącz automatyczną aktualizację</string>
+    <string name="enable_auto_check_update">Włącz automatyczne sprawdzanie aktualizacji</string>
     <string name="update_channel">Kanał aktualizacji</string>
     <string name="stable_channel">Stabilny</string>
     <string name="pre_release_channel">Podgląd</string>
     <string name="check_for_updates">Sprawdź aktualizacje</string>
     <string name="update_channel_desc">Wybierz stabilne wydania lub wersje przedpremierowe z najnowszymi funkcjami</string>
     <string name="update">Aktualizuj</string>
-    <string name="app_update_failed">Aktualizacja nie powiodła się</string>
     <string name="already_latest_version">Już najnowsza wersja</string>
     <string name="check_update_failed">Sprawdzanie aktualizacji nie powiodło się</string>
     

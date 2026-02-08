@@ -135,16 +135,15 @@
     <string name="issue_feedback_desc">バグを報告または提案する</string>
     <string name="sponsor">スポンサー</string>
     <string name="sponsor_desc">GitHubスポンサーを通じてこのアプリをサポート</string>
-    <string name="auto_update">自動更新</string>
+    <string name="auto_check_update">自動更新チェック</string>
     <string name="check_for_updates_desc">GitHubから提供される更新を自動的にチェック</string>
-    <string name="enable_auto_update">自動更新を有効にする</string>
+    <string name="enable_auto_check_update">自動更新チェックを有効にする</string>
     <string name="update_channel">更新チャンネル</string>
     <string name="stable_channel">安定版</string>
     <string name="pre_release_channel">プレビュー</string>
     <string name="check_for_updates">更新をチェック</string>
     <string name="update_channel_desc">安定版または最新機能を含むプレリリース版を選択</string>
     <string name="update">更新</string>
-    <string name="app_update_failed">更新失敗</string>
     <string name="already_latest_version">すでに最新バージョンです</string>
     <string name="check_update_failed">更新チェック失敗</string>
     

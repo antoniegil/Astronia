@@ -137,16 +137,15 @@
     <string name="issue_feedback_desc">Fouten melden of suggesties doen</string>
     <string name="sponsor">Sponsoren</string>
     <string name="sponsor_desc">Ondersteun deze app via GitHub Sponsors</string>
-    <string name="auto_update">Automatisch updaten</string>
+    <string name="auto_check_update">Automatisch controleren op updates</string>
     <string name="check_for_updates_desc">Automatisch controleren op updates via GitHub</string>
-    <string name="enable_auto_update">Auto-update inschakelen</string>
+    <string name="enable_auto_check_update">Auto-updatecontrole inschakelen</string>
     <string name="update_channel">Updatekanaal</string>
     <string name="stable_channel">Stabiel</string>
     <string name="pre_release_channel">Preview</string>
     <string name="check_for_updates">Controleren op updates</string>
     <string name="update_channel_desc">Kies tussen stabiele releases of pre-release versies met de nieuwste functies</string>
     <string name="update">Updaten</string>
-    <string name="app_update_failed">Update mislukt</string>
     <string name="already_latest_version">Al de nieuwste versie</string>
     <string name="check_update_failed">Controleren op updates mislukt</string>
     

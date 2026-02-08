@@ -137,16 +137,15 @@
     <string name="issue_feedback_desc">Rapportera buggar eller förslag</string>
     <string name="sponsor">Sponsra</string>
     <string name="sponsor_desc">Stöd utvecklingen via GitHub Sponsors</string>
-    <string name="auto_update">Automatisk uppdatering</string>
+    <string name="auto_check_update">Automatisk uppdateringskontroll</string>
     <string name="check_for_updates_desc">Sök automatiskt efter uppdateringar från GitHub</string>
-    <string name="enable_auto_update">Aktivera automatisk uppdatering</string>
+    <string name="enable_auto_check_update">Aktivera automatisk uppdateringskontroll</string>
     <string name="update_channel">Uppdateringskanal</string>
     <string name="stable_channel">Stabil</string>
     <string name="pre_release_channel">Förhandsversion (Pre-release)</string>
     <string name="check_for_updates">Sök efter uppdateringar</string>
     <string name="update_channel_desc">Välj mellan stabila versioner eller förhandsversioner med de senaste funktionerna</string>
     <string name="update">Uppdatera</string>
-    <string name="app_update_failed">Uppdateringen misslyckades</string>
     <string name="already_latest_version">Du har redan den senaste versionen</string>
     <string name="check_update_failed">Kunde inte söka efter uppdateringar</string>
     

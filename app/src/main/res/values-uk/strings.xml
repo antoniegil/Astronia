@@ -141,16 +141,15 @@
     <string name="issue_feedback_desc">Повідомити про помилку або запропонувати ідею</string>
     <string name="sponsor">Спонсорувати</string>
     <string name="sponsor_desc">Підтримати розробку через GitHub Sponsors</string>
-    <string name="auto_update">Автооновлення</string>
+    <string name="auto_check_update">Автоматична перевірка оновлень</string>
     <string name="check_for_updates_desc">Автоматично перевіряти наявність оновлень на GitHub</string>
-    <string name="enable_auto_update">Увімкнути автооновлення</string>
+    <string name="enable_auto_check_update">Увімкнути автоматичну перевірку оновлень</string>
     <string name="update_channel">Канал оновлень</string>
     <string name="stable_channel">Стабільний (Stable)</string>
     <string name="pre_release_channel">Попередній (Pre-release)</string>
     <string name="check_for_updates">Перевірити оновлення</string>
     <string name="update_channel_desc">Виберіть між стабільними релізами або попередніми версіями з найновішими функціями</string>
     <string name="update">Оновити</string>
-    <string name="app_update_failed">Помилка оновлення</string>
     <string name="already_latest_version">Вже встановлено останню версію</string>
     <string name="check_update_failed">Не вдалося перевірити оновлення</string>
     

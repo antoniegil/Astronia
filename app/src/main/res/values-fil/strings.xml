@@ -137,16 +137,15 @@
     <string name="issue_feedback_desc">Mag-ulat ng bug o magmungkahi ng pagpapabuti</string>
     <string name="sponsor">Sponsor</string>
     <string name="sponsor_desc">Suportahan ang app na ito sa pamamagitan ng GitHub Sponsors</string>
-    <string name="auto_update">Awtomatikong pag-update</string>
+    <string name="auto_check_update">Awtomatikong pagsuri ng update</string>
     <string name="check_for_updates_desc">Awtomatikong suriin ang mga update mula sa GitHub</string>
-    <string name="enable_auto_update">Paganahin ang awtomatikong pag-update</string>
+    <string name="enable_auto_check_update">Paganahin ang awtomatikong pagsuri ng update</string>
     <string name="update_channel">Channel ng update</string>
     <string name="stable_channel">Stable</string>
     <string name="pre_release_channel">Pre-release</string>
     <string name="check_for_updates">Suriin ang mga update</string>
     <string name="update_channel_desc">Pumili ng stable na bersyon o pre-release na bersyon na may pinakabagong features</string>
     <string name="update">I-update</string>
-    <string name="app_update_failed">Nabigo ang pag-update</string>
     <string name="already_latest_version">Pinakabagong bersyon na</string>
     <string name="check_update_failed">Nabigo ang pagsuri ng update</string>
     

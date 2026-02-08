@@ -142,16 +142,15 @@
     <string name="issue_feedback_desc">Сообщить об ошибке или предложить идею</string>
     <string name="sponsor">Спонсировать</string>
     <string name="sponsor_desc">Поддержать разработку через GitHub Sponsors</string>
-    <string name="auto_update">Автообновление</string>
+    <string name="auto_check_update">Автоматическая проверка обновлений</string>
     <string name="check_for_updates_desc">Автоматически проверять обновления на GitHub</string>
-    <string name="enable_auto_update">Включить автообновление</string>
+    <string name="enable_auto_check_update">Включить автоматическую проверку обновлений</string>
     <string name="update_channel">Канал обновлений</string>
     <string name="stable_channel">Стабильный</string>
     <string name="pre_release_channel">Предрелизный</string>
     <string name="check_for_updates">Проверить обновления</string>
     <string name="update_channel_desc">Выбор между стабильными выпусками или бета-версиями с новыми функциями</string>
     <string name="update">Обновить</string>
-    <string name="app_update_failed">Ошибка обновления</string>
     <string name="already_latest_version">Уже установлена последняя версия</string>
     <string name="check_update_failed">Не удалось проверить обновления</string>
     

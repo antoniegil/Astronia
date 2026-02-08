@@ -140,16 +140,15 @@
     <string name="issue_feedback_desc">Nahlásit chybu nebo navrhnout vylepšení</string>
     <string name="sponsor">Sponzor</string>
     <string name="sponsor_desc">Podpořte tuto aplikaci prostřednictvím GitHub Sponsors</string>
-    <string name="auto_update">Automatická aktualizace</string>
+    <string name="auto_check_update">Automatická kontrola aktualizací</string>
     <string name="check_for_updates_desc">Automaticky kontrolovat aktualizace z GitHubu</string>
-    <string name="enable_auto_update">Povolit automatickou aktualizaci</string>
+    <string name="enable_auto_check_update">Povolit automatickou kontrolu aktualizací</string>
     <string name="update_channel">Kanál aktualizací</string>
     <string name="stable_channel">Stabilní</string>
     <string name="pre_release_channel">Předběžná verze</string>
     <string name="check_for_updates">Zkontrolovat aktualizace</string>
     <string name="update_channel_desc">Vyberte stabilní verzi nebo předběžnou verzi s nejnovějšími funkcemi</string>
     <string name="update">Aktualizovat</string>
-    <string name="app_update_failed">Aktualizace se nezdařila</string>
     <string name="already_latest_version">Již máte nejnovější verzi</string>
     <string name="check_update_failed">Kontrola aktualizace se nezdařila</string>
     

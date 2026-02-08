@@ -141,16 +141,15 @@
     <string name="issue_feedback_desc">الإبلاغ عن أخطاء أو تقديم اقتراحات</string>
     <string name="sponsor">الدعم (Sponsor)</string>
     <string name="sponsor_desc">دعم التطوير عبر GitHub Sponsors</string>
-    <string name="auto_update">تحديث تلقائي</string>
+    <string name="auto_check_update">التحقق التلقائي من التحديثات</string>
     <string name="check_for_updates_desc">التحقق تلقائياً من التحديثات من GitHub</string>
-    <string name="enable_auto_update">تفعيل التحديث التلقائي</string>
+    <string name="enable_auto_check_update">تفعيل التحقق التلقائي من التحديثات</string>
     <string name="update_channel">قناة التحديث</string>
     <string name="stable_channel">المستقرة</string>
     <string name="pre_release_channel">التجريبية (Pre-release)</string>
     <string name="check_for_updates">التحقق من وجود تحديثات</string>
     <string name="update_channel_desc">اختر بين الإصدارات المستقرة أو الإصدارات التجريبية التي تحتوي على أحدث الميزات</string>
     <string name="update">تحديث</string>
-    <string name="app_update_failed">فشل التحديث</string>
     <string name="already_latest_version">أنت تستخدم أحدث إصدار بالفعل</string>
     <string name="check_update_failed">فشل التحقق من وجود تحديثات</string>
     

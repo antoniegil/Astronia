@@ -262,8 +262,8 @@ internal class PreferenceManagerImpl(context: Context) {
     fun getPendingNavigation(): String = getString(KEY_PENDING_NAVIGATION, "")
     fun clearPendingNavigation() = remove(KEY_PENDING_NAVIGATION)
     
-    fun getAutoUpdate(): Boolean = getBoolean(KEY_AUTO_UPDATE, false)
-    fun setAutoUpdate(value: Boolean) = putBoolean(KEY_AUTO_UPDATE, value)
+    fun getAutoUpdate(): Boolean = getBoolean(KEY_AUTO_CHECK_UPDATE, false)
+    fun setAutoUpdate(value: Boolean) = putBoolean(KEY_AUTO_CHECK_UPDATE, value)
     
     fun getUpdateChannel(): Int = getInt(KEY_UPDATE_CHANNEL, 0)
     fun setUpdateChannel(value: Int) = putInt(KEY_UPDATE_CHANNEL, value)
@@ -349,7 +349,7 @@ internal class PreferenceManagerImpl(context: Context) {
         private const val KEY_PROXY_PASSWORD = "proxy_password"
         private const val KEY_SHOW_PLAYER_STATS = "show_player_stats"
         private const val KEY_PENDING_NAVIGATION = "pending_navigation"
-        private const val KEY_AUTO_UPDATE = "auto_update"
+        private const val KEY_AUTO_CHECK_UPDATE = "auto_check_update"
         private const val KEY_UPDATE_CHANNEL = "update_channel"
         private const val KEY_HISTORY = "history_list"
         

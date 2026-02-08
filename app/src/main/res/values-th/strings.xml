@@ -135,16 +135,15 @@
     <string name="issue_feedback_desc">รายงานข้อผิดพลาดหรือข้อเสนอแนะ</string>
     <string name="sponsor">สนับสนุน</string>
     <string name="sponsor_desc">สนับสนุนการพัฒนาผ่าน GitHub Sponsors</string>
-    <string name="auto_update">อัปเดตอัตโนมัติ</string>
+    <string name="auto_check_update">ตรวจสอบการอัปเดตอัตโนมัติ</string>
     <string name="check_for_updates_desc">ตรวจสอบการอัปเดตจาก GitHub โดยอัตโนมัติ</string>
-    <string name="enable_auto_update">เปิดใช้งานการอัปเดตอัตโนมัติ</string>
+    <string name="enable_auto_check_update">เปิดใช้งานการตรวจสอบการอัปเดตอัตโนมัติ</string>
     <string name="update_channel">ช่องทางการอัปเดต</string>
     <string name="stable_channel">เสถียร (Stable)</string>
     <string name="pre_release_channel">รุ่นทดสอบ (Pre-release)</string>
     <string name="check_for_updates">ตรวจสอบการอัปเดต</string>
     <string name="update_channel_desc">เลือกระหว่างรุ่นที่เสถียรหรือรุ่นทดสอบที่มีฟีเจอร์ล่าสุด</string>
     <string name="update">อัปเดต</string>
-    <string name="app_update_failed">การอัปเดตล้มเหลว</string>
     <string name="already_latest_version">เป็นเวอร์ชันล่าสุดแล้ว</string>
     <string name="check_update_failed">ตรวจสอบการอัปเดตล้มเหลว</string>
     

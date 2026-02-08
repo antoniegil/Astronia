@@ -139,16 +139,15 @@
     <string name="issue_feedback_desc">Report bugs or suggestions</string>
     <string name="sponsor">Sponsor</string>
     <string name="sponsor_desc">Support the development via GitHub Sponsors</string>
-    <string name="auto_update">Auto Update</string>
+    <string name="auto_check_update">Auto Check Update</string>
     <string name="check_for_updates_desc">Automatically check for updates from GitHub</string>
-    <string name="enable_auto_update">Enable Auto Update</string>
+    <string name="enable_auto_check_update">Enable Auto Check Update</string>
     <string name="update_channel">Update Channel</string>
     <string name="stable_channel">Stable</string>
     <string name="pre_release_channel">Pre-release</string>
     <string name="check_for_updates">Check for Updates</string>
     <string name="update_channel_desc">Choose between stable releases or pre-release versions with latest features</string>
     <string name="update">Update</string>
-    <string name="app_update_failed">Update failed</string>
     <string name="already_latest_version">Already the latest version</string>
     <string name="check_update_failed">Failed to check for updates</string>
     

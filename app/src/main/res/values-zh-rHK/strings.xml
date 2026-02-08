@@ -135,16 +135,15 @@
     <string name="issue_feedback_desc">回報錯誤或提供建議</string>
     <string name="sponsor">贊助</string>
     <string name="sponsor_desc">喺 GitHub 上贊助嚟支援呢個 App</string>
-    <string name="auto_update">自動更新</string>
+    <string name="auto_check_update">自動檢查更新</string>
     <string name="check_for_updates_desc">自動檢查 GitHub 嘅更新</string>
-    <string name="enable_auto_update">啟用自動更新</string>
+    <string name="enable_auto_check_update">啟用自動檢查更新</string>
     <string name="update_channel">更新頻道</string>
     <string name="stable_channel">穩定</string>
     <string name="pre_release_channel">預覽</string>
     <string name="check_for_updates">檢查更新</string>
     <string name="update_channel_desc">選擇穩定版或有最新功能嘅預佈版本</string>
     <string name="update">更新</string>
-    <string name="app_update_failed">更新失敗</string>
     <string name="already_latest_version">已經係最新版本</string>
     <string name="check_update_failed">檢查更新失敗</string>
     

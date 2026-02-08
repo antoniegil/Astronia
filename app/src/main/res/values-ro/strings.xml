@@ -139,16 +139,15 @@
     <string name="issue_feedback_desc">Raportează bug sau fă o sugestie</string>
     <string name="sponsor">Sponsor</string>
     <string name="sponsor_desc">Susține această aplicație prin GitHub Sponsors</string>
-    <string name="auto_update">Actualizare automată</string>
+    <string name="auto_check_update">Verificare automată actualizări</string>
     <string name="check_for_updates_desc">Verifică automat actualizări de la GitHub</string>
-    <string name="enable_auto_update">Activează actualizare automată</string>
+    <string name="enable_auto_check_update">Activează verificare automată actualizări</string>
     <string name="update_channel">Canal actualizare</string>
     <string name="stable_channel">Stabil</string>
     <string name="pre_release_channel">Previzualizare</string>
     <string name="check_for_updates">Verifică actualizări</string>
     <string name="update_channel_desc">Alege între versiuni stabile sau versiuni pre-lansare cu cele mai noi funcții</string>
     <string name="update">Actualizează</string>
-    <string name="app_update_failed">Actualizare eșuată</string>
     <string name="already_latest_version">Deja ultima versiune</string>
     <string name="check_update_failed">Verificare actualizări eșuată</string>
     

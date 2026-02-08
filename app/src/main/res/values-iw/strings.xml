@@ -139,16 +139,15 @@
     <string name="issue_feedback_desc">דווח על באג או הצע שיפור</string>
     <string name="sponsor">חסות</string>
     <string name="sponsor_desc">תמוך באפליקציה זו דרך GitHub Sponsors</string>
-    <string name="auto_update">עדכון אוטומטי</string>
+    <string name="auto_check_update">בדיקת עדכונים אוטומטית</string>
     <string name="check_for_updates_desc">בדוק אוטומטית עדכונים מ-GitHub</string>
-    <string name="enable_auto_update">הפעל עדכון אוטומטי</string>
+    <string name="enable_auto_check_update">הפעל בדיקת עדכונים אוטומטית</string>
     <string name="update_channel">ערוץ עדכון</string>
     <string name="stable_channel">יציב</string>
     <string name="pre_release_channel">גרסת טרום-שחרור</string>
     <string name="check_for_updates">בדוק עדכונים</string>
     <string name="update_channel_desc">בחר גרסה יציבה או גרסת טרום-שחרור עם התכונות החדשות ביותר</string>
     <string name="update">עדכון</string>
-    <string name="app_update_failed">העדכון נכשל</string>
     <string name="already_latest_version">כבר בגרסה האחרונה</string>
     <string name="check_update_failed">בדיקת העדכון נכשלה</string>
     

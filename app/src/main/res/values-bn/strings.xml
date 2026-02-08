@@ -137,16 +137,15 @@
     <string name="issue_feedback_desc">বাগ রিপোর্ট বা পরামর্শ দিন</string>
     <string name="sponsor">স্পন্সর</string>
     <string name="sponsor_desc">GitHub Sponsors-এর মাধ্যমে সাহায্য করুন</string>
-    <string name="auto_update">অটো আপডেট</string>
+    <string name="auto_check_update">স্বয়ংক্রিয় আপডেট চেক</string>
     <string name="check_for_updates_desc">স্বয়ংক্রিয়ভাবে GitHub থেকে আপডেট চেক করুন</string>
-    <string name="enable_auto_update">অটো আপডেট সক্ষম করুন</string>
+    <string name="enable_auto_check_update">স্বয়ংক্রিয় আপডেট চেক সক্ষম করুন</string>
     <string name="update_channel">আপডেট চ্যানেল</string>
     <string name="stable_channel">স্টেবল (Stable)</string>
     <string name="pre_release_channel">প্রি-রিলিজ (Pre-release)</string>
     <string name="check_for_updates">আপডেটের জন্য চেক করুন</string>
     <string name="update_channel_desc">স্থিতিশীল রিলিজ বা নতুন ফিচারের প্রি-রিলিজ ভার্সনের মধ্যে বেছে নিন</string>
     <string name="update">আপডেট</string>
-    <string name="app_update_failed">আপডেট ব্যর্থ হয়েছে</string>
     <string name="already_latest_version">ইতিমধ্যেই লেটেস্ট ভার্সন ব্যবহার করছেন</string>
     <string name="check_update_failed">আপডেট চেক করতে ব্যর্থ হয়েছে</string>
     
