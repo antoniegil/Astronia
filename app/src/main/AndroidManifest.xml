@@ -5,7 +5,6 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
-    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
 
     <queries>
         <intent>
@@ -22,10 +21,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.Astronia"
-        android:usesCleartextTraffic="true"
-        android:requestLegacyExternalStorage="false"
         android:enableOnBackInvokedCallback="true"
-        android:vmSafeMode="true"
         android:hardwareAccelerated="true"
         tools:targetApi="tiramisu"
         tools:ignore="UnusedAttribute,PictureInPictureIssue">
@@ -36,9 +32,7 @@
             android:theme="@style/Theme.Astronia"
             android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
             android:supportsPictureInPicture="true"
-            android:resizeableActivity="true"
             android:launchMode="singleTask"
-            android:screenOrientation="unspecified"
             android:hardwareAccelerated="true"
             tools:ignore="DiscouragedApi">
             <intent-filter>

@@ -22,8 +22,8 @@ android {
         applicationId = "com.antoniegil.astronia"
         minSdk = 24
         targetSdk = 36
-        versionCode = 102
-        versionName = "1.0.2"
+        versionCode = 1031
+        versionName = "1.0.3-alpha.1"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables { useSupportLibrary = true }
@@ -106,24 +106,26 @@ android {
         }
     }
     
+    dependenciesInfo {
+        includeInApk = false
+        includeInBundle = false
+    }
+    
     lint { 
         disable.addAll(listOf("MissingTranslation", "ExtraTranslation", "MissingQuantity", "ChromeOsAbiSupport"))
         abortOnError = false
     }
     
+    val abiCodes = mapOf("armeabi-v7a" to 1, "arm64-v8a" to 2, "x86" to 3, "x86_64" to 4, "universal" to 0)
+
     androidComponents {
         onVariants { variant ->
             variant.outputs.forEach { output ->
-                val abiName = output.filters.find { it.filterType == com.android.build.api.variant.FilterConfiguration.FilterType.ABI }?.identifier ?: "universal"
-                val baseVersionCode = output.versionCode.orNull ?: 0
-                output.versionCode.set(baseVersionCode * 100 + when(abiName) {
-                    "arm64-v8a" -> 4
-                    "armeabi-v7a" -> 3
-                    "x86_64" -> 2
-                    "x86" -> 1
-                    "universal" -> 0
-                    else -> 0
-                })
+                val name = output.filters.find { it.filterType == com.android.build.api.variant.FilterConfiguration.FilterType.ABI }?.identifier ?: "universal"
+                val baseAbiCode = abiCodes[name]
+                if (baseAbiCode != null) {
+                    output.versionCode.set((output.versionCode.get() ?: 0) * 10 + baseAbiCode)
+                }
             }
         }
     }

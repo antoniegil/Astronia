@@ -108,12 +108,11 @@ fun MainScreen(
     LaunchedEffect(Unit) {
         if (SettingsManager.getAutoUpdate(context)) {
             scope.launch(Dispatchers.IO) {
-                runCatching {
+                runCatching<Unit> {
                     UpdateUtil.checkForUpdate(context)?.let {
                         latestRelease = it
                         showUpdateDialog = true
                     }
-                    UpdateUtil.deleteOutdatedApk(context)
                 }
             }
         }

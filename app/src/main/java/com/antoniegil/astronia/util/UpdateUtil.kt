@@ -1,53 +1,30 @@
 package com.antoniegil.astronia.util
 
 import android.content.Context
-import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
-import android.util.Log
-import androidx.core.content.FileProvider
-import com.antoniegil.astronia.Astronia
-import com.antoniegil.astronia.R
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.distinctUntilChanged
-import kotlinx.coroutines.flow.emptyFlow
-import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.flowOn
-import kotlinx.coroutines.withContext
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 import okhttp3.OkHttpClient
 import okhttp3.Request
-import okhttp3.ResponseBody
-import java.io.File
 import java.util.regex.Pattern
 
 object UpdateUtil {
 
     private const val OWNER = "antoniegil"
     private const val REPO = "Astronia"
-    private const val TAG = "UpdateUtil"
 
     private val client = OkHttpClient()
     private val requestForReleases =
-        Request.Builder().url("https://api.github.com/repos/${OWNER}/${REPO}/releases")
+        Request.Builder().url("https://api.github.com/repos/${OWNER}/${REPO}/releases/latest")
             .build()
 
     private val jsonFormat = Json { ignoreUnknownKeys = true }
 
     private fun getLatestRelease(): LatestRelease =
         client.newCall(requestForReleases).execute().run {
-            val releaseList =
-                jsonFormat.decodeFromString<List<LatestRelease>>(this.body.string())
-            val updateChannel = SettingsManager.getUpdateChannel(Astronia.instance)
-            val latestRelease =
-                releaseList.filter { 
-                    if (updateChannel == 0) !it.preRelease else true 
-                }
-                .maxByOrNull { it.name.toVersion() }
-                    ?: throw Exception("null response")
+            val latestRelease = jsonFormat.decodeFromString<LatestRelease>(this.body.string())
             body.close()
             latestRelease
         }
@@ -70,137 +47,6 @@ object UpdateUtil {
                 packageName, 0
             ).versionName.toVersion()
         }
-
-    private fun Context.getLatestApk() =
-        File(getExternalFilesDir("apk"), "latest.apk")
-
-    fun installLatestApk(context: Context): Boolean = context.run {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            if (!packageManager.canRequestPackageInstalls()) {
-                val intent = Intent(android.provider.Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES).apply {
-                    data = android.net.Uri.parse("package:$packageName")
-                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                }
-                startActivity(intent)
-                return false
-            }
-        }
-        
-        kotlin.runCatching {
-            val apkFile = getLatestApk()
-            val contentUri = FileProvider.getUriForFile(
-                this, 
-                "${packageName}.provider", 
-                apkFile
-            )
-            val intent = Intent(Intent.ACTION_VIEW).apply {
-                addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
-                setDataAndType(contentUri, "application/vnd.android.package-archive")
-            }
-            startActivity(intent)
-            return true
-        }.onFailure { throwable: Throwable ->
-            throwable.printStackTrace()
-            android.widget.Toast.makeText(
-                this,
-                R.string.app_update_failed,
-                android.widget.Toast.LENGTH_SHORT
-            ).show()
-        }
-        return false
-    }
-
-    fun deleteOutdatedApk(context: Context) = context.runCatching {
-        val apkFile = getLatestApk()
-        if (apkFile.exists()) {
-            val apkVersion = context.packageManager.getPackageArchiveInfo(
-                apkFile.absolutePath, 0
-            )?.versionName.toVersion()
-            if (apkVersion <= context.getCurrentVersion()) {
-                apkFile.delete()
-            }
-        }
-    }
-
-    suspend fun downloadApk(
-        context: Context,
-        latestRelease: LatestRelease
-    ): Flow<DownloadStatus> = withContext(Dispatchers.IO) {
-        val apkFile = context.getLatestApk()
-        if (apkFile.exists()) {
-            val apkVersion = context.packageManager.getPackageArchiveInfo(
-                apkFile.absolutePath, 0
-            )?.versionName.toVersion()
-
-            if (apkVersion >= latestRelease.name.toVersion()) {
-                return@withContext flow { 
-                    emit(DownloadStatus.Finished(apkFile)) 
-                }
-            }
-        }
-
-        val abiList = Build.SUPPORTED_ABIS
-        val preferredArch = abiList.firstOrNull() ?: return@withContext emptyFlow()
-
-        val targetUrl = latestRelease.assets?.find {
-            it.name?.contains(preferredArch) ?: false
-        }?.browserDownloadUrl ?: return@withContext emptyFlow()
-        
-        val request = Request.Builder().url(targetUrl).build()
-        try {
-            val response = client.newCall(request).execute()
-            val responseBody = response.body
-            return@withContext responseBody.downloadFileWithProgress(context.getLatestApk())
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
-        emptyFlow()
-    }
-
-    private fun ResponseBody.downloadFileWithProgress(saveFile: File): Flow<DownloadStatus> = flow {
-        emit(DownloadStatus.Progress(0))
-
-        var deleteFile = true
-
-        try {
-            saveFile.parentFile?.mkdirs()
-            
-            byteStream().use { inputStream ->
-                saveFile.outputStream().use { outputStream ->
-                    val totalBytes = contentLength()
-                    val data = ByteArray(8_192)
-                    var progressBytes = 0L
-
-                    while (true) {
-                        val bytes = inputStream.read(data)
-
-                        if (bytes == -1) {
-                            break
-                        }
-
-                        outputStream.write(data, 0, bytes)
-                        progressBytes += bytes
-                        emit(DownloadStatus.Progress(
-                            percent = ((progressBytes * 100) / totalBytes).toInt()
-                        ))
-                    }
-
-                    when {
-                        progressBytes < totalBytes -> throw Exception("missing bytes")
-                        progressBytes > totalBytes -> throw Exception("too many bytes")
-                        else -> deleteFile = false
-                    }
-                }
-            }
-
-            emit(DownloadStatus.Finished(saveFile))
-        } finally {
-            if (deleteFile) {
-                saveFile.delete()
-            }
-        }
-    }.flowOn(Dispatchers.IO).distinctUntilChanged()
 
     @Serializable
     data class LatestRelease(
@@ -226,14 +72,8 @@ object UpdateUtil {
         @SerialName("browser_download_url") val browserDownloadUrl: String? = null,
     )
 
-    sealed class DownloadStatus {
-        object NotYet : DownloadStatus()
-        data class Progress(val percent: Int) : DownloadStatus()
-        data class Finished(val file: File) : DownloadStatus()
-    }
-
-    private val pattern = Pattern.compile("""v?(\d+)\.(\d+)\.(\d+)(-(\w+)\.(\d+))?""")
-    private val EMPTY_VERSION = Version.Stable()
+    private val pattern = Pattern.compile("""v?(\d+)\.(\d+)\.(\d+)(-alpha\.(\d+))?""")
+    private val EMPTY_VERSION = Version.Release()
 
     fun String?.toVersion(): Version = this?.run {
         val matcher = pattern.matcher(this)
@@ -241,11 +81,11 @@ object UpdateUtil {
             val major = matcher.group(1)?.toInt() ?: 0
             val minor = matcher.group(2)?.toInt() ?: 0
             val patch = matcher.group(3)?.toInt() ?: 0
-            val buildNumber = matcher.group(6)?.toInt() ?: 0
-            when (matcher.group(5)) {
-                "beta" -> Version.Beta(major, minor, patch, buildNumber)
-                "rc" -> Version.ReleaseCandidate(major, minor, patch, buildNumber)
-                else -> Version.Stable(major, minor, patch)
+            val buildNumber = matcher.group(5)?.toInt() ?: 0
+            if (buildNumber > 0) {
+                Version.PreRelease(major, minor, patch, buildNumber)
+            } else {
+                Version.Release(major, minor, patch)
             }
         } else EMPTY_VERSION
     } ?: EMPTY_VERSION
@@ -266,36 +106,22 @@ object UpdateUtil {
         abstract fun toVersionName(): String
         abstract fun toNumber(): Long
 
-        class Beta(versionMajor: Int, versionMinor: Int, versionPatch: Int, versionBuild: Int) :
+        class PreRelease(versionMajor: Int, versionMinor: Int, versionPatch: Int, versionBuild: Int) :
             Version(versionMajor, versionMinor, versionPatch, versionBuild) {
             override fun toVersionName(): String =
-                "${major}.${minor}.${patch}-beta.$build"
+                "${major}.${minor}.${patch}-alpha.$build"
 
             override fun toNumber(): Long =
                 major * MAJOR + minor * MINOR + patch * PATCH + build * BUILD
         }
 
-        class Stable(versionMajor: Int = 0, versionMinor: Int = 0, versionPatch: Int = 0) :
+        class Release(versionMajor: Int = 0, versionMinor: Int = 0, versionPatch: Int = 0) :
             Version(versionMajor, versionMinor, versionPatch) {
             override fun toVersionName(): String =
                 "${major}.${minor}.${patch}"
 
             override fun toNumber(): Long =
                 major * MAJOR + minor * MINOR + patch * PATCH + build * BUILD + 100
-        }
-
-        class ReleaseCandidate(
-            versionMajor: Int,
-            versionMinor: Int,
-            versionPatch: Int,
-            versionBuild: Int
-        ) :
-            Version(versionMajor, versionMinor, versionPatch, versionBuild) {
-            override fun toVersionName(): String =
-                "${major}.${minor}.${patch}-rc.$build"
-
-            override fun toNumber(): Long =
-                major * MAJOR + minor * MINOR + patch * PATCH + build * BUILD + 25
         }
 
         override operator fun compareTo(other: Version): Int =

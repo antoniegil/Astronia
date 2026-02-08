@@ -21,7 +21,7 @@ Astronia is a lightweight and modern M3U8 video player for Android, built with M
 - 🎬 M3U8 video streaming playback
 - 📱 Material Design 3 UI
 - 🌙 Dark mode support
-- 🔄 Auto-update functionality
+- 📺 Picture-in-Picture mode
 - 🎨 Modern and intuitive interface
 - 🔒 Privacy-focused (no data collection)
 - 🌐 Multi-language support (30+)
@@ -33,6 +33,36 @@ Astronia is a lightweight and modern M3U8 video player for Android, built with M
     height="80">](https://github.com/antoniegil/Astronia/releases)
 
 Download the latest release from the [Releases](https://github.com/antoniegil/Astronia/releases) page.
+
+## 🔨 Build Instructions
+
+### Prerequisites
+- Android Studio Hedgehog (2023.1.1) or later
+- JDK 17
+- Android SDK with API 24-36
+
+### Building from Source
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/antoniegil/Astronia.git
+   cd Astronia
+   ```
+
+2. Build the APK:
+   ```bash
+   ./gradlew assembleRelease
+   ```
+
+3. The APK will be generated at:
+   ```
+   app/build/outputs/apk/release/Astronia-{version}-release.apk
+   ```
+
+### Build Variants
+- **Release**: Optimized production build with ProGuard enabled
+- **Debug**: Development build with debugging symbols
+
+Note: Release builds require a signing key. For unsigned builds, use `assembleDebug` instead.
 
 ## 🧱 Credits
 
