@@ -16,6 +16,17 @@ English
 
 Astronia is a lightweight and modern M3U8 video player for Android, built with Material Design 3. It provides a clean and intuitive interface for streaming video content with support for various formats and playback features. The UI design is inspired by [Seal](https://github.com/JunkFood02/Seal).
 
+## Screenshoot
+
+<div>
+<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/1.png" width="30%" />
+<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/2.png" width="30%" />
+<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/3.png" width="30%" />
+<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/4.png" width="30%" />
+<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/5.png" width="30%" />
+<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/6.png" width="30%" />
+</div>
+
 ## 📖 Features
 
 - 🎬 M3U8 video streaming playback

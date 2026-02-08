@@ -1,0 +1,5 @@
+Fix Android 7-9 compatibility issues.
+Improve the playback UI component.
+Fix crash when switching channels after tab change
+
+For full changelogs, please refer to GitHub

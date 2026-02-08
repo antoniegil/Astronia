@@ -1,0 +1,3 @@
+Simplify update mechanism and remove install permission
+
+For full changelogs, please refer to GitHub
