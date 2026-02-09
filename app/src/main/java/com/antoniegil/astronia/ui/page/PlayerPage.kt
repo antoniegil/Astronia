@@ -341,7 +341,6 @@ private fun PlayerPageContent(
                                 player = media3Player,
                                 aspectRatio = uiState.aspectRatio,
                                 mirrorFlip = uiState.mirrorFlip,
-                                isFullscreen = isFullscreen,
                                 isBackgroundRetained = false,
                                 onSurfaceReady = onSurfaceReady,
                                 currentChannelUrl = uiState.currentChannelUrl
@@ -381,12 +380,6 @@ private fun PlayerPageContent(
                             { showPlayerSettings = true }
                         }
                         
-                        val onSeek = remember {
-                            { position: Long ->
-                                media3Player.seekTo(position)
-                            }
-                        }
-                        
                         androidx.compose.animation.AnimatedVisibility(
                             visible = uiState.showControls && !isInPictureInPictureMode,
                             enter = fadeIn(tween(100)),
@@ -406,8 +399,7 @@ private fun PlayerPageContent(
                                 onPlayPauseClick = onPlayPauseClick,
                                 onBackClick = onBackClick,
                                 onFullscreenClick = onFullscreenClick,
-                                onSettingsClick = onSettingsClick,
-                                onSeek = onSeek
+                                onSettingsClick = onSettingsClick
                             )
                         }
 

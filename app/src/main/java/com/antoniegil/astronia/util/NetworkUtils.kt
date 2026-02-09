@@ -1,10 +1,7 @@
 package com.antoniegil.astronia.util
 
 import android.os.Build
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 import okhttp3.OkHttpClient
-import okhttp3.Request
 import java.security.SecureRandom
 import java.security.cert.X509Certificate
 import java.util.concurrent.TimeUnit
@@ -44,46 +41,9 @@ object NetworkUtils {
         return builder.build()
     }
     
-    suspend fun testUrlWithHttpsUpgrade(
-        url: String,
-        timeoutMs: Long = 3000
-    ): String = withContext(Dispatchers.IO) {
-        if (!url.startsWith("http://", ignoreCase = true)) {
-            return@withContext url
-        }
-        
-        val httpsUrl = url.replaceFirst("http://", "https://", ignoreCase = true)
-        
-        try {
-            val client = OkHttpClient.Builder()
-                .connectTimeout(timeoutMs, TimeUnit.MILLISECONDS)
-                .readTimeout(timeoutMs, TimeUnit.MILLISECONDS)
-                .followRedirects(true)
-                .followSslRedirects(true)
-                .build()
-            
-            val request = Request.Builder()
-                .url(httpsUrl)
-                .head()
-                .build()
-            
-            client.newCall(request).execute().use { response ->
-                if (response.isSuccessful) httpsUrl else url
-            }
-        } catch (e: Exception) {
-            url
-        }
-    }
-    
     fun convertToHttps(url: String): String {
         return if (url.startsWith("http://", ignoreCase = true)) {
             url.replaceFirst("http://", "https://", ignoreCase = true)
-        } else url
-    }
-    
-    fun convertToHttp(url: String): String {
-        return if (url.startsWith("https://", ignoreCase = true)) {
-            url.replaceFirst("https://", "http://", ignoreCase = true)
         } else url
     }
     

@@ -140,7 +140,7 @@ internal class PreferenceManagerImpl(context: Context) {
         settingsPrefs.edit { putInt(key, value) }
     }
     
-    private fun getString(key: String, default: String = ""): String {
+    private fun getString(key: String, default: String): String {
         return settingsPrefs.getString(key, default) ?: default
     }
     

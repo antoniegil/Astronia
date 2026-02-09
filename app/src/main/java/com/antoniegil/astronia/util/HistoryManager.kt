@@ -16,10 +16,6 @@ object HistoryManager {
         SettingsManager.getInstance(context).addOrUpdateHistory(url, name, lastChannelUrl, lastChannelId)
     }
     
-    fun clearHistory(context: Context) {
-        SettingsManager.getInstance(context).clearHistory()
-    }
-    
     fun deleteHistoryItem(context: Context, item: HistoryItem) {
         SettingsManager.getInstance(context).deleteHistoryItem(item)
     }

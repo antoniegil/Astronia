@@ -61,7 +61,6 @@ private const val STYLE_MONOCHROME = 4
 @Composable
 fun AppearancePage(
     onNavigateBack: () -> Unit,
-    onSeedColorChanged: (Int) -> Unit = {},
     onNavigateToDarkTheme: () -> Unit = {},
     onNavigateToLanguage: () -> Unit = {}
 ) {

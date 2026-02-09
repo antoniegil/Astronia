@@ -134,7 +134,6 @@ fun PlayerSurface(
     aspectRatio: Int,
     modifier: Modifier = Modifier,
     mirrorFlip: Boolean = false,
-    isFullscreen: Boolean = false,
     onSurfaceReady: () -> Unit = {},
     isBackgroundRetained: Boolean = false,
     currentChannelUrl: String = ""

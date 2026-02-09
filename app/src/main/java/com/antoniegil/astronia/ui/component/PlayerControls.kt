@@ -55,8 +55,7 @@ fun PlayerControlsOverlay(
     onPlayPauseClick: () -> Unit,
     onBackClick: () -> Unit,
     onFullscreenClick: () -> Unit,
-    onSettingsClick: () -> Unit,
-    onSeek: (Long) -> Unit
+    onSettingsClick: () -> Unit
 ) {
     var currentPosition by remember { mutableLongStateOf(media3Player?.currentPosition ?: 0L) }
     var bufferedPosition by remember { mutableLongStateOf(media3Player?.bufferedPosition ?: 0L) }

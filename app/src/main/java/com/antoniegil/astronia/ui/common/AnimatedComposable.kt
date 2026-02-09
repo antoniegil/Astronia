@@ -16,11 +16,7 @@ import com.antoniegil.astronia.ui.common.motion.EmphasizedDecelerate
 import com.antoniegil.astronia.ui.common.motion.materialSharedAxisXIn
 import com.antoniegil.astronia.ui.common.motion.materialSharedAxisXOut
 
-const val DURATION_ENTER = 400
-const val DURATION_EXIT = 200
 const val initialOffset = 0.10f
-
-private val fadeTween = tween<Float>(durationMillis = DURATION_EXIT)
 
 fun NavGraphBuilder.animatedComposable(
     route: String,

@@ -70,11 +70,7 @@ class MainActivity : AppCompatActivity() {
             
             SettingsProvider {
                 MainScreen(
-                    initialNavigation = pendingNav,
-                    onSeedColorChanged = { color ->
-                        SettingsManager.setSeedColor(context, color)
-                        recreate()
-                    }
+                    initialNavigation = pendingNav
                 )
             }
         }
@@ -94,7 +90,6 @@ class MainActivity : AppCompatActivity() {
 @Composable
 fun MainScreen(
     initialNavigation: String = "",
-    onSeedColorChanged: (Int) -> Unit = {},
     viewModel: MainViewModel = viewModel()
 ) {
     val playbackState by viewModel.playbackState.collectAsState()
@@ -205,7 +200,6 @@ fun MainScreen(
                 animatedComposable(Route.APPEARANCE) {
                     AppearancePage(
                         onNavigateBack = onNavigateBack,
-                        onSeedColorChanged = onSeedColorChanged,
                         onNavigateToDarkTheme = { navController.navigate(Route.DARK_THEME) { launchSingleTop = true } },
                         onNavigateToLanguage = { navController.navigate(Route.LANGUAGE) { launchSingleTop = true } }
                     )
