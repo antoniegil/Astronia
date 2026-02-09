@@ -31,12 +31,12 @@ import kotlinx.coroutines.launch
 fun ChannelListSection(
     channels: List<M3U8Channel>,
     currentChannelUrl: String,
+    modifier: Modifier = Modifier,
     actualPlayingUrl: String? = null,
     isLoadingChannels: Boolean,
     listState: LazyListState,
     media3Player: com.antoniegil.astronia.player.Media3Player?,
-    onChannelClick: (M3U8Channel) -> Unit,
-    modifier: Modifier = Modifier
+    onChannelClick: (M3U8Channel) -> Unit
 ) {
     val context = androidx.compose.ui.platform.LocalContext.current
     val view = LocalView.current
@@ -173,6 +173,8 @@ fun ChannelListSection(
                     }
                 }
                 Spacer(modifier = Modifier.height(6.dp))
+            } else {
+                Spacer(modifier = Modifier.height(12.dp))
             }
 
             LazyColumn(

@@ -1,11 +1,15 @@
 package com.antoniegil.astronia
 
 import android.app.Application
+import android.os.Build
+import coil.ImageLoader
+import coil.ImageLoaderFactory
 import com.antoniegil.astronia.player.Media3Player
+import com.antoniegil.astronia.util.NetworkUtils
 import com.tencent.mmkv.MMKV
 import java.lang.ref.WeakReference
 
-class Astronia : Application() {
+class Astronia : Application(), ImageLoaderFactory {
     companion object {
         private var globalPlayerRef: WeakReference<Media3Player>? = null
         lateinit var instance: Astronia
@@ -32,6 +36,19 @@ class Astronia : Application() {
         super.onCreate()
         instance = this
         MMKV.initialize(this)
+        NetworkUtils.setupAndroid7SSL()
+    }
+    
+    override fun newImageLoader(): ImageLoader {
+        return ImageLoader.Builder(this)
+            .okHttpClient {
+                if (Build.VERSION.SDK_INT == Build.VERSION_CODES.N) {
+                    NetworkUtils.createHttpClient(15000, 30000, true)
+                } else {
+                    NetworkUtils.createHttpClient(15000, 30000, false)
+                }
+            }
+            .build()
     }
     
     @Suppress("DEPRECATION")

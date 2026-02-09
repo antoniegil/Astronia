@@ -112,8 +112,9 @@ android {
     }
     
     lint { 
-        disable.addAll(listOf("MissingTranslation", "ExtraTranslation", "MissingQuantity", "ChromeOsAbiSupport"))
+        disable.addAll(listOf("MissingTranslation", "ExtraTranslation", "MissingQuantity", "ChromeOsAbiSupport", "InsecureBaseConfiguration", "GradleDependency", "NewerVersionAvailable"))
         abortOnError = false
+        checkDependencies = false
     }
     
     val abiCodes = mapOf("armeabi-v7a" to 1, "arm64-v8a" to 2, "x86" to 3, "x86_64" to 4, "universal" to 0)

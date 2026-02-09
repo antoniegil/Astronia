@@ -10,10 +10,12 @@ import androidx.media3.common.MediaItem
 import androidx.media3.common.PlaybackException
 import androidx.media3.common.Player
 import androidx.media3.common.VideoSize
+import androidx.media3.datasource.DefaultHttpDataSource
 import androidx.media3.exoplayer.DefaultLoadControl
 import androidx.media3.exoplayer.DefaultRenderersFactory
 import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.exoplayer.analytics.AnalyticsListener
+import androidx.media3.exoplayer.source.DefaultMediaSourceFactory
 import androidx.media3.exoplayer.trackselection.DefaultTrackSelector
 import com.antoniegil.astronia.util.ErrorHandler
 import com.antoniegil.astronia.util.NetworkUtils
@@ -38,6 +40,7 @@ class Media3Player(private val context: Context) {
     var onErrorListener: ((error: String, isRetriable: Boolean) -> Unit)? = null
 
     init {
+        NetworkUtils.setupAndroid7SSL()
         createPlayer(true)
     }
     
@@ -62,10 +65,18 @@ class Media3Player(private val context: Context) {
             .setPrioritizeTimeOverSizeThresholds(true)
             .build()
         
+        val dataSourceFactory = DefaultHttpDataSource.Factory()
+            .setConnectTimeoutMs(15000)
+            .setReadTimeoutMs(30000)
+        
+        val mediaSourceFactory = DefaultMediaSourceFactory(context)
+            .setDataSourceFactory(dataSourceFactory)
+        
         exoPlayer = ExoPlayer.Builder(context)
             .setRenderersFactory(renderersFactory)
             .setLoadControl(loadControl)
             .setTrackSelector(trackSelector)
+            .setMediaSourceFactory(mediaSourceFactory)
             .setWakeMode(C.WAKE_MODE_NETWORK)
             .build()
             .apply {
