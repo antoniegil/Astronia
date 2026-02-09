@@ -15,7 +15,12 @@ import androidx.media3.exoplayer.DefaultRenderersFactory
 import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.exoplayer.analytics.AnalyticsListener
 import androidx.media3.exoplayer.trackselection.DefaultTrackSelector
+import com.antoniegil.astronia.util.CoroutineUtils
 import com.antoniegil.astronia.util.ErrorHandler
+import com.antoniegil.astronia.util.NetworkUtils
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 @androidx.annotation.OptIn(androidx.media3.common.util.UnstableApi::class)
 class Media3Player(private val context: Context) {
@@ -27,6 +32,8 @@ class Media3Player(private val context: Context) {
     private var parserErrorRetryCount: Int = 0
     private var currentMediaUrl: String? = null
     private val maxParserRetries = 2
+    private var isInitialLoad: Boolean = false
+    private var actualPlayingUrl: String? = null
 
     var onPreparedListener: (() -> Unit)? = null
     var onInfoListener: ((what: Int, extra: Int) -> Boolean)? = null
@@ -74,14 +81,29 @@ class Media3Player(private val context: Context) {
                         .build(),
                     true
                 )
+                addAnalyticsListener(object : AnalyticsListener {
+                    override fun onLoadStarted(
+                        eventTime: AnalyticsListener.EventTime,
+                        loadEventInfo: androidx.media3.exoplayer.source.LoadEventInfo,
+                        mediaLoadData: androidx.media3.exoplayer.source.MediaLoadData
+                    ) {
+                        val loadUrl = loadEventInfo.dataSpec.uri.toString()
+                        
+                        if (isInitialLoad) {
+                            actualPlayingUrl = loadUrl
+                        }
+                    }
+                })
                 addAnalyticsListener(createLatencyMonitor())
                 addListener(object : Player.Listener {
                     override fun onPlaybackStateChanged(playbackState: Int) {
                         when (playbackState) {
                             Player.STATE_READY -> {
                                 parserErrorRetryCount = 0
-                                onPreparedListener?.invoke()
-                                onInfoListener?.invoke(MEDIA_INFO_VIDEO_RENDERING_START, 0)
+                                if (isInitialLoad) {
+                                    isInitialLoad = false
+                                    onPreparedListener?.invoke()
+                                }
                                 onBufferingListener?.invoke(false)
                                 if (shouldPlayWhenReady && !isPlaying) {
                                     play()
@@ -126,14 +148,20 @@ class Media3Player(private val context: Context) {
                         ErrorHandler.logError("Media3Player", "Playback error occurred", error)
                         
                         val wasPlaying = shouldPlayWhenReady
-                        val isParserError = error.errorCode == PlaybackException.ERROR_CODE_PARSING_CONTAINER_MALFORMED ||
-                                error.errorCode == PlaybackException.ERROR_CODE_PARSING_CONTAINER_UNSUPPORTED ||
-                                error.errorCode == PlaybackException.ERROR_CODE_PARSING_MANIFEST_MALFORMED ||
-                                error.errorCode == PlaybackException.ERROR_CODE_PARSING_MANIFEST_UNSUPPORTED
+                        val httpError = error.cause as? androidx.media3.datasource.HttpDataSource.InvalidResponseCodeException
+                        val httpCode = httpError?.responseCode ?: 0
                         
-                        val isNetworkError = error.errorCode == PlaybackException.ERROR_CODE_IO_NETWORK_CONNECTION_FAILED ||
-                                error.errorCode == PlaybackException.ERROR_CODE_IO_NETWORK_CONNECTION_TIMEOUT ||
-                                error.errorCode == PlaybackException.ERROR_CODE_IO_BAD_HTTP_STATUS
+                        val isParserError = error.errorCode in listOf(
+                            PlaybackException.ERROR_CODE_PARSING_CONTAINER_MALFORMED,
+                            PlaybackException.ERROR_CODE_PARSING_CONTAINER_UNSUPPORTED,
+                            PlaybackException.ERROR_CODE_PARSING_MANIFEST_MALFORMED,
+                            PlaybackException.ERROR_CODE_PARSING_MANIFEST_UNSUPPORTED
+                        )
+                        
+                        val isRetriableNetworkError = error.errorCode in listOf(
+                            PlaybackException.ERROR_CODE_IO_NETWORK_CONNECTION_FAILED,
+                            PlaybackException.ERROR_CODE_IO_NETWORK_CONNECTION_TIMEOUT
+                        )
                         
                         val isBehindLiveWindow = error.cause is androidx.media3.exoplayer.source.BehindLiveWindowException
                         
@@ -142,14 +170,12 @@ class Media3Player(private val context: Context) {
                                 exoPlayer?.let { player ->
                                     player.seekToDefaultPosition()
                                     player.prepare()
-                                    if (wasPlaying) {
-                                        player.play()
-                                    }
+                                    if (wasPlaying) player.play()
                                 }
                             }
-                            isParserError && parserErrorRetryCount < maxParserRetries -> {
+                            (isParserError || NetworkUtils.isRetriableHttpError(httpCode)) && parserErrorRetryCount < maxParserRetries -> {
                                 parserErrorRetryCount++
-                                ErrorHandler.logError("Media3Player", "Parser error, retrying ($parserErrorRetryCount/$maxParserRetries)", null)
+                                ErrorHandler.logError("Media3Player", "Retriable error, retrying ($parserErrorRetryCount/$maxParserRetries)", null)
                                 currentMediaUrl?.let { url ->
                                     android.os.Handler(android.os.Looper.getMainLooper()).postDelayed({
                                         exoPlayer?.let { player ->
@@ -157,28 +183,36 @@ class Media3Player(private val context: Context) {
                                             player.clearMediaItems()
                                             player.setMediaItem(MediaItem.fromUri(url))
                                             player.prepare()
-                                            if (wasPlaying) {
-                                                player.play()
-                                            }
+                                            if (wasPlaying) player.play()
                                         }
                                     }, 500)
                                 }
                             }
-                            isNetworkError && parserErrorRetryCount < maxParserRetries -> {
+                            isRetriableNetworkError && parserErrorRetryCount < maxParserRetries -> {
                                 parserErrorRetryCount++
                                 ErrorHandler.logError("Media3Player", "Network error, retrying ($parserErrorRetryCount/$maxParserRetries)", null)
                                 android.os.Handler(android.os.Looper.getMainLooper()).postDelayed({
                                     exoPlayer?.let { player ->
                                         player.prepare()
-                                        if (wasPlaying) {
-                                            player.play()
-                                        }
+                                        if (wasPlaying) player.play()
                                     }
                                 }, 1000)
                             }
                             else -> {
-                                ErrorHandler.logError("Media3Player", "Unrecoverable playback error: ${error.errorCodeName}", error)
+                                ErrorHandler.logError("Media3Player", "Unrecoverable error: ${error.errorCodeName}", error)
+                                shouldPlayWhenReady = false
+                                exoPlayer?.stop()
                                 onBufferingListener?.invoke(false)
+                                
+                                val errorMsg = when {
+                                    NetworkUtils.isPermanentHttpError(httpCode) -> "Failed to load source: $httpCode ${httpError?.responseMessage ?: "Error"}"
+                                    error.errorCode == PlaybackException.ERROR_CODE_IO_BAD_HTTP_STATUS -> 
+                                        "Failed to load source: $httpCode ${httpError?.responseMessage ?: "Error"}"
+                                    isRetriableNetworkError -> "Failed to load source: Network connection failed"
+                                    isParserError -> "Failed to load source: Format not supported"
+                                    else -> "Failed to load source: ${error.errorCodeName}"
+                                }
+                                onErrorListener?.invoke(errorMsg, false)
                             }
                         }
                     }
@@ -211,9 +245,18 @@ class Media3Player(private val context: Context) {
     }
     
     fun setDataSource(url: String) {
-        currentMediaUrl = url
+        val finalUrl = if (url.startsWith("http://", ignoreCase = true)) {
+            url.replaceFirst("http://", "https://", ignoreCase = true)
+        } else {
+            url
+        }
+        
+        currentMediaUrl = finalUrl
         parserErrorRetryCount = 0
-        val mediaItem = MediaItem.fromUri(url)
+        isInitialLoad = true
+        actualPlayingUrl = null
+        
+        val mediaItem = MediaItem.fromUri(finalUrl)
         exoPlayer?.apply {
             stop()
             clearMediaItems()
@@ -291,6 +334,8 @@ class Media3Player(private val context: Context) {
     
     val duration: Long
         get() = exoPlayer?.duration?.takeIf { it != C.TIME_UNSET } ?: 0L
+    
+    fun getActualPlayingUrl(): String? = actualPlayingUrl
     
     private fun isTunnelingSupported(): Boolean {
         return try {

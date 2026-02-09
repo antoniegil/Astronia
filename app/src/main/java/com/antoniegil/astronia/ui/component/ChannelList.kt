@@ -31,6 +31,7 @@ import kotlinx.coroutines.launch
 fun ChannelListSection(
     channels: List<M3U8Channel>,
     currentChannelUrl: String,
+    actualPlayingUrl: String? = null,
     isLoadingChannels: Boolean,
     listState: LazyListState,
     media3Player: com.antoniegil.astronia.player.Media3Player?,
@@ -187,6 +188,7 @@ fun ChannelListSection(
                     ChannelItem(
                         channel = channel,
                         isPlaying = channel.url == currentChannelUrl,
+                        actualPlayingUrl = if (channel.url == currentChannelUrl) actualPlayingUrl else null,
                         onClick = { onChannelClick(channel) }
                     )
                 }
@@ -232,6 +234,7 @@ fun ChannelListSection(
 fun ChannelItem(
     channel: M3U8Channel,
     isPlaying: Boolean,
+    actualPlayingUrl: String? = null,
     onClick: () -> Unit
 ) {
     Card(
@@ -267,8 +270,10 @@ fun ChannelItem(
                     )
                 }
                 
+                val displayUrl = actualPlayingUrl ?: channel.url
+                
                 Text(
-                    text = channel.url,
+                    text = displayUrl,
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.7f),
                     maxLines = 1,

@@ -124,7 +124,6 @@ private fun PlayerPageContent(
             
             if (currentMediaUrl != uiState.currentChannelUrl) {
                 media3Player.setDataSource(uiState.currentChannelUrl)
-                media3Player.prepareAsync()
                 if (autoPlayEnabled || uiState.isPlaying) {
                     pendingAutoPlay = true
                     media3Player.start()
@@ -344,7 +343,8 @@ private fun PlayerPageContent(
                                 mirrorFlip = uiState.mirrorFlip,
                                 isFullscreen = isFullscreen,
                                 isBackgroundRetained = false,
-                                onSurfaceReady = onSurfaceReady
+                                onSurfaceReady = onSurfaceReady,
+                                currentChannelUrl = uiState.currentChannelUrl
                             )
                         }
                         
@@ -436,6 +436,7 @@ private fun PlayerPageContent(
                     ChannelListSection(
                         channels = uiState.channels,
                         currentChannelUrl = uiState.currentChannelUrl,
+                        actualPlayingUrl = uiState.actualPlayingUrl,
                         isLoadingChannels = uiState.isLoadingChannels,
                         listState = listState,
                         media3Player = media3Player,

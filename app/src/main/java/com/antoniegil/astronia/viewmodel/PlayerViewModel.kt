@@ -31,6 +31,7 @@ data class PlayerUiState(
     val videoTitle: String = "",
     val currentChannelUrl: String = "",
     val currentChannelId: String? = null,
+    val actualPlayingUrl: String? = null,
     val channels: List<M3U8Channel> = emptyList(),
     val isLoadingChannels: Boolean = false,
     val showControls: Boolean = true,
@@ -123,44 +124,39 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
             )
             _progressState.value = PlayerProgressState()
             watchTimeTracker.reset()
-            android.util.Log.d("PlayerViewModel", "WatchTimeTracker reset in loadChannels")
             
             try {
                 var parsedChannels: List<M3U8Channel> = emptyList()
                 var isM3U8Playlist = false
                 
-                withContext(Dispatchers.IO) {
-                    when {
-                        url.startsWith("http") || url.startsWith("https") || 
-                        url.startsWith("rtmp") || url.startsWith("rtsp") -> {
-                            repository.parseM3U8FromUrl(url).onSuccess { channels ->
-                                parsedChannels = channels
-                                isM3U8Playlist = channels.size > 1
-                            }.onError { _, message ->
-                                ErrorHandler.logError("PlayerViewModel", "Failed to load M3U8: $message")
-                            }
+                when {
+                    url.startsWith("http") || url.startsWith("https") || 
+                    url.startsWith("rtmp") || url.startsWith("rtsp") -> {
+                        repository.parseM3U8FromUrl(url).onSuccess { channels ->
+                            parsedChannels = channels
+                            isM3U8Playlist = channels.size > 1
+                        }.onError { _, _ ->
                         }
-                        url.startsWith("content://") || url.startsWith("file://") -> {
-                            try {
-                                val uri = url.toUri()
-                                getApplication<Application>().contentResolver.openInputStream(uri)?.use { inputStream ->
-                                    val content = inputStream.bufferedReader().readText()
-                                    if (content.contains("#EXTM3U")) {
-                                        repository.parseM3U8FromContent(content).onSuccess { channels ->
-                                            parsedChannels = channels
-                                            isM3U8Playlist = channels.size > 1
-                                        }
+                    }
+                    url.startsWith("content://") || url.startsWith("file://") -> {
+                        try {
+                            val uri = url.toUri()
+                            getApplication<Application>().contentResolver.openInputStream(uri)?.use { inputStream ->
+                                val content = inputStream.bufferedReader().readText()
+                                if (content.contains("#EXTM3U")) {
+                                    repository.parseM3U8FromContent(content).onSuccess { channels ->
+                                        parsedChannels = channels
+                                        isM3U8Playlist = channels.size > 1
                                     }
                                 }
-                            } catch (e: Exception) {
-                                ErrorHandler.logError("PlayerViewModel", "Failed to read local file", e)
                             }
+                        } catch (e: Exception) {
                         }
-                        url.contains("#EXTM3U") -> {
-                            repository.parseM3U8FromContent(url).onSuccess { channels ->
-                                parsedChannels = channels
-                                isM3U8Playlist = channels.size > 1
-                            }
+                    }
+                    url.contains("#EXTM3U") -> {
+                        repository.parseM3U8FromContent(url).onSuccess { channels ->
+                            parsedChannels = channels
+                            isM3U8Playlist = channels.size > 1
                         }
                     }
                 }
@@ -279,11 +275,11 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
             bufferedPosition = 0L,
             isPlaying = wasPlaying,
             isBuffering = false,
-            shouldScrollToChannel = false
+            shouldScrollToChannel = false,
+            actualPlayingUrl = null
         )
         _progressState.value = PlayerProgressState(currentCycleDuration = 20f)
         watchTimeTracker.reset()
-        android.util.Log.d("PlayerViewModel", "WatchTimeTracker reset in switchChannel")
     }
     
     fun clearScrollFlag() {
@@ -304,12 +300,23 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
         
         player.apply {
             setHardwareAcceleration(true)
-            onPreparedListener = {}
+            onPreparedListener = {
+                _uiState.value = _uiState.value.copy(actualPlayingUrl = getActualPlayingUrl())
+            }
             onBufferingListener = { buffering ->
                 updateBufferingState(buffering)
             }
             onPlaybackStateChanged = { playing, position, buffered, dur ->
                 updatePlaybackState(playing, position, buffered, dur)
+            }
+            onErrorListener = { errorMsg, _ ->
+                viewModelScope.launch(Dispatchers.Main) {
+                    android.widget.Toast.makeText(
+                        getApplication(),
+                        errorMsg,
+                        android.widget.Toast.LENGTH_SHORT
+                    ).show()
+                }
             }
         }
         

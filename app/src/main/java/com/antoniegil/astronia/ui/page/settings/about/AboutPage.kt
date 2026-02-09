@@ -16,7 +16,6 @@ import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
 import com.antoniegil.astronia.R
-import com.antoniegil.astronia.util.ErrorHandler
 import com.antoniegil.astronia.BuildConfig
 import com.antoniegil.astronia.ui.component.BackButton
 import com.antoniegil.astronia.ui.component.PreferenceItemLarge
@@ -50,21 +49,15 @@ fun AboutPage(
     val releaseBuildString = stringResource(R.string.release_build)
     
     val versionName = remember {
-        ErrorHandler.runCatchingWithDefault(
-            "AboutPage",
-            "Failed to get version name",
-            unknownVersion
-        ) {
+        try {
             context.packageManager.getPackageInfo(context.packageName, 0).versionName
+        } catch (e: Exception) {
+            unknownVersion
         }
     }
     
     val versionCode = remember {
-        ErrorHandler.runCatchingWithDefault(
-            "AboutPage",
-            "Failed to get version code",
-            0L
-        ) {
+        try {
             val packageInfo = context.packageManager.getPackageInfo(context.packageName, 0)
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.P) {
                 packageInfo.longVersionCode
@@ -72,6 +65,8 @@ fun AboutPage(
                 @Suppress("DEPRECATION")
                 packageInfo.versionCode.toLong()
             }
+        } catch (e: Exception) {
+            0L
         }
     }
     
@@ -87,8 +82,9 @@ fun AboutPage(
     }
 
     fun openUrl(url: String) {
-        ErrorHandler.runCatching("AboutPage", "Failed to open URL: $url") {
+        try {
             uriHandler.openUri(url)
+        } catch (e: Exception) {
         }
     }
 

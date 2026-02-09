@@ -136,9 +136,20 @@ fun PlayerSurface(
     mirrorFlip: Boolean = false,
     isFullscreen: Boolean = false,
     onSurfaceReady: () -> Unit = {},
-    isBackgroundRetained: Boolean = false
+    isBackgroundRetained: Boolean = false,
+    currentChannelUrl: String = ""
 ) {
     val textureViewRef = remember { mutableStateOf<TextureView?>(null) }
+    var surfaceReady by remember { mutableStateOf(true) }
+    
+    LaunchedEffect(currentChannelUrl) {
+        if (currentChannelUrl.isNotEmpty()) {
+            surfaceReady = false
+            player?.attachSurface(null)
+            kotlinx.coroutines.delay(50)
+            surfaceReady = true
+        }
+    }
     
     LaunchedEffect(aspectRatio) {
         textureViewRef.value?.post {
@@ -175,16 +186,18 @@ fun PlayerSurface(
             .background(Color.Black),
         contentAlignment = Alignment.Center
     ) {
-        AndroidView(
-            factory = { ctx ->
-                PlayerTextureView(ctx, player, aspectRatio, mirrorFlip, isBackgroundRetained, onSurfaceReady).also {
-                    textureViewRef.value = it
-                }
-            },
-            onRelease = {
-                player?.attachSurface(null)
-            },
-            modifier = Modifier
-        )
+        if (surfaceReady) {
+            AndroidView(
+                factory = { ctx ->
+                    PlayerTextureView(ctx, player, aspectRatio, mirrorFlip, isBackgroundRetained, onSurfaceReady).also {
+                        textureViewRef.value = it
+                    }
+                },
+                onRelease = {
+                    player?.attachSurface(null)
+                },
+                modifier = Modifier
+            )
+        }
     }
 }

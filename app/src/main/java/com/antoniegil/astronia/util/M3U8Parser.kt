@@ -1,17 +1,8 @@
 package com.antoniegil.astronia.util
 
-import android.os.Build
-import android.util.Log
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import okhttp3.OkHttpClient
 import okhttp3.Request
-import java.security.SecureRandom
-import java.security.cert.X509Certificate
-import java.util.concurrent.TimeUnit
-import javax.net.ssl.SSLContext
-import javax.net.ssl.TrustManager
-import javax.net.ssl.X509TrustManager
 
 data class M3U8Channel(
     val id: String,
@@ -25,33 +16,12 @@ data class M3U8Channel(
 
 object M3U8Parser {
     
-    private val client: OkHttpClient by lazy {
-        if (Build.VERSION.SDK_INT == Build.VERSION_CODES.N) {
-            @Suppress("CustomX509TrustManager")
-            val trustAllCerts = arrayOf<TrustManager>(object : X509TrustManager {
-                @Suppress("TrustAllX509TrustManager")
-                override fun checkClientTrusted(chain: Array<X509Certificate>, authType: String) {}
-                @Suppress("TrustAllX509TrustManager")
-                override fun checkServerTrusted(chain: Array<X509Certificate>, authType: String) {}
-                override fun getAcceptedIssuers(): Array<X509Certificate> = arrayOf()
-            })
-            
-            val sslContext = SSLContext.getInstance("TLS").apply {
-                init(null, trustAllCerts, SecureRandom())
-            }
-            
-            OkHttpClient.Builder()
-                .sslSocketFactory(sslContext.socketFactory, trustAllCerts[0] as X509TrustManager)
-                .hostnameVerifier { _, _ -> true }
-                .connectTimeout(PlayerConstants.M3U8_CONNECTION_TIMEOUT_MS.toLong(), TimeUnit.MILLISECONDS)
-                .readTimeout(PlayerConstants.M3U8_READ_TIMEOUT_MS.toLong(), TimeUnit.MILLISECONDS)
-                .build()
-        } else {
-            OkHttpClient.Builder()
-                .connectTimeout(PlayerConstants.M3U8_CONNECTION_TIMEOUT_MS.toLong(), TimeUnit.MILLISECONDS)
-                .readTimeout(PlayerConstants.M3U8_READ_TIMEOUT_MS.toLong(), TimeUnit.MILLISECONDS)
-                .build()
-        }
+    private val client by lazy {
+        NetworkUtils.createHttpClient(
+            connectTimeoutMs = PlayerConstants.M3U8_CONNECTION_TIMEOUT_MS.toLong(),
+            readTimeoutMs = PlayerConstants.M3U8_READ_TIMEOUT_MS.toLong(),
+            trustAllCerts = true
+        )
     }
     
     suspend fun parseM3U8(content: String): Result<List<M3U8Channel>> = withContext(Dispatchers.IO) {
@@ -113,96 +83,100 @@ object M3U8Parser {
     }
     
     suspend fun parseM3U8FromUrl(url: String): Result<List<M3U8Channel>> = withContext(Dispatchers.IO) {
+        val httpsUrl = NetworkUtils.convertToHttps(url)
+        
         try {
-            Log.d("M3U8Parser", "Fetching M3U8 from: $url")
-            Log.d("M3U8Parser", "OkHttp version: ${OkHttpClient::class.java.`package`?.implementationVersion}")
-            
-            val request = Request.Builder().url(url).build()
-            val response = client.newCall(request).execute()
-            
-            Log.d("M3U8Parser", "Response code: ${response.code}")
-            
-            if (!response.isSuccessful) {
-                return@withContext Result.Error(
-                    Exception("HTTP ${response.code}"),
-                    "Failed to fetch M3U8"
-                )
-            }
-            
-            val contentLength = response.body.contentLength()
-            if (contentLength > PlayerConstants.M3U8_MAX_SIZE_BYTES) {
-                response.close()
-                return@withContext Result.Error(
-                    Exception("Content too large"),
-                    "M3U8 file exceeds size limit"
-                )
-            }
-            
-            val channels = mutableListOf<M3U8Channel>()
-            var currentName = ""
-            var currentGroup = ""
-            var currentCountry = ""
-            var currentLanguage = ""
-            var currentLogoUrl = ""
-            var totalBytesRead = 0
-            
-            response.body.byteStream().bufferedReader().use { reader ->
-                reader.lineSequence().forEach { line ->
-                    totalBytesRead += line.length + 1
-                    
-                    if (totalBytesRead > PlayerConstants.M3U8_MAX_SIZE_BYTES) {
-                        return@forEach
-                    }
-                    
-                    val trimmedLine = line.trim()
-                    
-                    if (trimmedLine.isEmpty()) return@forEach
-                    
-                    if (trimmedLine.startsWith("#EXTINF:")) {
-                        currentName = extractChannelName(trimmedLine)
-                        currentGroup = extractGroup(trimmedLine)
-                        currentCountry = extractCountry(trimmedLine)
-                        currentLanguage = extractLanguage(trimmedLine)
-                        currentLogoUrl = extractLogoUrl(trimmedLine)
-                    } else if (!trimmedLine.startsWith("#")) {
-                        if (trimmedLine.startsWith("http") || trimmedLine.startsWith("rtmp") || 
-                            trimmedLine.startsWith("rtsp") || trimmedLine.startsWith("udp")) {
-                            val name = currentName.ifEmpty { "Channel ${channels.size + 1}" }
-                            val finalId = "${trimmedLine.hashCode()}_${channels.size}"
-                            
-                            channels.add(
-                                M3U8Channel(
-                                    id = finalId,
-                                    name = name,
-                                    url = trimmedLine,
-                                    group = currentGroup,
-                                    country = currentCountry,
-                                    language = currentLanguage,
-                                    logoUrl = currentLogoUrl
-                                )
-                            )
-                            
-                            if (channels.size >= PlayerConstants.MAX_CHANNEL_DISPLAY) {
-                                return@forEach
-                            }
-                        }
-                        currentName = ""
-                        currentGroup = ""
-                        currentCountry = ""
-                        currentLanguage = ""
-                        currentLogoUrl = ""
-                    }
-                }
-            }
-            
+            val channels = fetchM3U8Channels(httpsUrl)
             Result.Success(channels)
         } catch (e: Exception) {
-            Result.Error(e, "Failed to fetch M3U8 from URL: ${e.message}")
+            if (httpsUrl != url) {
+                try {
+                    val channels = fetchM3U8Channels(url)
+                    Result.Success(channels)
+                } catch (fallbackException: Exception) {
+                    Result.Error(fallbackException, "Failed to fetch M3U8 from URL: ${fallbackException.message}")
+                }
+            } else {
+                Result.Error(e, "Failed to fetch M3U8 from URL: ${e.message}")
+            }
         }
     }
     
-    private fun extractChannelName(line: String): String {
+    private fun fetchM3U8Channels(url: String): List<M3U8Channel> {
+        val request = Request.Builder().url(url).build()
+        val response = client.newCall(request).execute()
         
+        if (!response.isSuccessful) {
+            throw Exception("HTTP ${response.code}")
+        }
+        
+        val contentLength = response.body.contentLength()
+        if (contentLength > PlayerConstants.M3U8_MAX_SIZE_BYTES) {
+            response.close()
+            throw Exception("Content too large")
+        }
+        
+        val channels = mutableListOf<M3U8Channel>()
+        var currentName = ""
+        var currentGroup = ""
+        var currentCountry = ""
+        var currentLanguage = ""
+        var currentLogoUrl = ""
+        var totalBytesRead = 0
+        
+        response.body.byteStream().bufferedReader().use { reader ->
+            reader.lineSequence().forEach { line ->
+                totalBytesRead += line.length + 1
+                
+                if (totalBytesRead > PlayerConstants.M3U8_MAX_SIZE_BYTES) {
+                    return@forEach
+                }
+                
+                val trimmedLine = line.trim()
+                
+                if (trimmedLine.isEmpty()) return@forEach
+                
+                if (trimmedLine.startsWith("#EXTINF:")) {
+                    currentName = extractChannelName(trimmedLine)
+                    currentGroup = extractGroup(trimmedLine)
+                    currentCountry = extractCountry(trimmedLine)
+                    currentLanguage = extractLanguage(trimmedLine)
+                    currentLogoUrl = extractLogoUrl(trimmedLine)
+                } else if (!trimmedLine.startsWith("#")) {
+                    if (trimmedLine.startsWith("http") || trimmedLine.startsWith("rtmp") || 
+                        trimmedLine.startsWith("rtsp") || trimmedLine.startsWith("udp")) {
+                        val name = currentName.ifEmpty { "Channel ${channels.size + 1}" }
+                        val finalId = "${trimmedLine.hashCode()}_${channels.size}"
+                        
+                        channels.add(
+                            M3U8Channel(
+                                id = finalId,
+                                name = name,
+                                url = trimmedLine,
+                                group = currentGroup,
+                                country = currentCountry,
+                                language = currentLanguage,
+                                logoUrl = currentLogoUrl
+                            )
+                        )
+                        
+                        if (channels.size >= PlayerConstants.MAX_CHANNEL_DISPLAY) {
+                            return@forEach
+                        }
+                    }
+                    currentName = ""
+                    currentGroup = ""
+                    currentCountry = ""
+                    currentLanguage = ""
+                    currentLogoUrl = ""
+                }
+            }
+        }
+        
+        return channels
+    }
+    
+    private fun extractChannelName(line: String): String {
         val commaIndex = line.lastIndexOf(',')
         if (commaIndex != -1 && commaIndex < line.length - 1) {
             val name = line.substring(commaIndex + 1).trim()
