@@ -1,0 +1,4 @@
+Enhanced M3U metadata support (tvg-country, tvg-language, tvg-logo).
+Restore cleartext support with HTTPS enforcement and automatic HTTP fallback if HTTPS connect fails.
+
+For full changelogs, please refer to GitHub
