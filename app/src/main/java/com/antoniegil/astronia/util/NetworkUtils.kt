@@ -64,5 +64,28 @@ object NetworkUtils {
 
     fun isPermanentHttpError(code: Int): Boolean = code in listOf(400, 403, 404, 410, 451)
 
-    fun isRetriableHttpError(code: Int): Boolean = code in listOf(500, 502, 503, 504)
+    fun isIpAddress(url: String): Boolean = url.matches(Regex("https?://\\d+\\.\\d+\\.\\d+\\.\\d+.*"))
+    
+    fun extractDomain(url: String): String? = url.substringAfter("://", "").substringBefore("/").takeIf { it.isNotEmpty() }
+    
+    fun upgradeToHttps(m3uUrl: String?, targetUrl: String): String {
+        val m3uIsHttps = m3uUrl?.startsWith("https://", ignoreCase = true) == true
+        val targetIsHttp = targetUrl.startsWith("http://", ignoreCase = true)
+        val targetIsHttps = targetUrl.startsWith("https://", ignoreCase = true)
+        
+        return when {
+            isIpAddress(targetUrl) -> targetUrl
+            targetIsHttps -> targetUrl
+            targetIsHttp && (m3uIsHttps || m3uUrl?.startsWith("http://", ignoreCase = true) == true) -> {
+                val targetDomain = extractDomain(targetUrl)
+                val m3uDomain = extractDomain(m3uUrl)
+                if (targetDomain == m3uDomain) {
+                    targetUrl.replaceFirst("http://", "https://", ignoreCase = true)
+                } else {
+                    targetUrl
+                }
+            }
+            else -> targetUrl
+        }
+    }
 }

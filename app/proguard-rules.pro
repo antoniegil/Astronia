@@ -13,6 +13,8 @@
 -keep class androidx.media3.common.VideoSize { *; }
 -keep class androidx.media3.common.Format { *; }
 -keep class androidx.media3.exoplayer.DecoderCounters { *; }
+-keep class androidx.media3.exoplayer.dash.** { *; }
+-keep class androidx.media3.exoplayer.hls.** { *; }
 
 -if @kotlinx.serialization.Serializable class **
 -keepclassmembers class <1> {
