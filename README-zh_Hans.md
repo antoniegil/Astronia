@@ -39,11 +39,9 @@ Astronia 是一款轻量级的现代化 Android M3U8 视频播放器，采用 Ma
 
 ## ⬇️ 下载
 
-[<img src="https://github.com/machiav3lli/oandbackupx/blob/034b226cea5c1b30eb4f6a6f313e4dadcbb0ece4/badge_github.png"
-    alt="Get it on GitHub"
-    height="80">](https://github.com/antoniegil/Astronia/releases)
+[<img src="https://gitlab.com/IzzyOnDroid/repo/-/raw/master/assets/IzzyOnDroidButtonGreyBorder_nofont.png" height="80" alt="Get it at IzzyOnDroid">](https://apt.izzysoft.de/fdroid/index/apk/com.antoniegil.astronia)
 
-从 [Releases](https://github.com/antoniegil/Astronia/releases) 页面下载最新版本。
+从 [IzzyOnDroid](https://apt.izzysoft.de/fdroid/index/apk/com.antoniegil.astronia) 下载以获得自动更新。
 
 ## 🧱 致谢
 
