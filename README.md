@@ -39,9 +39,9 @@ Astronia is a lightweight and modern M3U8 video player for Android, built with M
 
 ## ⬇️ Download
 
-[<img src="https://gitlab.com/IzzyOnDroid/repo/-/raw/master/assets/IzzyOnDroidButtonGreyBorder_nofont.png" height="80" alt="Get it at IzzyOnDroid">](https://apt.izzysoft.de/fdroid/index/apk/com.antoniegil.astronia)
+[<img src="https://gitlab.com/IzzyOnDroid/repo/-/raw/master/assets/IzzyOnDroidButtonGreyBorder_nofont.png" height="50" alt="Get it at IzzyOnDroid">](https://apt.izzysoft.de/fdroid/index/apk/com.antoniegil.astronia)
 
-Recommended: Download from [IzzyOnDroid](https://apt.izzysoft.de/fdroid/index/apk/com.antoniegil.astronia) for automatic updates.
+Download from [IzzyOnDroid](https://apt.izzysoft.de/fdroid/index/apk/com.antoniegil.astronia) for automatic updates.
 
 ## 🔨 Build Instructions
 
