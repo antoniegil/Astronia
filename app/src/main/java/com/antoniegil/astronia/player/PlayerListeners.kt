@@ -82,10 +82,18 @@ internal object PlayerListeners {
             val httpError = error.cause as? androidx.media3.datasource.HttpDataSource.InvalidResponseCodeException
             val httpCode = httpError?.responseCode ?: 0
             
-            val isRetriableNetworkError = error.errorCode in listOf(
+            val hasNetworkCause = error.errorCode in listOf(
                 PlaybackException.ERROR_CODE_IO_NETWORK_CONNECTION_FAILED,
                 PlaybackException.ERROR_CODE_IO_NETWORK_CONNECTION_TIMEOUT
-            )
+            ) || generateSequence(error.cause) { it.cause }.any { cause ->
+                cause is java.net.SocketTimeoutException ||
+                cause is java.net.UnknownHostException ||
+                cause is java.io.IOException && (
+                    cause.message?.contains("timed out", ignoreCase = true) == true ||
+                    cause.message?.contains("connection", ignoreCase = true) == true
+                ) ||
+                cause is UrlInterceptor.NetworkBlockedException
+            }
             
             val isManifestParsingError = error.errorCode in listOf(
                 PlaybackException.ERROR_CODE_PARSING_MANIFEST_MALFORMED,
@@ -104,6 +112,18 @@ internal object PlayerListeners {
                     state.context?.cacheDir?.listFiles()?.filter { it.name.startsWith("m3u8_") }?.forEach { it.delete() }
                     callbacks.onReloadOriginal()
                 }
+                hasNetworkCause -> {
+                    state.shouldPlayWhenReady = false
+                    player?.stop()
+                    callbacks.onBuffering(false)
+                    
+                    val networkBlockedException = generateSequence(error.cause) { it.cause }
+                        .filterIsInstance<UrlInterceptor.NetworkBlockedException>()
+                        .firstOrNull()
+                    
+                    val errorMsg = networkBlockedException?.message ?: "Network connection failed"
+                    callbacks.onError(errorMsg, false)
+                }
                 isManifestParsingError && !state.hasTriedM3u8Fix -> {
                     state.isFixingM3u8 = true
                     state.hasTriedM3u8Fix = true
@@ -116,7 +136,14 @@ internal object PlayerListeners {
                     state.shouldPlayWhenReady = false
                     player?.stop()
                     callbacks.onBuffering(false)
+                    
+                    val networkBlockedException = generateSequence(error.cause) { it.cause }
+                        .filterIsInstance<UrlInterceptor.NetworkBlockedException>()
+                        .firstOrNull()
+                    
                     val errorMsg = when {
+                        networkBlockedException != null -> networkBlockedException.message ?: "Network connection failed"
+                        hasNetworkCause -> "Network connection failed"
                         error.message?.contains("None of the available extractors") == true -> 
                             "Unsupported video format"
                         error.cause?.message?.contains("sniff failures") == true -> 
@@ -138,7 +165,6 @@ internal object PlayerListeners {
                             NetworkUtils.isPermanentHttpError(httpCode) -> "HTTP $httpCode: ${httpError?.responseMessage ?: "Error"}"
                             error.errorCode == PlaybackException.ERROR_CODE_IO_BAD_HTTP_STATUS -> 
                                 "HTTP $httpCode: ${httpError?.responseMessage ?: "Error"}"
-                            isRetriableNetworkError -> "Network connection failed"
                             isManifestParsingError -> "Format error"
                             else -> "Playback error: ${error.errorCodeName}"
                         }

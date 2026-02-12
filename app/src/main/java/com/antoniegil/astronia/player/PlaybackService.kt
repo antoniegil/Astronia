@@ -31,6 +31,8 @@ class PlaybackService : MediaSessionService() {
     }
     
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+        startForeground(NOTIFICATION_ID, createFallbackNotification())
+        
         if (mediaSession == null) {
             currentPlayer?.let { player ->
                 initMediaSession(player)

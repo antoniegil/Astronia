@@ -100,6 +100,10 @@ class Media3Player(private val context: Context) {
                     if (state.shouldPlayWhenReady) play()
                 }
                 state.isFixingM3u8 = false
+            } catch (e: UrlInterceptor.NetworkBlockedException) {
+                onBufferingListener?.invoke(false)
+                state.isFixingM3u8 = false
+                onErrorListener?.invoke(e.message ?: "Network connection failed", false)
             } catch (_: Exception) {
                 onBufferingListener?.invoke(false)
                 state.isFixingM3u8 = false
