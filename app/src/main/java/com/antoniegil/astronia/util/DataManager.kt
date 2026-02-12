@@ -93,13 +93,31 @@ object DataManager {
                 return Pair(false, 0)
             }
             
-            val prefManager = SettingsManager.getInstance(context)
             val historyItems = SettingsManager.parseHistoryJson(jsonString)
+            
+            if (historyItems.isEmpty()) {
+                return Pair(false, 0)
+            }
+            
+            val prefManager = SettingsManager.getInstance(context)
+            val existingHistory = prefManager.getHistory()
+            val existingUrls = existingHistory.map { it.url }.toSet()
             
             prefManager.clearHistory()
             
-            var successCount = 0
+            val mergedItems = mutableListOf<HistoryItem>()
+            mergedItems.addAll(existingHistory)
+            
             historyItems.forEach { item ->
+                if (!existingUrls.contains(item.url)) {
+                    mergedItems.add(item)
+                }
+            }
+            
+            mergedItems.sortByDescending { it.timestamp }
+            
+            var successCount = 0
+            mergedItems.forEach { item ->
                 prefManager.addOrUpdateHistory(
                     item.url,
                     item.name,

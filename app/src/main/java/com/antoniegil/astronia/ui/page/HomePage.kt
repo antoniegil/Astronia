@@ -3,6 +3,7 @@ package com.antoniegil.astronia.ui.page
 
 import android.content.Intent
 import android.net.Uri
+import android.os.Build
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.animation.AnimatedVisibility
@@ -228,7 +229,12 @@ fun HomePage(
                         trailingIcon = {
                             Row {
                                 IconButton(onClick = {
-                                    filePickerLauncher.launch(arrayOf("audio/x-mpegurl", "application/vnd.apple.mpegurl", "audio/mpegurl"))
+                                    val mimeTypes = if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
+                                        arrayOf("*/*")
+                                    } else {
+                                        arrayOf("audio/x-mpegurl", "application/vnd.apple.mpegurl", "audio/mpegurl")
+                                    }
+                                    filePickerLauncher.launch(mimeTypes)
                                 }) {
                                     Icon(Icons.Outlined.FolderOpen, stringResource(R.string.local_import))
                                 }
