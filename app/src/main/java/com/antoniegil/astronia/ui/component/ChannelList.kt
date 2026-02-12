@@ -47,13 +47,18 @@ fun ChannelListSection(
     var selectedGroup by remember { mutableStateOf("") }
     
     val groupSet = remember(channels) {
-        channels.map { it.group }.filter { it.isNotEmpty() }.toSet().sorted()
+        channels.flatMap { it.group.split(";").map { tag -> tag.trim() } }
+            .filter { it.isNotEmpty() }
+            .toSet()
+            .sorted()
     }
     
     val filteredChannels = remember(channels, searchQuery, selectedGroup) {
         var result = channels
         if (selectedGroup.isNotEmpty()) {
-            result = result.filter { it.group == selectedGroup }
+            result = result.filter { channel ->
+                channel.group.split(";").any { it.trim() == selectedGroup }
+            }
         }
         if (searchQuery.isNotEmpty()) {
             result = result.filter { channel ->
@@ -289,17 +294,22 @@ fun ChannelItem(
                         modifier = Modifier.fillMaxWidth()
                     ) {
                         if (channel.group.isNotEmpty()) {
-                            Surface(
-                                shape = RoundedCornerShape(4.dp),
-                                color = MaterialTheme.colorScheme.surfaceVariant,
-                                border = BorderStroke(1.dp, MaterialTheme.colorScheme.outline.copy(alpha = 0.5f))
-                            ) {
-                                Text(
-                                    text = channel.group,
-                                    style = MaterialTheme.typography.labelSmall,
-                                    color = MaterialTheme.colorScheme.onSecondaryContainer,
-                                    modifier = Modifier.padding(horizontal = 6.dp, vertical = 2.dp)
-                                )
+                            channel.group.split(";").forEach { tag ->
+                                val trimmedTag = tag.trim()
+                                if (trimmedTag.isNotEmpty()) {
+                                    Surface(
+                                        shape = RoundedCornerShape(4.dp),
+                                        color = MaterialTheme.colorScheme.surfaceVariant,
+                                        border = BorderStroke(1.dp, MaterialTheme.colorScheme.outline.copy(alpha = 0.5f))
+                                    ) {
+                                        Text(
+                                            text = trimmedTag,
+                                            style = MaterialTheme.typography.labelSmall,
+                                            color = MaterialTheme.colorScheme.onSecondaryContainer,
+                                            modifier = Modifier.padding(horizontal = 6.dp, vertical = 2.dp)
+                                        )
+                                    }
+                                }
                             }
                         }
                         if (channel.country.isNotEmpty()) {
