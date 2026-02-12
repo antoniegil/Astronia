@@ -1,5 +1,6 @@
 package com.antoniegil.astronia.ui.page
 
+import android.content.Intent
 import android.os.Build
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.BackHandler
@@ -20,6 +21,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.antoniegil.astronia.player.PlaybackService
 import com.antoniegil.astronia.util.PlayerConstants
 import com.antoniegil.astronia.ui.component.*
 import com.antoniegil.astronia.ui.theme.LegacyThemeBackground
@@ -124,6 +126,7 @@ private fun PlayerPageContent(
             
             if (currentMediaUrl != uiState.currentChannelUrl) {
                 media3Player.setDataSource(uiState.currentChannelUrl)
+                media3Player.updateMediaTitle(uiState.videoTitle)
                 if (autoPlayEnabled || uiState.isPlaying) {
                     pendingAutoPlay = true
                     media3Player.start()
@@ -226,7 +229,16 @@ private fun PlayerPageContent(
                         wasPlayingBeforePause = media3Player.isPlaying
                         media3Player.pause()
                     } else if (backgroundPlay) {
-                        media3Player.exoPlayer?.setVideoSurface(null)
+                        media3Player.exoPlayer?.let { player ->
+                            PlaybackService.currentPlayer = player
+                            PlaybackService.currentTitle = uiState.videoTitle
+                            val serviceIntent = Intent(context, PlaybackService::class.java)
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                                context.startForegroundService(serviceIntent)
+                            } else {
+                                context.startService(serviceIntent)
+                            }
+                        }
                     }
                 }
 
@@ -242,7 +254,8 @@ private fun PlayerPageContent(
                         pendingAutoPlay = true
                         wasPlayingBeforePause = false
                     } else if (backgroundPlay) {
-                        media3Player.attachSurface(media3Player.surface)
+                        val serviceIntent = Intent(context, PlaybackService::class.java)
+                        context.stopService(serviceIntent)
                     }
                 }
 

@@ -4,7 +4,6 @@ import android.content.Context
 import androidx.media3.common.PlaybackException
 import androidx.media3.common.Player
 import androidx.media3.exoplayer.analytics.AnalyticsListener
-import com.antoniegil.astronia.util.ErrorHandler
 import com.antoniegil.astronia.util.NetworkUtils
 
 @androidx.annotation.OptIn(androidx.media3.common.util.UnstableApi::class)

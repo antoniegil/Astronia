@@ -1,8 +1,7 @@
 package com.antoniegil.astronia.player
 
 import android.content.Context
-import android.net.Uri
-import com.antoniegil.astronia.util.ErrorHandler
+import androidx.core.net.toUri
 import com.antoniegil.astronia.util.NetworkUtils
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -41,7 +40,7 @@ object UrlInterceptor {
                     }
                     
                     if (variantUrl != null) {
-                        val uri = Uri.parse(finalUrl)
+                        val uri = finalUrl.toUri()
                         val baseUrl = "${uri.scheme}://${uri.host}${if (uri.port == -1) "" else ":${uri.port}"}${uri.path?.substringBeforeLast("/") ?: ""}"
                         
                         currentUrl = if (variantUrl.startsWith("http")) {

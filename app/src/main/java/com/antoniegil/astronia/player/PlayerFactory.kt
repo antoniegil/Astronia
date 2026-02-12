@@ -65,7 +65,7 @@ internal object PlayerFactory {
                 .build())
             .setTrackSelector(trackSelector)
             .setMediaSourceFactory(mediaSourceFactory)
-            .setWakeMode(C.WAKE_MODE_NETWORK)
+            .setWakeMode(C.WAKE_MODE_LOCAL)
             .build()
             .apply {
                 setHandleAudioBecomingNoisy(true)

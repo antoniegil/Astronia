@@ -5,7 +5,6 @@ import android.view.Surface
 import androidx.media3.common.C
 import androidx.media3.common.MediaItem
 import androidx.media3.exoplayer.ExoPlayer
-import com.antoniegil.astronia.util.ErrorHandler
 import com.antoniegil.astronia.util.NetworkUtils
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -78,6 +77,10 @@ class Media3Player(private val context: Context) {
             setMediaItem(createMediaItem(url))
             prepare()
         }
+    }
+    
+    fun updateMediaTitle(title: String) {
+        PlaybackService.currentTitle = title
     }
     
     private fun createMediaItem(url: String): MediaItem =

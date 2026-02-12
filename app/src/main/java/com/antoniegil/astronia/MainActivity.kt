@@ -100,6 +100,22 @@ fun MainScreen(
 
     val navController = rememberNavController()
     
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+        val notificationPermission = android.Manifest.permission.POST_NOTIFICATIONS
+        val permissionLauncher = androidx.activity.compose.rememberLauncherForActivityResult(
+            androidx.activity.result.contract.ActivityResultContracts.RequestPermission()
+        ) { }
+        
+        LaunchedEffect(Unit) {
+            val mmkv = com.tencent.mmkv.MMKV.defaultMMKV()
+            val hasRequested = mmkv.decodeBool("notification_permission_requested", false)
+            if (!hasRequested) {
+                permissionLauncher.launch(notificationPermission)
+                mmkv.encode("notification_permission_requested", true)
+            }
+        }
+    }
+    
     LaunchedEffect(Unit) {
         if (SettingsManager.getAutoUpdate(context)) {
             scope.launch(Dispatchers.IO) {
