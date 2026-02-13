@@ -14,13 +14,16 @@ import android.util.Rational
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.background
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.gestures.detectDragGestures
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material.icons.outlined.Check
 import androidx.compose.material3.*
@@ -34,10 +37,13 @@ import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.dp
 import com.antoniegil.astronia.player.Media3Player
+import com.antoniegil.astronia.player.VideoQuality
 import com.antoniegil.astronia.util.WatchTimeTracker
 import kotlinx.coroutines.delay
 import com.antoniegil.astronia.R
+import com.antoniegil.astronia.player.QualityManager
 
 
 @Composable
@@ -325,7 +331,10 @@ fun PlayerSettingsBottomSheet(
     onBackgroundPlayChange: (Boolean) -> Unit,
     onAspectRatioChange: (Int) -> Unit,
     onMirrorFlipChange: (Boolean) -> Unit,
-    onDismiss: () -> Unit
+    onDismiss: () -> Unit,
+    availableQualities: List<VideoQuality> = emptyList(),
+    currentQuality: VideoQuality? = null,
+    onQualityChange: (VideoQuality?) -> Unit = {}
 ) {
     val context = LocalContext.current
     val pm = context.getSystemService(Context.POWER_SERVICE) as PowerManager
@@ -345,92 +354,116 @@ fun PlayerSettingsBottomSheet(
     
     val backgroundPlayInteractionSource = remember { MutableInteractionSource() }
     
+    var currentScreen by remember { mutableStateOf(SettingsScreen.MAIN) }
+    
     ModalBottomSheet(
         onDismissRequest = onDismiss,
         sheetMaxWidth = 640.dp,
         dragHandle = { BottomSheetDefaults.DragHandle() }
     ) {
-        Column(
+        androidx.compose.animation.AnimatedContent(
+            targetState = currentScreen,
+            label = "settings_navigation"
+        ) { screen ->
+            when (screen) {
+                SettingsScreen.MAIN -> {
+                    MainSettingsContent(
+                        isPipSupported = isPipSupported,
+                        enablePip = enablePip,
+                        onEnablePipChange = onEnablePipChange,
+                        backgroundPlay = backgroundPlay,
+                        isBatteryOptimized = isBatteryOptimized,
+                        backgroundPlayInteractionSource = backgroundPlayInteractionSource,
+                        onBackgroundPlayChange = onBackgroundPlayChange,
+                        launcher = launcher,
+                        intent = intent,
+                        aspectRatio = aspectRatio,
+                        onAspectRatioChange = onAspectRatioChange,
+                        mirrorFlip = mirrorFlip,
+                        onMirrorFlipChange = onMirrorFlipChange,
+                        availableQualities = availableQualities,
+                        currentQuality = currentQuality,
+                        onNavigateToQuality = { currentScreen = SettingsScreen.QUALITY }
+                    )
+                }
+                SettingsScreen.QUALITY -> {
+                    QualitySelectionContent(
+                        availableQualities = availableQualities,
+                        currentQuality = currentQuality,
+                        onQualityChange = { 
+                            onQualityChange(it)
+                            currentScreen = SettingsScreen.MAIN
+                        },
+                        onBack = { currentScreen = SettingsScreen.MAIN }
+                    )
+                }
+            }
+        }
+    }
+}
+
+private enum class SettingsScreen {
+    MAIN, QUALITY
+}
+
+@Composable
+private fun MainSettingsContent(
+    isPipSupported: Boolean,
+    enablePip: Boolean,
+    onEnablePipChange: (Boolean) -> Unit,
+    backgroundPlay: Boolean,
+    isBatteryOptimized: Boolean,
+    backgroundPlayInteractionSource: MutableInteractionSource,
+    onBackgroundPlayChange: (Boolean) -> Unit,
+    launcher: androidx.activity.compose.ManagedActivityResultLauncher<Intent, androidx.activity.result.ActivityResult>,
+    intent: Intent,
+    aspectRatio: Int,
+    onAspectRatioChange: (Int) -> Unit,
+    mirrorFlip: Boolean,
+    onMirrorFlipChange: (Boolean) -> Unit,
+    availableQualities: List<VideoQuality>,
+    currentQuality: VideoQuality?,
+    onNavigateToQuality: () -> Unit
+) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .wrapContentHeight()
+            .padding(horizontal = 20.dp, vertical = 8.dp)
+    ) {
+        Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .wrapContentHeight()
-                .padding(horizontal = 20.dp, vertical = 8.dp)
+                .padding(vertical = 4.dp),
+            horizontalArrangement = Arrangement.SpaceEvenly
         ) {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(vertical = 4.dp),
-                horizontalArrangement = Arrangement.SpaceEvenly
-            ) {
-                listOf(
-                    0 to "16:9",
-                    1 to "4:3",
-                    2 to R.string.aspect_ratio_fill,
-                    3 to R.string.aspect_ratio_original
-                ).forEach { (value, label) ->
-                    FilterChip(
-                        selected = aspectRatio == value,
-                        onClick = { onAspectRatioChange(value) },
-                        label = { 
-                            Text(
-                                if (label is Int) stringResource(label) else label as String
-                            ) 
-                        }
-                    )
-                }
-            }
-            
-            HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
-            
-            if (isPipSupported) {
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(56.dp),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Row(
-                        modifier = Modifier.weight(1f),
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        Icon(
-                            imageVector = Icons.Default.PictureInPicture,
-                            contentDescription = null,
-                            modifier = Modifier.padding(end = 12.dp).size(24.dp)
-                        )
+            listOf(
+                0 to "16:9",
+                1 to "4:3",
+                2 to R.string.aspect_ratio_fill,
+                3 to R.string.aspect_ratio_original
+            ).forEach { (value, label) ->
+                FilterChip(
+                    selected = aspectRatio == value,
+                    onClick = { onAspectRatioChange(value) },
+                    label = { 
                         Text(
-                            text = stringResource(R.string.pip),
-                            style = MaterialTheme.typography.bodyLarge
-                        )
+                            if (label is Int) stringResource(label) else label as String
+                        ) 
                     }
-                    val thumbContent: (@Composable () -> Unit)? = if (enablePip) {
-                        { Icon(Icons.Outlined.Check, null, Modifier.size(SwitchDefaults.IconSize)) }
-                    } else null
-                    Switch(
-                        checked = enablePip,
-                        onCheckedChange = onEnablePipChange,
-                        thumbContent = thumbContent
-                    )
-                }
+                )
             }
-            
+        }
+        
+        HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
+        
+        if (availableQualities.size > 1) {
+            val isBitrateMode = availableQualities.firstOrNull()?.isBitrateOnly == true
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(56.dp)
-                    .then(
-                        if (isBatteryOptimized) {
-                            Modifier.clickable(
-                                indication = null,
-                                interactionSource = backgroundPlayInteractionSource
-                            ) {
-                                launcher.launch(intent)
-                            }
-                        } else {
-                            Modifier
-                        }
-                    ),
+                    .clickable { onNavigateToQuality() },
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
@@ -439,36 +472,37 @@ fun PlayerSettingsBottomSheet(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Icon(
-                        imageVector = Icons.Default.PlayCircle,
+                        imageVector = if (isBitrateMode) Icons.Default.Speed else Icons.Default.HighQuality,
                         contentDescription = null,
-                        modifier = Modifier.padding(end = 12.dp).size(24.dp),
-                        tint = if (isBatteryOptimized) {
-                            MaterialTheme.colorScheme.onSurface.copy(alpha = 0.38f)
-                        } else {
-                            MaterialTheme.colorScheme.onSurface
-                        }
+                        modifier = Modifier.padding(end = 12.dp).size(24.dp)
                     )
                     Text(
-                        text = stringResource(R.string.background_play),
-                        style = MaterialTheme.typography.bodyLarge,
-                        color = if (isBatteryOptimized) {
-                            MaterialTheme.colorScheme.onSurface.copy(alpha = 0.38f)
-                        } else {
-                            MaterialTheme.colorScheme.onSurface
-                        }
+                        text = stringResource(if (isBitrateMode) R.string.bitrate else R.string.quality),
+                        style = MaterialTheme.typography.bodyLarge
                     )
                 }
-                val thumbContent: (@Composable () -> Unit)? = if (backgroundPlay) {
-                    { Icon(Icons.Outlined.Check, null, Modifier.size(SwitchDefaults.IconSize)) }
-                } else null
-                Switch(
-                    checked = backgroundPlay,
-                    onCheckedChange = if (isBatteryOptimized) null else onBackgroundPlayChange,
-                    enabled = !isBatteryOptimized,
-                    thumbContent = thumbContent
-                )
+                
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    val displayText = if (currentQuality != null) {
+                        "Auto (${currentQuality.label})"
+                    } else {
+                        stringResource(R.string.auto)
+                    }
+                    Text(
+                        text = displayText,
+                        style = MaterialTheme.typography.bodyLarge,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                    Icon(
+                        imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
+                        contentDescription = null,
+                        tint = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                }
             }
-            
+        }
+        
+        if (isPipSupported) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -481,26 +515,195 @@ fun PlayerSettingsBottomSheet(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Icon(
-                        imageVector = Icons.Default.Flip,
+                        imageVector = Icons.Default.PictureInPicture,
                         contentDescription = null,
                         modifier = Modifier.padding(end = 12.dp).size(24.dp)
                     )
                     Text(
-                        text = stringResource(R.string.mirror_flip),
+                        text = stringResource(R.string.pip),
                         style = MaterialTheme.typography.bodyLarge
                     )
                 }
-                val thumbContent: (@Composable () -> Unit)? = if (mirrorFlip) {
+                val thumbContent: (@Composable () -> Unit)? = if (enablePip) {
                     { Icon(Icons.Outlined.Check, null, Modifier.size(SwitchDefaults.IconSize)) }
                 } else null
                 Switch(
-                    checked = mirrorFlip,
-                    onCheckedChange = onMirrorFlipChange,
+                    checked = enablePip,
+                    onCheckedChange = onEnablePipChange,
                     thumbContent = thumbContent
                 )
             }
+        }
+        
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(56.dp)
+                .then(
+                    if (isBatteryOptimized) {
+                        Modifier.clickable(
+                            indication = null,
+                            interactionSource = backgroundPlayInteractionSource
+                        ) {
+                            launcher.launch(intent)
+                        }
+                    } else {
+                        Modifier
+                    }
+                ),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Row(
+                modifier = Modifier.weight(1f),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Icon(
+                    imageVector = Icons.Default.PlayCircle,
+                    contentDescription = null,
+                    modifier = Modifier.padding(end = 12.dp).size(24.dp),
+                    tint = if (isBatteryOptimized) {
+                        MaterialTheme.colorScheme.onSurface.copy(alpha = 0.38f)
+                    } else {
+                        MaterialTheme.colorScheme.onSurface
+                    }
+                )
+                Text(
+                    text = stringResource(R.string.background_play),
+                    style = MaterialTheme.typography.bodyLarge,
+                    color = if (isBatteryOptimized) {
+                        MaterialTheme.colorScheme.onSurface.copy(alpha = 0.38f)
+                    } else {
+                        MaterialTheme.colorScheme.onSurface
+                    }
+                )
+            }
+            val thumbContent: (@Composable () -> Unit)? = if (backgroundPlay) {
+                { Icon(Icons.Outlined.Check, null, Modifier.size(SwitchDefaults.IconSize)) }
+            } else null
+            Switch(
+                checked = backgroundPlay,
+                onCheckedChange = if (isBatteryOptimized) null else onBackgroundPlayChange,
+                enabled = !isBatteryOptimized,
+                thumbContent = thumbContent
+            )
+        }
+        
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(56.dp),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Row(
+                modifier = Modifier.weight(1f),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Icon(
+                    imageVector = Icons.Default.Flip,
+                    contentDescription = null,
+                    modifier = Modifier.padding(end = 12.dp).size(24.dp)
+                )
+                Text(
+                    text = stringResource(R.string.mirror_flip),
+                    style = MaterialTheme.typography.bodyLarge
+                )
+            }
+            val thumbContent: (@Composable () -> Unit)? = if (mirrorFlip) {
+                { Icon(Icons.Outlined.Check, null, Modifier.size(SwitchDefaults.IconSize)) }
+            } else null
+            Switch(
+                checked = mirrorFlip,
+                onCheckedChange = onMirrorFlipChange,
+                thumbContent = thumbContent
+            )
+        }
+        
+        Spacer(modifier = Modifier.height(8.dp))
+    }
+}
+
+@Composable
+private fun QualitySelectionContent(
+    availableQualities: List<VideoQuality>,
+    currentQuality: VideoQuality?,
+    onQualityChange: (VideoQuality?) -> Unit,
+    onBack: () -> Unit
+) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .wrapContentHeight()
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 8.dp, vertical = 8.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            IconButton(onClick = onBack) {
+                Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.back))
+            }
+            Text(
+                text = stringResource(R.string.quality),
+                style = MaterialTheme.typography.titleMedium,
+                modifier = Modifier.padding(start = 8.dp)
+            )
+        }
+        
+        HorizontalDivider()
+        
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(vertical = 8.dp)
+        ) {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clickable {
+                        onQualityChange(null) 
+                    }
+                    .padding(horizontal = 24.dp, vertical = 16.dp),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                val autoText = if (currentQuality != null) {
+                    "${stringResource(R.string.auto)} (${currentQuality.label})"
+                } else {
+                    stringResource(R.string.auto)
+                }
+                Text(
+                    text = autoText,
+                    style = MaterialTheme.typography.bodyLarge
+                )
+                if (currentQuality != null) {
+                    Icon(
+                        imageVector = Icons.Outlined.Check,
+                        contentDescription = null,
+                        tint = MaterialTheme.colorScheme.primary
+                    )
+                }
+            }
             
-            Spacer(modifier = Modifier.height(8.dp))
+            availableQualities.filter { it != currentQuality }.forEach { quality ->
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clickable {
+                            onQualityChange(quality) 
+                        }
+                        .padding(horizontal = 24.dp, vertical = 16.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text(
+                        text = quality.label,
+                        style = MaterialTheme.typography.bodyLarge
+                    )
+                }
+            }
         }
     }
 }

@@ -58,6 +58,9 @@ object SettingsManager {
     fun getMirrorFlip(context: Context): Boolean = getInstance(context).getMirrorFlip()
     fun setMirrorFlip(context: Context, value: Boolean) = getInstance(context).setMirrorFlip(value)
     
+    fun getQualityPreference(context: Context): Int = getInstance(context).getQualityPreference()
+    fun setQualityPreference(context: Context, value: Int) = getInstance(context).setQualityPreference(value)
+    
     fun getThemeMode(context: Context): Int = getInstance(context).getThemeMode()
     fun setThemeMode(context: Context, value: Int) = getInstance(context).setThemeMode(value)
     
@@ -201,6 +204,9 @@ internal class PreferenceManagerImpl(context: Context) {
     fun getMirrorFlip(): Boolean = getBoolean(KEY_MIRROR_FLIP, false)
     fun setMirrorFlip(value: Boolean) = putBoolean(KEY_MIRROR_FLIP, value)
     
+    fun getQualityPreference(): Int = getInt(KEY_QUALITY_PREFERENCE, 0)
+    fun setQualityPreference(value: Int) = putInt(KEY_QUALITY_PREFERENCE, value)
+    
     fun getThemeMode(): Int = getInt(KEY_THEME_MODE, 0)
     fun setThemeMode(value: Int) = updateThemeSettings { it.copy(themeMode = value) }
     
@@ -336,6 +342,7 @@ internal class PreferenceManagerImpl(context: Context) {
         private const val KEY_ASPECT_RATIO = "aspect_ratio"
         private const val KEY_DECODER_TYPE = "decoder_type"
         private const val KEY_MIRROR_FLIP = "mirror_flip"
+        private const val KEY_QUALITY_PREFERENCE = "quality_preference"
         private const val KEY_THEME_MODE = "theme_mode"
         private const val KEY_LANGUAGE_TAG = "language_tag"
         private const val KEY_DYNAMIC_COLOR = "dynamic_color"

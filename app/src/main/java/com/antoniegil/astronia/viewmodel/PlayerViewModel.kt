@@ -8,6 +8,8 @@ import androidx.lifecycle.viewModelScope
 import com.antoniegil.astronia.Astronia
 import com.antoniegil.astronia.data.repository.PlayerRepository
 import com.antoniegil.astronia.player.Media3Player
+import com.antoniegil.astronia.player.QualityManager
+import com.antoniegil.astronia.player.VideoQuality
 import com.antoniegil.astronia.util.ErrorHandler
 import com.antoniegil.astronia.util.HistoryManager
 import com.antoniegil.astronia.util.M3U8Channel
@@ -41,7 +43,9 @@ data class PlayerUiState(
     val autoHideControls: Boolean = true,
     val playlistUrl: String = "",
     val shouldScrollToChannel: Boolean = false,
-    val isFullscreen: Boolean = false
+    val isFullscreen: Boolean = false,
+    val availableQualities: List<VideoQuality> = emptyList(),
+    val currentQuality: VideoQuality? = null
 )
 
 data class PlayerProgressState(
@@ -62,10 +66,12 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
     val progressState: StateFlow<PlayerProgressState> = _progressState.asStateFlow()
     
     private var localPlayer: Media3Player? = null
+    private var globalPlayer: Media3Player? = null
     private var isUsingGlobalPlayer = false
     private var lastSurface: Surface? = null
     private var isBackgroundRetained = false
     private var orientationHelper: OrientationHelper? = null
+    private var lastAppliedQualityId: String? = null
     
     init {
         loadPreferences()
@@ -83,6 +89,7 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
     
     fun refreshPreferences() {
         loadPreferences()
+        lastAppliedQualityId = null
     }
     
     fun loadChannels(url: String, initialChannelUrl: String?, initialChannelId: String?, initialVideoTitle: String?) {
@@ -132,7 +139,7 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
                     url.startsWith("rtmp") || url.startsWith("rtsp") -> {
                         repository.parseM3U8FromUrl(url).onSuccess { channels ->
                             parsedChannels = channels
-                            isM3U8Playlist = channels.size >= 1
+                            isM3U8Playlist = channels.isNotEmpty()
                         }.onError { _, _ ->
                         }
                     }
@@ -144,7 +151,7 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
                                 if (content.contains("#EXTM3U")) {
                                     repository.parseM3U8FromContent(content).onSuccess { channels ->
                                         parsedChannels = channels
-                                        isM3U8Playlist = channels.size >= 1
+                                        isM3U8Playlist = channels.isNotEmpty()
                                     }
                                 }
                             }
@@ -154,7 +161,7 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
                     url.contains("#EXTM3U") -> {
                         repository.parseM3U8FromContent(url).onSuccess { channels ->
                             parsedChannels = channels
-                            isM3U8Playlist = channels.size >= 1
+                            isM3U8Playlist = channels.isNotEmpty()
                         }
                     }
                 }
@@ -264,6 +271,7 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
             return
         }
         val wasPlaying = _uiState.value.isPlaying
+        lastAppliedQualityId = null
         _uiState.value = _uiState.value.copy(
             currentChannelUrl = channel.url,
             currentChannelId = channel.id,
@@ -274,7 +282,9 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
             isPlaying = wasPlaying,
             isBuffering = false,
             shouldScrollToChannel = false,
-            actualPlayingUrl = null
+            actualPlayingUrl = null,
+            availableQualities = emptyList(),
+            currentQuality = null
         )
         _progressState.value = PlayerProgressState(currentCycleDuration = 20f)
         watchTimeTracker.reset()
@@ -287,12 +297,15 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
     fun getOrCreatePlayer(backgroundPlay: Boolean): Media3Player {
         val player = if (backgroundPlay) {
             isUsingGlobalPlayer = true
-            Astronia.getOrCreatePlayer(getApplication<Application>().applicationContext as Astronia)
+            val p = Astronia.getOrCreatePlayer(getApplication<Application>().applicationContext as Astronia)
+            globalPlayer = p
+            p
         } else {
             if (localPlayer == null) {
                 isUsingGlobalPlayer = false
                 localPlayer = Media3Player(getApplication())
             }
+            globalPlayer = null
             localPlayer!!
         }
         
@@ -314,6 +327,30 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
                         errorMsg,
                         android.widget.Toast.LENGTH_SHORT
                     ).show()
+                }
+            }
+            onTracksChangedListener = { tracks ->
+                exoPlayer?.let { exo ->
+                    val (qualities, selected) = QualityManager.parseQualities(tracks, exo.trackSelectionParameters)
+                    
+                    val finalQuality = if (selected == null && qualities.isNotEmpty()) {
+                        val qualityPref = repository.getQualityPreference()
+                        val autoSelected = QualityManager.selectQualityByPreference(qualities, qualityPref)
+                        if (autoSelected != null) {
+                            QualityManager.setQuality(exo, autoSelected)
+                            lastAppliedQualityId = autoSelected.id
+                            autoSelected
+                        } else {
+                            null
+                        }
+                    } else {
+                        selected
+                    }
+                    
+                    _uiState.value = _uiState.value.copy(
+                        availableQualities = qualities,
+                        currentQuality = finalQuality
+                    )
                 }
             }
         }
@@ -356,11 +393,24 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
         repository.setMirrorFlip(value)
         _uiState.value = _uiState.value.copy(mirrorFlip = value)
     }
+
+    fun setVideoQuality(quality: VideoQuality?) {
+        val player = localPlayer ?: globalPlayer
+        player?.let { p ->
+            QualityManager.setQuality(p.exoPlayer, quality)
+        }
+    }
     
-    fun saveHistory() {
+    fun getQualityPreference(): Int = repository.getQualityPreference()
+    
+    fun updateCurrentQuality(quality: VideoQuality?) {
+        _uiState.value = _uiState.value.copy(currentQuality = quality)
+    }
+    
+    fun saveHistory(force: Boolean = false) {
         val state = _uiState.value
         val watchTime = watchTimeTracker.getAccumulatedTime()
-        if (watchTime == 0L) {
+        if (!force && watchTime == 0L) {
             return
         }
         val urlToSave = state.playlistUrl.ifEmpty { state.currentChannelUrl }

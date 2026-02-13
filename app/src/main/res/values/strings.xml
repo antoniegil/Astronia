@@ -39,7 +39,10 @@
     <string name="playlist">Playlist</string>
     <string name="channel_count">Channel List (%d)</string>
     <string name="search_channels">Search channels</string>
-    
+    <string name="quality">Quality</string>
+    <string name="auto">Auto</string>
+    <string name="bitrate">Bitrate</string>
+
     <string name="resolution">Resolution</string>
     <string name="frames">Frames (Dropped / Total)</string>
     <string name="codec">Codec</string>
@@ -93,6 +96,9 @@
     <string name="aspect_ratio">Aspect Ratio</string>
     <string name="aspect_ratio_fill">Fill</string>
     <string name="aspect_ratio_original">Original</string>
+    <string name="quality_preference">Quality Preference</string>
+    <string name="quality_preference_default">Default (Highest)</string>
+    <string name="quality_preference_saver">Data Saver</string>
     <string name="decoder">Decoder</string>
     <string name="decoder_hardware">Hardware</string>
     <string name="decoder_software">Software</string>

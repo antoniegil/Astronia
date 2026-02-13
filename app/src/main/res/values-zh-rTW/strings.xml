@@ -37,6 +37,9 @@
     <string name="playlist">播放列表</string>
     <string name="channel_count">頻道列表 (%d)</string>
     <string name="search_channels">搜尋頻道</string>
+    <string name="quality">畫質</string>
+    <string name="auto">自動</string>
+    <string name="bitrate">位元率</string>
     
     <string name="resolution">解析度</string>
     <string name="frames">影格數（掉幀 / 總數）</string>
@@ -90,6 +93,9 @@
     <string name="aspect_ratio">畫面比例</string>
     <string name="aspect_ratio_fill">填滿</string>
     <string name="aspect_ratio_original">原始</string>
+    <string name="quality_preference">畫質偏好</string>
+    <string name="quality_preference_default">預設（最高）</string>
+    <string name="quality_preference_saver">省流</string>
     <string name="decoder">解碼器</string>
     <string name="decoder_hardware">硬解</string>
     <string name="decoder_software">軟解</string>

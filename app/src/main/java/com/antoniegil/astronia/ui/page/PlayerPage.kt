@@ -22,6 +22,7 @@ import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.antoniegil.astronia.player.PlaybackService
+import com.antoniegil.astronia.player.QualityManager
 import com.antoniegil.astronia.util.PlayerConstants
 import com.antoniegil.astronia.ui.component.*
 import com.antoniegil.astronia.ui.theme.LegacyThemeBackground
@@ -90,6 +91,14 @@ private fun PlayerPageContent(
     LaunchedEffect(media3Player, settingsVersion) {
         val decoderType = com.antoniegil.astronia.util.SettingsManager.getDecoderType(context)
         media3Player.setHardwareAcceleration(decoderType == 0)
+        
+        if (settingsVersion > 0 && uiState.availableQualities.isNotEmpty()) {
+            val qualityPref = viewModel.getQualityPreference()
+            val autoSelected = QualityManager.selectQualityByPreference(uiState.availableQualities, qualityPref)
+            if (autoSelected != null) {
+                viewModel.setVideoQuality(autoSelected)
+            }
+        }
     }
     
     val isFullscreen = uiState.isFullscreen
@@ -279,6 +288,7 @@ private fun PlayerPageContent(
 
     DisposableEffect(Unit) {
         onDispose {
+            viewModel.saveHistory(force = true)
             media3Player.pause()
             media3Player.attachSurface(null)
             viewModel.releaseOrientationHelper()
@@ -297,6 +307,7 @@ private fun PlayerPageContent(
                 }
             }
         } else {
+            viewModel.saveHistory(force = true)
             media3Player.pause()
             onBack()
         }
@@ -377,7 +388,7 @@ private fun PlayerPageContent(
                                         }
                                     }
                                 } else {
-                                    viewModel.saveHistory()
+                                    viewModel.saveHistory(force = true)
                                     onBack()
                                 }
                             }
@@ -462,7 +473,10 @@ private fun PlayerPageContent(
                 onBackgroundPlayChange = { viewModel.updateBackgroundPlay(it) },
                 onAspectRatioChange = { viewModel.updateAspectRatio(it) },
                 onMirrorFlipChange = { viewModel.updateMirrorFlip(it) },
-                onDismiss = { showPlayerSettings = false }
+                onDismiss = { showPlayerSettings = false },
+                availableQualities = uiState.availableQualities,
+                currentQuality = uiState.currentQuality,
+                onQualityChange = { viewModel.setVideoQuality(it) }
             )
         }
     }

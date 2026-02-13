@@ -26,6 +26,8 @@ class PlayerRepository(private val context: Context) {
     
     fun getMirrorFlip(): Boolean = SettingsManager.getMirrorFlip(context)
     
+    fun getQualityPreference(): Int = SettingsManager.getQualityPreference(context)
+    
     fun setEnablePip(value: Boolean) = SettingsManager.setEnablePip(context, value)
     
     fun setBackgroundPlay(value: Boolean) = SettingsManager.setBackgroundPlay(context, value)

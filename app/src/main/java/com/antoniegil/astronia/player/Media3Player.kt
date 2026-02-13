@@ -6,6 +6,7 @@ import androidx.media3.common.C
 import androidx.media3.common.MediaItem
 import androidx.media3.exoplayer.ExoPlayer
 import com.antoniegil.astronia.util.NetworkUtils
+import androidx.media3.common.Tracks
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -24,7 +25,7 @@ class Media3Player(private val context: Context) {
     var onBufferingListener: ((Boolean) -> Unit)? = null
     var onPlaybackStateChanged: ((isPlaying: Boolean, position: Long, bufferedPosition: Long, duration: Long) -> Unit)? = null
     var onErrorListener: ((error: String, isRetriable: Boolean) -> Unit)? = null
-    var onRenderedFirstFrameListener: (() -> Unit)? = null
+    var onTracksChangedListener: ((Tracks) -> Unit)? = null
 
     init {
         NetworkUtils.setupAndroid7SSL()
@@ -52,6 +53,15 @@ class Media3Player(private val context: Context) {
             latencyMonitor = PlayerFactory.createLatencyMonitor { exoPlayer },
             combinedListener = PlayerListeners.createCombinedListener({ exoPlayer }, state, callbacks)
         )
+
+        exoPlayer?.addListener(object : androidx.media3.common.Player.Listener {
+            override fun onTracksChanged(tracks: Tracks) {
+                onTracksChangedListener?.invoke(tracks)
+            }
+            override fun onTrackSelectionParametersChanged(parameters: androidx.media3.common.TrackSelectionParameters) {
+                exoPlayer?.currentTracks?.let { onTracksChangedListener?.invoke(it) }
+            }
+        })
     }
     
     fun attachSurface(surface: Surface?) {

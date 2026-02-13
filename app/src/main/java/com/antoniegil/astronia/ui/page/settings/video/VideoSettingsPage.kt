@@ -28,8 +28,10 @@ fun VideoSettingsPage(onNavigateBack: () -> Unit) {
     var decoderType by remember { mutableIntStateOf(SettingsManager.getDecoderType(context)) }
     var aspectRatio by remember { mutableIntStateOf(SettingsManager.getAspectRatio(context)) }
     var mirrorFlip by remember { mutableStateOf(SettingsManager.getMirrorFlip(context)) }
+    var qualityPreference by remember { mutableIntStateOf(SettingsManager.getQualityPreference(context)) }
     
     var showAspectRatioDialog by remember { mutableStateOf(false) }
+    var showQualityPreferenceDialog by remember { mutableStateOf(false) }
     var showDecoderTypeDialog by remember { mutableStateOf(false) }
 
     Scaffold(
@@ -62,6 +64,19 @@ fun VideoSettingsPage(onNavigateBack: () -> Unit) {
                     },
                     icon = Icons.Outlined.AspectRatio,
                     onClick = { showAspectRatioDialog = true }
+                )
+            }
+            
+            item {
+                PreferenceItem(
+                    title = stringResource(R.string.quality_preference),
+                    description = when(qualityPreference) {
+                        0 -> stringResource(R.string.quality_preference_default)
+                        1 -> stringResource(R.string.quality_preference_saver)
+                        else -> stringResource(R.string.quality_preference_default)
+                    },
+                    icon = Icons.Outlined.HighQuality,
+                    onClick = { showQualityPreferenceDialog = true }
                 )
             }
             
@@ -110,6 +125,22 @@ fun VideoSettingsPage(onNavigateBack: () -> Unit) {
             onSelect = { value ->
                 aspectRatio = value
                 SettingsManager.setAspectRatio(context, value)
+            }
+        )
+    }
+    
+    if (showQualityPreferenceDialog) {
+        RadioButtonDialog(
+            title = stringResource(R.string.quality_preference),
+            options = listOf(
+                0 to stringResource(R.string.quality_preference_default),
+                1 to stringResource(R.string.quality_preference_saver)
+            ),
+            selectedValue = qualityPreference,
+            onDismiss = { showQualityPreferenceDialog = false },
+            onSelect = { value ->
+                qualityPreference = value
+                SettingsManager.setQualityPreference(context, value)
             }
         )
     }
