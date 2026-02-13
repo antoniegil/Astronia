@@ -380,6 +380,7 @@ private fun PlayerPageContent(
                                         }
                                     }
                                 } else {
+                                    viewModel.saveHistory()
                                     onBack()
                                 }
                             }

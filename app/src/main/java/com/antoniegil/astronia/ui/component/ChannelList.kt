@@ -247,6 +247,7 @@ fun ChannelItem(
     Card(
         modifier = Modifier
             .fillMaxWidth()
+            .defaultMinSize(minHeight = 96.dp)
             .clickable(onClick = onClick),
         colors = CardDefaults.cardColors(
             containerColor = if (isPlaying) 
@@ -258,6 +259,7 @@ fun ChannelItem(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
+                .defaultMinSize(minHeight = 96.dp)
                 .padding(16.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {

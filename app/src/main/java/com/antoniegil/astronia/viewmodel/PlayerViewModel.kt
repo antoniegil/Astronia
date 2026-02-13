@@ -107,7 +107,6 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
         localPlayer?.stop()
         
         viewModelScope.launch {
-            android.util.Log.d("PlayerViewModel", "loadChannels called: url=$url")
             _uiState.value = _uiState.value.copy(
                 channels = emptyList(),
                 isLoadingChannels = true,
@@ -133,7 +132,7 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
                     url.startsWith("rtmp") || url.startsWith("rtsp") -> {
                         repository.parseM3U8FromUrl(url).onSuccess { channels ->
                             parsedChannels = channels
-                            isM3U8Playlist = channels.size > 1
+                            isM3U8Playlist = channels.size >= 1
                         }.onError { _, _ ->
                         }
                     }
@@ -145,7 +144,7 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
                                 if (content.contains("#EXTM3U")) {
                                     repository.parseM3U8FromContent(content).onSuccess { channels ->
                                         parsedChannels = channels
-                                        isM3U8Playlist = channels.size > 1
+                                        isM3U8Playlist = channels.size >= 1
                                     }
                                 }
                             }
@@ -155,7 +154,7 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
                     url.contains("#EXTM3U") -> {
                         repository.parseM3U8FromContent(url).onSuccess { channels ->
                             parsedChannels = channels
-                            isM3U8Playlist = channels.size > 1
+                            isM3U8Playlist = channels.size >= 1
                         }
                     }
                 }
@@ -360,10 +359,15 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
     
     fun saveHistory() {
         val state = _uiState.value
-        if (state.playlistUrl.isNotEmpty() && state.videoTitle.isNotEmpty()) {
+        val watchTime = watchTimeTracker.getAccumulatedTime()
+        if (watchTime == 0L) {
+            return
+        }
+        val urlToSave = state.playlistUrl.ifEmpty { state.currentChannelUrl }
+        if (urlToSave.isNotEmpty() && state.videoTitle.isNotEmpty()) {
             HistoryManager.addOrUpdateHistory(
                 getApplication(),
-                state.playlistUrl,
+                urlToSave,
                 state.videoTitle,
                 state.currentChannelUrl,
                 state.currentChannelId

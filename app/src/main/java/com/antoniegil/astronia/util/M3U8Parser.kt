@@ -82,17 +82,46 @@ object M3U8Parser {
         }
     }
     
+    private data class FetchResult(
+        val channels: List<M3U8Channel>,
+        val finalUrl: String
+    )
+    
     suspend fun parseM3U8FromUrl(url: String): Result<List<M3U8Channel>> = withContext(Dispatchers.IO) {
         val httpsUrl = NetworkUtils.convertToHttps(url)
         
         try {
-            val channels = fetchM3U8Channels(httpsUrl)
-            Result.Success(channels)
+            val result = fetchM3U8Channels(httpsUrl)
+            if (result.channels.isEmpty()) {
+                val singleChannel = listOf(
+                    M3U8Channel(
+                        id = "${result.finalUrl.hashCode()}_0",
+                        name = result.finalUrl.substringAfterLast("/").substringBeforeLast(".").ifEmpty { 
+                            result.finalUrl.substringAfterLast("/").substringBefore("?").ifEmpty { "Stream" }
+                        },
+                        url = result.finalUrl
+                    )
+                )
+                return@withContext Result.Success(singleChannel)
+            }
+            Result.Success(result.channels)
         } catch (e: Exception) {
             if (httpsUrl != url) {
                 try {
-                    val channels = fetchM3U8Channels(url)
-                    Result.Success(channels)
+                    val result = fetchM3U8Channels(url)
+                    if (result.channels.isEmpty()) {
+                        val singleChannel = listOf(
+                            M3U8Channel(
+                                id = "${result.finalUrl.hashCode()}_0",
+                                name = result.finalUrl.substringAfterLast("/").substringBeforeLast(".").ifEmpty { 
+                                    result.finalUrl.substringAfterLast("/").substringBefore("?").ifEmpty { "Stream" }
+                                },
+                                url = result.finalUrl
+                            )
+                        )
+                        return@withContext Result.Success(singleChannel)
+                    }
+                    Result.Success(result.channels)
                 } catch (fallbackException: Exception) {
                     Result.Error(fallbackException, "Failed to fetch M3U8 from URL: ${fallbackException.message}")
                 }
@@ -102,13 +131,15 @@ object M3U8Parser {
         }
     }
     
-    private fun fetchM3U8Channels(url: String): List<M3U8Channel> {
+    private fun fetchM3U8Channels(url: String): FetchResult {
         val request = Request.Builder().url(url).build()
         val response = client.newCall(request).execute()
         
         if (!response.isSuccessful) {
             throw Exception("HTTP ${response.code}")
         }
+        
+        val finalUrl = response.request.url.toString()
         
         val contentLength = response.body.contentLength()
         if (contentLength > PlayerConstants.M3U8_MAX_SIZE_BYTES) {
@@ -173,7 +204,7 @@ object M3U8Parser {
             }
         }
         
-        return channels
+        return FetchResult(channels, finalUrl)
     }
     
     private fun extractChannelName(line: String): String {

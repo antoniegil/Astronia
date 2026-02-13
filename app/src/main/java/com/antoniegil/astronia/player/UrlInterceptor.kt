@@ -27,7 +27,6 @@ object UrlInterceptor {
                     throw NetworkBlockedException("HTTP $httpCode: Network blocked or restricted")
                 }
                 
-                val finalUrl = response.request.url.toString()
                 val content = response.body.string()
                 
                 if (!content.trim().startsWith("#EXTM3U")) {
@@ -35,14 +34,14 @@ object UrlInterceptor {
                     if (contentLower.startsWith("<!doctype") || contentLower.startsWith("<html")) {
                         throw NetworkBlockedException("Network blocked or restricted (HTML response)")
                     }
-                    return@withContext finalUrl
+                    return@withContext currentUrl
                 }
                 
                 val isMasterPlaylist = content.contains("#EXT-X-STREAM-INF")
                 val isMediaPlaylist = content.contains("#EXTINF")
                 
                 if (isMediaPlaylist) {
-                    return@withContext finalUrl
+                    return@withContext currentUrl
                 }
                 
                 if (isMasterPlaylist) {
@@ -52,7 +51,7 @@ object UrlInterceptor {
                     }
                     
                     if (variantUrl != null) {
-                        val uri = finalUrl.toUri()
+                        val uri = currentUrl.toUri()
                         val baseUrl = "${uri.scheme}://${uri.host}${if (uri.port == -1) "" else ":${uri.port}"}${uri.path?.substringBeforeLast("/") ?: ""}"
                         
                         currentUrl = if (variantUrl.startsWith("http")) {
@@ -66,7 +65,7 @@ object UrlInterceptor {
                     }
                 }
                 
-                return@withContext finalUrl
+                return@withContext currentUrl
             }
             
             url
