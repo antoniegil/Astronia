@@ -1,7 +1,5 @@
 package com.antoniegil.astronia.player
 
-import android.os.Handler
-import android.os.Looper
 import androidx.media3.common.C
 import androidx.media3.common.TrackSelectionOverride
 import androidx.media3.common.Tracks
