@@ -107,7 +107,6 @@ class PlaybackService : MediaSessionService() {
     }
     
     override fun onDestroy() {
-        mediaSession?.player?.stop()
         mediaSession?.release()
         mediaSession = null
         currentPlayer = null

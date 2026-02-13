@@ -140,13 +140,17 @@ fun PlayerSurface(
 ) {
     val textureViewRef = remember { mutableStateOf<TextureView?>(null) }
     var surfaceReady by remember { mutableStateOf(true) }
+    var lastChannelUrl by remember { mutableStateOf(currentChannelUrl) }
     
     LaunchedEffect(currentChannelUrl) {
-        if (currentChannelUrl.isNotEmpty()) {
+        if (currentChannelUrl.isNotEmpty() && currentChannelUrl != lastChannelUrl) {
+            lastChannelUrl = currentChannelUrl
             surfaceReady = false
             player?.attachSurface(null)
             kotlinx.coroutines.delay(50)
             surfaceReady = true
+        } else if (lastChannelUrl.isEmpty() && currentChannelUrl.isNotEmpty()) {
+            lastChannelUrl = currentChannelUrl
         }
     }
     
@@ -198,5 +202,7 @@ fun PlayerSurface(
                 modifier = Modifier
             )
         }
+        
+
     }
 }

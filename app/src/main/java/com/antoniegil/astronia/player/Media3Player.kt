@@ -24,6 +24,7 @@ class Media3Player(private val context: Context) {
     var onBufferingListener: ((Boolean) -> Unit)? = null
     var onPlaybackStateChanged: ((isPlaying: Boolean, position: Long, bufferedPosition: Long, duration: Long) -> Unit)? = null
     var onErrorListener: ((error: String, isRetriable: Boolean) -> Unit)? = null
+    var onRenderedFirstFrameListener: (() -> Unit)? = null
 
     init {
         NetworkUtils.setupAndroid7SSL()
@@ -54,6 +55,9 @@ class Media3Player(private val context: Context) {
     }
     
     fun attachSurface(surface: Surface?) {
+        if (this.surface === surface) {
+            return
+        }
         this.surface = surface
         try {
             if (surface == null || surface.isValid) {
@@ -71,11 +75,18 @@ class Media3Player(private val context: Context) {
         state.isFixingM3u8 = false
         actualPlayingUrl = null
         
+        val currentSurface = surface
+        
         exoPlayer?.apply {
             stop()
             clearMediaItems()
+            clearVideoSurface()
             setMediaItem(createMediaItem(url))
             prepare()
+            
+            if (currentSurface != null && currentSurface.isValid) {
+                setVideoSurface(currentSurface)
+            }
         }
     }
     
@@ -127,6 +138,10 @@ class Media3Player(private val context: Context) {
     fun start() {
         state.shouldPlayWhenReady = true
         exoPlayer?.let {
+            val s = surface
+            if (s != null && s.isValid) {
+                it.setVideoSurface(s)
+            }
             if (it.playbackState == androidx.media3.common.Player.STATE_IDLE) it.prepare()
             it.play()
         }
@@ -137,7 +152,14 @@ class Media3Player(private val context: Context) {
         exoPlayer?.pause()
     }
     
-    fun stop() = exoPlayer?.stop()
+    fun stop() {
+        exoPlayer?.stop()
+        exoPlayer?.clearVideoSurface()
+    }
+    
+    fun clearVideoSurface() {
+        exoPlayer?.clearVideoSurface()
+    }
 
     fun setHardwareAcceleration(enabled: Boolean) {
         if (currentHardwareAcceleration != enabled) {

@@ -111,11 +111,15 @@ private fun PlayerPageContent(
         viewModel.refreshPreferences()
     }
     
+    var isPlayerClean by remember { mutableStateOf(false) }
+
     LaunchedEffect(url) {
         media3Player.apply {
             stop()
+            clearVideoSurface()
             exoPlayer?.clearMediaItems()
         }
+        isPlayerClean = true
         viewModel.loadChannels(url, initialChannelUrl, initialChannelId, initialVideoTitle)
     }
     
@@ -217,9 +221,12 @@ private fun PlayerPageContent(
 
                 Lifecycle.Event.ON_STOP -> {
                     val backgroundPlay = com.antoniegil.astronia.util.SettingsManager.getBackgroundPlay(context)
+                    val wasPipActive = isInPictureInPictureMode
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                         val isPip = activity?.isInPictureInPictureMode == true
-                        if (isPip && !backgroundPlay) {
+                        isInPictureInPictureMode = isPip
+                        
+                        if ((isPip || wasPipActive) && !backgroundPlay) {
                             media3Player.pause()
                             wasPlayingBeforePause = false
                             return@LifecycleEventObserver
@@ -332,30 +339,20 @@ private fun PlayerPageContent(
                                 viewModel.toggleControls()
                             }
                     ) {
-                        LaunchedEffect(media3Player) {
-                            media3Player.surface?.let { surface ->
-                                if (surface.isValid) {
-                                    media3Player.attachSurface(surface)
-                                }
-                            }
-                        }
-                        
-                        val onSurfaceReady = remember {
-                            {
-                                if (pendingAutoPlay) {
-                                    pendingAutoPlay = false
-                                    media3Player.start()
-                                }
-                            }
-                        }
-                        
-                        if (uiState.currentChannelUrl.isNotEmpty()) {
+                        if (uiState.currentChannelUrl.isNotEmpty() && isPlayerClean) {
                             PlayerSurface(
                                 player = media3Player,
                                 aspectRatio = uiState.aspectRatio,
                                 mirrorFlip = uiState.mirrorFlip,
-                                isBackgroundRetained = false,
-                                onSurfaceReady = onSurfaceReady,
+                                isBackgroundRetained = true,
+                                onSurfaceReady = {
+                                    if (pendingAutoPlay && !media3Player.isPlaying) {
+                                        pendingAutoPlay = false
+                                        media3Player.start()
+                                    } else if (pendingAutoPlay) {
+                                        pendingAutoPlay = false
+                                    }
+                                },
                                 currentChannelUrl = uiState.currentChannelUrl
                             )
                         }
