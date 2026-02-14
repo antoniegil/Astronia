@@ -95,7 +95,7 @@
     <string name="aspect_ratio_original">原始</string>
     <string name="quality_preference">畫質偏好</string>
     <string name="quality_preference_default">預設（最高）</string>
-    <string name="quality_preference_saver">省流</string>
+    <string name="quality_preference_saver">數據節省</string>
     <string name="decoder">解碼器</string>
     <string name="decoder_hardware">硬解</string>
     <string name="decoder_software">軟解</string>

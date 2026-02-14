@@ -15,6 +15,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.json.JSONArray
+import org.json.JSONObject
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -28,110 +29,119 @@ object DataManager {
     }
     
     fun prepareBackupContent(context: Context): String? {
-        return try {
-            val prefManager = SettingsManager.getInstance(context)
-            val historyList = prefManager.getHistory()
-            
-            if (historyList.isEmpty()) {
-                return null
-            }
-            
-            val backupDir = File(context.filesDir, "backup_files")
-            if (!backupDir.exists()) {
-                backupDir.mkdirs()
-            }
-            
-            val historyWithFiles = historyList.map { item ->
-                if (item.url.startsWith("content://")) {
-                    try {
-                        val uri = item.url.toUri()
-                        val fileName = "${System.currentTimeMillis()}_${item.name.replace("[^a-zA-Z0-9.-]".toRegex(), "_")}"
-                        val destFile = File(backupDir, fileName)
-                        
-                        context.contentResolver.openInputStream(uri)?.use { input ->
-                            destFile.outputStream().use { output ->
-                                input.copyTo(output)
-                            }
-                        }
-                        
-                        item.copy(url = "file://${destFile.absolutePath}")
-                    } catch (e: Exception) {
-                        ErrorHandler.logError("DataManager", "Failed to copy local file: ${item.url}", e)
-                        item
-                    }
-                } else {
-                    item
-                }
-            }
-            
-            JSONArray(SettingsManager.serializeHistoryToJson(historyWithFiles)).toString(2)
-        } catch (e: Exception) {
-            ErrorHandler.logError("DataManager", "Failed to prepare backup", e)
-            null
+        val prefManager = SettingsManager.getInstance(context)
+        val historyList = prefManager.getHistory()
+        
+        if (historyList.isEmpty()) {
+            return null
         }
+        
+        val jsonArray = JSONArray()
+        historyList.forEach { item ->
+            val jsonObj = JSONObject().apply {
+                put("name", item.name)
+                put("timestamp", item.timestamp)
+                item.lastChannelUrl?.let { put("lastChannelUrl", it) }
+                item.lastChannelId?.let { put("lastChannelId", it) }
+                
+                val m3uContent = if (item.url.startsWith("http://") || item.url.startsWith("https://")) {
+                    item.url
+                } else {
+                    val uri = item.url.toUri()
+                    context.contentResolver.openInputStream(uri)?.use { input ->
+                        input.bufferedReader().use { it.readText() }
+                    } ?: item.url
+                }
+                put("content", m3uContent)
+            }
+            jsonArray.put(jsonObj)
+        }
+        
+        return jsonArray.toString(2)
     }
     
     fun writeBackupToUri(context: Context, uri: Uri, content: String): Boolean {
-        return try {
-            context.contentResolver.openOutputStream(uri)?.use { outputStream ->
-                outputStream.write(content.toByteArray())
-            }
-            true
-        } catch (e: Exception) {
-            ErrorHandler.logError("DataManager", "Failed to write backup", e)
-            false
+        context.contentResolver.openOutputStream(uri)?.use { outputStream ->
+            outputStream.write(content.toByteArray())
         }
+        return true
     }
     
     fun restoreHistory(context: Context, uri: Uri): Pair<Boolean, Int> {
-        return try {
-            val inputStream = context.contentResolver.openInputStream(uri)
-            val jsonString = inputStream?.bufferedReader()?.use { it.readText() }
-            inputStream?.close()
-            
-            if (jsonString.isNullOrEmpty()) {
-                return Pair(false, 0)
-            }
-            
-            val historyItems = SettingsManager.parseHistoryJson(jsonString)
-            
-            if (historyItems.isEmpty()) {
-                return Pair(false, 0)
-            }
-            
-            val prefManager = SettingsManager.getInstance(context)
-            val existingHistory = prefManager.getHistory()
-            val existingUrls = existingHistory.map { it.url }.toSet()
-            
-            prefManager.clearHistory()
-            
-            val mergedItems = mutableListOf<HistoryItem>()
-            mergedItems.addAll(existingHistory)
-            
-            historyItems.forEach { item ->
-                if (!existingUrls.contains(item.url)) {
-                    mergedItems.add(item)
-                }
-            }
-            
-            mergedItems.sortByDescending { it.timestamp }
-            
-            var successCount = 0
-            mergedItems.forEach { item ->
-                prefManager.addOrUpdateHistory(
-                    item.url,
-                    item.name,
-                    item.lastChannelUrl,
-                    item.lastChannelId
-                )
-                successCount++
-            }
-            
-            Pair(true, successCount)
-        } catch (e: Exception) {
-            ErrorHandler.logError("DataManager", "Failed to restore history", e)
-            Pair(false, 0)
+        val inputStream = context.contentResolver.openInputStream(uri)
+        val jsonString = inputStream?.bufferedReader()?.use { it.readText() }
+        inputStream?.close()
+        
+        if (jsonString.isNullOrEmpty()) {
+            return Pair(false, 0)
         }
+        
+        val jsonArray = JSONArray(jsonString)
+        val historyItems = mutableListOf<HistoryItem>()
+        
+        for (i in 0 until jsonArray.length()) {
+            val jsonObj = jsonArray.getJSONObject(i)
+            
+            val content = jsonObj.getString("content")
+            val itemUrl = if (content.startsWith("http://") || content.startsWith("https://")) {
+                content
+            } else {
+                val restoreDir = File(context.filesDir, "restored_files")
+                if (!restoreDir.exists()) {
+                    restoreDir.mkdirs()
+                }
+                
+                val fileName = "${System.currentTimeMillis()}_${jsonObj.getString("name").replace("[^a-zA-Z0-9.-]".toRegex(), "_")}.m3u"
+                val destFile = File(restoreDir, fileName)
+                destFile.writeText(content)
+                
+                "file://${destFile.absolutePath}"
+            }
+            
+            historyItems.add(
+                HistoryItem(
+                    url = itemUrl,
+                    name = jsonObj.getString("name"),
+                    timestamp = jsonObj.getLong("timestamp"),
+                    lastChannelUrl = if (jsonObj.has("lastChannelUrl")) jsonObj.getString("lastChannelUrl") else null,
+                    lastChannelId = if (jsonObj.has("lastChannelId")) jsonObj.getString("lastChannelId") else null
+                )
+            )
+        }
+        
+        if (historyItems.isEmpty()) {
+            return Pair(false, 0)
+        }
+        
+        val prefManager = SettingsManager.getInstance(context)
+        val existingHistory = prefManager.getHistory()
+        val existingUrls = existingHistory.map { it.url }.toSet()
+        
+        prefManager.clearHistory()
+        
+        val mergedItems = mutableListOf<HistoryItem>()
+        mergedItems.addAll(existingHistory)
+        
+        historyItems.forEach { item ->
+            if (!existingUrls.contains(item.url)) {
+                mergedItems.add(item)
+            }
+        }
+        
+        mergedItems.sortByDescending { it.timestamp }
+        
+        var successCount = 0
+        mergedItems.forEach { item ->
+            prefManager.addOrUpdateHistory(
+                item.url,
+                item.name,
+                item.lastChannelUrl,
+                item.lastChannelId
+            )
+            successCount++
+        }
+        
+        return Pair(true, successCount)
     }
 }
 

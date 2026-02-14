@@ -75,7 +75,7 @@ object QualityManager {
                     kotlin.math.abs(ratio - 1.77f) < 0.1f -> "16:9"
                     kotlin.math.abs(ratio - 1.33f) < 0.15f -> "4:3"
                     kotlin.math.abs(ratio - 2.33f) < 0.1f -> "21:9"
-                    ratio > 0 -> String.format("%.2f:1", ratio)
+                    ratio > 0 -> String.format(java.util.Locale.US, "%.2f:1", ratio)
                     else -> ""
                 }
                 Pair(quality, suffix)

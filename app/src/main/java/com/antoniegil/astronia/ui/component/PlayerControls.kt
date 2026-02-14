@@ -480,7 +480,7 @@ private fun MainSettingsContent(
                 
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     val displayText = if (currentQuality != null) {
-                        "Auto (${currentQuality.label})"
+                        "${stringResource(R.string.auto)} (${currentQuality.label})"
                     } else {
                         stringResource(R.string.auto)
                     }
