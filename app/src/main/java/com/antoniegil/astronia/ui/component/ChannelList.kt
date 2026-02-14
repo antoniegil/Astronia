@@ -244,6 +244,18 @@ fun ChannelItem(
     actualPlayingUrl: String? = null,
     onClick: () -> Unit
 ) {
+    val displayUrl = actualPlayingUrl ?: channel.url
+    val tags = buildList {
+        if (channel.group.isNotEmpty()) {
+            channel.group.split(";").forEach { tag ->
+                val trimmedTag = tag.trim()
+                if (trimmedTag.isNotEmpty()) add(trimmedTag)
+            }
+        }
+        if (channel.country.isNotEmpty()) add(channel.country)
+        if (channel.language.isNotEmpty()) add(channel.language)
+    }
+    
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -268,18 +280,18 @@ fun ChannelItem(
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.spacedBy(6.dp)
                 ) {
-                    ChannelLogo(
-                        logoUrl = channel.logoUrl,
-                        contentDescription = channel.name
-                    )
+                    if (channel.logoUrl.isNotEmpty()) {
+                        ChannelLogo(
+                            logoUrl = channel.logoUrl,
+                            contentDescription = channel.name
+                        )
+                    }
                     Text(
                         text = channel.name,
                         style = MaterialTheme.typography.titleMedium,
                         color = MaterialTheme.colorScheme.onSurface
                     )
                 }
-                
-                val displayUrl = actualPlayingUrl ?: channel.url
                 
                 Text(
                     text = displayUrl,
@@ -289,53 +301,20 @@ fun ChannelItem(
                     overflow = TextOverflow.Ellipsis
                 )
                 
-                if (channel.group.isNotEmpty() || channel.country.isNotEmpty() || channel.language.isNotEmpty()) {
+                if (tags.isNotEmpty()) {
                     Spacer(modifier = Modifier.height(6.dp))
                     Row(
                         horizontalArrangement = Arrangement.spacedBy(6.dp),
                         modifier = Modifier.fillMaxWidth()
                     ) {
-                        if (channel.group.isNotEmpty()) {
-                            channel.group.split(";").forEach { tag ->
-                                val trimmedTag = tag.trim()
-                                if (trimmedTag.isNotEmpty()) {
-                                    Surface(
-                                        shape = RoundedCornerShape(4.dp),
-                                        color = MaterialTheme.colorScheme.surfaceVariant,
-                                        border = BorderStroke(1.dp, MaterialTheme.colorScheme.outline.copy(alpha = 0.5f))
-                                    ) {
-                                        Text(
-                                            text = trimmedTag,
-                                            style = MaterialTheme.typography.labelSmall,
-                                            color = MaterialTheme.colorScheme.onSecondaryContainer,
-                                            modifier = Modifier.padding(horizontal = 6.dp, vertical = 2.dp)
-                                        )
-                                    }
-                                }
-                            }
-                        }
-                        if (channel.country.isNotEmpty()) {
+                        tags.forEach { tag ->
                             Surface(
                                 shape = RoundedCornerShape(4.dp),
                                 color = MaterialTheme.colorScheme.surfaceVariant,
                                 border = BorderStroke(1.dp, MaterialTheme.colorScheme.outline.copy(alpha = 0.5f))
                             ) {
                                 Text(
-                                    text = channel.country,
-                                    style = MaterialTheme.typography.labelSmall,
-                                    color = MaterialTheme.colorScheme.onSecondaryContainer,
-                                    modifier = Modifier.padding(horizontal = 6.dp, vertical = 2.dp)
-                                )
-                            }
-                        }
-                        if (channel.language.isNotEmpty()) {
-                            Surface(
-                                shape = RoundedCornerShape(4.dp),
-                                color = MaterialTheme.colorScheme.surfaceVariant,
-                                border = BorderStroke(1.dp, MaterialTheme.colorScheme.outline.copy(alpha = 0.5f))
-                            ) {
-                                Text(
-                                    text = channel.language,
+                                    text = tag,
                                     style = MaterialTheme.typography.labelSmall,
                                     color = MaterialTheme.colorScheme.onSecondaryContainer,
                                     modifier = Modifier.padding(horizontal = 6.dp, vertical = 2.dp)

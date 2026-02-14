@@ -349,6 +349,7 @@ internal class PreferenceManagerImpl(context: Context) {
                 obj.put("name", item.name)
                 obj.put("lastChannelUrl", item.lastChannelUrl ?: "")
                 obj.put("lastChannelId", item.lastChannelId ?: "")
+                obj.put("logoUrl", item.logoUrl)
                 obj.put("timestamp", item.timestamp)
                 jsonArray.put(obj)
             }
@@ -367,6 +368,7 @@ internal class PreferenceManagerImpl(context: Context) {
                             name = obj.optString("name", "Unknown"),
                             lastChannelUrl = obj.optString("lastChannelUrl").takeIf { it.isNotEmpty() },
                             lastChannelId = obj.optString("lastChannelId").takeIf { it.isNotEmpty() },
+                            logoUrl = obj.optString("logoUrl", ""),
                             timestamp = obj.optLong("timestamp", 0)
                         )
                     )

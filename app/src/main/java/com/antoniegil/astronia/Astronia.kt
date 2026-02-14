@@ -48,6 +48,8 @@ class Astronia : Application(), ImageLoaderFactory {
                     NetworkUtils.createHttpClient(15000, 30000, false)
                 }
             }
+            .diskCachePolicy(coil.request.CachePolicy.ENABLED)
+            .memoryCachePolicy(coil.request.CachePolicy.ENABLED)
             .build()
     }
     

@@ -5,11 +5,13 @@ import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.gestures.detectHorizontalDragGestures
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Delete
 import androidx.compose.material.icons.outlined.Edit
@@ -18,10 +20,10 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.antoniegil.astronia.R
 import kotlinx.coroutines.launch
@@ -35,7 +37,12 @@ fun ChannelCard(
     onEdit: (() -> Unit)? = null,
     trailingIcon: @Composable (() -> Unit)? = null,
     deleteThreshold: Float = -200f,
-    content: @Composable () -> Unit
+    name: String? = null,
+    logoUrl: String? = null,
+    url: String? = null,
+    tags: List<String> = emptyList(),
+    leadingIcon: @Composable (() -> Unit)? = null,
+    content: (@Composable () -> Unit)? = null
 ) {
     val offsetX = remember { Animatable(0f) }
     val scope = rememberCoroutineScope()
@@ -63,14 +70,14 @@ fun ChannelCard(
                         modifier = Modifier
                             .fillMaxSize()
                             .clip(cardShape)
-                            .background(Color(0xFFD32F2F))
+                            .background(MaterialTheme.colorScheme.errorContainer)
                             .padding(end = 24.dp),
                         contentAlignment = Alignment.CenterEnd
                     ) {
                         Icon(
                             imageVector = Icons.Outlined.Delete,
                             contentDescription = null,
-                            tint = Color.White,
+                            tint = MaterialTheme.colorScheme.onErrorContainer,
                             modifier = Modifier.size(32.dp)
                         )
                     }
@@ -119,7 +126,75 @@ fun ChannelCard(
                     tonalElevation = 1.dp
                 ) {
                     Box {
-                        content()
+                        if (content != null) {
+                            content()
+                        } else if (name != null) {
+                            Row(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(16.dp)
+                                    .padding(end = if (onEdit != null) 96.dp else 48.dp),
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                if (leadingIcon != null) {
+                                    leadingIcon()
+                                }
+                                
+                                Column(modifier = Modifier.weight(1f)) {
+                                    Row(
+                                        verticalAlignment = Alignment.CenterVertically,
+                                        horizontalArrangement = Arrangement.spacedBy(6.dp)
+                                    ) {
+                                        if (!logoUrl.isNullOrEmpty()) {
+                                            ChannelLogo(
+                                                logoUrl = logoUrl,
+                                                contentDescription = name
+                                            )
+                                        }
+                                        Text(
+                                            text = name,
+                                            style = MaterialTheme.typography.titleMedium,
+                                            maxLines = 1,
+                                            overflow = TextOverflow.Ellipsis
+                                        )
+                                    }
+                                    
+                                    if (!url.isNullOrEmpty()) {
+                                        Text(
+                                            text = url,
+                                            style = MaterialTheme.typography.bodySmall,
+                                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                            maxLines = 1,
+                                            overflow = TextOverflow.Ellipsis
+                                        )
+                                    }
+                                    
+                                    if (tags.isNotEmpty()) {
+                                        Spacer(modifier = Modifier.height(6.dp))
+                                        Row(
+                                            horizontalArrangement = Arrangement.spacedBy(6.dp),
+                                            modifier = Modifier.fillMaxWidth()
+                                        ) {
+                                            tags.forEach { tag ->
+                                                Surface(
+                                                    shape = RoundedCornerShape(4.dp),
+                                                    color = MaterialTheme.colorScheme.surfaceVariant,
+                                                    border = BorderStroke(1.dp, MaterialTheme.colorScheme.outline.copy(alpha = 0.5f))
+                                                ) {
+                                                    Text(
+                                                        text = tag,
+                                                        style = MaterialTheme.typography.labelSmall,
+                                                        color = MaterialTheme.colorScheme.onSecondaryContainer,
+                                                        modifier = Modifier.padding(horizontal = 6.dp, vertical = 2.dp)
+                                                    )
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        
                         Row(
                             modifier = Modifier
                                 .align(Alignment.CenterEnd)

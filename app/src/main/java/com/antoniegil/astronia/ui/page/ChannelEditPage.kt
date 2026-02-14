@@ -1,12 +1,25 @@
 package com.antoniegil.astronia.ui.page
 
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.tween
 import androidx.compose.animation.expandVertically
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.shrinkVertically
-import androidx.compose.foundation.gestures.detectDragGesturesAfterLongPress
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.gestures.detectDragGestures
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.offset
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material.icons.Icons
@@ -19,8 +32,33 @@ import androidx.compose.material.icons.outlined.MoreVert
 import androidx.compose.material.icons.outlined.Save
 import androidx.compose.material.icons.outlined.SaveAs
 import androidx.compose.material.icons.outlined.Search
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.BottomAppBar
+import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SnackbarDuration
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
+import androidx.compose.material3.SnackbarResult
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
+import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TriStateCheckbox
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.derivedStateOf
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.pointer.pointerInput
@@ -30,18 +68,18 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.state.ToggleableState
-import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import com.antoniegil.astronia.R
 import com.antoniegil.astronia.ui.common.HapticFeedback.slightHapticFeedback
-import com.antoniegil.astronia.util.M3U8Channel
-import com.antoniegil.astronia.util.HistoryItem
-import com.antoniegil.astronia.util.DataManager
-import com.antoniegil.astronia.util.rememberM3U8SaveAsLauncher
 import com.antoniegil.astronia.ui.component.ChannelCard
-import com.antoniegil.astronia.ui.component.ChannelLogo
 import com.antoniegil.astronia.ui.component.SearchBar
+import com.antoniegil.astronia.util.DataManager
+import com.antoniegil.astronia.util.HistoryItem
+import com.antoniegil.astronia.util.M3U8Channel
+import com.antoniegil.astronia.util.rememberM3U8SaveAsLauncher
 import kotlinx.coroutines.launch
+import kotlin.math.roundToInt
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -50,7 +88,7 @@ fun ChannelEditPage(
     channels: List<M3U8Channel>,
     onBack: () -> Unit
 ) {
-    val context = LocalContext.current
+    LocalContext.current
     val resources = androidx.compose.ui.platform.LocalResources.current
     val view = LocalView.current
     val itemDeletedMsg = stringResource(R.string.item_deleted)
@@ -66,7 +104,7 @@ fun ChannelEditPage(
     var isLoading by remember { mutableStateOf(channels.isEmpty()) }
     var hasChanges by remember { mutableStateOf(false) }
     var showExitDialog by remember { mutableStateOf(false) }
-    val scope = rememberCoroutineScope()
+    rememberCoroutineScope()
     val snackbarHostState = remember { SnackbarHostState() }
     
     LaunchedEffect(channels) {
@@ -286,7 +324,8 @@ fun ChannelEditPage(
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 itemsIndexed(displayedChannels, key = { _, item -> item.id }) { index, channel ->
-                    var dragOffset by remember { mutableFloatStateOf(0f) }
+                    val offsetY = remember { Animatable(0f) }
+                    val scope = rememberCoroutineScope()
 
                     ChannelCard(
                         onDelete = {
@@ -321,41 +360,11 @@ fun ChannelEditPage(
                             if (!isSelectionMode) {
                                 selectedItems = setOf(channel.id)
                             }
-                        }
-                    ) {
-                        Row(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(16.dp)
-                                .pointerInput(Unit) {
-                                    detectDragGesturesAfterLongPress(
-                                        onDragStart = { },
-                                        onDrag = { _, offset ->
-                                            dragOffset += offset.y
-                                            val threshold = 80f
-                                            if (dragOffset > threshold && index < editableChannels.size - 1) {
-                                                editableChannels =
-                                                    editableChannels.toMutableList().apply {
-                                                        val item = removeAt(index)
-                                                        add(index + 1, item)
-                                                    }
-                                                dragOffset = 0f
-                                            } else if (dragOffset < -threshold && index > 0) {
-                                                editableChannels =
-                                                    editableChannels.toMutableList().apply {
-                                                        val item = removeAt(index)
-                                                        add(index - 1, item)
-                                                    }
-                                                dragOffset = 0f
-                                            }
-                                        },
-                                        onDragEnd = {
-                                            dragOffset = 0f
-                                        }
-                                    )
-                                },
-                            verticalAlignment = Alignment.CenterVertically
-                        ) {
+                        },
+                        name = channel.name,
+                        logoUrl = channel.logoUrl,
+                        url = channel.url,
+                        leadingIcon = {
                             if (isSelectionMode) {
                                 Icon(
                                     imageVector = if (selectedItems.contains(channel.id)) Icons.Filled.CheckCircle else Icons.Outlined.CheckCircle,
@@ -367,40 +376,54 @@ fun ChannelEditPage(
                                 Icon(
                                     imageVector = Icons.Outlined.DragHandle,
                                     contentDescription = stringResource(R.string.move_up),
-                                    modifier = Modifier.padding(end = 12.dp),
+                                    modifier = Modifier
+                                        .padding(end = 12.dp)
+                                        .offset { IntOffset(0, offsetY.value.roundToInt()) }
+                                        .pointerInput(Unit) {
+                                            detectDragGestures(
+                                                onDragStart = { },
+                                                onDrag = { _, dragAmount ->
+                                                    scope.launch {
+                                                        offsetY.snapTo(offsetY.value + dragAmount.y)
+                                                    }
+                                                    val threshold = 80f
+                                                    if (offsetY.value > threshold && index < editableChannels.size - 1) {
+                                                        editableChannels =
+                                                            editableChannels.toMutableList().apply {
+                                                                val item = removeAt(index)
+                                                                add(index + 1, item)
+                                                            }
+                                                        scope.launch {
+                                                            offsetY.snapTo(0f)
+                                                        }
+                                                        hasChanges = true
+                                                    } else if (offsetY.value < -threshold && index > 0) {
+                                                        editableChannels =
+                                                            editableChannels.toMutableList().apply {
+                                                                val item = removeAt(index)
+                                                                add(index - 1, item)
+                                                            }
+                                                        scope.launch {
+                                                            offsetY.snapTo(0f)
+                                                        }
+                                                        hasChanges = true
+                                                    }
+                                                },
+                                                onDragEnd = {
+                                                    scope.launch {
+                                                        offsetY.animateTo(
+                                                            targetValue = 0f,
+                                                            animationSpec = tween(durationMillis = 200)
+                                                        )
+                                                    }
+                                                }
+                                            )
+                                        },
                                     tint = MaterialTheme.colorScheme.outline
                                 )
                             }
-
-                            Column(modifier = Modifier.weight(1f)) {
-                                Row(
-                                    verticalAlignment = Alignment.CenterVertically,
-                                    horizontalArrangement = Arrangement.spacedBy(6.dp)
-                                ) {
-                                    ChannelLogo(
-                                        logoUrl = channel.logoUrl,
-                                        contentDescription = channel.name
-                                    )
-                                    Text(
-                                        text = channel.name,
-                                        style = MaterialTheme.typography.titleMedium,
-                                        maxLines = 1,
-                                        overflow = TextOverflow.Ellipsis
-                                    )
-                                }
-                                Spacer(modifier = Modifier.height(4.dp))
-                                Text(
-                                    text = channel.url,
-                                    style = MaterialTheme.typography.bodySmall,
-                                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                                    maxLines = 1,
-                                    overflow = TextOverflow.Ellipsis
-                                )
-                            }
-
-                            Spacer(modifier = Modifier.width(8.dp))
                         }
-                    }
+                    )
                 }
 
                 if (displayedCount < filteredChannels.size) {

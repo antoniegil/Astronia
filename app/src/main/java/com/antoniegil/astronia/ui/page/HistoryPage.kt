@@ -29,14 +29,12 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.state.ToggleableState
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import android.widget.Toast
 import com.antoniegil.astronia.R
 import com.antoniegil.astronia.ui.common.HapticFeedback.slightHapticFeedback
 import com.antoniegil.astronia.ui.component.SearchBar
 import com.antoniegil.astronia.ui.component.ChannelCard
-import com.antoniegil.astronia.ui.component.ChannelLogo
 import com.antoniegil.astronia.util.HistoryItem
 import com.antoniegil.astronia.util.HistoryManager
 import com.antoniegil.astronia.util.DataManager
@@ -330,22 +328,12 @@ fun HistoryPage(
                             onEdit = if (!isSelectionMode && onEdit != null) {
                                 { onEdit(item) }
                             } else null,
-                            trailingIcon = {
-                                Icon(
-                                    imageVector = Icons.Default.PlayArrow,
-                                    contentDescription = stringResource(R.string.play),
-                                    tint = MaterialTheme.colorScheme.outline
-                                )
-                            }
-                        ) {
-                            Row(
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .padding(16.dp)
-                                    .padding(end = if (!isSelectionMode && onEdit != null) 96.dp else 48.dp),
-                                verticalAlignment = Alignment.CenterVertically
-                            ) {
-                                if (isSelectionMode) {
+                            name = item.name,
+                            logoUrl = item.logoUrl,
+                            url = item.url,
+                            tags = listOf("${stringResource(R.string.last_played)}: ${item.timestamp.formatDateTime()}"),
+                            leadingIcon = if (isSelectionMode) {
+                                {
                                     Icon(
                                         imageVector = if (selectedItems.contains(item.url)) Icons.Filled.CheckCircle else Icons.Outlined.CheckCircle,
                                         contentDescription = null,
@@ -353,41 +341,15 @@ fun HistoryPage(
                                         modifier = Modifier.padding(end = 12.dp)
                                     )
                                 }
-
-                                Column(modifier = Modifier.weight(1f)) {
-                                    Row(
-                                        verticalAlignment = Alignment.CenterVertically,
-                                        horizontalArrangement = Arrangement.spacedBy(6.dp)
-                                    ) {
-                                        ChannelLogo(
-                                            logoUrl = item.logoUrl,
-                                            contentDescription = item.name
-                                        )
-                                        Text(
-                                            text = item.name,
-                                            style = MaterialTheme.typography.titleMedium,
-                                            maxLines = 1,
-                                            overflow = TextOverflow.Ellipsis
-                                        )
-                                    }
-                                    Text(
-                                        text = item.url,
-                                        style = MaterialTheme.typography.bodySmall,
-                                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                                        maxLines = 1,
-                                        overflow = TextOverflow.Ellipsis
-                                    )
-                                    Spacer(modifier = Modifier.height(4.dp))
-                                    Text(
-                                        text = "${stringResource(R.string.last_played)}: ${item.timestamp.formatDateTime()}",
-                                        style = MaterialTheme.typography.labelSmall,
-                                        color = MaterialTheme.colorScheme.onSurfaceVariant.copy(
-                                            alpha = 0.7f
-                                        )
-                                    )
-                                }
+                            } else null,
+                            trailingIcon = {
+                                Icon(
+                                    imageVector = Icons.Default.PlayArrow,
+                                    contentDescription = stringResource(R.string.play),
+                                    tint = MaterialTheme.colorScheme.outline
+                                )
                             }
-                        }
+                        )
                     }
                 }
             }

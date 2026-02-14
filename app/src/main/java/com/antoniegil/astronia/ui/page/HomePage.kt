@@ -25,66 +25,15 @@ import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.antoniegil.astronia.R
 import com.antoniegil.astronia.ui.common.HapticFeedback.slightHapticFeedback
 import com.antoniegil.astronia.ui.component.ChannelCard
-import com.antoniegil.astronia.ui.component.ChannelLogo
 import com.antoniegil.astronia.util.ErrorHandler
 import com.antoniegil.astronia.util.HistoryItem
 import com.antoniegil.astronia.util.HistoryManager
 import com.antoniegil.astronia.util.formatDateTime
 import kotlinx.coroutines.launch
-
-@Composable
-private fun HistoryCardContent(item: HistoryItem) {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(16.dp),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Column(modifier = Modifier.weight(1f)) {
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(6.dp)
-            ) {
-                ChannelLogo(
-                    logoUrl = item.logoUrl,
-                    contentDescription = item.name
-                )
-                Text(
-                    text = item.name,
-                    style = MaterialTheme.typography.titleMedium,
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis
-                )
-            }
-            Text(
-                text = item.url,
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis
-            )
-            Spacer(modifier = Modifier.height(4.dp))
-            Text(
-                text = "${stringResource(R.string.last_played)}: ${item.timestamp.formatDateTime()}",
-                style = MaterialTheme.typography.labelSmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.7f)
-            )
-        }
-        
-        Spacer(modifier = Modifier.width(8.dp))
-        
-        Icon(
-            imageVector = Icons.Default.PlayArrow,
-            contentDescription = stringResource(R.string.play),
-            tint = MaterialTheme.colorScheme.outline
-        )
-    }
-}
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -289,10 +238,21 @@ fun HomePage(
                                                 )
                                             }
                                         },
-                                        onClick = { onPlayHistoryItem(item) }
-                                    ) {
-                                        HistoryCardContent(item = item)
-                                    }
+                                        onClick = { onPlayHistoryItem(item) },
+                                        name = item.name,
+                                        logoUrl = item.logoUrl,
+                                        url = item.url,
+                                        tags = listOf("${stringResource(R.string.last_played)}: ${item.timestamp.formatDateTime()}"),
+                                        trailingIcon = {
+                                            Box(modifier = Modifier.padding(end = 12.dp)) {
+                                                Icon(
+                                                    imageVector = Icons.Default.PlayArrow,
+                                                    contentDescription = stringResource(R.string.play),
+                                                    tint = MaterialTheme.colorScheme.outline
+                                                )
+                                            }
+                                        }
+                                    )
                                 }
                             }
                         }

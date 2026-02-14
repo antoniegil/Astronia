@@ -38,7 +38,8 @@ object HistoryManager {
                 item.url,
                 item.name,
                 item.lastChannelUrl,
-                item.lastChannelId
+                item.lastChannelId,
+                item.logoUrl
             )
         }
     }
