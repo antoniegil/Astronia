@@ -7,6 +7,14 @@ fun Long.formatDateTime(): String {
     return SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault()).format(Date(this))
 }
 
+fun Long.formatTimestamp(): String {
+    return SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date(this))
+}
+
+fun generateTimestampFilename(prefix: String, extension: String): String {
+    return "${prefix}_${System.currentTimeMillis().formatTimestamp()}.$extension"
+}
+
 object PlayerConstants {
     const val MAX_CHANNEL_DISPLAY = 500
     const val MAX_HISTORY_SIZE = 50

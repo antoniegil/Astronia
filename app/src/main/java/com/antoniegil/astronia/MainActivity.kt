@@ -21,6 +21,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.core.net.toUri
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
@@ -188,12 +189,53 @@ fun MainScreen(
                     )
                 }
                 animatedComposable(Route.HISTORY) {
-                    HistoryPage(
-                        onBack = onNavigateBack,
-                        onPlay = { historyItem ->
-                            viewModel.startPlaybackFromHistory(historyItem)
-                        }
-                    )
+                    var editingItem by remember { mutableStateOf<com.antoniegil.astronia.util.HistoryItem?>(null) }
+                    var editingChannels by remember { mutableStateOf<List<com.antoniegil.astronia.util.M3U8Channel>>(emptyList()) }
+                    val scope = rememberCoroutineScope()
+                    val context = LocalContext.current
+                    
+                    if (editingItem == null) {
+                        HistoryPage(
+                            onBack = onNavigateBack,
+                            onPlay = { historyItem ->
+                                viewModel.startPlaybackFromHistory(historyItem)
+                            },
+                            onEdit = { historyItem ->
+                                editingItem = historyItem
+                                editingChannels = emptyList()
+                                scope.launch(Dispatchers.IO) {
+                                    val repository = com.antoniegil.astronia.data.repository.PlayerRepository(context)
+                                    when {
+                                        historyItem.url.startsWith("http") || historyItem.url.startsWith("https") -> {
+                                            val result = repository.parseM3U8FromUrl(historyItem.url)
+                                            if (result is com.antoniegil.astronia.util.Result.Success) {
+                                                editingChannels = result.data
+                                            }
+                                        }
+                                        historyItem.url.startsWith("file://") || historyItem.url.startsWith("content://") -> {
+                                            val uri = historyItem.url.toUri()
+                                            context.contentResolver.openInputStream(uri)?.use { inputStream ->
+                                                val content = inputStream.bufferedReader().readText()
+                                                val result = repository.parseM3U8FromContent(content)
+                                                if (result is com.antoniegil.astronia.util.Result.Success) {
+                                                    editingChannels = result.data
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        )
+                    } else {
+                        ChannelEditPage(
+                            historyItem = editingItem!!,
+                            channels = editingChannels,
+                            onBack = {
+                                editingItem = null
+                                editingChannels = emptyList()
+                            }
+                        )
+                    }
                 }
                 
                 animatedComposable(Route.SETTINGS) {

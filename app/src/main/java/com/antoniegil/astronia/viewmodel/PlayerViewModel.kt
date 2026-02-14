@@ -402,11 +402,7 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
     }
     
     fun getQualityPreference(): Int = repository.getQualityPreference()
-    
-    fun updateCurrentQuality(quality: VideoQuality?) {
-        _uiState.value = _uiState.value.copy(currentQuality = quality)
-    }
-    
+
     fun saveHistory(force: Boolean = false) {
         val state = _uiState.value
         val watchTime = watchTimeTracker.getAccumulatedTime()
@@ -415,12 +411,14 @@ class PlayerViewModel(application: Application) : AndroidViewModel(application) 
         }
         val urlToSave = state.playlistUrl.ifEmpty { state.currentChannelUrl }
         if (urlToSave.isNotEmpty() && state.videoTitle.isNotEmpty()) {
+            val logoUrl = state.channels.find { it.url == state.currentChannelUrl }?.logoUrl ?: ""
             HistoryManager.addOrUpdateHistory(
                 getApplication(),
                 urlToSave,
                 state.videoTitle,
                 state.currentChannelUrl,
-                state.currentChannelId
+                state.currentChannelId,
+                logoUrl
             )
         }
     }

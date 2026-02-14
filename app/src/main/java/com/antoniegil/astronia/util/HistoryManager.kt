@@ -12,8 +12,8 @@ object HistoryManager {
         return SettingsManager.getInstance(context).getHistory()
     }
     
-    fun addOrUpdateHistory(context: Context, url: String, name: String, lastChannelUrl: String? = null, lastChannelId: String? = null) {
-        SettingsManager.getInstance(context).addOrUpdateHistory(url, name, lastChannelUrl, lastChannelId)
+    fun addOrUpdateHistory(context: Context, url: String, name: String, lastChannelUrl: String? = null, lastChannelId: String? = null, logoUrl: String = "") {
+        SettingsManager.getInstance(context).addOrUpdateHistory(url, name, lastChannelUrl, lastChannelId, logoUrl)
     }
     
     fun deleteHistoryItem(context: Context, item: HistoryItem) {

@@ -17,15 +17,28 @@ import kotlinx.coroutines.withContext
 import org.json.JSONArray
 import org.json.JSONObject
 import java.io.File
-import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.Locale
 
 object DataManager {
     
-    fun getBackupFilename(): String {
-        val timestamp = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())
-        return "astronia_backup_$timestamp.json"
+    fun getBackupFilename(): String = generateTimestampFilename("astronia_backup", "json")
+    
+    fun getM3U8Filename(): String = generateTimestampFilename("playlist", "m3u8")
+    
+    fun generateM3U8Content(channels: List<M3U8Channel>): String {
+        val builder = StringBuilder()
+        builder.append("#EXTM3U\n")
+        channels.forEach { channel ->
+            builder.append("#EXTINF:-1")
+            if (channel.group.isNotEmpty()) {
+                builder.append(" group-title=\"${channel.group}\"")
+            }
+            if (channel.logoUrl.isNotEmpty()) {
+                builder.append(" tvg-logo=\"${channel.logoUrl}\"")
+            }
+            builder.append(",${channel.name}\n")
+            builder.append("${channel.url}\n")
+        }
+        return builder.toString()
     }
     
     fun prepareBackupContent(context: Context): String? {
@@ -217,4 +230,36 @@ fun rememberHistoryRestoreLauncher(
     }
     
     return Pair(launcher, mimeType)
+}
+
+@Composable
+fun rememberM3U8SaveAsLauncher(
+    m3u8Content: String,
+    defaultFileName: String = DataManager.getM3U8Filename(),
+    onComplete: () -> Unit = {}
+): () -> Unit {
+    val context = LocalContext.current
+    val scope = rememberCoroutineScope()
+    val successMsg = stringResource(R.string.export_success)
+    val failedMsg = stringResource(R.string.export_failed)
+    
+    val launcher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.CreateDocument("audio/x-mpegurl")
+    ) { uri ->
+        uri?.let {
+            scope.launch(Dispatchers.IO) {
+                val success = DataManager.writeBackupToUri(context, it, m3u8Content)
+                withContext(Dispatchers.Main) {
+                    Toast.makeText(
+                        context,
+                        if (success) successMsg else failedMsg,
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    onComplete()
+                }
+            }
+        }
+    }
+    
+    return { launcher.launch(defaultFileName) }
 }

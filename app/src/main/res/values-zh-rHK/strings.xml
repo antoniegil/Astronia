@@ -9,6 +9,11 @@
     <string name="cancel">取消</string>
     <string name="undo">復原</string>
     <string name="all">全部</string>
+    <string name="edit">編輯</string>
+    <string name="save">儲存</string>
+    <string name="save_as">另存為</string>
+    <string name="move_up">上移</string>
+    <string name="move_down">下移</string>
 
     <string name="clipboard_label">文字</string>
 
@@ -56,6 +61,9 @@
     <plurals name="multiselect_item_count">
         <item quantity="other">已選擇 %1$d 項</item>
     </plurals>
+    <string name="edit_channels">編輯頻道</string>
+    <string name="unsaved_changes">未儲存嘅更改</string>
+    <string name="save_changes_prompt">你有未儲存嘅更改，需要儲存？</string>
     
     <string name="settings">設定</string>
     <string name="player">播放</string>
@@ -126,7 +134,7 @@
 
     <string name="export_label">匯出</string>
     <string name="import_label">匯入</string>
-    <string name="item_deleted">紀錄已刪除</string>
+    <string name="item_deleted">已刪除紀錄</string>
 
     <string name="proxy">代理</string>
     <string name="proxy_desc">經代理伺服器存取網路</string>

@@ -12,6 +12,7 @@ import androidx.compose.foundation.gestures.detectHorizontalDragGestures
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Delete
+import androidx.compose.material.icons.outlined.Edit
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -20,7 +21,9 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.antoniegil.astronia.R
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalFoundationApi::class)
@@ -29,6 +32,8 @@ fun ChannelCard(
     onDelete: () -> Unit,
     onClick: () -> Unit,
     onLongClick: () -> Unit = {},
+    onEdit: (() -> Unit)? = null,
+    trailingIcon: @Composable (() -> Unit)? = null,
     deleteThreshold: Float = -200f,
     content: @Composable () -> Unit
 ) {
@@ -42,77 +47,101 @@ fun ChannelCard(
         showBackground = offsetX.value < -50f
     }
 
-    AnimatedVisibility(
-        visible = !isDeleted,
-        exit = fadeOut(animationSpec = tween(durationMillis = 200))
-    ) {
-        Box(modifier = Modifier.fillMaxWidth()) {
-            AnimatedVisibility(
-                visible = showBackground,
-                enter = fadeIn(animationSpec = tween(durationMillis = 100)),
-                exit = fadeOut(animationSpec = tween(durationMillis = 100)),
-                modifier = Modifier.matchParentSize()
-            ) {
-                Box(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .clip(cardShape)
-                        .background(Color(0xFFD32F2F))
-                        .padding(end = 24.dp),
-                    contentAlignment = Alignment.CenterEnd
+    Box(modifier = Modifier.fillMaxWidth()) {
+        AnimatedVisibility(
+            visible = !isDeleted,
+            exit = fadeOut(animationSpec = tween(durationMillis = 200))
+        ) {
+            Box(modifier = Modifier.fillMaxWidth()) {
+                AnimatedVisibility(
+                    visible = showBackground,
+                    enter = fadeIn(animationSpec = tween(durationMillis = 100)),
+                    exit = fadeOut(animationSpec = tween(durationMillis = 100)),
+                    modifier = Modifier.matchParentSize()
                 ) {
-                    Icon(
-                        imageVector = Icons.Outlined.Delete,
-                        contentDescription = null,
-                        tint = Color.White,
-                        modifier = Modifier.size(32.dp)
-                    )
-                }
-            }
-
-            Surface(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .graphicsLayer {
-                        translationX = offsetX.value
-                    }
-                    .pointerInput(Unit) {
-                        detectHorizontalDragGestures(
-                            onDragEnd = {
-                                scope.launch {
-                                    if (offsetX.value < deleteThreshold) {
-                                        offsetX.animateTo(
-                                            targetValue = -size.width.toFloat(),
-                                            animationSpec = tween(durationMillis = 200)
-                                        )
-                                        isDeleted = true
-                                        kotlinx.coroutines.delay(200)
-                                        onDelete()
-                                    } else {
-                                        offsetX.animateTo(
-                                            targetValue = 0f,
-                                            animationSpec = tween(durationMillis = 250)
-                                        )
-                                    }
-                                }
-                            },
-                            onHorizontalDrag = { _, dragAmount ->
-                                scope.launch {
-                                    val newValue = (offsetX.value + dragAmount).coerceAtMost(0f)
-                                    offsetX.snapTo(newValue)
-                                }
-                            }
+                    Box(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .clip(cardShape)
+                            .background(Color(0xFFD32F2F))
+                            .padding(end = 24.dp),
+                        contentAlignment = Alignment.CenterEnd
+                    ) {
+                        Icon(
+                            imageVector = Icons.Outlined.Delete,
+                            contentDescription = null,
+                            tint = Color.White,
+                            modifier = Modifier.size(32.dp)
                         )
                     }
-                    .combinedClickable(
-                        onClick = onClick,
-                        onLongClick = onLongClick
-                    ),
-                color = MaterialTheme.colorScheme.surfaceContainerHighest,
-                shape = cardShape,
-                tonalElevation = 1.dp
-            ) {
-                content()
+                }
+
+                Surface(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .graphicsLayer {
+                            translationX = offsetX.value
+                        }
+                        .pointerInput(Unit) {
+                            detectHorizontalDragGestures(
+                                onDragEnd = {
+                                    scope.launch {
+                                        if (offsetX.value < deleteThreshold) {
+                                            offsetX.animateTo(
+                                                targetValue = -size.width.toFloat(),
+                                                animationSpec = tween(durationMillis = 200)
+                                            )
+                                            isDeleted = true
+                                            kotlinx.coroutines.delay(200)
+                                            onDelete()
+                                        } else {
+                                            offsetX.animateTo(
+                                                targetValue = 0f,
+                                                animationSpec = tween(durationMillis = 250)
+                                            )
+                                        }
+                                    }
+                                },
+                                onHorizontalDrag = { _, dragAmount ->
+                                    scope.launch {
+                                        val newValue = (offsetX.value + dragAmount).coerceAtMost(0f)
+                                        offsetX.snapTo(newValue)
+                                    }
+                                }
+                            )
+                        }
+                        .combinedClickable(
+                            onClick = onClick,
+                            onLongClick = onLongClick
+                        ),
+                    color = MaterialTheme.colorScheme.surfaceContainerHighest,
+                    shape = cardShape,
+                    tonalElevation = 1.dp
+                ) {
+                    Box {
+                        content()
+                        Row(
+                            modifier = Modifier
+                                .align(Alignment.CenterEnd)
+                                .padding(end = 4.dp),
+                            horizontalArrangement = Arrangement.spacedBy(0.dp),
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            if (trailingIcon != null) {
+                                trailingIcon()
+                            }
+                            if (onEdit != null) {
+                                IconButton(onClick = onEdit) {
+                                    Icon(
+                                        imageVector = Icons.Outlined.Edit,
+                                        contentDescription = stringResource(R.string.edit),
+                                        tint = MaterialTheme.colorScheme.outline
+                                    )
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
     }

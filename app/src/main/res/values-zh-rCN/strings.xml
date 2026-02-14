@@ -9,6 +9,11 @@
     <string name="cancel">取消</string>
     <string name="undo">恢复</string>
     <string name="all">全部</string>
+    <string name="edit">编辑</string>
+    <string name="save">保存</string>
+    <string name="save_as">另存为</string>
+    <string name="move_up">上移</string>
+    <string name="move_down">下移</string>
 
     <string name="clipboard_label">文本</string>
 
@@ -56,6 +61,9 @@
     <plurals name="multiselect_item_count">
         <item quantity="other">已选择 %1$d 项</item>
     </plurals>
+    <string name="edit_channels">编辑频道</string>
+    <string name="unsaved_changes">未保存的更改</string>
+    <string name="save_changes_prompt">您有未保存的更改，是否保存？</string>
     
     <string name="settings">设置</string>
     <string name="player">播放</string>

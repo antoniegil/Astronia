@@ -30,6 +30,7 @@ import androidx.compose.ui.unit.dp
 import com.antoniegil.astronia.R
 import com.antoniegil.astronia.ui.common.HapticFeedback.slightHapticFeedback
 import com.antoniegil.astronia.ui.component.ChannelCard
+import com.antoniegil.astronia.ui.component.ChannelLogo
 import com.antoniegil.astronia.util.ErrorHandler
 import com.antoniegil.astronia.util.HistoryItem
 import com.antoniegil.astronia.util.HistoryManager
@@ -45,12 +46,21 @@ private fun HistoryCardContent(item: HistoryItem) {
         verticalAlignment = Alignment.CenterVertically
     ) {
         Column(modifier = Modifier.weight(1f)) {
-            Text(
-                text = item.name,
-                style = MaterialTheme.typography.titleMedium,
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis
-            )
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(6.dp)
+            ) {
+                ChannelLogo(
+                    logoUrl = item.logoUrl,
+                    contentDescription = item.name
+                )
+                Text(
+                    text = item.name,
+                    style = MaterialTheme.typography.titleMedium,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
+                )
+            }
             Text(
                 text = item.url,
                 style = MaterialTheme.typography.bodySmall,

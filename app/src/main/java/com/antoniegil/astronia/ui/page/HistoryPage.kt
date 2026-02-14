@@ -36,6 +36,7 @@ import com.antoniegil.astronia.R
 import com.antoniegil.astronia.ui.common.HapticFeedback.slightHapticFeedback
 import com.antoniegil.astronia.ui.component.SearchBar
 import com.antoniegil.astronia.ui.component.ChannelCard
+import com.antoniegil.astronia.ui.component.ChannelLogo
 import com.antoniegil.astronia.util.HistoryItem
 import com.antoniegil.astronia.util.HistoryManager
 import com.antoniegil.astronia.util.DataManager
@@ -50,7 +51,8 @@ import kotlinx.coroutines.withContext
 @Composable
 fun HistoryPage(
     onBack: () -> Unit,
-    onPlay: (HistoryItem) -> Unit
+    onPlay: (HistoryItem) -> Unit,
+    onEdit: ((HistoryItem) -> Unit)? = null
 ) {
     val context = LocalContext.current
     val resources = androidx.compose.ui.platform.LocalResources.current
@@ -324,12 +326,23 @@ fun HistoryPage(
                                 if (!isSelectionMode) {
                                     selectedItems = setOf(item.url)
                                 }
+                            },
+                            onEdit = if (!isSelectionMode && onEdit != null) {
+                                { onEdit(item) }
+                            } else null,
+                            trailingIcon = {
+                                Icon(
+                                    imageVector = Icons.Default.PlayArrow,
+                                    contentDescription = stringResource(R.string.play),
+                                    tint = MaterialTheme.colorScheme.outline
+                                )
                             }
                         ) {
                             Row(
                                 modifier = Modifier
                                     .fillMaxWidth()
-                                    .padding(16.dp),
+                                    .padding(16.dp)
+                                    .padding(end = if (!isSelectionMode && onEdit != null) 96.dp else 48.dp),
                                 verticalAlignment = Alignment.CenterVertically
                             ) {
                                 if (isSelectionMode) {
@@ -342,12 +355,21 @@ fun HistoryPage(
                                 }
 
                                 Column(modifier = Modifier.weight(1f)) {
-                                    Text(
-                                        text = item.name,
-                                        style = MaterialTheme.typography.titleMedium,
-                                        maxLines = 1,
-                                        overflow = TextOverflow.Ellipsis
-                                    )
+                                    Row(
+                                        verticalAlignment = Alignment.CenterVertically,
+                                        horizontalArrangement = Arrangement.spacedBy(6.dp)
+                                    ) {
+                                        ChannelLogo(
+                                            logoUrl = item.logoUrl,
+                                            contentDescription = item.name
+                                        )
+                                        Text(
+                                            text = item.name,
+                                            style = MaterialTheme.typography.titleMedium,
+                                            maxLines = 1,
+                                            overflow = TextOverflow.Ellipsis
+                                        )
+                                    }
                                     Text(
                                         text = item.url,
                                         style = MaterialTheme.typography.bodySmall,
@@ -364,14 +386,6 @@ fun HistoryPage(
                                         )
                                     )
                                 }
-
-                                Spacer(modifier = Modifier.width(8.dp))
-
-                                Icon(
-                                    imageVector = Icons.Default.PlayArrow,
-                                    contentDescription = stringResource(R.string.play),
-                                    tint = MaterialTheme.colorScheme.outline
-                                )
                             }
                         }
                     }

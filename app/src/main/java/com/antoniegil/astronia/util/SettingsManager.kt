@@ -75,10 +75,7 @@ object SettingsManager {
     
     fun getHighContrast(context: Context): Boolean = getInstance(context).getHighContrast()
     fun setHighContrast(context: Context, value: Boolean) = getInstance(context).setHighContrast(value)
-    
-    fun getLanguageTag(context: Context): String? = getInstance(context).getLanguageTag()
-    fun setLanguageTag(context: Context, value: String?) = getInstance(context).setLanguageTag(value)
-    
+
     fun getLocaleFromPreference(context: Context): Locale? = getInstance(context).getLocaleFromPreference()
     fun saveLocalePreference(context: Context, locale: Locale?) = getInstance(context).saveLocalePreference(locale)
     
@@ -90,13 +87,7 @@ object SettingsManager {
     
     fun getProxyPort(context: Context): Int = getInstance(context).getProxyPort()
     fun setProxyPort(context: Context, value: Int) = getInstance(context).setProxyPort(value)
-    
-    fun getProxyUsername(context: Context): String = getInstance(context).getProxyUsername()
-    fun setProxyUsername(context: Context, value: String) = getInstance(context).setProxyUsername(value)
-    
-    fun getProxyPassword(context: Context): String = getInstance(context).getProxyPassword()
-    fun setProxyPassword(context: Context, value: String) = getInstance(context).setProxyPassword(value)
-    
+
     fun getShowPlayerStats(context: Context): Boolean = getInstance(context).getShowPlayerStats()
     fun setShowPlayerStats(context: Context, value: Boolean) = getInstance(context).setShowPlayerStats(value)
     
@@ -109,9 +100,6 @@ object SettingsManager {
     
     fun getUpdateChannel(context: Context): Int = getInstance(context).getUpdateChannel()
     fun setUpdateChannel(context: Context, value: Int) = getInstance(context).setUpdateChannel(value)
-    
-    fun serializeHistoryToJson(list: List<HistoryItem>): String = PreferenceManagerImpl.serializeHistoryToJson(list)
-    fun parseHistoryJson(jsonString: String): List<HistoryItem> = PreferenceManagerImpl.parseHistoryJson(jsonString)
 }
 
 internal class PreferenceManagerImpl(context: Context) {
@@ -254,13 +242,7 @@ internal class PreferenceManagerImpl(context: Context) {
     
     fun getProxyPort(): Int = getInt(KEY_PROXY_PORT, 8080)
     fun setProxyPort(value: Int) = putInt(KEY_PROXY_PORT, value)
-    
-    fun getProxyUsername(): String = getString(KEY_PROXY_USERNAME, "")
-    fun setProxyUsername(value: String) = putString(KEY_PROXY_USERNAME, value)
-    
-    fun getProxyPassword(): String = getString(KEY_PROXY_PASSWORD, "")
-    fun setProxyPassword(value: String) = putString(KEY_PROXY_PASSWORD, value)
-    
+
     fun getShowPlayerStats(): Boolean = getBoolean(KEY_SHOW_PLAYER_STATS, false)
     fun setShowPlayerStats(value: Boolean) = putBoolean(KEY_SHOW_PLAYER_STATS, value)
     
@@ -281,7 +263,7 @@ internal class PreferenceManagerImpl(context: Context) {
     
     fun getHistory(): List<HistoryItem> = _historyFlow.value
     
-    fun addOrUpdateHistory(url: String, name: String, lastChannelUrl: String? = null, lastChannelId: String? = null) {
+    fun addOrUpdateHistory(url: String, name: String, lastChannelUrl: String? = null, lastChannelId: String? = null, logoUrl: String = "") {
         val currentList = _historyFlow.value.toMutableList()
         val iterator = currentList.iterator()
         var existingItem: HistoryItem? = null
@@ -300,6 +282,7 @@ internal class PreferenceManagerImpl(context: Context) {
             name = name,
             lastChannelUrl = lastChannelUrl ?: existingItem?.lastChannelUrl,
             lastChannelId = lastChannelId ?: existingItem?.lastChannelId,
+            logoUrl = logoUrl.ifEmpty { existingItem?.logoUrl ?: "" },
             timestamp = System.currentTimeMillis()
         )
         
@@ -352,8 +335,6 @@ internal class PreferenceManagerImpl(context: Context) {
         private const val KEY_PROXY_ENABLED = "proxy_enabled"
         private const val KEY_PROXY_HOST = "proxy_host"
         private const val KEY_PROXY_PORT = "proxy_port"
-        private const val KEY_PROXY_USERNAME = "proxy_username"
-        private const val KEY_PROXY_PASSWORD = "proxy_password"
         private const val KEY_SHOW_PLAYER_STATS = "show_player_stats"
         private const val KEY_PENDING_NAVIGATION = "pending_navigation"
         private const val KEY_AUTO_CHECK_UPDATE = "auto_check_update"
@@ -411,5 +392,6 @@ data class HistoryItem(
     val name: String,
     val lastChannelUrl: String? = null,
     val lastChannelId: String? = null,
+    val logoUrl: String = "",
     val timestamp: Long = System.currentTimeMillis()
 )
