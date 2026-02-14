@@ -1,13 +1,10 @@
 package com.antoniegil.astronia.ui.page
 
 import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.core.Animatable
-import androidx.compose.animation.core.tween
 import androidx.compose.animation.expandVertically
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.shrinkVertically
-import androidx.compose.foundation.gestures.detectDragGestures
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -16,7 +13,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -61,14 +57,12 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.state.ToggleableState
-import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import com.antoniegil.astronia.R
 import com.antoniegil.astronia.ui.common.HapticFeedback.slightHapticFeedback
@@ -79,7 +73,8 @@ import com.antoniegil.astronia.util.HistoryItem
 import com.antoniegil.astronia.util.M3U8Channel
 import com.antoniegil.astronia.util.rememberM3U8SaveAsLauncher
 import kotlinx.coroutines.launch
-import kotlin.math.roundToInt
+import sh.calvin.reorderable.ReorderableItem
+import sh.calvin.reorderable.rememberReorderableLazyListState
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -104,8 +99,16 @@ fun ChannelEditPage(
     var isLoading by remember { mutableStateOf(channels.isEmpty()) }
     var hasChanges by remember { mutableStateOf(false) }
     var showExitDialog by remember { mutableStateOf(false) }
-    rememberCoroutineScope()
+    val scope = rememberCoroutineScope()
     val snackbarHostState = remember { SnackbarHostState() }
+    
+    val lazyListState = androidx.compose.foundation.lazy.rememberLazyListState()
+    val reorderableLazyListState = rememberReorderableLazyListState(lazyListState) { from, to ->
+        editableChannels = editableChannels.toMutableList().apply {
+            add(to.index, removeAt(from.index))
+        }
+        hasChanges = true
+    }
     
     LaunchedEffect(channels) {
         if (channels.isNotEmpty()) {
@@ -166,8 +169,55 @@ fun ChannelEditPage(
         }
     }
     
-    val launchSave = rememberM3U8SaveAsLauncher(m3u8Content, defaultFileName)
-    val launchSaveAs = rememberM3U8SaveAsLauncher(m3u8Content)
+    val context = LocalContext.current
+    val successMsg = stringResource(R.string.export_success)
+    val failedMsg = stringResource(R.string.export_failed)
+    
+    val launchSave = rememberM3U8SaveAsLauncher(
+        m3u8Content = m3u8Content,
+        defaultFileName = defaultFileName,
+        onComplete = { hasChanges = false }
+    )
+    val launchSaveAs = rememberM3U8SaveAsLauncher(
+        m3u8Content = m3u8Content,
+        onComplete = { hasChanges = false }
+    )
+    
+    val saveToOriginalFile: () -> Unit = {
+        if (historyItem.url.startsWith("file://") || historyItem.url.startsWith("content://")) {
+            scope.launch(kotlinx.coroutines.Dispatchers.IO) {
+                val content = DataManager.generateM3U8Content(editableChannels)
+                try {
+                    if (historyItem.url.startsWith("file://")) {
+                        val filePath = historyItem.url.removePrefix("file://")
+                        val file = java.io.File(filePath)
+                        file.writeText(content)
+                    } else {
+                        val uri = android.net.Uri.parse(historyItem.url)
+                        context.contentResolver.openOutputStream(uri)?.use { outputStream ->
+                            outputStream.write(content.toByteArray())
+                        }
+                    }
+                    kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.Main) {
+                        android.widget.Toast.makeText(
+                            context,
+                            successMsg,
+                            android.widget.Toast.LENGTH_SHORT
+                        ).show()
+                        hasChanges = false
+                    }
+                } catch (e: Exception) {
+                    kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.Main) {
+                        android.widget.Toast.makeText(
+                            context,
+                            failedMsg,
+                            android.widget.Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+            }
+        }
+    }
 
     Scaffold(
         snackbarHost = { SnackbarHost(snackbarHostState) },
@@ -226,7 +276,7 @@ fun ChannelEditPage(
                                         text = { Text(stringResource(R.string.save)) },
                                         onClick = {
                                             showMenu = false
-                                            launchSave()
+                                            saveToOriginalFile()
                                         }
                                     )
                                 }
@@ -319,111 +369,74 @@ fun ChannelEditPage(
             }
 
             LazyColumn(
+                state = lazyListState,
                 modifier = Modifier.fillMaxSize(),
                 contentPadding = PaddingValues(16.dp),
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 itemsIndexed(displayedChannels, key = { _, item -> item.id }) { index, channel ->
-                    val offsetY = remember { Animatable(0f) }
-                    val scope = rememberCoroutineScope()
-
-                    ChannelCard(
-                        onDelete = {
-                            editableChannels = editableChannels.toMutableList().apply {
-                                removeAt(index)
-                            }
-                            hasChanges = true
-                            scope.launch {
-                                val result = snackbarHostState.showSnackbar(
-                                    message = itemDeletedMsg,
-                                    actionLabel = undoMsg,
-                                    duration = SnackbarDuration.Short
-                                )
-                                if (result == SnackbarResult.ActionPerformed) {
+                    ReorderableItem(reorderableLazyListState, key = channel.id) { isDragging ->
+                        ChannelCard(
+                            onDelete = {
+                                val deleteIndex = editableChannels.indexOfFirst { it.id == channel.id }
+                                if (deleteIndex >= 0) {
                                     editableChannels = editableChannels.toMutableList().apply {
-                                        add(index.coerceAtMost(size), channel)
+                                        removeAt(deleteIndex)
                                     }
-                                    hasChanges = editableChannels != allChannels
+                                    hasChanges = true
+                                    scope.launch {
+                                        val result = snackbarHostState.showSnackbar(
+                                            message = itemDeletedMsg,
+                                            actionLabel = undoMsg,
+                                            duration = SnackbarDuration.Short
+                                        )
+                                        if (result == SnackbarResult.ActionPerformed) {
+                                            editableChannels = editableChannels.toMutableList().apply {
+                                                add(deleteIndex.coerceAtMost(size), channel)
+                                            }
+                                            hasChanges = editableChannels != allChannels
+                                        }
+                                    }
                                 }
-                            }
-                        },
-                        onClick = {
-                            if (isSelectionMode) {
-                                selectedItems = if (selectedItems.contains(channel.id)) {
-                                    selectedItems - channel.id
+                            },
+                            onClick = {
+                                if (isSelectionMode) {
+                                    selectedItems = if (selectedItems.contains(channel.id)) {
+                                        selectedItems - channel.id
+                                    } else {
+                                        selectedItems + channel.id
+                                    }
+                                }
+                            },
+                            onLongClick = {
+                                if (!isSelectionMode) {
+                                    selectedItems = setOf(channel.id)
+                                }
+                            },
+                            name = channel.name,
+                            logoUrl = channel.logoUrl,
+                            url = channel.url,
+                            leadingIcon = {
+                                if (isSelectionMode) {
+                                    Icon(
+                                        imageVector = if (selectedItems.contains(channel.id)) Icons.Filled.CheckCircle else Icons.Outlined.CheckCircle,
+                                        contentDescription = null,
+                                        tint = if (selectedItems.contains(channel.id)) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.outline,
+                                        modifier = Modifier.padding(end = 12.dp)
+                                    )
                                 } else {
-                                    selectedItems + channel.id
+                                    Icon(
+                                        imageVector = Icons.Outlined.DragHandle,
+                                        contentDescription = stringResource(R.string.move_up),
+                                        modifier = Modifier
+                                            .padding(end = 12.dp)
+                                            .draggableHandle(),
+                                        tint = MaterialTheme.colorScheme.outline
+                                    )
                                 }
                             }
-                        },
-                        onLongClick = {
-                            if (!isSelectionMode) {
-                                selectedItems = setOf(channel.id)
-                            }
-                        },
-                        name = channel.name,
-                        logoUrl = channel.logoUrl,
-                        url = channel.url,
-                        leadingIcon = {
-                            if (isSelectionMode) {
-                                Icon(
-                                    imageVector = if (selectedItems.contains(channel.id)) Icons.Filled.CheckCircle else Icons.Outlined.CheckCircle,
-                                    contentDescription = null,
-                                    tint = if (selectedItems.contains(channel.id)) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.outline,
-                                    modifier = Modifier.padding(end = 12.dp)
-                                )
-                            } else {
-                                Icon(
-                                    imageVector = Icons.Outlined.DragHandle,
-                                    contentDescription = stringResource(R.string.move_up),
-                                    modifier = Modifier
-                                        .padding(end = 12.dp)
-                                        .offset { IntOffset(0, offsetY.value.roundToInt()) }
-                                        .pointerInput(Unit) {
-                                            detectDragGestures(
-                                                onDragStart = { },
-                                                onDrag = { _, dragAmount ->
-                                                    scope.launch {
-                                                        offsetY.snapTo(offsetY.value + dragAmount.y)
-                                                    }
-                                                    val threshold = 80f
-                                                    if (offsetY.value > threshold && index < editableChannels.size - 1) {
-                                                        editableChannels =
-                                                            editableChannels.toMutableList().apply {
-                                                                val item = removeAt(index)
-                                                                add(index + 1, item)
-                                                            }
-                                                        scope.launch {
-                                                            offsetY.snapTo(0f)
-                                                        }
-                                                        hasChanges = true
-                                                    } else if (offsetY.value < -threshold && index > 0) {
-                                                        editableChannels =
-                                                            editableChannels.toMutableList().apply {
-                                                                val item = removeAt(index)
-                                                                add(index - 1, item)
-                                                            }
-                                                        scope.launch {
-                                                            offsetY.snapTo(0f)
-                                                        }
-                                                        hasChanges = true
-                                                    }
-                                                },
-                                                onDragEnd = {
-                                                    scope.launch {
-                                                        offsetY.animateTo(
-                                                            targetValue = 0f,
-                                                            animationSpec = tween(durationMillis = 200)
-                                                        )
-                                                    }
-                                                }
-                                            )
-                                        },
-                                    tint = MaterialTheme.colorScheme.outline
-                                )
-                            }
-                        }
-                    )
+                        )
+                    }
                 }
 
                 if (displayedCount < filteredChannels.size) {
@@ -453,9 +466,8 @@ fun ChannelEditPage(
             confirmButton = {
                 TextButton(onClick = {
                     showExitDialog = false
-                    hasChanges = false
                     if (isLocalFile) {
-                        launchSave()
+                        saveToOriginalFile()
                     } else {
                         launchSaveAs()
                     }

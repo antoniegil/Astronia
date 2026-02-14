@@ -179,6 +179,9 @@ dependencies {
     // Markdown
     implementation(libs.compose.markdown)
     
+    // Reorderable
+    implementation(libs.reorderable)
+    
     implementation(libs.bundles.media3)
 
     
