@@ -64,6 +64,7 @@ import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.state.ToggleableState
 import androidx.compose.ui.unit.dp
+import androidx.core.net.toUri
 import com.antoniegil.astronia.R
 import com.antoniegil.astronia.ui.common.HapticFeedback.slightHapticFeedback
 import com.antoniegil.astronia.ui.component.ChannelCard
@@ -88,7 +89,6 @@ fun ChannelEditPage(
     val view = LocalView.current
     val itemDeletedMsg = stringResource(R.string.item_deleted)
     val undoMsg = stringResource(R.string.undo)
-    var allChannels by remember { mutableStateOf(channels.toList()) }
     var editableChannels by remember { mutableStateOf(channels.toList()) }
     var displayedCount by remember { mutableIntStateOf(100) }
     var selectedItems by remember { mutableStateOf(setOf<String>()) }
@@ -112,7 +112,6 @@ fun ChannelEditPage(
     
     LaunchedEffect(channels) {
         if (channels.isNotEmpty()) {
-            allChannels = channels.toList()
             editableChannels = channels.toList()
             displayedCount = minOf(100, channels.size)
             isLoading = false
@@ -160,24 +159,10 @@ fun ChannelEditPage(
         DataManager.generateM3U8Content(editableChannels)
     }
     
-    val defaultFileName = remember(historyItem) {
-        if (historyItem.url.startsWith("file://")) {
-            val filePath = historyItem.url.removePrefix("file://")
-            java.io.File(filePath).name
-        } else {
-            DataManager.getM3U8Filename()
-        }
-    }
-    
     val context = LocalContext.current
     val successMsg = stringResource(R.string.export_success)
     val failedMsg = stringResource(R.string.export_failed)
-    
-    val launchSave = rememberM3U8SaveAsLauncher(
-        m3u8Content = m3u8Content,
-        defaultFileName = defaultFileName,
-        onComplete = { hasChanges = false }
-    )
+
     val launchSaveAs = rememberM3U8SaveAsLauncher(
         m3u8Content = m3u8Content,
         onComplete = { hasChanges = false }
@@ -193,7 +178,7 @@ fun ChannelEditPage(
                         val file = java.io.File(filePath)
                         file.writeText(content)
                     } else {
-                        val uri = android.net.Uri.parse(historyItem.url)
+                        val uri = historyItem.url.toUri()
                         context.contentResolver.openOutputStream(uri)?.use { outputStream ->
                             outputStream.write(content.toByteArray())
                         }
@@ -206,7 +191,7 @@ fun ChannelEditPage(
                         ).show()
                         hasChanges = false
                     }
-                } catch (e: Exception) {
+                } catch (_: Exception) {
                     kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.Main) {
                         android.widget.Toast.makeText(
                             context,
@@ -374,8 +359,8 @@ fun ChannelEditPage(
                 contentPadding = PaddingValues(16.dp),
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                itemsIndexed(displayedChannels, key = { _, item -> item.id }) { index, channel ->
-                    ReorderableItem(reorderableLazyListState, key = channel.id) { isDragging ->
+                itemsIndexed(displayedChannels, key = { _, item -> item.id }) { _, channel ->
+                    ReorderableItem(reorderableLazyListState, key = channel.id) { _ ->
                         ChannelCard(
                             onDelete = {
                                 val deleteIndex = editableChannels.indexOfFirst { it.id == channel.id }
@@ -394,7 +379,6 @@ fun ChannelEditPage(
                                             editableChannels = editableChannels.toMutableList().apply {
                                                 add(deleteIndex.coerceAtMost(size), channel)
                                             }
-                                            hasChanges = editableChannels != allChannels
                                         }
                                     }
                                 }
@@ -460,12 +444,11 @@ fun ChannelEditPage(
     
     if (showExitDialog) {
         AlertDialog(
-            onDismissRequest = { showExitDialog = false },
+            onDismissRequest = { },
             title = { Text(stringResource(R.string.unsaved_changes)) },
             text = { Text(stringResource(R.string.save_changes_prompt)) },
             confirmButton = {
                 TextButton(onClick = {
-                    showExitDialog = false
                     if (isLocalFile) {
                         saveToOriginalFile()
                     } else {
@@ -477,7 +460,6 @@ fun ChannelEditPage(
             },
             dismissButton = {
                 TextButton(onClick = {
-                    showExitDialog = false
                     onBack()
                 }) {
                     Text(stringResource(R.string.cancel))

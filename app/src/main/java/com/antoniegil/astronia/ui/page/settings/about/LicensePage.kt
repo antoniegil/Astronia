@@ -73,6 +73,7 @@ fun LicensePage(onNavigateBack: () -> Unit) {
         Credit("Kotlinx DateTime", APACHE_V2, "https://github.com/Kotlin/kotlinx-datetime"),
         Credit("Accompanist", APACHE_V2, "https://github.com/google/accompanist"),
         Credit("Compose Markdown", MIT, "https://github.com/jeziellago/compose-markdown"),
+        Credit("Reorderable", APACHE_V2, "https://github.com/Calvin-LL/Reorderable"),
         Credit("LeakCanary", APACHE_V2, "https://github.com/square/leakcanary"),
     )
 
