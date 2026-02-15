@@ -1,0 +1,6 @@
+Add support for video quality/bitrate selection.
+Add "ChannelEditPage" with drag-to-reorder, multi-select, and save/export functionality.
+Integrate MediaSession to improve background playback experience and interaction.
+Display "tvg-logo" icons in channel cards across home, history, and channel edit pages.
+
+For full changelogs, please refer to GitHub

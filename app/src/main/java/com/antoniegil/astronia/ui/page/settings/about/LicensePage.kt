@@ -50,7 +50,7 @@ fun LicensePage(onNavigateBack: () -> Unit) {
         Credit("Android Jetpack", APACHE_V2, "https://github.com/androidx/androidx"),
         Credit("Kotlin", APACHE_V2, "https://kotlinlang.org/"),
         Credit("AndroidX Media3", APACHE_V2, "https://github.com/androidx/media"),
-        Credit("Jellyfin Media3 FFmpeg Decoder", LGPL_V2_1, "https://github.com/jellyfin/jellyfin-android"),
+        Credit("Jellyfin Media3 FFmpeg Decoder", LGPL_V2_1, "https://github.com/jellyfin/jellyfin-androidx-media"),
         Credit("FFmpeg", LGPL_V2_1, "https://ffmpeg.org/"),
         Credit("Material Design 3", APACHE_V2, "https://m3.material.io/"),
         Credit("Material Icons", APACHE_V2, "https://fonts.google.com/icons"),
