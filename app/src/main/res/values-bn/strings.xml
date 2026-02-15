@@ -9,6 +9,8 @@
     <string name="cancel">বাতিল</string>
     <string name="undo">পূর্বাবস্থায় ফিরুন</string>
     <string name="all">সব</string>
+    <string name="export">এক্সপোর্ট</string>
+    <string name="imports">ইম্পোর্ট</string>
 
     <string name="clipboard_label">টেক্সট</string>
 
@@ -119,9 +121,6 @@
         <item quantity="other">সফলভাবে %dটি আইটেম রিস্টোর করা হয়েছে</item>
     </plurals>
     <string name="restore_failed">রিস্টোর ব্যর্থ হয়েছে</string>
-
-    <string name="export_label">এক্সপোর্ট</string>
-    <string name="import_label">ইম্পোর্ট</string>
     <string name="item_deleted">আইটেম ডিলিট করা হয়েছে</string>
 
     <string name="proxy">প্রক্সি</string>

@@ -9,6 +9,8 @@
     <string name="cancel">Zrušit</string>
     <string name="undo">Obnovit</string>
     <string name="all">Vše</string>
+    <string name="export">Export</string>
+    <string name="imports">Import</string>
 
     <string name="clipboard_label">Text</string>
 
@@ -122,9 +124,6 @@
         <item quantity="other">Úspěšně obnoveno %d položek historie</item>
     </plurals>
     <string name="restore_failed">Obnovení se nezdařilo</string>
-
-    <string name="export_label">Export</string>
-    <string name="import_label">Import</string>
     <string name="item_deleted">Záznam smazán</string>
 
     <string name="proxy">Proxy</string>

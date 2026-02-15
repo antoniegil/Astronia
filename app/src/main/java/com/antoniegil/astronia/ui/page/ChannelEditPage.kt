@@ -26,7 +26,7 @@ import androidx.compose.material.icons.outlined.DeleteSweep
 import androidx.compose.material.icons.outlined.DragHandle
 import androidx.compose.material.icons.outlined.MoreVert
 import androidx.compose.material.icons.outlined.Save
-import androidx.compose.material.icons.outlined.SaveAs
+import androidx.compose.material.icons.automirrored.outlined.DriveFileMove
 import androidx.compose.material.icons.outlined.Search
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.BottomAppBar
@@ -160,8 +160,8 @@ fun ChannelEditPage(
     }
     
     val context = LocalContext.current
-    val successMsg = stringResource(R.string.export_success)
-    val failedMsg = stringResource(R.string.export_failed)
+    val saveSuccess = stringResource(R.string.save_success)
+    val failed = stringResource(R.string.export_failed)
 
     val launchSaveAs = rememberM3U8SaveAsLauncher(
         m3u8Content = m3u8Content,
@@ -186,7 +186,7 @@ fun ChannelEditPage(
                     kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.Main) {
                         android.widget.Toast.makeText(
                             context,
-                            successMsg,
+                            saveSuccess,
                             android.widget.Toast.LENGTH_SHORT
                         ).show()
                         hasChanges = false
@@ -195,7 +195,7 @@ fun ChannelEditPage(
                     kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.Main) {
                         android.widget.Toast.makeText(
                             context,
-                            failedMsg,
+                            failed,
                             android.widget.Toast.LENGTH_SHORT
                         ).show()
                     }
@@ -261,18 +261,34 @@ fun ChannelEditPage(
                                         text = { Text(stringResource(R.string.save)) },
                                         onClick = {
                                             showMenu = false
-                                            saveToOriginalFile()
+                                            if (editableChannels.isEmpty()) {
+                                                android.widget.Toast.makeText(
+                                                    context,
+                                                    resources.getString(R.string.no_history_to_save),
+                                                    android.widget.Toast.LENGTH_SHORT
+                                                ).show()
+                                            } else {
+                                                saveToOriginalFile()
+                                            }
                                         }
                                     )
                                 }
                                 DropdownMenuItem(
                                     leadingIcon = {
-                                        Icon(Icons.Outlined.SaveAs, null)
+                                        Icon(Icons.AutoMirrored.Outlined.DriveFileMove, null)
                                     },
-                                    text = { Text(stringResource(R.string.save_as)) },
+                                    text = { Text(stringResource(R.string.export)) },
                                     onClick = {
                                         showMenu = false
-                                        launchSaveAs()
+                                        if (editableChannels.isEmpty()) {
+                                            android.widget.Toast.makeText(
+                                                context,
+                                                resources.getString(R.string.no_history_to_export),
+                                                android.widget.Toast.LENGTH_SHORT
+                                            ).show()
+                                        } else {
+                                            launchSaveAs()
+                                        }
                                     }
                                 )
                             }
@@ -449,13 +465,22 @@ fun ChannelEditPage(
             text = { Text(stringResource(R.string.save_changes_prompt)) },
             confirmButton = {
                 TextButton(onClick = {
-                    if (isLocalFile) {
-                        saveToOriginalFile()
+                    if (editableChannels.isEmpty()) {
+                        android.widget.Toast.makeText(
+                            context,
+                            resources.getString(if (isLocalFile) R.string.no_history_to_save else R.string.no_history_to_export),
+                            android.widget.Toast.LENGTH_SHORT
+                        ).show()
+                        showExitDialog = false
                     } else {
-                        launchSaveAs()
+                        if (isLocalFile) {
+                            saveToOriginalFile()
+                        } else {
+                            launchSaveAs()
+                        }
                     }
                 }) {
-                    Text(if (isLocalFile) stringResource(R.string.save) else stringResource(R.string.save_as))
+                    Text(if (isLocalFile) stringResource(R.string.save) else stringResource(R.string.export))
                 }
             },
             dismissButton = {

@@ -9,6 +9,8 @@
     <string name="cancel">Annuleren</string>
     <string name="undo">Ongedaan maken</string>
     <string name="all">Alles</string>
+    <string name="export">Exporteren</string>
+    <string name="imports">Importeren</string>
 
     <string name="clipboard_label">Tekst</string>
 
@@ -119,9 +121,6 @@
         <item quantity="other">%d geschiedenis-items succesvol hersteld</item>
     </plurals>
     <string name="restore_failed">Herstellen mislukt</string>
-
-    <string name="export_label">Exporteren</string>
-    <string name="import_label">Importeren</string>
     <string name="item_deleted">Verwijderd</string>
 
     <string name="proxy">Proxy</string>

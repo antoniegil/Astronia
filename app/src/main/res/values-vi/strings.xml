@@ -9,6 +9,8 @@
     <string name="cancel">Hủy</string>
     <string name="undo">Hoàn tác</string>
     <string name="all">Tất cả</string>
+    <string name="export">Xuất</string>
+    <string name="imports">Nhập</string>
 
     <string name="clipboard_label">văn bản</string>
 
@@ -117,9 +119,6 @@
         <item quantity="other">Đã khôi phục thành công %d mục lịch sử</item>
     </plurals>
     <string name="restore_failed">Khôi phục thất bại</string>
-
-    <string name="export_label">Xuất</string>
-    <string name="import_label">Nhập</string>
     <string name="item_deleted">Đã xóa mục</string>
 
     <string name="proxy">Proxy</string>

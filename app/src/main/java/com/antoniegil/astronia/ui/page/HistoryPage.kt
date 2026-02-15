@@ -173,7 +173,7 @@ fun HistoryPage(
                                         leadingIcon = {
                                             Icon(Icons.AutoMirrored.Outlined.DriveFileMove, null)
                                         },
-                                        text = { Text(stringResource(R.string.export_label)) },
+                                        text = { Text(stringResource(R.string.export)) },
                                         onClick = {
                                             showMenu = false
                                             scope.launch(Dispatchers.IO) {
@@ -198,7 +198,7 @@ fun HistoryPage(
                                     leadingIcon = {
                                         Icon(Icons.Outlined.Restore, null)
                                     },
-                                    text = { Text(stringResource(R.string.import_label)) },
+                                    text = { Text(stringResource(R.string.imports)) },
                                     onClick = {
                                         showMenu = false
                                         restoreLauncher.launch(restoreMimeType)

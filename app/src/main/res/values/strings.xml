@@ -13,7 +13,8 @@
     <string name="all">All</string>
     <string name="edit">Edit</string>
     <string name="save">Save</string>
-    <string name="save_as">Save As</string>
+    <string name="export">Export</string>
+    <string name="imports">Import</string>
     <string name="move_up">Move Up</string>
     <string name="move_down">Move Down</string>
 
@@ -67,6 +68,8 @@
     <string name="edit_channels">Edit Channels</string>
     <string name="unsaved_changes">Unsaved Changes</string>
     <string name="save_changes_prompt">You have unsaved changes. Do you want to save them?</string>
+    <string name="save_success">Save successful</string>
+    <string name="no_history_to_save">No history to save</string>
 
     <string name="settings">Settings</string>
     <string name="player">Player</string>
@@ -135,9 +138,6 @@
         <item quantity="other">Successfully restored %d history items</item>
     </plurals>
     <string name="restore_failed">Restore failed</string>
-
-    <string name="export_label">Export</string>
-    <string name="import_label">Import</string>
     <string name="item_deleted">Item deleted</string>
 
     <string name="proxy">Proxy</string>

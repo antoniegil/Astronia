@@ -9,6 +9,8 @@
     <string name="cancel">Kanselahin</string>
     <string name="undo">Ibalik</string>
     <string name="all">Lahat</string>
+    <string name="export">I-export</string>
+    <string name="imports">I-import</string>
 
     <string name="clipboard_label">Teksto</string>
 
@@ -119,9 +121,6 @@
         <item quantity="other">Matagumpay na naibalik ang %d mga item sa kasaysayan</item>
     </plurals>
     <string name="restore_failed">Nabigo ang pagbabalik</string>
-
-    <string name="export_label">I-export</string>
-    <string name="import_label">I-import</string>
     <string name="item_deleted">Tinanggal ang item</string>
 
     <string name="proxy">Proxy</string>

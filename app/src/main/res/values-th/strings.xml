@@ -9,6 +9,8 @@
     <string name="cancel">ยกเลิก</string>
     <string name="undo">เลิกทำ</string>
     <string name="all">ทั้งหมด</string>
+    <string name="export">ส่งออก</string>
+    <string name="imports">นำเข้า</string>
 
     <string name="clipboard_label">ข้อความ</string>
 
@@ -117,9 +119,6 @@
         <item quantity="other">คืนค่ารายการประวัติ %d รายการสำเร็จ</item>
     </plurals>
     <string name="restore_failed">การคืนค่าล้มเหลว</string>
-
-    <string name="export_label">ส่งออก</string>
-    <string name="import_label">นำเข้า</string>
     <string name="item_deleted">ลบรายการแล้ว</string>
 
     <string name="proxy">พร็อกซี</string>

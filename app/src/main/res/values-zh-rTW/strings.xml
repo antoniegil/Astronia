@@ -11,7 +11,8 @@
     <string name="all">全部</string>
     <string name="edit">編輯</string>
     <string name="save">儲存</string>
-    <string name="save_as">另存新檔</string>
+    <string name="export">匯出</string>
+    <string name="imports">匯入</string>
     <string name="move_up">上移</string>
     <string name="move_down">下移</string>
 
@@ -64,6 +65,8 @@
     <string name="edit_channels">編輯頻道</string>
     <string name="unsaved_changes">未儲存的變更</string>
     <string name="save_changes_prompt">您有未儲存的變更，是否儲存？</string>
+    <string name="save_success">儲存成功</string>
+    <string name="no_history_to_save">沒有紀錄可供儲存</string>
     
     <string name="settings">設定</string>
     <string name="player">播放</string>
@@ -131,9 +134,6 @@
         <item quantity="other">成功還原 %d 條紀錄</item>
     </plurals>
     <string name="restore_failed">還原失敗</string>
-
-    <string name="export_label">匯出</string>
-    <string name="import_label">匯入</string>
     <string name="item_deleted">已刪除紀錄</string>
 
     <string name="proxy">代理</string>

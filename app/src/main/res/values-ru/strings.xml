@@ -9,6 +9,8 @@
     <string name="cancel">Отмена</string>
     <string name="undo">Отменить</string>
     <string name="all">Все</string>
+    <string name="export">Экспорт</string>
+    <string name="imports">Импорт</string>
 
     <string name="clipboard_label">текст</string>
 
@@ -124,9 +126,6 @@
         <item quantity="other">Успешно восстановлено %d записей</item>
     </plurals>
     <string name="restore_failed">Ошибка восстановления</string>
-
-    <string name="export_label">Экспорт</string>
-    <string name="import_label">Импорт</string>
     <string name="item_deleted">Элемент удален</string>
 
     <string name="proxy">Прокси</string>

@@ -9,6 +9,8 @@
     <string name="cancel">Annuler</string>
     <string name="undo">Annuler</string>
     <string name="all">Tout</string>
+    <string name="export">Exporter</string>
+    <string name="imports">Importer</string>
 
     <string name="clipboard_label">texte</string>
 
@@ -119,9 +121,6 @@
         <item quantity="other">%d éléments d\'historique restaurés avec succès</item>
     </plurals>
     <string name="restore_failed">Échec de la restauration</string>
-
-    <string name="export_label">Exporter</string>
-    <string name="import_label">Importer</string>
     <string name="item_deleted">Élément supprimé</string>
 
     <string name="proxy">Proxy</string>

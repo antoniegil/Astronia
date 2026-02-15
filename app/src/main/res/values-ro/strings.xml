@@ -9,6 +9,8 @@
     <string name="cancel">Anulează</string>
     <string name="undo">Anulează</string>
     <string name="all">Toate</string>
+    <string name="export">Exportă</string>
+    <string name="imports">Importă</string>
 
     <string name="clipboard_label">Text</string>
 
@@ -121,9 +123,6 @@
         <item quantity="other">%d istorice restaurate cu succes</item>
     </plurals>
     <string name="restore_failed">Restaurare eșuată</string>
-
-    <string name="export_label">Exportă</string>
-    <string name="import_label">Importă</string>
     <string name="item_deleted">Șters</string>
 
     <string name="proxy">Proxy</string>

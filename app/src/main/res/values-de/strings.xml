@@ -9,6 +9,8 @@
     <string name="cancel">Abbrechen</string>
     <string name="undo">Rückgängig</string>
     <string name="all">Alle</string>
+    <string name="export">Exportieren</string>
+    <string name="imports">Importieren</string>
 
     <string name="clipboard_label">Text</string>
 
@@ -119,9 +121,6 @@
         <item quantity="other">%d Verlaufseinträge erfolgreich wiederhergestellt</item>
     </plurals>
     <string name="restore_failed">Wiederherstellung fehlgeschlagen</string>
-
-    <string name="export_label">Exportieren</string>
-    <string name="import_label">Importieren</string>
     <string name="item_deleted">Eintrag gelöscht</string>
 
     <string name="proxy">Proxy</string>

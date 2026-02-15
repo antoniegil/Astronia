@@ -9,6 +9,8 @@
     <string name="cancel">Avbryt</string>
     <string name="undo">Ångra</string>
     <string name="all">Alla</string>
+    <string name="export">Exportera</string>
+    <string name="imports">Importera</string>
 
     <string name="clipboard_label">text</string>
 
@@ -119,9 +121,6 @@
         <item quantity="other">Återställde %d historikobjekt</item>
     </plurals>
     <string name="restore_failed">Återställning misslyckades</string>
-
-    <string name="export_label">Exportera</string>
-    <string name="import_label">Importera</string>
     <string name="item_deleted">Objekt raderat</string>
 
     <string name="proxy">Proxy</string>

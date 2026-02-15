@@ -9,6 +9,8 @@
     <string name="cancel">ביטול</string>
     <string name="undo">שחזר</string>
     <string name="all">הכל</string>
+    <string name="export">ייצוא</string>
+    <string name="imports">ייבוא</string>
 
     <string name="clipboard_label">טקסט</string>
 
@@ -121,9 +123,6 @@
         <item quantity="other">שוחזרו %d פריטי היסטוריה בהצלחה</item>
     </plurals>
     <string name="restore_failed">השחזור נכשל</string>
-
-    <string name="export_label">ייצוא</string>
-    <string name="import_label">ייבוא</string>
     <string name="item_deleted">הפריט נמחק</string>
 
     <string name="proxy">פרוקסי</string>

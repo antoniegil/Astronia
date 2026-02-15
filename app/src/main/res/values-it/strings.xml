@@ -9,6 +9,8 @@
     <string name="cancel">Annulla</string>
     <string name="undo">Annulla</string>
     <string name="all">Tutto</string>
+    <string name="export">Esporta</string>
+    <string name="imports">Importa</string>
 
     <string name="clipboard_label">testo</string>
 
@@ -119,9 +121,6 @@
         <item quantity="other">Ripristinati con successo %d elementi della cronologia</item>
     </plurals>
     <string name="restore_failed">Ripristino fallito</string>
-
-    <string name="export_label">Esporta</string>
-    <string name="import_label">Importa</string>
     <string name="item_deleted">Elemento eliminato</string>
 
     <string name="proxy">Proxy</string>

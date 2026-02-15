@@ -9,6 +9,8 @@
     <string name="cancel">Anuluj</string>
     <string name="undo">Cofnij</string>
     <string name="all">Wszystkie</string>
+    <string name="export">Eksportuj</string>
+    <string name="imports">Importuj</string>
 
     <string name="clipboard_label">Tekst</string>
 
@@ -123,9 +125,6 @@
         <item quantity="other">Pomyślnie przywrócono %d historii</item>
     </plurals>
     <string name="restore_failed">Przywracanie nie powiodło się</string>
-
-    <string name="export_label">Eksportuj</string>
-    <string name="import_label">Importuj</string>
     <string name="item_deleted">Usunięto</string>
 
     <string name="proxy">Proxy</string>

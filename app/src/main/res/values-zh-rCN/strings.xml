@@ -11,7 +11,8 @@
     <string name="all">全部</string>
     <string name="edit">编辑</string>
     <string name="save">保存</string>
-    <string name="save_as">另存为</string>
+    <string name="export">导出</string>
+    <string name="imports">导入</string>
     <string name="move_up">上移</string>
     <string name="move_down">下移</string>
 
@@ -64,6 +65,8 @@
     <string name="edit_channels">编辑频道</string>
     <string name="unsaved_changes">未保存的更改</string>
     <string name="save_changes_prompt">您有未保存的更改，是否保存？</string>
+    <string name="save_success">保存成功</string>
+    <string name="no_history_to_save">没有历史记录可保存</string>
     
     <string name="settings">设置</string>
     <string name="player">播放</string>
@@ -131,9 +134,6 @@
         <item quantity="other">成功恢复 %d 条历史记录</item>
     </plurals>
     <string name="restore_failed">恢复失败</string>
-
-    <string name="export_label">导出</string>
-    <string name="import_label">导入</string>
     <string name="item_deleted">已删除记录</string>
 
     <string name="proxy">代理</string>

@@ -9,6 +9,8 @@
     <string name="cancel">İptal</string>
     <string name="undo">Geri Al</string>
     <string name="all">Tümü</string>
+    <string name="export">Dışa Aktar</string>
+    <string name="imports">İçe Aktar</string>
 
     <string name="clipboard_label">metin</string>
 
@@ -119,9 +121,6 @@
         <item quantity="other">%d geçmiş öğesi başarıyla geri yüklendi</item>
     </plurals>
     <string name="restore_failed">Geri yükleme başarısız oldu</string>
-
-    <string name="export_label">Dışa Aktar</string>
-    <string name="import_label">İçe Aktar</string>
     <string name="item_deleted">Öğe silindi</string>
 
     <string name="proxy">Vekil Sunucu</string>

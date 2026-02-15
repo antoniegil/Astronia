@@ -9,6 +9,8 @@
     <string name="cancel">لغو</string>
     <string name="undo">بازیابی</string>
     <string name="all">همه</string>
+    <string name="export">صادرات</string>
+    <string name="imports">وارد کردن</string>
 
     <string name="clipboard_label">متن</string>
 
@@ -118,9 +120,6 @@
         <item quantity="other">%d مورد تاریخچه با موفقیت بازیابی شد</item>
     </plurals>
     <string name="restore_failed">بازیابی ناموفق</string>
-
-    <string name="export_label">صادرات</string>
-    <string name="import_label">وارد کردن</string>
     <string name="item_deleted">مورد حذف شد</string>
 
     <string name="proxy">پروکسی</string>

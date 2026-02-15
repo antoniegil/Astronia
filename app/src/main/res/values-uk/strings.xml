@@ -9,6 +9,8 @@
     <string name="cancel">Скасувати</string>
     <string name="undo">Скасувати</string>
     <string name="all">Усі</string>
+    <string name="export">Експорт</string>
+    <string name="imports">Імпорт</string>
 
     <string name="clipboard_label">текст</string>
 
@@ -123,9 +125,6 @@
         <item quantity="other">Успішно відновлено %d елемента історії</item>
     </plurals>
     <string name="restore_failed">Помилка відновлення</string>
-
-    <string name="export_label">Експорт</string>
-    <string name="import_label">Імпорт</string>
     <string name="item_deleted">Елемент видалено</string>
 
     <string name="proxy">Проксі</string>

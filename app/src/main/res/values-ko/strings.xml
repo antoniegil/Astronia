@@ -9,6 +9,8 @@
     <string name="cancel">취소</string>
     <string name="undo">되돌리기</string>
     <string name="all">전체</string>
+    <string name="export">내보내기</string>
+    <string name="imports">가져오기</string>
 
     <string name="clipboard_label">텍스트</string>
 
@@ -117,9 +119,6 @@
         <item quantity="other">%d개의 기록을 복원했습니다</item>
     </plurals>
     <string name="restore_failed">복원 실패</string>
-
-    <string name="export_label">내보내기</string>
-    <string name="import_label">가져오기</string>
     <string name="item_deleted">삭제됨</string>
 
     <string name="proxy">프록시</string>

@@ -9,6 +9,8 @@
     <string name="cancel">रद्द करें</string>
     <string name="undo">पूर्ववत करें</string>
     <string name="all">सभी</string>
+    <string name="export">एक्सपोर्ट</string>
+    <string name="imports">इम्पोर्ट</string>
 
     <string name="clipboard_label">टेक्स्ट</string>
 
@@ -119,9 +121,6 @@
         <item quantity="other">सफलतापूर्वक %d इतिहास आइटम रीस्टोर किए गए</item>
     </plurals>
     <string name="restore_failed">रीस्टोर विफल रहा</string>
-
-    <string name="export_label">एक्सपोर्ट</string>
-    <string name="import_label">इम्पोर्ट</string>
     <string name="item_deleted">आइटम हटा दिया गया</string>
 
     <string name="proxy">प्रॉक्सी</string>

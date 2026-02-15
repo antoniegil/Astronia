@@ -9,6 +9,8 @@
     <string name="cancel">إلغاء</string>
     <string name="undo">تراجع</string>
     <string name="all">الكل</string>
+    <string name="export">تصدير</string>
+    <string name="imports">استيراد</string>
 
     <string name="clipboard_label">النص</string>
 
@@ -127,9 +129,6 @@
         <item quantity="other">تم استعادة %d سجل بنجاح</item>
     </plurals>
     <string name="restore_failed">فشلت الاستعادة</string>
-
-    <string name="export_label">تصدير</string>
-    <string name="import_label">استيراد</string>
     <string name="item_deleted">تم حذف العنصر</string>
 
     <string name="proxy">الوكيل</string>

@@ -9,6 +9,8 @@
     <string name="cancel">Cancelar</string>
     <string name="undo">Anular</string>
     <string name="all">Tudo</string>
+    <string name="export">Exportar</string>
+    <string name="imports">Importar</string>
 
     <string name="clipboard_label">texto</string>
 
@@ -119,9 +121,6 @@
         <item quantity="other">%d itens do histórico restaurados com sucesso</item>
     </plurals>
     <string name="restore_failed">Falha no restauro</string>
-
-    <string name="export_label">Exportar</string>
-    <string name="import_label">Importar</string>
     <string name="item_deleted">Item eliminado</string>
 
     <string name="proxy">Proxy</string>

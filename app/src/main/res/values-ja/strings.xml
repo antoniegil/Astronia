@@ -9,6 +9,8 @@
     <string name="cancel">キャンセル</string>
     <string name="undo">元に戻す</string>
     <string name="all">すべて</string>
+    <string name="export">エクスポート</string>
+    <string name="imports">インポート</string>
 
     <string name="clipboard_label">テキスト</string>
 
@@ -117,9 +119,6 @@
         <item quantity="other">%d件の履歴を復元しました</item>
     </plurals>
     <string name="restore_failed">復元失敗</string>
-
-    <string name="export_label">エクスポート</string>
-    <string name="import_label">インポート</string>
     <string name="item_deleted">削除されました</string>
 
     <string name="proxy">プロキシ</string>

@@ -9,6 +9,8 @@
     <string name="cancel">Batal</string>
     <string name="undo">Buat asal</string>
     <string name="all">Semua</string>
+    <string name="export">Eksport</string>
+    <string name="imports">Import</string>
 
     <string name="clipboard_label">Teks</string>
 
@@ -117,9 +119,6 @@
         <item quantity="other">Berjaya memulihkan %d sejarah</item>
     </plurals>
     <string name="restore_failed">Pemulihan gagal</string>
-
-    <string name="export_label">Eksport</string>
-    <string name="import_label">Import</string>
     <string name="item_deleted">Dipadam</string>
 
     <string name="proxy">Proksi</string>
