@@ -9,6 +9,8 @@
     <string name="cancel">Zrušit</string>
     <string name="undo">Obnovit</string>
     <string name="all">Vše</string>
+    <string name="edit">Upravit</string>
+    <string name="save">Uložit</string>
     <string name="export">Export</string>
     <string name="imports">Import</string>
 
@@ -39,6 +41,9 @@
     <string name="playlist">Seznam skladeb</string>
     <string name="channel_count">Seznam kanálů (%d)</string>
     <string name="search_channels">Hledat kanály</string>
+    <string name="quality">Kvalita</string>
+    <string name="auto">Automaticky</string>
+    <string name="bitrate">Bitrate</string>
     
     <string name="resolution">Rozlišení</string>
     <string name="frames">Snímky (zahozené / celkem)</string>
@@ -58,6 +63,11 @@
         <item quantity="many">Vybráno: %1$d</item>
         <item quantity="other">Vybráno: %1$d</item>
     </plurals>
+    <string name="edit_channels">Upravit kanály</string>
+    <string name="unsaved_changes">Neuložené změny</string>
+    <string name="save_changes_prompt">Máte neuložené změny. Chcete je uložit?</string>
+    <string name="save_success">Úspěšně uloženo</string>
+    <string name="no_history_to_save">Žádná historie k uložení</string>
     
     <string name="settings">Nastavení</string>
     <string name="player">Přehrávač</string>
@@ -95,6 +105,9 @@
     <string name="aspect_ratio">Poměr stran</string>
     <string name="aspect_ratio_fill">Vyplnit</string>
     <string name="aspect_ratio_original">Původní</string>
+    <string name="quality_preference">Preference kvality</string>
+    <string name="quality_preference_default">Výchozí (nejvyšší)</string>
+    <string name="quality_preference_saver">Úspora dat</string>
     <string name="decoder">Dekodér</string>
     <string name="decoder_hardware">Hardwarový</string>
     <string name="decoder_software">Softwarový</string>

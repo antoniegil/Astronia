@@ -9,6 +9,8 @@
     <string name="cancel">إلغاء</string>
     <string name="undo">تراجع</string>
     <string name="all">الكل</string>
+    <string name="edit">تحرير</string>
+    <string name="save">حفظ</string>
     <string name="export">تصدير</string>
     <string name="imports">استيراد</string>
 
@@ -39,6 +41,9 @@
     <string name="playlist">قائمة التشغيل</string>
     <string name="channel_count">قائمة القنوات (%d)</string>
     <string name="search_channels">البحث عن القنوات</string>
+    <string name="quality">الجودة</string>
+    <string name="auto">تلقائي</string>
+    <string name="bitrate">معدل البت</string>
     
     <string name="resolution">الدقة</string>
     <string name="frames">الإطارات (المفقودة / الإجمالي)</string>
@@ -60,6 +65,11 @@
         <item quantity="many">تم تحديد %1$d عنصراً</item>
         <item quantity="other">تم تحديد %1$d عنصر</item>
     </plurals>
+    <string name="edit_channels">تحرير القنوات</string>
+    <string name="unsaved_changes">تغييرات غير محفوظة</string>
+    <string name="save_changes_prompt">لديك تغييرات غير محفوظة. هل تريد حفظها؟</string>
+    <string name="save_success">تم الحفظ بنجاح</string>
+    <string name="no_history_to_save">لا يوجد سجل للحفظ</string>
     
     <string name="settings">الإعدادات</string>
     <string name="player">المشغل</string>
@@ -97,6 +107,9 @@
     <string name="aspect_ratio">نسبة العرض إلى الارتفاع</string>
     <string name="aspect_ratio_fill">ملء</string>
     <string name="aspect_ratio_original">الأصلي</string>
+    <string name="quality_preference">تفضيل الجودة</string>
+    <string name="quality_preference_default">افتراضي (الأعلى)</string>
+    <string name="quality_preference_saver">توفير البيانات</string>
     <string name="decoder">أداة فك التشفير</string>
     <string name="decoder_hardware">عتادي</string>
     <string name="decoder_software">برمجي</string>

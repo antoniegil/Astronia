@@ -9,6 +9,8 @@
     <string name="cancel">キャンセル</string>
     <string name="undo">元に戻す</string>
     <string name="all">すべて</string>
+    <string name="edit">編集</string>
+    <string name="save">保存</string>
     <string name="export">エクスポート</string>
     <string name="imports">インポート</string>
 
@@ -39,6 +41,9 @@
     <string name="playlist">プレイリスト</string>
     <string name="channel_count">チャンネルリスト（%d）</string>
     <string name="search_channels">チャンネルを検索</string>
+    <string name="quality">画質</string>
+    <string name="auto">自動</string>
+    <string name="bitrate">ビットレート</string>
     
     <string name="resolution">解像度</string>
     <string name="frames">フレーム（ドロップ / 合計）</string>
@@ -55,6 +60,11 @@
     <plurals name="multiselect_item_count">
         <item quantity="other">%1$d件選択中</item>
     </plurals>
+    <string name="edit_channels">チャンネルを編集</string>
+    <string name="unsaved_changes">未保存の変更</string>
+    <string name="save_changes_prompt">未保存の変更があります。保存しますか？</string>
+    <string name="save_success">保存に成功しました</string>
+    <string name="no_history_to_save">保存する履歴がありません</string>
     
     <string name="settings">設定</string>
     <string name="player">再生</string>
@@ -92,6 +102,9 @@
     <string name="aspect_ratio">アスペクト比</string>
     <string name="aspect_ratio_fill">フィル</string>
     <string name="aspect_ratio_original">オリジナル</string>
+    <string name="quality_preference">品質設定</string>
+    <string name="quality_preference_default">デフォルト（最高）</string>
+    <string name="quality_preference_saver">データセーバー</string>
     <string name="decoder">デコーダー</string>
     <string name="decoder_hardware">ハードウェア</string>
     <string name="decoder_software">ソフトウェア</string>

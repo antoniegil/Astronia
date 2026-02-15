@@ -9,6 +9,8 @@
     <string name="cancel">Annuleren</string>
     <string name="undo">Ongedaan maken</string>
     <string name="all">Alles</string>
+    <string name="edit">Bewerken</string>
+    <string name="save">Opslaan</string>
     <string name="export">Exporteren</string>
     <string name="imports">Importeren</string>
 
@@ -39,6 +41,9 @@
     <string name="playlist">Afspeellijst</string>
     <string name="channel_count">Kanalenlijst (%d)</string>
     <string name="search_channels">Kanalen zoeken</string>
+    <string name="quality">Kwaliteit</string>
+    <string name="auto">Automatisch</string>
+    <string name="bitrate">Bitrate</string>
     
     <string name="resolution">Resolutie</string>
     <string name="frames">Frames (Verloren / Totaal)</string>
@@ -56,6 +61,11 @@
         <item quantity="one">%1$d geselecteerd</item>
         <item quantity="other">%1$d geselecteerd</item>
     </plurals>
+    <string name="edit_channels">Kanalen bewerken</string>
+    <string name="unsaved_changes">Niet-opgeslagen wijzigingen</string>
+    <string name="save_changes_prompt">U heeft niet-opgeslagen wijzigingen. Wilt u deze opslaan?</string>
+    <string name="save_success">Succesvol opgeslagen</string>
+    <string name="no_history_to_save">Geen geschiedenis om op te slaan</string>
     
     <string name="settings">Instellingen</string>
     <string name="player">Speler</string>
@@ -93,6 +103,9 @@
     <string name="aspect_ratio">Beeldverhouding</string>
     <string name="aspect_ratio_fill">Vullen</string>
     <string name="aspect_ratio_original">Origineel</string>
+    <string name="quality_preference">Kwaliteitsvoorkeur</string>
+    <string name="quality_preference_default">Standaard (Hoogste)</string>
+    <string name="quality_preference_saver">Databesparing</string>
     <string name="decoder">Decoder</string>
     <string name="decoder_hardware">Hardware</string>
     <string name="decoder_software">Software</string>

@@ -15,8 +15,6 @@
     <string name="save">Save</string>
     <string name="export">Export</string>
     <string name="imports">Import</string>
-    <string name="move_up">Move Up</string>
-    <string name="move_down">Move Down</string>
 
     <string name="clipboard_label">text</string>
 

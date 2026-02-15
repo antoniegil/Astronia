@@ -9,6 +9,8 @@
     <string name="cancel">Batal</string>
     <string name="undo">Urungkan</string>
     <string name="all">Semua</string>
+    <string name="edit">Edit</string>
+    <string name="save">Simpan</string>
     <string name="export">Ekspor</string>
     <string name="imports">Impor</string>
 
@@ -39,6 +41,9 @@
     <string name="playlist">Daftar Putar</string>
     <string name="channel_count">Daftar Saluran (%d)</string>
     <string name="search_channels">Cari saluran</string>
+    <string name="quality">Kualitas</string>
+    <string name="auto">Otomatis</string>
+    <string name="bitrate">Bitrate</string>
     
     <string name="resolution">Resolusi</string>
     <string name="frames">Frame (Terlewat / Total)</string>
@@ -55,6 +60,11 @@
     <plurals name="multiselect_item_count">
         <item quantity="other">%1$d dipilih</item>
     </plurals>
+    <string name="edit_channels">Edit Saluran</string>
+    <string name="unsaved_changes">Perubahan Belum Disimpan</string>
+    <string name="save_changes_prompt">Anda memiliki perubahan yang belum disimpan. Apakah Anda ingin menyimpannya?</string>
+    <string name="save_success">Berhasil disimpan</string>
+    <string name="no_history_to_save">Tidak ada riwayat untuk disimpan</string>
     
     <string name="settings">Pengaturan</string>
     <string name="player">Pemutar</string>
@@ -92,6 +102,9 @@
     <string name="aspect_ratio">Rasio Aspek</string>
     <string name="aspect_ratio_fill">Penuhi</string>
     <string name="aspect_ratio_original">Asli</string>
+    <string name="quality_preference">Preferensi Kualitas</string>
+    <string name="quality_preference_default">Default (Tertinggi)</string>
+    <string name="quality_preference_saver">Hemat Data</string>
     <string name="decoder">Dekoder</string>
     <string name="decoder_hardware">Perangkat Keras</string>
     <string name="decoder_software">Perangkat Lunak</string>

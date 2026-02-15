@@ -9,6 +9,8 @@
     <string name="cancel">रद्द करें</string>
     <string name="undo">पूर्ववत करें</string>
     <string name="all">सभी</string>
+    <string name="edit">संपादित करें</string>
+    <string name="save">सहेजें</string>
     <string name="export">एक्सपोर्ट</string>
     <string name="imports">इम्पोर्ट</string>
 
@@ -39,6 +41,9 @@
     <string name="playlist">प्लेलिस्ट</string>
     <string name="channel_count">चैनल सूची (%d)</string>
     <string name="search_channels">चैनल खोजें</string>
+    <string name="quality">वीडियो गुणवत्ता</string>
+    <string name="auto">ऑटो</string>
+    <string name="bitrate">बिटरेट</string>
     
     <string name="resolution">रेज़ोल्यूशन</string>
     <string name="frames">फ्रेम्स (ड्रॉप / कुल)</string>
@@ -56,6 +61,11 @@
         <item quantity="one">%1$d चयनित</item>
         <item quantity="other">%1$d चयनित</item>
     </plurals>
+    <string name="edit_channels">चैनल संपादित करें</string>
+    <string name="unsaved_changes">असहेजे गए परिवर्तन</string>
+    <string name="save_changes_prompt">आपके पास असहेजे गए परिवर्तन हैं। क्या आप उन्हें सहेजना चाहते हैं?</string>
+    <string name="save_success">सफलतापूर्वक सहेजा गया</string>
+    <string name="no_history_to_save">सहेजने के लिए कोई इतिहास नहीं है</string>
     
     <string name="settings">सेटिंग्स</string>
     <string name="player">प्लेयर</string>
@@ -93,6 +103,9 @@
     <string name="aspect_ratio">एस्पेक्ट रेशियो</string>
     <string name="aspect_ratio_fill">भरें (Fill)</string>
     <string name="aspect_ratio_original">मूल (Original)</string>
+    <string name="quality_preference">गुणवत्ता प्राथमिकता</string>
+    <string name="quality_preference_default">डिफ़ॉल्ट (उच्चतम)</string>
+    <string name="quality_preference_saver">डेटा सेवर</string>
     <string name="decoder">डिकोडर</string>
     <string name="decoder_hardware">हार्डवेयर</string>
     <string name="decoder_software">सॉफ्टवेयर</string>

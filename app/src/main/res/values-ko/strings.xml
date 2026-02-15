@@ -9,6 +9,8 @@
     <string name="cancel">취소</string>
     <string name="undo">되돌리기</string>
     <string name="all">전체</string>
+    <string name="edit">편집</string>
+    <string name="save">저장</string>
     <string name="export">내보내기</string>
     <string name="imports">가져오기</string>
 
@@ -39,6 +41,9 @@
     <string name="playlist">재생 목록</string>
     <string name="channel_count">채널 목록（%d）</string>
     <string name="search_channels">채널 검색</string>
+    <string name="quality">화질</string>
+    <string name="auto">자동</string>
+    <string name="bitrate">비트레이트</string>
     
     <string name="resolution">해상도</string>
     <string name="frames">프레임（드롭 / 전체）</string>
@@ -55,6 +60,11 @@
     <plurals name="multiselect_item_count">
         <item quantity="other">%1$d개 선택됨</item>
     </plurals>
+    <string name="edit_channels">채널 편집</string>
+    <string name="unsaved_changes">저장되지 않은 변경사항</string>
+    <string name="save_changes_prompt">저장되지 않은 변경사항이 있습니다. 저장하시겠습니까?</string>
+    <string name="save_success">저장 성공</string>
+    <string name="no_history_to_save">저장할 기록이 없습니다</string>
     
     <string name="settings">설정</string>
     <string name="player">재생</string>
@@ -92,6 +102,9 @@
     <string name="aspect_ratio">화면 비율</string>
     <string name="aspect_ratio_fill">채우기</string>
     <string name="aspect_ratio_original">원본</string>
+    <string name="quality_preference">화질 설정</string>
+    <string name="quality_preference_default">기본 (최고)</string>
+    <string name="quality_preference_saver">데이터 절약</string>
     <string name="decoder">디코더</string>
     <string name="decoder_hardware">하드웨어</string>
     <string name="decoder_software">소프트웨어</string>

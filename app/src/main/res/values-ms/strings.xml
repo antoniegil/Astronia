@@ -9,6 +9,8 @@
     <string name="cancel">Batal</string>
     <string name="undo">Buat asal</string>
     <string name="all">Semua</string>
+    <string name="edit">Edit</string>
+    <string name="save">Simpan</string>
     <string name="export">Eksport</string>
     <string name="imports">Import</string>
 
@@ -39,6 +41,9 @@
     <string name="playlist">Senarai Main</string>
     <string name="channel_count">Senarai Saluran (%d)</string>
     <string name="search_channels">Cari saluran</string>
+    <string name="quality">Kualiti</string>
+    <string name="auto">Auto</string>
+    <string name="bitrate">Kadar bit</string>
     
     <string name="resolution">Resolusi</string>
     <string name="frames">Bingkai (Gugur / Jumlah)</string>
@@ -55,6 +60,11 @@
     <plurals name="multiselect_item_count">
         <item quantity="other">%1$d dipilih</item>
     </plurals>
+    <string name="edit_channels">Edit Saluran</string>
+    <string name="unsaved_changes">Perubahan Tidak Disimpan</string>
+    <string name="save_changes_prompt">Anda mempunyai perubahan yang tidak disimpan. Adakah anda mahu menyimpannya?</string>
+    <string name="save_success">Berjaya disimpan</string>
+    <string name="no_history_to_save">Tiada sejarah untuk disimpan</string>
     
     <string name="settings">Tetapan</string>
     <string name="player">Pemain</string>
@@ -92,6 +102,9 @@
     <string name="aspect_ratio">Nisbah Aspek</string>
     <string name="aspect_ratio_fill">Isi</string>
     <string name="aspect_ratio_original">Asal</string>
+    <string name="quality_preference">Keutamaan Kualiti</string>
+    <string name="quality_preference_default">Lalai (Tertinggi)</string>
+    <string name="quality_preference_saver">Penjimat Data</string>
     <string name="decoder">Penyahkod</string>
     <string name="decoder_hardware">Perkakasan</string>
     <string name="decoder_software">Perisian</string>

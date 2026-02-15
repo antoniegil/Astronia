@@ -9,6 +9,8 @@
     <string name="cancel">ביטול</string>
     <string name="undo">שחזר</string>
     <string name="all">הכל</string>
+    <string name="edit">ערוך</string>
+    <string name="save">שמור</string>
     <string name="export">ייצוא</string>
     <string name="imports">ייבוא</string>
 
@@ -39,6 +41,9 @@
     <string name="playlist">רשימת השמעה</string>
     <string name="channel_count">רשימת ערוצים (%d)</string>
     <string name="search_channels">חפש ערוצים</string>
+    <string name="quality">איכות</string>
+    <string name="auto">אוטומטי</string>
+    <string name="bitrate">קצב סיביות</string>
     
     <string name="resolution">רזולוציה</string>
     <string name="frames">פריימים (נזרקו / סה״כ)</string>
@@ -57,6 +62,11 @@
         <item quantity="two">נבחרו %1$d פריטים</item>
         <item quantity="other">נבחרו %1$d פריטים</item>
     </plurals>
+    <string name="edit_channels">ערוך ערוצים</string>
+    <string name="unsaved_changes">שינויים לא שמורים</string>
+    <string name="save_changes_prompt">יש לך שינויים לא שמורים. האם ברצונך לשמור אותם?</string>
+    <string name="save_success">נשמר בהצלחה</string>
+    <string name="no_history_to_save">אין היסטוריה לשמירה</string>
     
     <string name="settings">הגדרות</string>
     <string name="player">נגן</string>
@@ -94,6 +104,9 @@
     <string name="aspect_ratio">יחס גובה-רוחב</string>
     <string name="aspect_ratio_fill">מילוי</string>
     <string name="aspect_ratio_original">מקורי</string>
+    <string name="quality_preference">העדפת איכות</string>
+    <string name="quality_preference_default">ברירת מחדל (הגבוהה ביותר)</string>
+    <string name="quality_preference_saver">חיסכון בנתונים</string>
     <string name="decoder">מפענח</string>
     <string name="decoder_hardware">חומרה</string>
     <string name="decoder_software">תוכנה</string>

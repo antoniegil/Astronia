@@ -9,6 +9,8 @@
     <string name="cancel">বাতিল</string>
     <string name="undo">পূর্বাবস্থায় ফিরুন</string>
     <string name="all">সব</string>
+    <string name="edit">সম্পাদনা</string>
+    <string name="save">সংরক্ষণ</string>
     <string name="export">এক্সপোর্ট</string>
     <string name="imports">ইম্পোর্ট</string>
 
@@ -39,6 +41,9 @@
     <string name="playlist">প্লেলিস্ট</string>
     <string name="channel_count">চ্যানেল তালিকা (%d)</string>
     <string name="search_channels">চ্যানেল অনুসন্ধান করুন</string>
+    <string name="quality">ভিডিও কোয়ালিটি</string>
+    <string name="auto">অটো</string>
+    <string name="bitrate">বিটরেট</string>
     
     <string name="resolution">রেজোলিউশন</string>
     <string name="frames">ফ্রেম (ড্রপড / মোট)</string>
@@ -56,6 +61,11 @@
         <item quantity="one">%1$d নির্বাচিত</item>
         <item quantity="other">%1$d নির্বাচিত</item>
     </plurals>
+    <string name="edit_channels">চ্যানেল সম্পাদনা করুন</string>
+    <string name="unsaved_changes">অসংরক্ষিত পরিবর্তন</string>
+    <string name="save_changes_prompt">আপনার অসংরক্ষিত পরিবর্তন আছে। আপনি কি সেগুলো সংরক্ষণ করতে চান?</string>
+    <string name="save_success">সংরক্ষণ সফল হয়েছে</string>
+    <string name="no_history_to_save">সংরক্ষণ করার মতো কোনো ইতিহাস নেই</string>
     
     <string name="settings">সেটিংস</string>
     <string name="player">প্লেয়ার</string>
@@ -93,6 +103,9 @@
     <string name="aspect_ratio">অ্যাসপেক্ট রেশিও</string>
     <string name="aspect_ratio_fill">পুরো স্ক্রিন (Fill)</string>
     <string name="aspect_ratio_original">আসল (Original)</string>
+    <string name="quality_preference">কোয়ালিটি পছন্দ</string>
+    <string name="quality_preference_default">ডিফল্ট (সর্বোচ্চ)</string>
+    <string name="quality_preference_saver">ডেটা সেভার</string>
     <string name="decoder">ডিকোডার</string>
     <string name="decoder_hardware">হার্ডওয়্যার</string>
     <string name="decoder_software">সফটওয়্যার</string>

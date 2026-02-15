@@ -9,6 +9,8 @@
     <string name="cancel">Anulează</string>
     <string name="undo">Anulează</string>
     <string name="all">Toate</string>
+    <string name="edit">Editează</string>
+    <string name="save">Salvează</string>
     <string name="export">Exportă</string>
     <string name="imports">Importă</string>
 
@@ -39,6 +41,9 @@
     <string name="playlist">Listă de redare</string>
     <string name="channel_count">Listă canale (%d)</string>
     <string name="search_channels">Caută canale</string>
+    <string name="quality">Calitate</string>
+    <string name="auto">Automat</string>
+    <string name="bitrate">Rată de biți</string>
     
     <string name="resolution">Rezoluție</string>
     <string name="frames">Cadre (Pierdute / Total)</string>
@@ -57,6 +62,11 @@
         <item quantity="few">%1$d selectate</item>
         <item quantity="other">%1$d selectate</item>
     </plurals>
+    <string name="edit_channels">Editează canale</string>
+    <string name="unsaved_changes">Modificări nesalvate</string>
+    <string name="save_changes_prompt">Aveți modificări nesalvate. Doriți să le salvați?</string>
+    <string name="save_success">Salvare reușită</string>
+    <string name="no_history_to_save">Fără istoric de salvat</string>
     
     <string name="settings">Setări</string>
     <string name="player">Player</string>
@@ -94,6 +104,9 @@
     <string name="aspect_ratio">Raport aspect</string>
     <string name="aspect_ratio_fill">Umplere</string>
     <string name="aspect_ratio_original">Original</string>
+    <string name="quality_preference">Preferință calitate</string>
+    <string name="quality_preference_default">Implicit (Maximă)</string>
+    <string name="quality_preference_saver">Economisire date</string>
     <string name="decoder">Decodor</string>
     <string name="decoder_hardware">Hardware</string>
     <string name="decoder_software">Software</string>

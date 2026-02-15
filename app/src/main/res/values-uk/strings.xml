@@ -9,6 +9,8 @@
     <string name="cancel">Скасувати</string>
     <string name="undo">Скасувати</string>
     <string name="all">Усі</string>
+    <string name="edit">Редагувати</string>
+    <string name="save">Зберегти</string>
     <string name="export">Експорт</string>
     <string name="imports">Імпорт</string>
 
@@ -39,7 +41,10 @@
     <string name="playlist">Плейлист</string>
     <string name="channel_count">Список каналів (%d)</string>
     <string name="search_channels">Пошук каналів</string>
-    
+    <string name="quality">Якість</string>
+    <string name="auto">Авто</string>
+    <string name="bitrate">Бітрейт</string>
+
     <string name="resolution">Роздільна здатність</string>
     <string name="frames">Кадри (Втрачено / Всього)</string>
     <string name="codec">Кодек</string>
@@ -58,7 +63,12 @@
         <item quantity="many">Вибрано: %1$d</item>
         <item quantity="other">Вибрано: %1$d</item>
     </plurals>
-    
+    <string name="edit_channels">Редагувати канали</string>
+    <string name="unsaved_changes">Незбережені зміни</string>
+    <string name="save_changes_prompt">У вас є незбережені зміни. Бажаєте зберегти їх?</string>
+    <string name="save_success">Успішно збережено</string>
+    <string name="no_history_to_save">Немає історії для збереження</string>
+
     <string name="settings">Налаштування</string>
     <string name="player">Плеєр</string>
     <string name="player_desc">Автовідтворення, фонове відтворення, PiP</string>
@@ -95,6 +105,9 @@
     <string name="aspect_ratio">Співвідношення сторін</string>
     <string name="aspect_ratio_fill">Заповнити</string>
     <string name="aspect_ratio_original">Оригінал</string>
+    <string name="quality_preference">Перевага якості</string>
+    <string name="quality_preference_default">За замовчуванням (Найвища)</string>
+    <string name="quality_preference_saver">Економія трафіку</string>
     <string name="decoder">Декодер</string>
     <string name="decoder_hardware">Апаратний</string>
     <string name="decoder_software">Програмний</string>

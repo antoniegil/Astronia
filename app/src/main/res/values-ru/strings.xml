@@ -9,6 +9,8 @@
     <string name="cancel">Отмена</string>
     <string name="undo">Отменить</string>
     <string name="all">Все</string>
+    <string name="edit">Редактировать</string>
+    <string name="save">Сохранить</string>
     <string name="export">Экспорт</string>
     <string name="imports">Импорт</string>
 
@@ -39,6 +41,9 @@
     <string name="playlist">Плейлист</string>
     <string name="channel_count">Список каналов (%d)</string>
     <string name="search_channels">Поиск каналов</string>
+    <string name="quality">Качество</string>
+    <string name="auto">Авто</string>
+    <string name="bitrate">Битрейт</string>
     
     <string name="resolution">Разрешение</string>
     <string name="frames">Кадры (Пропущено / Всего)</string>
@@ -58,6 +63,11 @@
         <item quantity="many">Выбрано: %1$d</item>
         <item quantity="other">Выбрано: %1$d</item>
     </plurals>
+    <string name="edit_channels">Редактировать каналы</string>
+    <string name="unsaved_changes">Несохраненные изменения</string>
+    <string name="save_changes_prompt">У вас есть несохраненные изменения. Сохранить их?</string>
+    <string name="save_success">Успешно сохранено</string>
+    <string name="no_history_to_save">Нет истории для сохранения</string>
     
     <string name="settings">Настройки</string>
     <string name="player">Плеер</string>
@@ -96,6 +106,9 @@
     <string name="aspect_ratio">Соотношение сторон</string>
     <string name="aspect_ratio_fill">Заполнение</string>
     <string name="aspect_ratio_original">Оригинал</string>
+    <string name="quality_preference">Предпочтение качества</string>
+    <string name="quality_preference_default">По умолчанию (Максимальное)</string>
+    <string name="quality_preference_saver">Экономия трафика</string>
     <string name="decoder">Декодер</string>
     <string name="decoder_hardware">Аппаратный</string>
     <string name="decoder_software">Программный</string>

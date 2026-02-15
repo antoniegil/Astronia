@@ -9,6 +9,8 @@
     <string name="cancel">Avbryt</string>
     <string name="undo">Ångra</string>
     <string name="all">Alla</string>
+    <string name="edit">Redigera</string>
+    <string name="save">Spara</string>
     <string name="export">Exportera</string>
     <string name="imports">Importera</string>
 
@@ -39,6 +41,9 @@
     <string name="playlist">Spellista</string>
     <string name="channel_count">Kanallista (%d)</string>
     <string name="search_channels">Sök kanaler</string>
+    <string name="quality">Kvalitet</string>
+    <string name="auto">Automatisk</string>
+    <string name="bitrate">Bithastighet</string>
     
     <string name="resolution">Upplösning</string>
     <string name="frames">Bildrutor (Tappade / Totalt)</string>
@@ -56,6 +61,11 @@
         <item quantity="one">%1$d vald</item>
         <item quantity="other">%1$d valda</item>
     </plurals>
+    <string name="edit_channels">Redigera kanaler</string>
+    <string name="unsaved_changes">Osparade ändringar</string>
+    <string name="save_changes_prompt">Du har osparade ändringar. Vill du spara dem?</string>
+    <string name="save_success">Sparat</string>
+    <string name="no_history_to_save">Ingen historik att spara</string>
     
     <string name="settings">Inställningar</string>
     <string name="player">Spelare</string>
@@ -93,6 +103,9 @@
     <string name="aspect_ratio">Bildförhållande</string>
     <string name="aspect_ratio_fill">Fyll</string>
     <string name="aspect_ratio_original">Original</string>
+    <string name="quality_preference">Kvalitetsinställning</string>
+    <string name="quality_preference_default">Standard (Högsta)</string>
+    <string name="quality_preference_saver">Databesparing</string>
     <string name="decoder">Avkodare</string>
     <string name="decoder_hardware">Hårdvara</string>
     <string name="decoder_software">Mjukvara</string>

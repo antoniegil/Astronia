@@ -427,7 +427,7 @@ fun ChannelEditPage(
                                 } else {
                                     Icon(
                                         imageVector = Icons.Outlined.DragHandle,
-                                        contentDescription = stringResource(R.string.move_up),
+                                        contentDescription = null,
                                         modifier = Modifier
                                             .padding(end = 12.dp)
                                             .draggableHandle(),

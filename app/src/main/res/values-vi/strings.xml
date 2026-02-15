@@ -9,6 +9,8 @@
     <string name="cancel">Hủy</string>
     <string name="undo">Hoàn tác</string>
     <string name="all">Tất cả</string>
+    <string name="edit">Chỉnh sửa</string>
+    <string name="save">Lưu</string>
     <string name="export">Xuất</string>
     <string name="imports">Nhập</string>
 
@@ -39,7 +41,10 @@
     <string name="playlist">Danh sách phát</string>
     <string name="channel_count">Danh sách kênh (%d)</string>
     <string name="search_channels">Tìm kiếm kênh</string>
-    
+    <string name="quality">Chất lượng hình ảnh</string>
+    <string name="auto">Tự động</string>
+    <string name="bitrate">Bitrate</string>
+
     <string name="resolution">Độ phân giải</string>
     <string name="frames">Khung hình (Bỏ lỡ / Tổng)</string>
     <string name="codec">Bộ mã hóa</string>
@@ -55,7 +60,12 @@
     <plurals name="multiselect_item_count">
         <item quantity="other">Đã chọn %1$d</item>
     </plurals>
-    
+    <string name="edit_channels">Chỉnh sửa kênh</string>
+    <string name="unsaved_changes">Thay đổi chưa lưu</string>
+    <string name="save_changes_prompt">Bạn có thay đổi chưa lưu. Bạn có muốn lưu không?</string>
+    <string name="save_success">Lưu thành công</string>
+    <string name="no_history_to_save">Không có lịch sử để lưu</string>
+
     <string name="settings">Cài đặt</string>
     <string name="player">Trình phát</string>
     <string name="player_desc">Tự động phát, phát nền, PiP</string>
@@ -92,6 +102,9 @@
     <string name="aspect_ratio">Tỷ lệ khung hình</string>
     <string name="aspect_ratio_fill">Lấp đầy</string>
     <string name="aspect_ratio_original">Gốc</string>
+    <string name="quality_preference">Ưu tiên chất lượng</string>
+    <string name="quality_preference_default">Mặc định (Cao nhất)</string>
+    <string name="quality_preference_saver">Tiết kiệm dữ liệu</string>
     <string name="decoder">Bộ giải mã</string>
     <string name="decoder_hardware">Phần cứng</string>
     <string name="decoder_software">Phần mềm</string>

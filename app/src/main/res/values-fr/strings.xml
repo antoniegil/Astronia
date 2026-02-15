@@ -9,6 +9,8 @@
     <string name="cancel">Annuler</string>
     <string name="undo">Annuler</string>
     <string name="all">Tout</string>
+    <string name="edit">Modifier</string>
+    <string name="save">Enregistrer</string>
     <string name="export">Exporter</string>
     <string name="imports">Importer</string>
 
@@ -39,6 +41,9 @@
     <string name="playlist">Playlist</string>
     <string name="channel_count">Liste des chaînes (%d)</string>
     <string name="search_channels">Rechercher des chaînes</string>
+    <string name="quality">Qualité</string>
+    <string name="auto">Automatique</string>
+    <string name="bitrate">Débit binaire</string>
     
     <string name="resolution">Résolution</string>
     <string name="frames">Images (Perdues / Total)</string>
@@ -56,6 +61,11 @@
         <item quantity="one">%1$d sélectionné</item>
         <item quantity="other">%1$d sélectionnés</item>
     </plurals>
+    <string name="edit_channels">Modifier les chaînes</string>
+    <string name="unsaved_changes">Modifications non enregistrées</string>
+    <string name="save_changes_prompt">Vous avez des modifications non enregistrées. Voulez-vous les enregistrer ?</string>
+    <string name="save_success">Enregistrement réussi</string>
+    <string name="no_history_to_save">Aucun historique à enregistrer</string>
     
     <string name="settings">Paramètres</string>
     <string name="player">Lecteur</string>
@@ -93,6 +103,9 @@
     <string name="aspect_ratio">Ratio d\'aspect</string>
     <string name="aspect_ratio_fill">Remplir</string>
     <string name="aspect_ratio_original">Original</string>
+    <string name="quality_preference">Préférence de qualité</string>
+    <string name="quality_preference_default">Par défaut (Maximale)</string>
+    <string name="quality_preference_saver">Économie de données</string>
     <string name="decoder">Décodeur</string>
     <string name="decoder_hardware">Matériel (Hardware)</string>
     <string name="decoder_software">Logiciel (Software)</string>

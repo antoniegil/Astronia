@@ -9,6 +9,8 @@
     <string name="cancel">لغو</string>
     <string name="undo">بازیابی</string>
     <string name="all">همه</string>
+    <string name="edit">ویرایش</string>
+    <string name="save">ذخیره</string>
     <string name="export">صادرات</string>
     <string name="imports">وارد کردن</string>
 
@@ -39,6 +41,9 @@
     <string name="playlist">لیست پخش</string>
     <string name="channel_count">لیست کانال‌ها (%d)</string>
     <string name="search_channels">جستجوی کانال‌ها</string>
+    <string name="quality">کیفیت</string>
+    <string name="auto">خودکار</string>
+    <string name="bitrate">نرخ بیت</string>
     
     <string name="resolution">وضوح تصویر</string>
     <string name="frames">فریم‌ها (حذف شده / کل)</string>
@@ -56,6 +61,11 @@
         <item quantity="one">%1$d انتخاب شده</item>
         <item quantity="other">%1$d انتخاب شده</item>
     </plurals>
+    <string name="edit_channels">ویرایش کانال‌ها</string>
+    <string name="unsaved_changes">تغییرات ذخیره نشده</string>
+    <string name="save_changes_prompt">شما تغییرات ذخیره نشده دارید. آیا می‌خواهید آن‌ها را ذخیره کنید؟</string>
+    <string name="save_success">ذخیره موفق</string>
+    <string name="no_history_to_save">تاریخچه‌ای برای ذخیره وجود ندارد</string>
     
     <string name="settings">تنظیمات</string>
     <string name="player">پخش</string>
@@ -93,6 +103,9 @@
     <string name="aspect_ratio">نسبت تصویر</string>
     <string name="aspect_ratio_fill">پر کردن</string>
     <string name="aspect_ratio_original">اصلی</string>
+    <string name="quality_preference">ترجیح کیفیت</string>
+    <string name="quality_preference_default">پیش‌فرض (بالاترین)</string>
+    <string name="quality_preference_saver">صرفه‌جویی داده</string>
     <string name="decoder">رمزگشا</string>
     <string name="decoder_hardware">سخت‌افزاری</string>
     <string name="decoder_software">نرم‌افزاری</string>

@@ -9,6 +9,8 @@
     <string name="cancel">İptal</string>
     <string name="undo">Geri Al</string>
     <string name="all">Tümü</string>
+    <string name="edit">Düzenle</string>
+    <string name="save">Kaydet</string>
     <string name="export">Dışa Aktar</string>
     <string name="imports">İçe Aktar</string>
 
@@ -39,6 +41,9 @@
     <string name="playlist">Oynatma Listesi</string>
     <string name="channel_count">Kanal Listesi (%d)</string>
     <string name="search_channels">Kanal ara</string>
+    <string name="quality">Kalite</string>
+    <string name="auto">Otomatik</string>
+    <string name="bitrate">Bit hızı</string>
     
     <string name="resolution">Çözünürlük</string>
     <string name="frames">Kareler (Düşen / Toplam)</string>
@@ -56,6 +61,11 @@
         <item quantity="one">%1$d seçildi</item>
         <item quantity="other">%1$d seçildi</item>
     </plurals>
+    <string name="edit_channels">Kanalları Düzenle</string>
+    <string name="unsaved_changes">Kaydedilmemiş Değişiklikler</string>
+    <string name="save_changes_prompt">Kaydedilmemiş değişiklikleriniz var. Kaydetmek istiyor musunuz?</string>
+    <string name="save_success">Başarıyla kaydedildi</string>
+    <string name="no_history_to_save">Kaydedilecek geçmiş yok</string>
     
     <string name="settings">Ayarlar</string>
     <string name="player">Oynatıcı</string>
@@ -93,6 +103,9 @@
     <string name="aspect_ratio">En Boy Oranı</string>
     <string name="aspect_ratio_fill">Doldur</string>
     <string name="aspect_ratio_original">Orijinal</string>
+    <string name="quality_preference">Kalite Tercihi</string>
+    <string name="quality_preference_default">Varsayılan (En Yüksek)</string>
+    <string name="quality_preference_saver">Veri Tasarrufu</string>
     <string name="decoder">Kod Çözücü</string>
     <string name="decoder_hardware">Donanım</string>
     <string name="decoder_software">Yazılım</string>

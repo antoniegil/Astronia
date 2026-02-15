@@ -9,6 +9,8 @@
     <string name="cancel">ยกเลิก</string>
     <string name="undo">เลิกทำ</string>
     <string name="all">ทั้งหมด</string>
+    <string name="edit">แก้ไข</string>
+    <string name="save">บันทึก</string>
     <string name="export">ส่งออก</string>
     <string name="imports">นำเข้า</string>
 
@@ -39,6 +41,9 @@
     <string name="playlist">เพลย์ลิสต์</string>
     <string name="channel_count">รายการช่อง (%d)</string>
     <string name="search_channels">ค้นหาช่อง</string>
+    <string name="quality">คุณภาพภาพ</string>
+    <string name="auto">อัตโนมัติ</string>
+    <string name="bitrate">อัตราบิต</string>
     
     <string name="resolution">ความละเอียด</string>
     <string name="frames">เฟรม (ตกหล่น / ทั้งหมด)</string>
@@ -55,6 +60,11 @@
     <plurals name="multiselect_item_count">
         <item quantity="other">เลือกแล้ว %1$d รายการ</item>
     </plurals>
+    <string name="edit_channels">แก้ไขช่อง</string>
+    <string name="unsaved_changes">การเปลี่ยนแปลงที่ยังไม่ได้บันทึก</string>
+    <string name="save_changes_prompt">คุณมีการเปลี่ยนแปลงที่ยังไม่ได้บันทึก คุณต้องการบันทึกหรือไม่?</string>
+    <string name="save_success">บันทึกสำเร็จ</string>
+    <string name="no_history_to_save">ไม่มีประวัติให้บันทึก</string>
     
     <string name="settings">ตั้งค่า</string>
     <string name="player">เครื่องเล่น</string>
@@ -92,6 +102,9 @@
     <string name="aspect_ratio">อัตราส่วนภาพ</string>
     <string name="aspect_ratio_fill">เต็มจอ</string>
     <string name="aspect_ratio_original">ต้นฉบับ</string>
+    <string name="quality_preference">การตั้งค่าคุณภาพ</string>
+    <string name="quality_preference_default">ค่าเริ่มต้น (สูงสุด)</string>
+    <string name="quality_preference_saver">ประหยัดข้อมูล</string>
     <string name="decoder">ตัวถอดรหัส</string>
     <string name="decoder_hardware">ฮาร์ดแวร์</string>
     <string name="decoder_software">ซอฟต์แวร์</string>

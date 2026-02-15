@@ -13,8 +13,6 @@
     <string name="save">儲存</string>
     <string name="export">匯出</string>
     <string name="imports">匯入</string>
-    <string name="move_up">上移</string>
-    <string name="move_down">下移</string>
 
     <string name="clipboard_label">文字</string>
 

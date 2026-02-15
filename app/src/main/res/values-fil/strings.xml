@@ -9,6 +9,8 @@
     <string name="cancel">Kanselahin</string>
     <string name="undo">Ibalik</string>
     <string name="all">Lahat</string>
+    <string name="edit">I-edit</string>
+    <string name="save">I-save</string>
     <string name="export">I-export</string>
     <string name="imports">I-import</string>
 
@@ -39,6 +41,9 @@
     <string name="playlist">Playlist</string>
     <string name="channel_count">Listahan ng channel (%d)</string>
     <string name="search_channels">Maghanap ng mga channel</string>
+    <string name="quality">Kalidad</string>
+    <string name="auto">Awtomatiko</string>
+    <string name="bitrate">Bitrate</string>
     
     <string name="resolution">Resolusyon</string>
     <string name="frames">Mga frame (tinapon / kabuuan)</string>
@@ -56,6 +61,11 @@
         <item quantity="one">%1$d napili</item>
         <item quantity="other">%1$d napili</item>
     </plurals>
+    <string name="edit_channels">I-edit ang mga channel</string>
+    <string name="unsaved_changes">Hindi naka-save na mga pagbabago</string>
+    <string name="save_changes_prompt">Mayroon kang hindi naka-save na mga pagbabago. Gusto mo bang i-save ang mga ito?</string>
+    <string name="save_success">Matagumpay na nag-save</string>
+    <string name="no_history_to_save">Walang kasaysayan na ise-save</string>
     
     <string name="settings">Mga setting</string>
     <string name="player">Player</string>
@@ -93,6 +103,9 @@
     <string name="aspect_ratio">Aspect ratio</string>
     <string name="aspect_ratio_fill">Punuin</string>
     <string name="aspect_ratio_original">Orihinal</string>
+    <string name="quality_preference">Kagustuhan sa kalidad</string>
+    <string name="quality_preference_default">Default (Pinakamataas)</string>
+    <string name="quality_preference_saver">Data Saver</string>
     <string name="decoder">Decoder</string>
     <string name="decoder_hardware">Hardware</string>
     <string name="decoder_software">Software</string>
