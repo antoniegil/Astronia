@@ -1,0 +1,4 @@
+增强 M3U 元数据支持（tvg-country、tvg-language、tvg-logo）。
+恢复HTTP明文连接的支持。并设置首次连接强制使用 HTTPS，如果 HTTPS 连接失败则自动回退到 HTTP。
+
+完整更新日志请参阅 GitHub

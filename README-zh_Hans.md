@@ -14,7 +14,7 @@
 
 </div>
 
-Astronia 是一款轻量级的现代化 Android M3U8 视频播放器，采用 Material Design 3 设计。它提供简洁直观的界面，支持多种格式的流媒体视频播放。UI 设计灵感来自 [Seal](https://github.com/JunkFood02/Seal)。
+Astronia 是一款轻量级现代化的安卓 M3U8 视频播放器，采用 Material Design 3 设计。它提供简洁直观的界面，随时随地观看IPTV直播。UI 设计灵感来自 [Seal](https://github.com/JunkFood02/Seal)。
 
 ## 📱 屏幕截图
 
@@ -29,12 +29,10 @@ Astronia 是一款轻量级的现代化 Android M3U8 视频播放器，采用 Ma
 
 ## 📖 功能特性
 
-- 🎬 M3U8 视频流播放
 - 📱 Material Design 3 界面
 - 🌙 深色模式支持
 - 📺 画中画支持
-- 🎨 现代化直观界面
-- 🔒 注重隐私（不收集数据）
+- 🎬 分辨率切换支持
 - 🌐 多语言支持（30+）
 
 ## ⬇️ 下载
@@ -52,8 +50,11 @@ UI 设计和实现深受 [Seal](https://github.com/JunkFood02/Seal) 启发，许
 - [Music You](https://github.com/Kyant0/MusicYou)
 
 使用的库和工具：
+- [Jellyfin Media3 FFmpeg Decoder](https://github.com/jellyfin/jellyfin-android)
 - [Material color utilities](https://github.com/material-foundation/material-color-utilities)
 - [Monet](https://github.com/Kyant0/Monet)
+- [Compose Markdown](https://github.com/jeziellago/compose-markdown)
+- [Reorderable](https://github.com/Calvin-LL/Reorderable)
 
 ## ⚠️ 免责声明
 

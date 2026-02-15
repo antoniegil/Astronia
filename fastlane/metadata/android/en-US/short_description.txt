@@ -1,1 +1,1 @@
-Lightweight and modern M3U8 video player for Android
+Lightweight and modern M3U8 video player

@@ -1,4 +1,0 @@
-Fix Auto-Update Check Failure
-Fix Theme Settings Real-Time Updates
-
-For full changelogs, please refer to GitHub

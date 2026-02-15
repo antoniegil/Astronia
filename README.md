@@ -14,7 +14,7 @@ English
 
 </div>
 
-Astronia is a lightweight and modern M3U8 video player for Android, built with Material Design 3. It provides a clean and intuitive interface for streaming video content with support for various formats and playback features. The UI design is inspired by [Seal](https://github.com/JunkFood02/Seal).
+Astronia is a lightweight and modern M3U8 video player for Android, built with Material Design 3. It provides a clean and intuitive interface for watching IPTV live streams anytime, anywhere. The UI design is inspired by [Seal](https://github.com/JunkFood02/Seal).
 
 ## 📱 Screenshoots
 
@@ -29,12 +29,10 @@ Astronia is a lightweight and modern M3U8 video player for Android, built with M
 
 ## 📖 Features
 
-- 🎬 M3U8 video streaming playback
 - 📱 Material Design 3 UI
 - 🌙 Dark mode support
 - 📺 Picture-in-Picture mode
-- 🎨 Modern and intuitive interface
-- 🔒 Privacy-focused (no data collection)
+- 🎬 Resolution switching support
 - 🌐 Multi-language support (30+)
 
 ## ⬇️ Download
@@ -42,36 +40,6 @@ Astronia is a lightweight and modern M3U8 video player for Android, built with M
 [<img src="https://gitlab.com/IzzyOnDroid/repo/-/raw/master/assets/IzzyOnDroidButtonGreyBorder_nofont.png" height="50" alt="Get it at IzzyOnDroid">](https://apt.izzysoft.de/fdroid/index/apk/com.antoniegil.astronia)
 
 Download from [IzzyOnDroid](https://apt.izzysoft.de/fdroid/index/apk/com.antoniegil.astronia) for automatic updates.
-
-## 🔨 Build Instructions
-
-### Prerequisites
-- Android Studio Hedgehog (2023.1.1) or later
-- JDK 17
-- Android SDK with API 24-36
-
-### Building from Source
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/antoniegil/Astronia.git
-   cd Astronia
-   ```
-
-2. Build the APK:
-   ```bash
-   ./gradlew assembleRelease
-   ```
-
-3. The APK will be generated at:
-   ```
-   app/build/outputs/apk/release/Astronia-{version}-release.apk
-   ```
-
-### Build Variants
-- **Release**: Optimized production build with ProGuard enabled
-- **Debug**: Development build with debugging symbols
-
-Note: Release builds require a signing key. For unsigned builds, use `assembleDebug` instead.
 
 ## 🧱 Credits
 
@@ -82,8 +50,11 @@ Additional UI elements and design concepts are borrowed from:
 - [Music You](https://github.com/Kyant0/MusicYou)
 
 Libraries and tools:
+- [Jellyfin Media3 FFmpeg Decoder](https://github.com/jellyfin/jellyfin-android)
 - [Material color utilities](https://github.com/material-foundation/material-color-utilities)
 - [Monet](https://github.com/Kyant0/Monet)
+- [Compose Markdown](https://github.com/jeziellago/compose-markdown)
+- [Reorderable](https://github.com/Calvin-LL/Reorderable)
 
 ## ⚠️ Disclaimer
 
